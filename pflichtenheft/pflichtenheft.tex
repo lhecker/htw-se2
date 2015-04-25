@@ -50,22 +50,98 @@
 Im Rahmen der Belegarbeit im Fach \textsc{Software Engineering 2} ist ein Software-System zu implementieren, welches die Steuerung eines Liftes simuliert. Dieses Software-System soll in der Zukunft als Anschauungsmaterial im Lehrbetrieb verwendet werden. Studierenden soll damit ermöglicht werden, die Zusammenhänge zwischen real existierenden Automaten und der Thematik der Zustandsdiagramme zu erfahren.
 
 \paragraph{}
-In diesem Zusammenhang ergeben sich zusätzlich zu den Anforderungen an das Teilsystem \textit{Liftsteuerung}, spezielle Anforderungen an das Teilsystem \textit{Visualisierung} aus der Sicht des Lehrbetriebes. Im folgenden werden diese beiden Teilsysteme daher an verschiedenen Stellen getrennt voneinander betrachtet und beschrieben.
+In diesem Zusammenhang ergeben sich zusätzlich zu den Anforderungen an das Teilsystem \textit{\textbf{Liftsteuerung}}, spezielle Anforderungen an das Teilsystem \textit{\textbf{Visualisierung}} aus der Sicht des Lehrbetriebes. Im folgenden werden diese beiden Teilsysteme daher an verschiedenen Stellen getrennt voneinander betrachtet und beschrieben.
 
 \paragraph{}
-Das vorliegende Pflichtenheft dient der Beschreibung und Vereinbarung von Anforderungen an das Gesamtsystem und besitzt Vertragscharackter. Die darin enthaltenen Anforderungen wurden auf Basis von Kundengesprächen und Kundenvereinbarungen sowie der Aufgabenstellung formuliert. 
+Das vorliegende Pflichtenheft dient der Beschreibung und Vereinbarung von Anforderungen an das Gesamtsystem und besitzt Vertragscharackter. Die darin enthaltenen Anforderungen wurden auf Basis von Kundengesprächen und Kundenvereinbarungen sowie der Aufgabenstellung formuliert\footnote{Meeting Minutes und Audiomitschnitte der beiden Kundengespräche sind unter folgendem Link zu finden: \url{http://goo.gl/UVHn2G}} . 
 
 \chapter{Dokumentation der Anforderungen}
+Anforderungen an ein Software-Produkt werden im Allgemeinen zunächst in funktionale und nicht-funktionale Anforderungen unterteilt. Erstere decken dabei die Fähigkeiten und die Beschaffenheiten ab, die der Benutzer der Software zur Problemlösung oder zur Erreichung seines Zieles benötigt. Nicht- funktionale Anforderungen unterteilen sich weiterhin in Rahmenbedingungen und Qualitätsanforderungen.
 
-\section{Funktionale Anforderungen}
+\paragraph{}
+Im Folgenden werden die funktionalen Anforderungen an das Software-System aus den bereits angesprochen zwei Perspektiven betrachtet. Perspektive \textit{\textbf{A)}} bezieht sich auf das Teilsystem \textit{\textbf{Visualisierung}} und betrachtet es aus der Sicht des Benutzers. Diese Sicht wird im folgenden \textit{\textbf{Benutzersicht}} genannt. Unter Perspektive \textit{\textbf{B)}} wird das Teilsystem \textit{\textbf{Liftsteuerung}} aus der Sicht der Passagiere betrachtet. Diese Sicht wird im folgenden \textit{\textbf{Passagiersicht}} genannt.
+
+\section{Kontextdiagramm}
+
+\section{Satzschablonen}
+Zunächst werden die Anforderungen an das Software-System mit Hilfe von Satzschablonen\footnote{Eine Satzschablone ist ein Bauplan für die syntaktische Struktur einer einzelnen Anforderung. Der Einsatz der Satzschablone unterstützt den Autor einer Anforderung darin, die syntaktische Eindeutigkeit der Anforderung zu erreichen} dokumentiert.
+
+\paragraph{}
+Die folgenden Auflistung unterscheidet dabei zwischen selbstständigen Systemaktivitäten\footnote{Diese Aktionen werden von der Liftsteuerung selbstständig ausgeführt. Über verschiedene Schnittstellen interagieren Benutzer, Passagier und Sensoren mit dem System.} und Benutzerinteraktionen\footnote{Über Benutzerinteraktionen kann der Benutzer des Software-Systems mit der Liftsteuerung interagieren.}. Weiterhin wird eine Nummerierung vorgenommen, welche in allen Teilen der Software-Dokumentation konsistent benutzt werden.
+
+\paragraph{}
+\textbf{Selbstständige Systemaktivitäten}
+\begin{itemize}
+	\item \textbf{ELV-001:} \newline
+		Die Liftsimulation muss den Fahrstuhl nach oben fahren lassen.
+	\item \textbf{ELV-002:} \newline
+		Die Liftsimulation muss den Fahrstuhl nach unten fahren lassen.
+	\item \textbf{ELV-003:} \newline
+		Die Liftsimulation muss das Öffnen der Fahrstuhltür anzeigen.
+	\item \textbf{ELV-004:} \newline
+		Die Liftsimulation muss das Schließen der Fahrstuhltür anzeigen.
+	\item \textbf{ELV-005:} \newline
+		Die Liftsimulation sollte den aktuellen Zustand des Fahrstuhls anzeigen.
+	\item \textbf{ELV-006:} \newline
+		Die Liftsimulation sollte Zustandsübergänge des Fahrstuhls anzeigen.
+	\item \textbf{ELV-007:} \newline
+		Die Liftsimulation muss den Wechsel einer Etage anzeigen.
+	\item \textbf{ELV-008:} \newline
+		Die Liftsimulation sollte die Fahrstuhltür selbständig schließen, wenn 
+		länger als 3 Sekunden keine Benutzerinteraktion durchgeführt wurde.
+	\item \textbf{ELV-009:} \newline
+		Die Liftsimulation muss eine Überlastung des Fahrstuhls durch zu 
+		viele Passagiere anzeigen.
+		\newline
+		
+	\item \textbf{ELV-010:} \newline
+		Die Liftsimulation muss im Falle einer Überlastsituation\footnote{Eine Überlastsituation tritt ein, sobald mehr sich als 8 Passagiere im 		Fahrstuhl befinden.} in den Zustand \textit{\textbf{Überlast}} wechseln. Ausgehend von diesem Zustand  ist es dann nur noch möglich in den			vorherigen Zustand zu wechseln, sofern die Überlastsituation durch das Verlassen von Passagieren aufgehoben wurde.
+\end{itemize}
+
+\paragraph{}
+\textbf{Benutzerinteraktionen}
+\begin{itemize}
+	\item \textbf{ELV-011:}
+		Die Liftsimulation muss dem Anwender die Möglichkeit bieten einen \textbf{\textit{Fahrtwunsch}}\footnote{Ein 						\textbf{\textit{Fahrtwunsch}} ist die Eingabe der Zieletage eines Passagiers über die innere Schaltfläche des Liftes.} für einen Passagier 		einzugeben.
+	\item \textbf{ELV-012:}
+		Die Liftsimulation muss dem Anwender die Möglichkeit bieten einen Passagier in den Fahrstuhl einsteigen zu lassen.
+	\item \textbf{ELV-013:}
+		Die Liftsimulation muss dem Anwender die Möglichkeit bieten einen Passagier aus dem Fahrstuhl aussteigen zu lassen.
+	\item \textbf{ELV-014:}
+		Die Liftsimulation muss dem Anwender die Möglichkeit geben, einen \textbf{\textit{Fahrstuhlruf}}\footnote{Ein \textbf{\textit{Ruf}} 		wird durch das Betätigen eines Etagenknopfes abgesetzt.} in jedem Stockwerk absetzen zu können.
+	\item \textbf{ELV-015:}
+		Die Liftsimulation sollte dem Anwender die Möglichkeit bieten eine \textbf{\textit{Vorrangschaltung}}\footnote{Der Benutzer kann einen 		\textit{Monteur} in den Lift einsteigen lassen, welcher die Möglichkeit besitzt einen \textit{Priorisierten Fahrtwunsch} einzugeben.} 			auswählen zu lassen.
+\end{itemize}
+
+\newpage
+\section{Anwendungsfälle - Benutzersicht}
+In dieser Sicht gibt es einen \textit{\guillemotleft \ abstrakten \ \guillemotright} Anwendungsfall \textit{\textbf{Passagier/Monteur steuern}}. Dieser gliedert sich in die unabhängigen Anwendungsfälle:
+
+\begin{itemize}
+	\item \textit{\textbf{Passagier-einsteigen}} (ELV-012)
+	\item \textit{\textbf{Passagier-aussteigen}} (ELV-013)
+\end{itemize}
+
+TODO: DIAGRAMM EINFÜGEN
+
+\section{Anwendungsfälle - Passagiersicht}
+Aus dieser Perspektive ergeben sich drei voneinander unabhängige Anwendungsfälle:
+
+\begin{itemize}
+	\item \textit{\textbf{Fahrtwunsch - Passagier}} (ELV-011)
+	\item \textit{\textbf{Fahrstuhlruf }} (ELV-014)
+	\item \textit{\textbf{Fahrtwunsch - Monteur }} (ELV-015)
+\end{itemize}
+
+TODO: DIAGRAMM EINFÜGEN
 
 \section{Qualitätsanforderungen}
+Benutzerfreundlichkeit und die intuitive Bedienbarkeit des Software-Systems haben vor allem im Lehrbetrieb große Wichtigkeit. Aktivitäten des Systems sollten erst nach der Interaktion des Benutzers beginnen und nicht automatisch starten. So ist sicher gestellt, dass der Benutzer in jeder Situation genügend Zeit hat, um das vergangene und zukünftige Verhalten des Systems nachvollziehen und durchdenken zu können. 
+
+\paragraph{}
+Weiterhin wird sichergestellt, dass jede Interaktion des Benutzers mit dem System eine Rückmeldung an den Benutzer gibt. Hier werden vor allem Methoden der visuellen Rückmeldung Anwendung finden.
 
 \section{Rahmenbedingungen}
-
-\chapter{Kontextdiagramm}
-
-\chapter{Anwendungsfalldiagramme}
 
 \chapter{Zustandsdiagramm des Liftes}
 
