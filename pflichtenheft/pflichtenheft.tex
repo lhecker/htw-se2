@@ -61,13 +61,18 @@ Anforderungen an ein Software-Produkt werden im Allgemeinen zunächst in funktio
 \paragraph{}
 Im Folgenden werden die funktionalen Anforderungen an das Software-System aus den bereits angesprochen zwei Perspektiven betrachtet. Perspektive \textit{\textbf{A)}} bezieht sich auf das Teilsystem \textit{\textbf{Visualisierung}} und betrachtet es aus der Sicht des Benutzers. Diese Sicht wird im folgenden \textit{\textbf{Benutzersicht}} genannt. Unter Perspektive \textit{\textbf{B)}} wird das Teilsystem \textit{\textbf{Liftsteuerung}} aus der Sicht der Passagiere betrachtet. Diese Sicht wird im folgenden \textit{\textbf{Passagiersicht}} genannt.
 
+\newpage
 \section{Kontextdiagramm}
+Um die Verschachtelung der beiden Perspektiven sowie die Schnittstellen des Systems zur Umwelt übersichtlich darzustellen eignet sich ein Kontextdiagramm. 
 
+TODO: KONTEXTDIAGRAMM EINFÜGEN
+
+\newpage
 \section{Satzschablonen}
-Zunächst werden die Anforderungen an das Software-System mit Hilfe von Satzschablonen\footnote{Eine Satzschablone ist ein Bauplan für die syntaktische Struktur einer einzelnen Anforderung. Der Einsatz der Satzschablone unterstützt den Autor einer Anforderung darin, die syntaktische Eindeutigkeit der Anforderung zu erreichen} dokumentiert.
+Im Folgenden werden die Anforderungen an das Software-System mit Hilfe von Satzschablonen\footnote{Eine Satzschablone ist ein Bauplan für die syntaktische Struktur einer einzelnen Anforderung. Der Einsatz der Satzschablone unterstützt den Autor einer Anforderung darin, die syntaktische Eindeutigkeit der Anforderung zu erreichen} dokumentiert.
 
 \paragraph{}
-Die folgenden Auflistung unterscheidet dabei zwischen selbstständigen Systemaktivitäten\footnote{Diese Aktionen werden von der Liftsteuerung selbstständig ausgeführt. Über verschiedene Schnittstellen interagieren Benutzer, Passagier und Sensoren mit dem System.} und Benutzerinteraktionen\footnote{Über Benutzerinteraktionen kann der Benutzer des Software-Systems mit der Liftsteuerung interagieren.}. Weiterhin wird eine Nummerierung vorgenommen, welche in allen Teilen der Software-Dokumentation konsistent benutzt werden.
+Deren Auflistung unterscheidet dabei zwischen selbstständigen Systemaktivitäten\footnote{Diese Aktionen werden von der Liftsteuerung selbstständig ausgeführt. Über verschiedene Schnittstellen interagieren Benutzer, Passagier und Sensoren mit dem System.} und Benutzerinteraktionen\footnote{Über Benutzerinteraktionen kann der Benutzer des Software-Systems mit der Liftsteuerung interagieren.}. Weiterhin wird eine Nummerierung vorgenommen, welche in allen Teilen der Software-Dokumentation konsistent benutzt werden.
 
 \paragraph{}
 \textbf{Selbstständige Systemaktivitäten}
@@ -95,7 +100,7 @@ Die folgenden Auflistung unterscheidet dabei zwischen selbstständigen Systemakt
 		\newline
 		
 	\item \textbf{ELV-010:} \newline
-		Die Liftsimulation muss im Falle einer Überlastsituation\footnote{Eine Überlastsituation tritt ein, sobald mehr sich als 8 Passagiere im 		Fahrstuhl befinden.} in den Zustand \textit{\textbf{Überlast}} wechseln. Ausgehend von diesem Zustand  ist es dann nur noch möglich in den			vorherigen Zustand zu wechseln, sofern die Überlastsituation durch das Verlassen von Passagieren aufgehoben wurde.
+		Die Liftsimulation muss im Falle einer Überlastsituation\footnote{Eine Überlastsituation tritt ein, sobald mehr sich als 8 Passagiere im Fahrstuhl befinden.} in den Zustand \textit{\textbf{Überlast}} wechseln. Ausgehend von diesem Zustand  ist es dann nur noch möglich in den vorherigen Zustand zu wechseln, sofern die Überlastsituation durch das Verlassen von Passagieren aufgehoben wurde.
 \end{itemize}
 
 \paragraph{}
@@ -124,6 +129,35 @@ In dieser Sicht gibt es einen \textit{\guillemotleft \ abstrakten \ \guillemotri
 
 TODO: DIAGRAMM EINFÜGEN
 
+Die Eingangs- und Ausgangsdaten, sowie einige Bemerkungen zu den Anwendungsfällen sind in folgender Tabelle zusammengefasst.
+
+ {
+\vspace{1cm}
+\hspace{-0,5cm}
+\footnotesize
+\begin{tabular}{|p{1,5cm}|p{2,5cm}|p{2,5cm}|p{2,5cm}|p{2cm}|}
+	\hline
+		\textbf{Funktion} &
+		\textbf{Eingangsdaten} &
+		\textbf{Ausgangsdaten} &
+		\textbf{Bemerkungen} &
+		\textbf{abstrakter AWD} \\
+	\hline \hline
+		\textit{Passagier \newline einsteigen} &
+		Betätigung der entsprechenden Schaltfläche &
+		Visuelle Bestätigung der Eingabe &
+		Betreten mehr als 8 Personen den Lift kann eine Überlastsituation auftreten&
+		\textbf{Passagier /\newline Monteur\newline steuern} \\
+	\cline{1-4}
+		\textit{Passagier \newline aussteigen} &
+		Betätigung der entsprechenden Schaltfläche &
+		Visuelle Bestätigung der Eingabe &
+		&
+		\\
+	\hline
+\end{tabular}
+}
+
 \section{Anwendungsfälle - Passagiersicht}
 Aus dieser Perspektive ergeben sich drei voneinander unabhängige Anwendungsfälle:
 
@@ -134,6 +168,37 @@ Aus dieser Perspektive ergeben sich drei voneinander unabhängige Anwendungsfäl
 \end{itemize}
 
 TODO: DIAGRAMM EINFÜGEN
+
+Die Eingangs-, Ausgangsdaten, sowie Bemerkungen sind wiederum in folgender Tabelle zusammengefasst.
+
+ {
+\vspace{1cm}
+\hspace{-0,5cm}
+\footnotesize
+\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\hline
+		\textbf{Funktion} &
+		\textbf{Eingangsdaten} &
+		\textbf{Ausgangsdaten} &
+		\textbf{Bemerkungen} \\
+	\hline \hline
+		\textit{Fahrtwunsch \newline Passagier} &
+		Etagenwahl (innen) &
+		Leuchten der Wunschetage &
+		Übergabe des Wunsches an Liftsteuerung \\
+	\hline
+		\textit{Fahrstuhlruf} &
+		Drücken eines der beiden Rufknöpfe (außen) &
+		Leuchten der Ruftaste &
+		Übergabe des Wunsches an Liftsteuerung  \\
+	\hline
+		\textit{Fahrtwunsch \newline Monteur} &
+		Drücken des Schlüsselsymbols und der Rufetage &
+		Leuchten der des Schlüsselsymbols und der Wunschetage &
+		Übergabe des Wunsches an Liftsteuerung  \\
+	\hline
+\end{tabular}
+}
 
 \section{Qualitätsanforderungen}
 Benutzerfreundlichkeit und die intuitive Bedienbarkeit des Software-Systems haben vor allem im Lehrbetrieb große Wichtigkeit. Aktivitäten des Systems sollten erst nach der Interaktion des Benutzers beginnen und nicht automatisch starten. So ist sicher gestellt, dass der Benutzer in jeder Situation genügend Zeit hat, um das vergangene und zukünftige Verhalten des Systems nachvollziehen und durchdenken zu können. 
