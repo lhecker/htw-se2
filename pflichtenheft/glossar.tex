@@ -1,24 +1,66 @@
+\newglossary[slg]{spez}{syi}{syg}{Projektspezifischer Glossar} 
+\newglossary[slg2]{allg}{syi2}{syg2}{Allgemeiner Glossar}
+
+%um Einträge zum allgemeinen Glossar hinzuzufügen, muss als type "allg" angegeben werden
+
+%Allgemeiner Glossar
+\newglossaryentry{Anwendungsfall}
+{
+	name=Anwendungsfall,
+	description={
+		Eine abstrakte Darstellung einer vom Software-System angebotenen Funktionalität (Aktivität). Er kapselt eine Menge von Aktionen, die sequentiell, bediengungsabhängig oder zyklisch abgearbeitet werden. Ein Anwendungsfall wird in Folge von Dateneingaben oder zeitlichen Ereignissen ausgelöst und führt in der Regel zu einem von au{\ss}en sichtbarem Ergebnis
+	},
+	type=allg
+}
+
+\newglossaryentry{Anwendungsfalldiagramm}
+{
+	name=Anwendungsfalldiagramm,
+	description={
+		Das Anwendungsfalldiagramm, kurz AWD, stellt die funktionalen Anforderungen (Aktivitäten) aus Sicht des Anwenders dar. Diese Aktivitäten werden zu den Beteiligten aus dem Kontext (Akteuren) in Beziehung gesetzt
+	},
+	type=allg
+}
+
+\newglossaryentry{Akteur}
+{
+	name=Akteur,
+	description={
+		Ein Akteur ist die abstrakte Darstellung einer externen Instanz, die mit dem System kommuniziert
+	},
+	type=allg
+}
+
+%Projektspezifischer Glossar
 \newglossaryentry{Fahrtwunsch}
 {
 	name=Fahrtwunsch,
 	description={
-				Ist die Zieletage eines \gls{Passagier}s, die nach dessen Betreten über das \textbf{TODO innere Steuerungsfeld} des Fahrstuhls eingegeben wird.
-		}
+		Ist die Zieletage eines \gls{Passagier}s, die nach dessen Betreten über das \textbf{TODO innere Steuerungsfeld} des Fahrstuhls eingegeben wird
+		},
+}
+
+\newglossaryentry{Fahrstuhlruf}
+{
+	name=Fahrstuhlruf,
+	description={
+		Ist der Wunsch eines \gls{Passagier}s den Fahrstuhl in die aktuelle Etage zu ordern um eine Fahrt mit dem Fahrstuhl durchführen zu können
+	},
 }
 
 \newglossaryentry{PrioFahrtwunsch}
 {
 	name=Priorisierter Fahrtwunsch,
 	description={
-		Ist der \gls{Fahrtwunsch} eines Monteurs, die nach dessen Betreten über das \textbf{TODO innere Steuerungsfeld} über das Schlüsselsymbol des Fahrstuhls aktiviert wird. Beim priorisierten Fahrtwunsch hält der Fahrstuhl ausschließlich in der Zieletage, auch wenn auf anderen Etagen ein \textbf{TODO Fahrstuhlruf} eingebeben wurde.
-	}
+		Ist der \gls{Fahrtwunsch} eines \gls{Monteur}s, der nach dessen Betreten über das Schlüsselsymbol auf dem \gls{Steuerungsfeld} aktiviert werden kann. Beim priorisierten Fahrtwunsch hält der Fahrstuhl ausschließlich in der Zieletage, auch wenn auf anderen Etagen ein \gls{Fahrstuhlruf} eingebeben wurde
+	},
 }
 
 \newglossaryentry{Passagier}
 {
 	name=Passagier,
 	description={
-		Ein Passagier ist eine virtuelle visualisierte Person, die den Fahrstuhl benutzen möchte.
+		Ein Passagier ist eine virtuelle visualisierte Person, die den Fahrstuhl benutzen möchte
 	},
 	plural=Passagiere
 }
@@ -28,7 +70,7 @@
 	name=Monteur,
 	description={
 		Ein Monteur ist ein \gls{Passagier}, der den Fahrstuhl benutzen möchte und über einen virtuellen Schlüssel verfügt mit dem ein \gls{PrioFahrtwunsch}
-		durchgeführt werden kann.
+		durchgeführt werden kann
 	}
 }
 
@@ -36,7 +78,7 @@
 {
 	name=Fahrstuhlsimulation,
 	description={
-		Das gesamte Softwaresystem welches die Simmulation eines Fahrstuhles realisiert.
+		Das gesamte Softwaresystem welches die Simmulation eines Fahrstuhles realisiert
 	}
 }
 
@@ -44,9 +86,17 @@
 {
 	name=Fahrstuhlsteuerung,
 	description={
-		Teil der Fahrstuhlsimulation der die Programmlogik enthält.
+		Teil der Fahrstuhlsimulation der die Programmlogik enthält
+	}
+}
+
+\newglossaryentry{Steuerungsfeld}
+{
+	name=Steuerungsfeld,
+	description={
+		Teil der Grafischen Oberfläche, die das Tableau im inneren des Fahrstuhles darstellt. Hier können in der Rolle \gls{Passagier} die Zielstockwerke und in  der Rolle \gls{Monteur}  der \gls{PrioFahrtwunsch} gewählt werden
 	}
 }
 
 % Abkürzungen
-\newacronym{ast}{AST}{Abstract syntax tree}
+\newacronym{zB}{z.\,B.}{zum Beispiel}
