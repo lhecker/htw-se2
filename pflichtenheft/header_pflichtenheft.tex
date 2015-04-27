@@ -135,3 +135,9 @@
 	%{\rmfamily\normalsize\contentslabel{3em}\rmfamily\large}
 	%{\hspace*{-2.3em}}
 	%{\titlerule*[0.75pc]{.}\enskip\contentspage}
+
+% Glossar einbinden und Abkürziungsverzeichnis erstellen
+\usepackage[acronym,toc,numberedsection,nonumberlist]{glossaries}
+\loadglsentries{./glossar}
+\makeglossaries
+\makeindex

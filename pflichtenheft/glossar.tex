@@ -1,0 +1,52 @@
+\newglossaryentry{Fahrtwunsch}
+{
+	name=Fahrtwunsch,
+	description={
+				Ist die Zieletage eines \gls{Passagier}s, die nach dessen Betreten über das \textbf{TODO innere Steuerungsfeld} des Fahrstuhls eingegeben wird.
+		}
+}
+
+\newglossaryentry{PrioFahrtwunsch}
+{
+	name=Priorisierter Fahrtwunsch,
+	description={
+		Ist der \gls{Fahrtwunsch} eines Monteurs, die nach dessen Betreten über das \textbf{TODO innere Steuerungsfeld} über das Schlüsselsymbol des Fahrstuhls aktiviert wird. Beim priorisierten Fahrtwunsch hält der Fahrstuhl ausschließlich in der Zieletage, auch wenn auf anderen Etagen ein \textbf{TODO Fahrstuhlruf} eingebeben wurde.
+	}
+}
+
+\newglossaryentry{Passagier}
+{
+	name=Passagier,
+	description={
+		Ein Passagier ist eine virtuelle visualisierte Person, die den Fahrstuhl benutzen möchte.
+	},
+	plural=Passagiere
+}
+
+\newglossaryentry{Monteur}
+{
+	name=Monteur,
+	description={
+		Ein Monteur ist ein \gls{Passagier}, der den Fahrstuhl benutzen möchte und über einen virtuellen Schlüssel verfügt mit dem ein \gls{PrioFahrtwunsch}
+		durchgeführt werden kann.
+	}
+}
+
+\newglossaryentry{Fahrstuhlsimulation}
+{
+	name=Fahrstuhlsimulation,
+	description={
+		Das gesamte Softwaresystem welches die Simmulation eines Fahrstuhles realisiert.
+	}
+}
+
+\newglossaryentry{Fahrstuhlsteuerung}
+{
+	name=Fahrstuhlsteuerung,
+	description={
+		Teil der Fahrstuhlsimulation der die Programmlogik enthält.
+	}
+}
+
+% Abkürzungen
+\newacronym{ast}{AST}{Abstract syntax tree}
