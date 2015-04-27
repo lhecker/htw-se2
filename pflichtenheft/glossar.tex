@@ -36,7 +36,7 @@
 {
 	name=Fahrtwunsch,
 	description={
-		Ist die Zieletage eines \gls{Passagier}s, die nach dessen Betreten über das \textbf{TODO innere Steuerungsfeld} des Fahrstuhls eingegeben wird
+		Ist die Zieletage eines \gls{Passagier}s, die nach dessen Betreten über das \gls{Steuerungsfeld} des Fahrstuhls eingegeben wird
 		},
 }
 
@@ -53,6 +53,14 @@
 	name=Priorisierter Fahrtwunsch,
 	description={
 		Ist der \gls{Fahrtwunsch} eines \gls{Monteur}s, der nach dessen Betreten über das Schlüsselsymbol auf dem \gls{Steuerungsfeld} aktiviert werden kann. Beim priorisierten Fahrtwunsch hält der Fahrstuhl ausschließlich in der Zieletage, auch wenn auf anderen Etagen ein \gls{Fahrstuhlruf} eingebeben wurde
+	},
+}
+
+\newglossaryentry{Ueberlast}
+{
+	name=Überlast,
+	description={
+		Die \gls{Fahrstuhlsimulation} ist für \textbf{ANZAHL} \gls{Passagier}e ausgelegt. Wird die Anzahl überschritten wird in der \gls{Fahrstuhlsteuerung} der Zustand Überlast aktiviert. Erst nach beheben der Überlastung kann sich der Fahrstuhl weiter bewegen
 	},
 }
 
@@ -94,7 +102,7 @@
 {
 	name=Steuerungsfeld,
 	description={
-		Teil der Grafischen Oberfläche, die das Tableau im inneren des Fahrstuhles darstellt. Hier können in der Rolle \gls{Passagier} die Zielstockwerke und in  der Rolle \gls{Monteur}  der \gls{PrioFahrtwunsch} gewählt werden
+		Teil der Grafischen Oberfläche, die das Tableau im inneren des Fahrstuhles visualisiert. Hier können in der Rolle \gls{Passagier} die Zielstockwerke und in  der Rolle \gls{Monteur}  der \gls{PrioFahrtwunsch} gewählt werden
 	}
 }
 
