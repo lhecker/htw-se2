@@ -5,16 +5,20 @@ Anforderungen an ein Software-Produkt werden im Allgemeinen zunächst in funktio
 Im Folgenden werden die funktionalen Anforderungen an das Software-System aus den bereits angesprochen zwei Perspektiven betrachtet. Perspektive \textit{\textbf{A)}} bezieht sich auf das Teilsystem \textit{\textbf{\gls{Visualisierung}}} und betrachtet es aus der Sicht des Benutzers. Diese Sicht wird im folgenden \textit{\textbf{Benutzersicht}} genannt. Unter Perspektive \textit{\textbf{B)}} wird das Teilsystem \textit{\textbf{\gls{Fahrstuhlsteuerung}}} aus der Sicht der Passagiere betrachtet. Diese Sicht wird im folgenden \textit{\textbf{Passagiersicht}} genannt.
 
 \newpage
-\section{Kontextdiagramm}
-Um die Verschachtlung der beiden Perspektiven sowie die Schnittstellen des Systems zur Umwelt übersichtlich darzustellen eignet sich ein Kontextdiagramm.
+\section{Komponentendiagramm}
+Die folgende Abbildung \ref{fig:komponentendiagramm} zeigt die Verschachtlung der beiden Perspektiven, sowie die Schnittstellen des Systems zur Umwelt.
+
+\vspace{0,5cm}
 
 \begin{figure}[hbt]
-	\includegraphics{images/komponentendiagramm.png}
+	\includegraphics[width=\textwidth]{images/komponentendiagramm.png}
+	\caption{Komponentendiagramm der \gls{Fahrstuhlsimulation}}
 	\label{fig:komponentendiagramm}
-	\caption{Kontextdiagramm der \gls{Fahrstuhlsimulation}}
 \end{figure}
 
+\vspace{0,5cm}
 
+Im Kontext unseres Systems befinden sich der Anwender und ein Sensorsystem, dass über eine definierte Schnittstelle mit der \gls{Fahrstuhlsimulation} kommuniziert.
 
 \newpage
 \section{Satzschablonen}
@@ -27,53 +31,56 @@ Deren Auflistung unterscheidet dabei zwischen selbstständigen Systemaktivitäte
 \textbf{Selbstständige Systemaktivitäten}
 \begin{itemize}
 	\item \textbf{ELV-001:} \newline
-		Die Fahrstuhlsimulation muss den Fahrstuhl nach oben fahren lassen.
+		Die \gls{Fahrstuhlsimulation} muss den Fahrstuhl nach oben fahren lassen.
 	\item \textbf{ELV-002:} \newline
-		Die Fahrstuhlsimulation muss den Fahrstuhl nach unten fahren lassen.
+		Die \gls{Fahrstuhlsimulation} muss den Fahrstuhl nach unten fahren lassen.
 	\item \textbf{ELV-003:} \newline
-		Die Fahrstuhlsimulation muss das Öffnen der Fahrstuhltür anzeigen.
+		Die \gls{Fahrstuhlsimulation} muss das Öffnen der Fahrstuhltür anzeigen.
 	\item \textbf{ELV-004:} \newline
-		Die Fahrstuhlsimulation muss das Schließen der Fahrstuhltür anzeigen.
+		Die \gls{Fahrstuhlsimulation} muss das Schließen der Fahrstuhltür anzeigen.
 	\item \textbf{ELV-005:} \newline
-		Die Fahrstuhlsimulation sollte den aktuellen Zustand des Fahrstuhls anzeigen.
-	\item \textbf{ELV-006:} \newline
-		Die Fahrstuhlsimulation sollte Zustandsübergänge des Fahrstuhls anzeigen.
-	\item \textbf{ELV-007:} \newline
-		Die Fahrstuhlsimulation muss den Wechsel einer Etage anzeigen.
-	\item \textbf{ELV-008:} \newline
-		Die Fahrstuhlsimulation sollte die Fahrstuhltür selbständig schließen, wenn 
-		länger als 3 Sekunden keine Benutzerinteraktion durchgeführt wurde.
-	\item \textbf{ELV-009:} \newline
-		Die Fahrstuhlsimulation muss eine Überlastung des Fahrstuhls durch zu 
-		viele Passagiere anzeigen.
-		\newline
-		
-	\item \textbf{ELV-010:} \newline
-		Die Fahrstuhlsimulation muss im Falle einer Überlastsituation\footnote{Eine Überlastsituation tritt ein, sobald mehr sich als 8 Passagiere im Fahrstuhl befinden.} in den Zustand \textit{\textbf{Überlast}} wechseln. Ausgehend von diesem Zustand  ist es dann nur noch möglich in den vorherigen Zustand zu wechseln, sofern die Überlastsituation durch das Verlassen von Passagieren aufgehoben wurde.
+		Die \gls{Fahrstuhlsimulation} sollte den aktuellen Zustand des Fahrstuhls anzeigen.
 \end{itemize}
 
+\newpage
+\begin{itemize}
+	\item \textbf{ELV-006:} \newline
+		Die \gls{Fahrstuhlsimulation} sollte Zustandsübergänge des Fahrstuhls anzeigen.
+	\item \textbf{ELV-007:} \newline
+		Die \gls{Fahrstuhlsimulation} muss den Wechsel einer Etage anzeigen.
+	\item \textbf{ELV-008:} \newline
+		Die \gls{Fahrstuhlsimulation} sollte die Fahrstuhltür selbständig schließen, wenn 
+		länger als 3 Sekunden keine Benutzerinteraktion durchgeführt wurde.
+	\item \textbf{ELV-009:} \newline
+		Die \gls{Fahrstuhlsimulation} muss eine \gls{Ueberlast} des Fahrstuhls durch zu 
+		viele \gls{Passagier} anzeigen.
+	\item \textbf{ELV-010:} \newline
+		Die \gls{Fahrstuhlsimulation} muss im Falle einer Überlastsituation\footnote{Eine Überlastsituation tritt ein, sobald mehr sich als 8 Passagiere im Fahrstuhl befinden.} in den Zustand \gls{Ueberlast} wechseln. Ausgehend von diesem Zustand  ist es nur noch möglich in den vorherigen Zustand zu wechseln, sofern die Überlastsituation durch das Verlassen von Passagieren aufgehoben wurde.
+\end{itemize}
+
+\newpage
 \paragraph{}
 \textbf{Benutzerinteraktionen}
 \begin{itemize}
 	\item \textbf{ELV-011:}
-		Die Fahrstuhlsimulation muss dem Anwender die Möglichkeit bieten einen \textbf{\textit{Fahrtwunsch}}\footnote{Ein 						\textbf{\textit{Fahrtwunsch}} ist die Eingabe der Zieletage eines Passagiers über die innere Schaltfläche des Liftes.} für einen Passagier 		einzugeben.
+		Die \gls{Fahrstuhlsimulation} muss dem Anwender die Möglichkeit bieten einen \gls{Fahrtwunsch}\footnote{Ein \gls{Fahrtwunsch} ist die Eingabe der Zieletage eines \gls{Passagier} über die innere Schaltfläche des Liftes.} für einen \gls{Passagier} einzugeben.
 	\item \textbf{ELV-012:}
-		Die Fahrstuhlsimulation muss dem Anwender die Möglichkeit bieten einen Passagier in den Fahrstuhl einsteigen zu lassen.
+		Die \gls{Fahrstuhlsimulation} muss dem Anwender die Möglichkeit bieten einen \gls{Passagier} in den Fahrstuhl einsteigen zu lassen.
 	\item \textbf{ELV-013:}
-		Die Fahrstuhlsimulation muss dem Anwender die Möglichkeit bieten einen Passagier aus dem Fahrstuhl aussteigen zu lassen.
+		Die \gls{Fahrstuhlsimulation} muss dem Anwender die Möglichkeit bieten einen \gls{Passagier} aus dem Fahrstuhl aussteigen zu lassen.
 	\item \textbf{ELV-014:}
-		Die Fahrstuhlsimulation muss dem Anwender die Möglichkeit geben, einen \textbf{\textit{Fahrstuhlruf}}\footnote{Ein \textbf{\textit{Ruf}} 		wird durch das Betätigen eines Etagenknopfes abgesetzt.} in jedem Stockwerk absetzen zu können.
+		Die \gls{Fahrstuhlsimulation} muss dem Anwender die Möglichkeit geben, einen \gls{Fahrstuhlruf}\footnote{Ein \textbf{\textit{Ruf}} wird durch das Betätigen eines Etagenknopfes abgesetzt.} in jedem Stockwerk absetzen zu können.
 	\item \textbf{ELV-015:}
-		Die Fahrstuhlsimulation sollte dem Anwender die Möglichkeit bieten eine \textbf{\textit{Vorrangschaltung}}\footnote{Der Benutzer kann einen 		\textit{Monteur} in den Lift einsteigen lassen, welcher die Möglichkeit besitzt einen \textit{Priorisierten Fahrtwunsch} einzugeben.} 			auswählen zu lassen.
+		Die \gls{Fahrstuhlsimulation} sollte dem Anwender die Möglichkeit bieten eine \gls{PrioFahrtwunsch} \footnote{Der Benutzer kann einen \textit{\gls{Monteur}} in den Lift einsteigen lassen, welcher die Möglichkeit besitzt einen \textit{\gls{PrioFahrtwunsch}} einzugeben.} auswählen zu lassen.
 \end{itemize}
 
 \newpage
 \section{Anwendungsfälle - Benutzersicht}
-In dieser Sicht gibt es einen \textit{\guillemotleft \ abstrakten \ \guillemotright} Anwendungsfall \textit{\textbf{Passagier/Monteur steuern}}. Dieser gliedert sich in die unabhängigen Anwendungsfälle:
+In dieser Sicht gibt es einen \textit{\guillemotleft \ abstrakten \ \guillemotright} Anwendungsfall \textit{\textbf{\gls{Passagier}/\gls{Monteur} steuern}}. Dieser gliedert sich in die unabhängigen Anwendungsfälle:
 
 \begin{itemize}
-	\item \textit{\textbf{Passagier-einsteigen}} (ELV-012)
-	\item \textit{\textbf{Passagier-aussteigen}} (ELV-013)
+	\item \textit{\textbf{\gls{Passagier}-einsteigen}} (ELV-012)
+	\item \textit{\textbf{\gls{Passagier}-aussteigen}} (ELV-013)
 \end{itemize}
 
 \begin{figure}[hbt]
@@ -82,7 +89,7 @@ In dieser Sicht gibt es einen \textit{\guillemotleft \ abstrakten \ \guillemotri
 	\caption{Anwendungsfalldiagramm aus Sicht des Anwenders}
 \end{figure}
 
-Die Eingangs- und Ausgangsdaten, sowie einige Bemerkungen zu den Anwendungsfällen sind in folgender Tabelle zusammengefasst.
+Die Eingangs- und Ausgangsdaten sowie einige Bemerkungen zu den Anwendungsfällen sind in folgender Tabelle zusammengefasst.
 
  {
 \vspace{1cm}
@@ -115,9 +122,9 @@ Die Eingangs- und Ausgangsdaten, sowie einige Bemerkungen zu den Anwendungsfäll
 Aus dieser Perspektive ergeben sich drei voneinander unabhängige Anwendungsfälle:
 
 \begin{itemize}
-	\item \textit{\textbf{Fahrtwunsch - Passagier}} (ELV-011)
-	\item \textit{\textbf{Fahrstuhlruf }} (ELV-014)
-	\item \textit{\textbf{Fahrtwunsch - Monteur }} (ELV-015)
+	\item \textit{\textbf{\gls{Fahrtwunsch} - Passagier}} (ELV-011)
+	\item \textit{\textbf{\gls{Fahrstuhlruf} }} (ELV-014)
+	\item \textit{\textbf{\gls{PrioFahrtwunsch}}} (ELV-015)
 \end{itemize}
 
 
@@ -126,8 +133,8 @@ Aus dieser Perspektive ergeben sich drei voneinander unabhängige Anwendungsfäl
 	\label{fig:passagierAWF}
 	\caption{Anwendungsfalldiagramm aus Sicht des Passagieres}
 \end{figure}
-Beim Monteur handelt es sich um eine Spezialisierte Form eines Passagieres der die Möglichkeit hat einen \glslink{PrioFahrtwunsch}{priorisierten Fahrtwunsch} durchzuführen.
-Die Eingangs-, Ausgangsdaten, sowie Bemerkungen sind wiederum in folgender Tabelle zusammengefasst.
+Beim \gls{Monteur} handelt es sich um eine Spezialisierte Form eines \gls{Passagier}s der die Möglichkeit besitzt einen \glslink{PrioFahrtwunsch}{priorisierten Fahrtwunsch} abzugeben.
+Die Eingangs-, Ausgangsdaten sowie Bemerkungen sind wiederum in folgender Tabelle zusammengefasst.
 
  {
 \vspace{1cm}
@@ -165,4 +172,7 @@ Benutzerfreundlichkeit und die intuitive Bedienbarkeit des Software-Systems habe
 Weiterhin wird sichergestellt, dass jede Interaktion des Benutzers mit dem System eine Rückmeldung an den Benutzer gibt. Hier werden vor allem Methoden der visuellen Rückmeldung Anwendung finden.
 
 \section{Rahmenbedingungen}
+In der Aufgabenstellung wurde die Bedingung formuliert, dass die \gls{Fahrstuhlsimulation} im Labor Z136b des HTW-Hauptgebäudes lauffähig sein muss. Damit ist die Mindestanforderung \textit{Lauffähigkeit auf Windows 7}. 
 
+\paragraph{}
+Darüber hinaus wurden in Absprache mit Frau Prof. Hauptmann verschiedene Webtechnologien wie bspw. \textsc{Javascript} als Basis für die Implementierung der \gls{Fahrstuhlsimulation} festgelegt. 
