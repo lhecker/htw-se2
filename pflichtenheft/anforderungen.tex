@@ -5,15 +5,15 @@ Anforderungen an ein Software-Produkt werden im Allgemeinen zunächst in funktio
 Im Folgenden werden die funktionalen Anforderungen an das Software-System aus den bereits angesprochen zwei Perspektiven betrachtet. Perspektive \textit{\textbf{A)}} bezieht sich auf das Teilsystem \textit{\textbf{\gls{Visualisierung}}} und betrachtet es aus der Sicht des Benutzers. Diese Sicht wird im folgenden \textit{\textbf{Benutzersicht}} genannt. Unter Perspektive \textit{\textbf{B)}} wird das Teilsystem \textit{\textbf{\gls{Fahrstuhlsteuerung}}} aus der Sicht der Passagiere betrachtet. Diese Sicht wird im folgenden \textit{\textbf{Passagiersicht}} genannt.
 
 \newpage
-\section{Komponentendiagramm}
-Die folgende Abbildung \ref{fig:komponentendiagramm} zeigt die Verschachtlung der beiden Perspektiven, sowie die Schnittstellen des Systems zur Umwelt.
+\section{Kontextdiagramm}
+Die folgende Abbildung \ref{fig:Kontextdiagramm} zeigt die Verschachtlung der beiden Perspektiven, sowie die Schnittstellen des Systems zur Umwelt.
 
 \vspace{0,5cm}
 
 \begin{figure}[hbt]
-	\includegraphics[width=\textwidth]{images/komponentendiagramm.png}
-	\caption{Komponentendiagramm der \gls{Fahrstuhlsimulation}}
-	\label{fig:komponentendiagramm}
+	\includegraphics[width=\textwidth]{images/Kontextdiagramm.png}
+	\caption{Kontextdiagramm der \gls{Fahrstuhlsimulation}}
+	\label{fig:Kontextdiagramm}
 \end{figure}
 
 \vspace{0,5cm}
@@ -22,10 +22,10 @@ Im Kontext unseres Systems befinden sich der Anwender und ein Sensorsystem, dass
 
 \newpage
 \section{Satzschablonen}
-Im Folgenden werden die Anforderungen an das Software-System mit Hilfe von Satzschablonen\footnote{Eine Satzschablone ist ein Bauplan für die syntaktische Struktur einer einzelnen Anforderung. Der Einsatz der Satzschablone unterstützt den Autor einer Anforderung darin, die syntaktische Eindeutigkeit der Anforderung zu erreichen} dokumentiert.
+Im Folgenden werden die Anforderungen an das Software-System mit Hilfe von Satzschablonen\footnote{Eine Satzschablone ist ein Bauplan für die syntaktische Struktur einer einzelnen Anforderung. Der Einsatz der Satzschablone unterstützt den Autor einer Anforderung darin, die syntaktische Eindeutigkeit der Anforderung zu erreichen. Dabei orientierten wir uns an den Strukturen von Chris Rupp. \url{http://goo.gl/Ony8c6}} dokumentiert. 
 
 \paragraph{}
-Deren Auflistung unterscheidet dabei zwischen selbstständigen Systemaktivitäten\footnote{Diese Aktionen werden von der \gls{Fahrstuhlsteuerung} selbstständig ausgeführt. Über verschiedene Schnittstellen interagieren Benutzer, Passagier und Sensoren mit dem System.} und Benutzerinteraktionen\footnote{Über Benutzerinteraktionen kann der Benutzer des Software-Systems mit der \gls{Fahrstuhlsteuerung} interagieren.}. Weiterhin wird eine Nummerierung vorgenommen, welche in allen Teilen der Software-Dokumentation konsistent benutzt wird.
+Deren Auflistung unterscheidet dabei zwischen selbstständigen Systemaktivitäten\footnote{Diese Aktionen werden von der \gls{Fahrstuhlsteuerung} selbstständig ausgeführt. Über verschiedene Schnittstellen interagieren Benutzer, Passagier und Sensoren mit dem System.} und Benutzerinteraktionen\footnote{Über Benutzerinteraktionen kann der Benutzer des Software-Systems mit der \gls{Fahrstuhlsteuerung} interagieren.}. Weiterhin wird eine Nummerierung vorgenommen, welche in allen Teilen der Software-und Projektdokumentation konsistent benutzt wird.
 
 \paragraph{}
 \textbf{Selbstständige Systemaktivitäten}
@@ -55,7 +55,7 @@ Deren Auflistung unterscheidet dabei zwischen selbstständigen Systemaktivitäte
 		Die \gls{Fahrstuhlsimulation} muss eine \gls{Ueberlast} des Fahrstuhls durch zu 
 		viele \gls{Passagier} anzeigen.
 	\item \textbf{ELV-010:} \newline
-		Die \gls{Fahrstuhlsimulation} muss im Falle einer Überlastsituation\footnote{Eine Überlastsituation tritt ein, sobald mehr sich als 8 Passagiere im Fahrstuhl befinden.} in den Zustand \gls{Ueberlast} wechseln. Ausgehend von diesem Zustand  ist es nur noch möglich in den vorherigen Zustand zu wechseln, sofern die Überlastsituation durch das Verlassen von Passagieren aufgehoben wurde.
+		Die \gls{Fahrstuhlsimulation} muss im Falle einer Überlastsituation\footnote{Eine Überlastsituation tritt ein, sobald sich mehr als 8 Passagiere im Fahrstuhl befinden.} in den Zustand \gls{Ueberlast} wechseln. Ausgehend von diesem Zustand  ist es ausschließlich möglich in den vorherigen Zustand zu wechseln, sofern die Überlastsituation durch das Verlassen von Passagieren aufgehoben wurde.
 \end{itemize}
 
 \newpage
@@ -129,12 +129,11 @@ Aus dieser Perspektive ergeben sich drei voneinander unabhängige Anwendungsfäl
 
 
 \begin{figure}[hbt]
-	\includegraphics{images/passagierAWF.png}
+	\includegraphics[width=\textwidth]{images/passagierAWF.png}
 	\label{fig:passagierAWF}
 	\caption{Anwendungsfalldiagramm aus Sicht des Passagieres}
 \end{figure}
-Beim \gls{Monteur} handelt es sich um eine Spezialisierte Form eines \gls{Passagier}s der die Möglichkeit besitzt einen \glslink{PrioFahrtwunsch}{priorisierten Fahrtwunsch} abzugeben.
-Die Eingangs-, Ausgangsdaten sowie Bemerkungen sind wiederum in folgender Tabelle zusammengefasst.
+Beim \gls{Monteur} handelt es sich um eine Spezialisierte Form eines \gls{Passagier}s der die Möglichkeit besitzt einen \glslink{PrioFahrtwunsch}{priorisierten Fahrtwunsch} einzugeben. Die Eingangs-, Ausgangsdaten sowie Bemerkungen sind wiederum in folgender Tabelle zusammengefasst.
 
  {
 \vspace{1cm}
@@ -166,7 +165,7 @@ Die Eingangs-, Ausgangsdaten sowie Bemerkungen sind wiederum in folgender Tabell
 }
 
 \section{Qualitätsanforderungen}
-Benutzerfreundlichkeit und die intuitive Bedienbarkeit des Software-Systems haben vor allem im Lehrbetrieb große Wichtigkeit. Aktivitäten des Systems sollten erst nach der Interaktion des Benutzers beginnen und nicht automatisch starten. So ist sicher gestellt, dass der Benutzer in jeder Situation genügend Zeit hat, um das vergangene und zukünftige Verhalten des Systems nachvollziehen und durchdenken zu können. 
+Benutzerfreundlichkeit und die intuitive Bedienbarkeit des Software-Systems haben vor allem im Lehrbetrieb große Wichtigkeit. Aktivitäten des Systems sollten erst nach der Interaktion des Benutzers beginnen und nicht automatisch starten. So ist sicher gestellt, dass der Benutzer in jeder Situation ge\-nügend Zeit hat, um das vergangene und zukünftige Verhalten des Systems nachvollziehen und durchdenken zu können. 
 
 \paragraph{}
 Weiterhin wird sichergestellt, dass jede Interaktion des Benutzers mit dem System eine Rückmeldung an den Benutzer gibt. Hier werden vor allem Methoden der visuellen Rückmeldung Anwendung finden.

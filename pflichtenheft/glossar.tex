@@ -8,8 +8,8 @@
 {
 	name=Anwendungsfall,
 	description={
-		Eine abstrakte Darstellung einer vom Software-System angebotenen Funktionalität (Aktivität). Er kapselt eine Menge von Aktionen, die sequentiell, bediengungsabhängig oder zyklisch abgearbeitet werden. Ein Anwendungsfall wird in Folge von Dateneingaben oder zeitlichen Ereignissen ausgelöst und führt in der Regel zu einem von au{\ss}en sichtbarem Ergebnis
-	},
+		Eine abstrakte Darstellung einer vom Software-System angebotenen \newline Funktionalität (Aktivität). Er kapselt eine Menge von Aktionen, die sequentiell, bediengungsabhängig oder zyklisch abgearbeitet werden. Ein Anwendungsfall wird in Folge von Dateneingaben oder zeitlichen Ereignissen ausgelöst und führt in der Regel zu einem von au{\ss}en sichtbarem Ergebnis
+		},
 	type=allg
 }
 
@@ -18,7 +18,7 @@
 	name=Anwendungsfalldiagramm,
 	description={
 		Das Anwendungsfalldiagramm, kurz AWD, stellt die funktionalen Anforderungen (Aktivitäten) aus Sicht des Anwenders dar. Diese Aktivitäten werden zu den Beteiligten aus dem Kontext (Akteuren) in Beziehung gesetzt
-	},
+		},
 	type=allg
 }
 
@@ -27,6 +27,15 @@
 	name=Akteur,
 	description={
 		Ein Akteur ist die abstrakte Darstellung einer externen Instanz, die mit dem System kommuniziert
+	},
+	type=allg
+}
+
+\newglossaryentry{Anwender}
+{
+	name=Anwender,
+	description={
+		Als Anwender wir die Person bezeichnet, die das Software-System verwendet. Im Kontext dieses Projektes beinhaltet die Hauptzielgruppe Studieren und Lehrende an der HTW Dresden
 	},
 	type=allg
 }
@@ -52,7 +61,7 @@
 {
 	name=Priorisierter Fahrtwunsch,
 	description={
-		Ist der \gls{Fahrtwunsch} eines \gls{Monteur}s, der nach dessen Betreten über das Schlüsselsymbol auf dem \gls{Steuerungsfeld} aktiviert werden kann. Beim priorisierten Fahrtwunsch hält der Fahrstuhl ausschließlich in der Zieletage, auch wenn auf anderen Etagen ein \gls{Fahrstuhlruf} eingebeben wurde
+		Ist der \gls{Fahrtwunsch} eines \gls{Monteur}s, der nach dessen Betreten über das Schlüsselsymbol auf dem \gls{Steuerungsfeld} aktiviert werden kann. Beim priorisierten Fahrtwunsch hält der Fahrstuhl ausschließlich in der Ziel\-etage, auch wenn auf anderen Etagen ein \gls{Fahrstuhlruf} eingegeben wurde
 	},
 }
 
@@ -60,7 +69,7 @@
 {
 	name=Überlast,
 	description={
-		Die \gls{Fahrstuhlsimulation} ist für \textbf{ANZAHL} \gls{Passagier}e ausgelegt. Wird die Anzahl überschritten wird in der \gls{Fahrstuhlsteuerung} der Zustand Überlast aktiviert. Erst nach beheben der Überlastung kann sich der Fahrstuhl weiter bewegen
+		Die \gls{Fahrstuhlsimulation} ist für \textbf{8} \gls{Passagier}e ausgelegt. Wird die Anzahl überschritten wird in der \gls{Fahrstuhlsteuerung} der Zustand Überlast aktiviert. Erst nach beheben der Überlastung kann sich der Fahrstuhl weiter bewegen
 	},
 }
 
@@ -77,41 +86,35 @@
 {
 	name=Monteur,
 	description={
-		Ein Monteur ist ein \gls{Passagier}, der den Fahrstuhl benutzen möchte und über einen virtuellen Schlüssel verfügt mit dem ein \gls{PrioFahrtwunsch}
-		durchgeführt werden kann
-	}
+		Ein Monteur ist ein \gls{Passagier}, der den Fahrstuhl benutzen möchte und über einen virtuellen Schlüssel verfügt, mit dem ein \gls{PrioFahrtwunsch}{priorisierter Fahrtwunsch} eingegeben werden kann}
 }
 
 \newglossaryentry{Fahrstuhlsimulation}
 {
 	name=Fahrstuhlsimulation,
 	description={
-		Das gesamte Softwaresystem welches die Simulation eines Fahrstuhles realisiert
-	}
+		Das gesamte Software-System welches die Simulation eines Fahrstuhles realisiert}
 }
 
 \newglossaryentry{Fahrstuhlsteuerung}
 {
 	name=Fahrstuhlsteuerung,
 	description={
-		Teil der Fahrstuhlsimulation der die Programmlogik zur Steuerung des Fahrstuhls enthält.
-	}
+		Teil der Fahrstuhlsimulation der die Programmlogik zur Steuerung des Fahrstuhls enthält}
 }
 
 \newglossaryentry{Visualisierung}
 {
 	name=Visualisierung,
 	description={
-		Teil der Fahrstuhlsimulation der den Zusammenhang zwischen Fahrstuhl und Zustandsdiagramm visualisiert.
-	}
+		Teil der Fahrstuhlsimulation der den Zusammenhang zwischen Fahrstuhl und Zustandsdiagramm visualisiert}
 }
 
 \newglossaryentry{Steuerungsfeld}
 {
 	name=Steuerungsfeld,
 	description={
-		Teil der Grafischen Oberfläche, die das Tableau im inneren des Fahrstuhles visualisiert. Hier können in der Rolle \gls{Passagier} die Zielstockwerke und in  der Rolle \gls{Monteur}  der \gls{PrioFahrtwunsch} gewählt werden
-	}
+		Teil der Grafischen Oberfläche, die das Tableau im inneren des Fahrstuhles visualisiert. Hier können in der Rolle \gls{Passagier} die Zielstockwerke und in  der Rolle \gls{Monteur}  der \gls{PrioFahrtwunsch} gewählt werden}
 }
 
 % Abkürzungen
