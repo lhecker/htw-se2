@@ -1,8 +1,24 @@
 \part{Projektdokumentation}
 \chapter{Anforderungen und Analyse}
 \section{Methoden}
-Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden welches Proble der Kunde, in unserem konkreten Fall unsere Professorin Frau Hauptmann mit der zu entwickelnden Software lösen möchte. Dafür wurden Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe von Audioaufzeichnung, Mitschrift und Fotografien protokolliert. Zur detaillierten Beschreibung einzelner Abläufe des Systems wurden Kreativ-techniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
-\todo{Bild vom Pappfahrstuhl, Bilder vom Whiteboard}
+Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden
+welches Problem der Kunde, in unserem konkreten Fall unsere Professorin Frau 
+Hauptmann mit der zu entwickelnden Software lösen möchte. Dafür wurden 
+Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe 
+von Audioaufzeichnung, Mitschrift und Fotografien protokolliert. Zur 
+detaillierten Beschreibung einzelner Abläufe des Systems wurden 
+Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard 
+sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.\todo{Bild vom Pappfahrstuhl, Bilder vom Whiteboard vernünftig anordnen!}
+\begin{figure}[hbt]
+	\includegraphics[width=\textwidth /2]{images/platzhalter.png}
+	\caption{Skizze der Fahrstuhlsimulation am Whiteboard}
+	\label{fig:Whiteboard}
+\end{figure}
+\begin{figure}[hbt]
+	\includegraphics[width=\textwidth /2]{images/platzhalter.png}
+	\caption{Modell des Fahrstuhles}
+	\label{fig:Pappfahrstuhl}
+\end{figure}
 Grundlegende Fragen die im Laufe der Analyse geklärt werden mussten waren
 \begin{itemize}
 	\item Wie viele Fahrstühle sollen verwendet werden können?
@@ -10,9 +26,24 @@ Grundlegende Fragen die im Laufe der Analyse geklärt werden mussten waren
 	\item Welcher Algorithmus soll verwendet werden?
 	\item Gibt es Schnittstellen zu anderen Systemen?
 \end{itemize}
-Weiterhin musste festgelgt werden ob die Prioriät des Systems auf der Simulation oder auf einer möglichst realitätsnahen Umsetzung eines Liftes liegt.
-Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der \textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt, deren Anforderungen getrennt voneinander beschrieben werden mussten.\\
-Eine Besonderheit des Systems ist die Umgebung in der es eingesetzt werden soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle Anforderungen wie das Anzeigen der Zustandsübergänge die gesondert betrachtet werden mussten.
+Weiterhin musste festgelegt werden ob die Priorität des Systems auf der 
+Simulation oder auf einer möglichst realitätsnahen Umsetzung eines Liftes liegt.
+Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle 
+wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der 
+\textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt, 
+deren Anforderungen getrennt voneinander beschrieben werden mussten.\\
+Eine Besonderheit des Systems ist die Umgebung in der es eingesetzt werden 
+soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle 
+Anforderungen wie das Anzeigen der Zustandsübergänge die gesondert betrachtet 
+werden mussten.
+\section{Diagramme}
+\subsubsection{Zustandsdiagramm}
+Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in 
+dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben 
+wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
 \chapter{Entwurf}
 \chapter{Technologien}
+\section{Gruppenarbeit}
+Um das Zusammenarbeiten in der Gruppe einfacher zu gestalten wurden verschiedene Technologien eingesetzt.
+Zu finden von Terminen für Meetings wurde Doodle\footnote{\url{www.doodle.com}}  verwendet. Für die Kommunikation in der Gruppe Slack\footnote{\url{https://slack.com/}.
 \todo{Hier muss hin warum wir uns für JS und Co entschieden haben...}
