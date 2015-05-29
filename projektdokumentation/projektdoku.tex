@@ -1,0 +1,58 @@
+% !TEX encoding = UTF-8 Unicode
+\input{header_projektdoku}
+\begin{document}
+\deftranslation[to=German]{Acronyms}{Abkürzungsverzeichnis}
+%  %  %  %  Titelseite  %  %  %  %
+\begin{titlepage}
+	\vspace*{\fill}
+
+	\rule{\textwidth}{0.25pt}
+
+	\vspace*{1cm}
+
+	\begin{singlespace}
+		\begin{center}	\Large	\bfseries
+			Software Engineering 2
+		\end{center}
+	\end{singlespace}
+
+	\vspace{1em}
+
+	\begin{singlespace}
+		\begin{center}	\Large \bfseries
+		Projektdokumentation
+		
+		\vspace{2em}	\large
+		Projekt:
+		
+		Entwicklung eines Software-Systems
+		
+		zur Simulation der Steuerung eines Fahrstuhls
+		\end{center}
+	\end{singlespace}
+
+	\vspace*{5cm}
+
+	\rule{\textwidth}{0.25pt}
+
+	\vspace*{\fill}
+\end{titlepage}
+
+%  %  %  %  Inhaltsverzeichnis  %  %  %  %
+
+\tableofcontents
+
+%  %  %  %  Hauptteil  %  %  %  %
+%% \mainmatter
+\include{./einfuehrung}
+\include{./benutzerhandbuch}
+\include{./entwicklerhandbuch}
+\include{./projektdokumentation}
+
+\chapter{Glossar}
+\glsaddall % bindet auch nicht verwendete Glossareinträge ein
+\glossarystyle{altlist} % erzeugt Zeilenumbruch nach dem Name des Elements
+\printglossary[title=Allgemeiner Glossar, toctitle=Allgemeiner Glossar, type=allg]
+\printglossary[title=Projektspezifischer Glossar, toctitle=Projektspezifischer Glossar]
+%\printglossary[title=Abk"urzungen, type=\acronymtype]
+\end{document}
