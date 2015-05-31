@@ -1,44 +1,59 @@
+### OSX ###
+.DS_Store
+._*
 
-*.toc
 
-*.gz
+### Windows ###
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-*.log
 
-*.aux
+### Node ###
+node_modules
 
-*.out
 
+### Bower ###
+bower_components
+
+
+### grunt ###
+dist/
+.tmp/
+
+
+### LaTeX ###
 *.acn
-
-*.glo
-
-*.idx
-
-*.ist
-
-*.syg
-
-*.syg2
-
 *.acr
-
 *.alg
-
+*.aux
+*.bbl
+*.bcf
+*.blg
 *.dvi
-
+*.fdb_latexmk
 *.glg
-
+*.glo
 *.gls
-
-*.slg
-
-*.slg2
-
-*.syi
-
-*.syi2
-
+*.idx
 *.ilg
-
 *.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.ps
+*.run.xml
+*.snm
+*.synctex.gz
+*.tdo
+*.toc
+*.vrb
+*.xdy

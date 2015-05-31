@@ -1,0 +1,128 @@
+@import "bootstrap/less/variables";
+
+@import "fonts";
+
+
+@body-padding: 20px;
+@level-height: 100px;
+@car-width: 25%;
+
+
+#content {
+	padding: @body-padding;
+}
+
+#elevator-view {
+	margin: 0;
+	height: calc(100vh - 2 * @body-padding);
+
+	& > .panel-body {
+		position: relative;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.level {
+		position: relative;
+		border-bottom: 1px solid #ddd;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	.door-left,
+	.door-right {
+		width: (@car-width / 2);
+		background-color: rgba(0, 0, 0, 0.5);
+		transition-property: left, right;
+		transition-duration: 250ms;
+		transition-timing-function: ease-in-out;
+	}
+
+	.door-left {
+		left: (50% - @car-width / 2);
+	}
+
+	.door-right {
+		right: (50% - @car-width / 2);
+	}
+
+	.level.open {
+		& > .door-left {
+			left: 25%;
+		}
+
+		& > .door-right {
+			right: 25%;
+		}
+	}
+
+	.request {
+		position: absolute;
+		top: 50%;
+		left: (50% + @car-width / 2 + 5%);
+		cursor: pointer;
+
+		&.up {
+			margin-top: -20px;
+		}
+
+		&.down {
+			margin-bottom: -20px;
+		}
+
+		&.active {
+			color: chartreuse;
+		}
+	}
+}
+
+#elevator-car,
+.level {
+	height: @level-height;
+}
+
+#elevator-car,
+.door-left,
+.door-right {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+
+#elevator-car {
+	top: 0;
+	left: (50% - @car-width / 2);
+	width: @car-width;
+	background-color: darkred;
+	transition: top 0s linear;
+}
+
+#accessory-view {
+	display: table;
+
+	.panel-body {
+		font: 32px/20px "Digital-7 Mono";
+		height: 50px;
+		text-align: center;
+	}
+
+	.glyphicon {
+		font-size: 12px;
+	}
+
+	.glyphicon-triangle-top {
+		vertical-align: top;
+	}
+
+	.glyphicon-triangle-bottom {
+		vertical-align: baseline;
+	}
+}
+
+@media (min-width: @screen-xs-min) {
+}
