@@ -80,7 +80,7 @@ module.exports = function (grunt) {
 			dist: {
 				options: {
 					background: false,
-					server: 'dist'
+					server: 'dist',
 				}
 			}
 		},
@@ -188,12 +188,12 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				options: {
-					plugin: ['bundle-collapser/plugin'],
 					browserifyOptions: {
 						extensions: ['.jsx'],
 						fullPaths: false,
 						debug: false,
 					},
+					plugin: ['bundle-collapser/plugin'],
 				},
 				src: 'app/scripts/main.jsx',
 				dest: '.tmp/scripts/main.js',

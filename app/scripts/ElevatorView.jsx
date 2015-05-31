@@ -1,6 +1,6 @@
 'use strict';
 
-import Elevator from './elevator/Elevator';
+import ElevatorProperties from './elevator/ElevatorProperties';
 
 
 class ElevatorLevelView extends React.Component {
@@ -40,7 +40,7 @@ class ElevatorLevelView extends React.Component {
 
 	render() {
 		const doorStyle = {
-			transitionDuration: Elevator.doorOpenCloseTimeout + 'ms',
+			transitionDuration: ElevatorProperties.doorOpenCloseTimeout + 'ms',
 		};
 
 		return (
@@ -108,7 +108,7 @@ class ElevatorCarView extends React.Component {
 			node.offsetTop; // force a relayout before we set the transitionDuration
 
 			this.setState({
-				transitionDuration: Elevator.timePerLevel + 'ms',
+				transitionDuration: ElevatorProperties.timePerLevel + 'ms',
 			});
 		});
 	}

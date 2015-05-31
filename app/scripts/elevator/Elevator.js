@@ -2,6 +2,7 @@
 
 import ElevatorDoorSensor from './ElevatorDoorSensor';
 import ElevatorLevelSensor from './ElevatorLevelSensor';
+import ElevatorProperties from './ElevatorProperties';
 import ElevatorWeightSensor from './ElevatorWeightSensor';
 import EventEmitter from 'events';
 
@@ -21,14 +22,56 @@ function tupleIdx(direction) {
 
 class Elevator extends EventEmitter {
 	constructor(minLevel, maxLevel) {
-		console.assert((maxLevel - minLevel) >= 0);
-
-
 		super();
-
 		this.setMaxListeners(0);
 
 
+		/*
+		 * The following code will create the initial values of some properties of the class.
+		 * They will be described at their assignment to this._* farther below.
+		 */
+
+		const levels = new Array(maxLevel - minLevel + 1);
+
+		for (let i = 0; i < levels.length; i++) {
+			levels[i] = [false, false];
+
+			const l = i + minLevel;
+			const sensor = new ElevatorLevelSensor(this, l);
+			sensor.on('contact', this._onLevelContact.bind(this, l));
+		}
+
+
+		const stops = [
+			[0, 0],
+			[0, 0],
+		];
+
+
+		const doorSensor = new ElevatorDoorSensor(this);
+
+		doorSensor.on('opening', () => {
+			this._isDoorOpen = true;
+		});
+
+		doorSensor.on('shut', () => {
+			this._isDoorOpen = false;
+			this._tryMove();
+		});
+
+		// Forward door events:
+		for (let name of ['opening', 'open', 'shutting', 'shut']) {
+			const eventName = 'door:' + name;
+
+			doorSensor.on(name, () => {
+				this.emit(eventName, this.level);
+			});
+		}
+
+
+		/*
+		 * Min/max level of the elevator (inclusive).
+		 */
 		this._minLevel = minLevel;
 		this._maxLevel = maxLevel;
 
@@ -45,29 +88,10 @@ class Elevator extends EventEmitter {
 		this._direction = 0;
 
 		/*
-		 * This variable will be true from the time a "move"
-		 * event until the next "stop" event is emitted
-		 * (it thus helps to track the state).
-		 */
-		this._isMoving = false;
-
-		this._isDoorOpen = false;
-
-		/*
 		 * An array of boolean tuples (i.e. an array of size 2).
 		 * Each tuple represents a level of the evelator.
 		 * level[0] stands for a down request, and level[1] for a up request.
 		 */
-		const levels = new Array(this.levelCount);
-
-		for (let i = 0; i < levels.length; i++) {
-			levels[i] = [false, false];
-
-			const l = i + this._minLevel;
-			const sensor = new ElevatorLevelSensor(this, l);
-			sensor.on('contact', this._onLevelContact.bind(this, l));
-		}
-
 		this._levels = levels;
 
 		/*
@@ -77,29 +101,19 @@ class Elevator extends EventEmitter {
 		 * Keeping track of the amount of stops helps us making
 		 * this an O(1) instead of an O(n) algorithm.
 		 */
-		this._stops = [
-			[0, 0],
-			[0, 0],
-		];
-
-		const doorSensor = new ElevatorDoorSensor(this);
-		doorSensor.on('shut', this._onDoorShut.bind(this));
+		this._stops = stops;
 
 		/*
-		 * Forward door events:
-		 * "open"  => "door:open"
-		 * "close" => "door:close"
+		 * The following properties will help tracking the state of the lift.
 		 */
-		 for (let name of ['opening', 'open', 'shutting', 'shut']) {
-			const eventName = 'door:' + name;
+		this._isMoving = false;
+		this._isDoorOpen = false;
 
-			doorSensor.on(name, () => {
-				this.emit(eventName, this.level);
-			});
-		}
-
+		/*
+		 * The following properties contain references
+		 * to (simulated) active sensors.
+		 */
 		this._doorSensor = doorSensor;
-
 		this._weightSensor = new ElevatorWeightSensor(this);
 	}
 
@@ -127,8 +141,12 @@ class Elevator extends EventEmitter {
 		return this._isMoving;
 	}
 
+	get isDoorOpen() {
+		return this._isDoorOpen;
+	}
+
 	get isOverweight() {
-		return this._weightSensor.weight() > Elevator.maxWeight;
+		return this._weightSensor.weight() > ElevatorProperties.maxWeight;
 	}
 
 	addPerson() {
@@ -139,17 +157,17 @@ class Elevator extends EventEmitter {
 		this.emit('persons:remove');
 	}
 
-	_levelData(level) {
-		return this._levels[level - this._minLevel];
-	}
-
 	/*
 	 * direction < 0 --> down request on "level"
 	 * direction = 0 --> internal request (from inside the elevator), since those are "up & down" at once
 	 * direction > 0 --> up request on "level"
 	 */
 	request(level, direction) {
-		if (level >= this._minLevel && level <= this._maxLevel) {
+		console.assert(level >= this._minLevel && level <= this._maxLevel);
+
+		if (!this._isMoving && this.level === level) {
+			this._emitStop();
+		} else {
 			if (direction) {
 				this._request(level, direction);
 			} else {
@@ -157,16 +175,7 @@ class Elevator extends EventEmitter {
 				this._request(level,  1);
 			}
 
-			const stops = this._stops;
-			const stopsBelow = stops[0][0] + stops[0][1];
-			const stopsAbove = stops[1][0] + stops[1][1];
-
-			// only begin moving if the simulator is idle and if there are no stops
-			if (!this._direction && (stopsBelow + stopsAbove) > 0) {
-				// set the direction to be the one with more stops
-				this._direction = 2 * (stopsBelow < stopsAbove) - 1;
-				this._emitMove();
-			}
+			this._tryMove();
 		}
 	}
 
@@ -188,6 +197,45 @@ class Elevator extends EventEmitter {
 				l[idx] = true;
 				s[idx]++;
 				this.emit('requests:add', level, direction);
+			}
+		}
+	}
+
+	_tryMove() {
+		if (!this._isMoving && !this._isDoorOpen) {
+			let direction = this._direction;
+
+			if (!direction) {
+				const stops = this._stops;
+				const stopsBelow = stops[0][0] + stops[0][1];
+				const stopsAbove = stops[1][0] + stops[1][1];
+
+				if (!stopsBelow && !stopsAbove) {
+					// if !direction && !stops then this elevator was already and can remain being idle
+					return;
+				}
+
+				// set the direction to be the one with more stops
+				this._direction = direction = 2 * (stopsBelow < stopsAbove) - 1;
+			}
+
+			const idx = tupleIdx(direction);
+			const s = this._stops[idx];
+
+			if (s[0] || s[1]) {
+				// there are stops in d.
+				this._emitMove();
+			} else {
+				const oidx = 1 - idx;
+				const os = this._stops[oidx];
+
+				this._direction *= -1;
+
+				if (os[0] || os[1]) {
+					this._emitMove();
+				} else {
+					this._emitIdle();
+				}
 			}
 		}
 	}
@@ -250,27 +298,6 @@ class Elevator extends EventEmitter {
 		}
 	}
 
-	_onDoorShut() {
-		const idx = tupleIdx(this._direction);
-		const s = this._stops[idx];
-
-		if (s[0] || s[1]) {
-			// there are stops in d.
-			this._emitMove();
-		} else {
-			const oidx = 1 - idx;
-			const os = this._stops[oidx];
-
-			this._direction *= -1;
-
-			if (os[0] || os[1]) {
-				this._emitMove();
-			} else {
-				this._emitIdle();
-			}
-		}
-	}
-
 	_emitLevel() {
 		this.emit('level', this.level);
 	}
@@ -293,9 +320,8 @@ class Elevator extends EventEmitter {
 	}
 
 	_emitStop() {
-		const idx = tupleIdx(this._direction);
 		const l = this._levelData(this._level);
-		const s = this._stops[idx];
+		const s = this._stops[tupleIdx(this._direction)];
 
 		this._isMoving = false;
 
@@ -318,13 +344,11 @@ class Elevator extends EventEmitter {
 		this._direction = 0;
 		this.emit('idle', this.level);
 	}
-}
 
-Elevator.timePerLevel         = 500.0;                     // ms
-Elevator.doorOpenCloseTimeout = 500.0;                     // ms
-Elevator.doorTimeout          = 1000.0;                    // ms
-Elevator.personWeight         = 80.0;                      // kg
-Elevator.maxWeight            = 8 * Elevator.personWeight; // kg
+	_levelData(level) {
+		return this._levels[level - this._minLevel];
+	}
+}
 
 
 export default Elevator;

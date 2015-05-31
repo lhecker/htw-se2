@@ -1,6 +1,6 @@
 'use strict';
 
-import Elevator from './Elevator';
+import ElevatorProperties from './ElevatorProperties';
 
 
 class ElevatorWeightSensor {
@@ -12,11 +12,11 @@ class ElevatorWeightSensor {
 	}
 
 	_onPersonsAdd() {
-		this._weight += Elevator.personWeight;
+		this._weight += ElevatorProperties.personWeight;
 	}
 
 	_onPersonsRemove() {
-		this._weight -= Elevator.personWeight;
+		this._weight -= ElevatorProperties.personWeight;
 	}
 
 	weight() {

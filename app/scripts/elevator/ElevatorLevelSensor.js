@@ -1,7 +1,7 @@
 'use strict';
 
+import ElevatorProperties from './ElevatorProperties';
 import EventEmitter from 'events';
-import Elevator from './elevator';
 
 
 class ElevatorLevelSensor extends EventEmitter {
@@ -10,12 +10,12 @@ class ElevatorLevelSensor extends EventEmitter {
 
 		this._level = level;
 
-		elevator.on('move', this.onMove.bind(this));
+		elevator.on('move', this._onMove.bind(this));
 	}
 
-	onMove(level, direction) {
+	_onMove(level, direction) {
 		if ((level + direction) === this._level) {
-			setTimeout(this.emit.bind(this, 'contact'), Elevator.timePerLevel);
+			setTimeout(this.emit.bind(this, 'contact'), ElevatorProperties.timePerLevel);
 		}
 	}
 }
