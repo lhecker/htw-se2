@@ -1,4 +1,5 @@
 \part{Projektdokumentation}
+\todo{Seitennummerierung zurücksetzen!}
 \chapter{Anforderungen und Analyse}
 \section{Methoden}
 Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden
@@ -8,17 +9,23 @@ Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe
 von Audioaufzeichnung, Mitschrift und Fotografien protokolliert. Zur 
 detaillierten Beschreibung einzelner Abläufe des Systems wurden 
 Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard 
-sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.\todo{Bild vom Pappfahrstuhl, Bilder vom Whiteboard vernünftig anordnen!}
-\begin{figure}[hbt]
-	\includegraphics[width=\textwidth /2]{images/platzhalter.png}
-	\caption{Skizze der Fahrstuhlsimulation am Whiteboard}
-	\label{fig:Whiteboard}
+sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.\todo{Bild vom Pappfahrstuhl}
+\begin{figure}
+\begin{subfigure}[c]{0.5\textwidth}
+\label{fig:Whiteboard}
+\includegraphics[width=\textwidth]{images/kundengespraech1.jpg}
+\subcaption{Skizze der Fahrstuhlsimulation am Whiteboard}
+
+\end{subfigure}
+\begin{subfigure}[c]{0.5\textwidth}
+%\includegraphics[width=0.5\textwidth]{images/platzhalter.png}
+\label{fig:Pappfahrstuhl}
+\missingfigure[figwidth=\textwidth]{}
+\subcaption{Modell des Fahrstuhles}
+\end{subfigure}
+\caption{Kreativtechniken zur Anforderungsanalyse}
 \end{figure}
-\begin{figure}[hbt]
-	\includegraphics[width=\textwidth /2]{images/platzhalter.png}
-	\caption{Modell des Fahrstuhles}
-	\label{fig:Pappfahrstuhl}
-\end{figure}
+
 Grundlegende Fragen die im Laufe der Analyse geklärt werden mussten waren
 \begin{itemize}
 	\item Wie viele Fahrstühle sollen verwendet werden können?
@@ -41,6 +48,7 @@ werden mussten.
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in 
 dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben 
 wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
+\missingfigure[figwidth=\textwidth]{Zustandsdiagramm ggf. mehrere Versionen}
 \chapter{Entwurf}
 Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben sich folgende Entwurfsmuster:
 \subsection*{State Design Pattern}
