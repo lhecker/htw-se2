@@ -1,6 +1,6 @@
 'use strict';
 
-require("babelify/polyfill");
+require('babelify/polyfill');
 
 import Elevator from './elevator/Elevator';
 
@@ -12,10 +12,10 @@ window.elevator = elevator; // TODO
 
 React.render(
 	<div className="row">
-		<div className="col-sm-2">
+		<div className="col-sm-4 col-lg-3">
 			<ElevatorView elevator={elevator}/>
 		</div>
-		<div className="col-sm-10">
+		<div className="col-sm-8 col-lg-9">
 			<div className="row">
 				<div className="col-xs-12">
 					<AccessoryView elevator={elevator}/>

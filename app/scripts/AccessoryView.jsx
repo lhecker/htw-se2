@@ -1,21 +1,26 @@
 'use strict';
 
+import AccessoryPanel from './AccessoryPanel';
+import {pad, digits, nextPropsOrStateDifferent} from './utils';
+
+
 class AccessoryView extends React.Component {
 	constructor(props) {
 		super(props);
 
+		const elevator = this.props.elevator;
+
 		this.state = {
-			level: this.props.elevator.level,
-			direction: 0,
+			level: elevator.level,
+			direction: elevator.direction,
 		};
 
-		this._levelCallback = null;
-		this._moveCallback = null;
+		this._resetIVars();
 	}
 
 	componentDidMount() {
-		this._levelCallback = this.onElevatorLevel.bind(this);
-		this._moveCallback = this.onElevatorMove.bind(this);
+		this._levelCallback = this._onElevatorLevel.bind(this);
+		this._moveCallback = this._onElevatorMove.bind(this);
 
 		this.props.elevator.on('level', this._levelCallback);
 		this.props.elevator.on('move', this._moveCallback);
@@ -24,15 +29,21 @@ class AccessoryView extends React.Component {
 	componentWillUnmount() {
 		this.props.elevator.removeListener('level', this._levelCallback);
 		this.props.elevator.removeListener('move', this._moveCallback);
-		this._levelCallback = null;
-		this._moveCallback = null;
+
+		const panel = this._panel;
+
+		if (panel) {
+			panel.destroy();
+		}
+
+		this._resetIVars();
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextPropsOrStateDifferent(this, nextProps, nextState);
 	}
 
 	render() {
-		const digits = Math.floor(Math.log10(this.props.elevator.levelCount)) + 1;
-		const levelString = String(this.state.level);
-		const zeroFilledString = new Array(digits - levelString.length).fill('0').join('') + levelString;
-
 		const glyphiconClassName = classNames({
 			'glyphicon': 1,
 			'glyphicon-triangle-top': this.state.direction > 0,
@@ -40,23 +51,34 @@ class AccessoryView extends React.Component {
 		});
 
 		return (
-			<div id="accessory-view" className="panel panel-default">
-				<div className="panel-heading">Level</div>
-				<div className="panel-body"><span className={glyphiconClassName}></span>{zeroFilledString}</div>
+			<div id="accessory-view">
+				<button type="button" className="btn btn-default" id="accessory-level" disabled="disabled">Current Level<samp className="label label-primary">{pad(this.state.level, digits(this.props.elevator.levelCount))}</samp></button>
+				<button type="button" className="btn btn-primary" id="accessory-panel-button" ref="panelElement" onMouseEnter={this.showPanel.bind(this)}>Elevator Panel</button>
+				<AccessoryPanel elevator={this.props.elevator} ref="panel"/>
 			</div>
 		);
 	}
 
-	onElevatorLevel(level) {
+	showPanel(e) {
+		this.refs.panel.show(this.refs.panelElement);
+	}
+
+	_onElevatorLevel(level) {
 		this.setState({
 			level: level,
 		});
 	}
 
-	onElevatorMove(_, direction) {
+	_onElevatorMove(_, direction) {
 		this.setState({
 			direction: direction,
 		});
+	}
+
+	_resetIVars() {
+		this._levelCallback = null;
+		this._moveCallback = null;
+		this._panel = null;
 	}
 }
 

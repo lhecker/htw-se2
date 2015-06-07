@@ -7,7 +7,7 @@ class ElevatorLevelView extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this._resetCallbacks();
+		this._resetIVars();
 	}
 
 	componentDidMount() {
@@ -35,7 +35,7 @@ class ElevatorLevelView extends React.Component {
 		elevator.removeListener('door:opening', this._doorOpeningCallback);
 		elevator.removeListener('door:shutting', this._doorShuttingCallback);
 
-		this._resetCallbacks();
+		this._resetIVars();
 	}
 
 	render() {
@@ -53,7 +53,7 @@ class ElevatorLevelView extends React.Component {
 		);
 	}
 
-	_resetCallbacks() {
+	_resetIVars() {
 		this._requestAddCallback    = null;
 		this._requestRemoveCallback = null;
 
@@ -66,7 +66,7 @@ class ElevatorLevelView extends React.Component {
 	}
 
 	_onRequest(add, level, direction) {
-		if (level === this.props.level) {
+		if (direction && level === this.props.level) {
 			const node = React.findDOMNode(this);
 			node.children[2 + (direction > 0)].classList.toggle('active', add);
 		}

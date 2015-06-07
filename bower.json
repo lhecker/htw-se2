@@ -2,7 +2,8 @@
 	"name": "se2-bga",
 	"private": true,
 	"dependencies": {
-		"bootstrap": "^3.3.4",
-		"react-bootstrap": "~0.22.6"
+		"bootstrap": "^3.3.0",
+		"classnames": "^2.1.0",
+		"react": "^0.13.0"
 	}
 }
