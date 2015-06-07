@@ -7,6 +7,11 @@ import ElevatorWeightSensor from './ElevatorWeightSensor';
 import EventEmitter from 'events';
 
 
+const ENUM_REQUEST_NONE     = 0;
+const ENUM_REQUEST_INTERNAL = 1;
+const ENUM_REQUEST_EXTERNAL = 2;
+
+
 /*
  * Helper method for access to the stops and levels tuples.
  *
@@ -23,40 +28,44 @@ function tupleIdx(direction) {
 class Elevator extends EventEmitter {
 	constructor(minLevel, maxLevel) {
 		super();
-		this.setMaxListeners(0);
+
+		const self = this;
+
+
+		self.setMaxListeners(0);
 
 
 		/*
 		 * The following code will create the initial values of some properties of the class.
 		 * They will be described at their assignment to this._* farther below.
 		 */
+		const requests = new Array(maxLevel - minLevel + 1);
 
-		const levels = new Array(maxLevel - minLevel + 1);
 
-		for (let i = 0; i < levels.length; i++) {
-			levels[i] = [false, false];
+		for (let i = 0; i < requests.length; i++) {
+			requests[i] = [0, 0, 0];
 
 			const l = i + minLevel;
-			const sensor = new ElevatorLevelSensor(this, l);
-			sensor.on('contact', this._onLevelContact.bind(this, l));
+			const sensor = new ElevatorLevelSensor(self, l);
+			sensor.on('contact', self._onLevelContact.bind(self, l));
 		}
 
 
 		const stops = [
-			[0, 0],
-			[0, 0],
+			[0, 0, 0],
+			[0, 0, 0],
 		];
 
 
-		const doorSensor = new ElevatorDoorSensor(this);
+		const doorSensor = new ElevatorDoorSensor(self);
 
 		doorSensor.on('opening', () => {
-			this._isDoorOpen = true;
+			self._isDoorOpen = true;
 		});
 
 		doorSensor.on('shut', () => {
-			this._isDoorOpen = false;
-			this._tryMove();
+			self._isDoorOpen = false;
+			self._tryMove();
 		});
 
 		// Forward door events:
@@ -64,7 +73,7 @@ class Elevator extends EventEmitter {
 			const eventName = 'door:' + name;
 
 			doorSensor.on(name, () => {
-				this.emit(eventName, this.level);
+				self.emit(eventName, self._level);
 			});
 		}
 
@@ -72,27 +81,32 @@ class Elevator extends EventEmitter {
 		/*
 		 * Min/max level of the elevator (inclusive).
 		 */
-		this._minLevel = minLevel;
-		this._maxLevel = maxLevel;
+		self._minLevel = minLevel;
+		self._maxLevel = maxLevel;
 
 		/*
 		 * The current level the elevator is at.
 		 */
-		this._level = minLevel;
+		self._level = minLevel;
 
 		/*
 		 * direction = +1 => moving downwards
 		 * direction =  0 => idle
 		 * direction = -1 => moving upwards
 		 */
-		this._direction = 0;
+		self._direction = 0;
 
 		/*
-		 * An array of boolean tuples (i.e. an array of size 2).
-		 * Each tuple represents a level of the evelator.
-		 * level[0] stands for a down request, and level[1] for a up request.
+		 * An array of integral 3-tuples (i.e. an array of size 3).
+		 * Each tuple represents a level of the evelator,
+		 * while the first/second/third tuple value is greater zero
+		 * if that particular level has a down/up/internal request (respectively):
+		 *
+		 * _requests[x][0] == 1 --> external down request
+		 * _requests[x][1] == 1 --> external up request
+		 * _requests[x][2] == 1 --> internal request
 		 */
-		this._levels = levels;
+		self._requests = requests;
 
 		/*
 		 * Contains the amount of levels to stop at in sum,
@@ -101,20 +115,20 @@ class Elevator extends EventEmitter {
 		 * Keeping track of the amount of stops helps us making
 		 * this an O(1) instead of an O(n) algorithm.
 		 */
-		this._stops = stops;
+		self._stops = stops;
 
 		/*
 		 * The following properties will help tracking the state of the lift.
 		 */
-		this._isMoving = false;
-		this._isDoorOpen = false;
+		self._isMoving = false;
+		self._isDoorOpen = false;
 
 		/*
 		 * The following properties contain references
 		 * to (simulated) active sensors.
 		 */
-		this._doorSensor = doorSensor;
-		this._weightSensor = new ElevatorWeightSensor(this);
+		self._doorSensor = doorSensor;
+		self._weightSensor = new ElevatorWeightSensor(self);
 	}
 
 	get minLevel() {
@@ -157,58 +171,61 @@ class Elevator extends EventEmitter {
 		this.emit('persons:remove');
 	}
 
+	hasRequestOnLevel(level) {
+		const r = this._requestData(level);
+		return r[0] || r[1];
+	}
+
 	/*
 	 * direction < 0 --> down request on "level"
 	 * direction = 0 --> internal request (from inside the elevator), since those are "up & down" at once
 	 * direction > 0 --> up request on "level"
 	 */
 	request(level, direction) {
-		console.assert(level >= this._minLevel && level <= this._maxLevel);
-
-		if (!this._isMoving && this.level === level) {
-			this._emitStop();
-		} else {
-			if (direction) {
-				this._request(level, direction);
-			} else {
-				this._request(level, -1);
-				this._request(level,  1);
+		function apply(idx) {
+			// only increment if the level has not already been accounted for
+			if (!r[idx]) {
+				r[idx] = 1;
+				s[idx]++;
 			}
-
-			this._tryMove();
 		}
-	}
 
-	_request(level, direction) {
 		/*
 		 * Contains the relative direction of "level" to the current level.
 		 * If the level is equal to level, it will check if the elevator is
 		 * currently moving and use it's current direction in that case.
 		 */
-		const relativePosition = (level - this._level) || (this._isMoving && -this._direction);
+		const self = this;
+		const relativePosition = (level - self._level) || (self._isMoving && -self._direction);
+		const r = self._requestData(level);
+		const s = self._stops[tupleIdx(relativePosition)];
 
-		// only increment if the level has not already been accounted for
-		if (relativePosition) {
-			const l = this._levelData(level);
-			const s = this._stops[tupleIdx(relativePosition)];
-			const idx = tupleIdx(direction);
+		if (!self._isMoving && self._level === level) {
+			self._emitStop();
+		} else if (relativePosition) {
+			direction = Math.sign(direction);
 
-			if (!l[idx]) {
-				l[idx] = true;
-				s[idx]++;
-				this.emit('requests:add', level, direction);
+			if (direction) {
+				apply(tupleIdx(direction));
+			} else {
+				apply(2);
 			}
+
+			self.emit('requests:add', level, direction);
+			self._tryMove();
 		}
 	}
 
 	_tryMove() {
-		if (!this._isMoving && !this._isDoorOpen) {
-			let direction = this._direction;
+		const self = this;
+
+		if (!self._isMoving && !self._isDoorOpen) {
+			let direction = self._direction;
 
 			if (!direction) {
-				const stops = this._stops;
-				const stopsBelow = stops[0][0] + stops[0][1];
-				const stopsAbove = stops[1][0] + stops[1][1];
+				const stops = self._stops;
+				const stopsBelow = stops[0][0] + stops[0][1] + stops[0][2];
+				const stopsAbove = stops[1][0] + stops[1][1] + stops[1][2];
 
 				if (!stopsBelow && !stopsAbove) {
 					// if !direction && !stops then this elevator was already and can remain being idle
@@ -216,82 +233,83 @@ class Elevator extends EventEmitter {
 				}
 
 				// set the direction to be the one with more stops
-				this._direction = direction = 2 * (stopsBelow < stopsAbove) - 1;
+				self._direction = direction = 2 * (stopsBelow < stopsAbove) - 1;
 			}
 
 			const idx = tupleIdx(direction);
-			const s = this._stops[idx];
+			const s = self._stops[idx];
 
-			if (s[0] || s[1]) {
+			if (s[0] || s[1] || s[2]) {
 				// there are stops in d.
-				this._emitMove();
+				self._emitMove();
 			} else {
 				const oidx = 1 - idx;
-				const os = this._stops[oidx];
+				const os = self._stops[oidx];
 
-				this._direction *= -1;
+				self._direction *= -1;
 
-				if (os[0] || os[1]) {
-					this._emitMove();
+				if (os[0] || os[1] || os[2]) {
+					self._emitMove();
 				} else {
-					this._emitIdle();
+					self._emitIdle();
 				}
 			}
 		}
 	}
 
 	_onLevelContact(level, isOppositeCheck) {
-		const idx = tupleIdx(this._direction);
+		const self = this;
+		const idx = tupleIdx(self._direction);
 		const oidx = 1 - idx;
-		const l = this._levelData(level);
-		const s = this._stops[idx];
+		const r = self._requestData(level);
+		const s = self._stops[idx];
 
-		this._level = level;
-		this._emitLevel();
+		self._level = level;
+		self._emitLevel();
 
 		/*
-		 * "this._direction" will be abbreviated as "d." in the comments below,
-		 * while the opposite of this "direction" will be called "od.".
+		 * "self._direction" will be abbreviated as "d." in the comments below,
+		 * while the opposite of self "direction" will be called "od.".
 		 */
-		if (l[idx]) {
-			// there is a stop in d. on this level
-			this._emitStop();
+		if (r[2] || r[idx]) {
+			// there is a stop in d. on self level
+			self._emitStop();
 		} else {
-			// there is no stop in d. on this level
+			// there is no stop in d. on self level
 
-			if (s[idx]) {
+			if (s[2] || s[idx]) {
 				// but there are other stops in d. for d.
-				this._emitMove();
+				self._emitMove();
 			} else {
 				// and no further stops in d. for d.
 
 				if (s[oidx]) {
 					// but there are other stops in d. for od.
 
-					if (l[oidx]) {
-						// if this would be a stop in od.
+					if (r[oidx]) {
+						// if self would be a stop in od.
 
 						if (s[oidx] > 1) {
 							// if there are stops farther in d. for od.
-							this._emitMove();
+							self._emitMove();
 						} else {
-							// or if this is the farthest
-							this._emitStop();
+							// or if self is the farthest
+							self._emitStop();
 						}
 					} else {
-						// or if this level has no requests at all
-						this._emitMove();
+						// or if self level has no requests at all
+						self._emitMove();
 					}
 				} else {
 					// or no further stops in d. at all
 
 					if (isOppositeCheck) {
-						// if this "is opposite check" we have finished checking both directions --> idle
-						this._emitIdle();
+						// if self "is opposite check" we have finished checking both directions --> idle
+						self._emitIdle();
 					} else {
 						// or if it isn't we still need to check the opposite direction for stops
-						this._direction *= -1;
-						this._onLevelContact(level, true);
+						self._direction *= -1;
+						self._onLevelContact(level, true);
 					}
 				}
 			}
@@ -299,54 +317,69 @@ class Elevator extends EventEmitter {
 	}
 
 	_emitLevel() {
-		this.emit('level', this.level);
+		const self = this;
+		self.emit('level', self._level);
 	}
 
 	_emitMove() {
-		const idx = tupleIdx(this._direction);
+		const self = this;
+		const idx = tupleIdx(self._direction);
 		const oidx = 1 - idx;
 
-		if (this._levelData(this._level)[oidx]) {
+		if (self._requestData(self._level)[oidx]) {
 			/*
-			 * We are skipping a request for this level in the opposite direction
+			 * We are skipping a request for self level in the opposite direction
 			 * --> account for it when we come back
 			 */
-			this._stops[idx][oidx]--;
-			this._stops[oidx][oidx]++;
+			self._stops[idx][oidx]--;
+			self._stops[oidx][oidx]++;
 		}
 
-		this._isMoving = true;
-		this.emit('move', this.level, this.direction);
+		self._isMoving = true;
+		self.emit('move', self._level, self._direction);
 	}
 
 	_emitStop() {
-		const l = this._levelData(this._level);
-		const s = this._stops[tupleIdx(this._direction)];
-
-		this._isMoving = false;
-
-		if (l[0]) {
-			l[0] = false;
-			s[0]--;
-			this.emit('requests:remove', this.level, -1);
+		function emit(direction) {
+			self.emit('requests:remove', level, direction);
 		}
 
-		if (l[1]) {
-			l[1] = false;
-			s[1]--;
-			this.emit('requests:remove', this.level, 1);
+		function apply(idx) {
+			if (r[idx]) {
+				r[idx] = 0;
+				s[idx]--;
+
+				if (idx === 2) {
+					emit(0);
+				} else {
+					emit(2 * idx - 1);
+				}
+			}
 		}
 
-		this.emit('stop', this.level);
+		const self = this;
+		const level = self._level;
+		const r = self._requestData(level);
+		const s = self._stops[tupleIdx(self._direction)];
+
+		self._isMoving = false;
+
+		apply(0);
+		apply(1);
+		apply(2);
+
+		self.emit('stop', level);
 	}
 
 	_emitIdle() {
-		this._direction = 0;
-		this.emit('idle', this.level);
+		const self = this;
+		self._direction = 0;
+		self.emit('idle', self._level);
 	}
 
-	_levelData(level) {
-		return this._levels[level - this._minLevel];
+	_requestData(level) {
+		const self = this;
+		return self._requests[level - self._minLevel];
 	}
 }
 

@@ -44,8 +44,6 @@ class ElevatorDoorSensor extends EventEmitter {
 	}
 
 	_onStop() {
-		console.log('stop');
-
 		switch (this._state) {
 			case 0:
 				this._nextState();
