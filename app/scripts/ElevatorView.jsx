@@ -1,6 +1,6 @@
 'use strict';
 
-import ElevatorProperties from './elevator/ElevatorProperties';
+import {ElevatorProperties} from './elevator';
 
 
 class ElevatorLevelView extends React.Component {

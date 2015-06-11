@@ -2,13 +2,12 @@
 
 require('babelify/polyfill');
 
-import Elevator from './elevator/Elevator';
-
 import AccessoryView from './AccessoryView';
 import ElevatorView from './ElevatorView';
+import {Elevator} from './elevator';
 
 const elevator = new Elevator(1, 9);
-window.elevator = elevator; // TODO
+window.elevator = elevator;
 
 React.render(
 	<div className="row">

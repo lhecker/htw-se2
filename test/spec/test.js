@@ -1,10 +1,10 @@
-(function () {
-	'use strict';
+'use strict';
 
-	describe('Give it some context', function () {
-		describe('maybe a bit more context here', function () {
-			it('should run here few assertions', function () {
-			});
-		});
+import {Elevator, ElevatorProperties} from '../../app/scripts/elevator';
+
+
+describe("A suite", function() {
+	it("contains spec with an expectation", function() {
+		expect(true).toBe(true);
 	});
-})();
+});

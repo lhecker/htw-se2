@@ -44,7 +44,7 @@ module.exports = function (grunt) {
 		browserSync: {
 			options: {
 				notify: false,
-				background: true
+				background: true,
 			},
 			livereload: {
 				options: {
@@ -58,10 +58,10 @@ module.exports = function (grunt) {
 					server: {
 						baseDir: ['.tmp', 'app'],
 						routes: {
-							'/bower_components': './bower_components'
-						}
-					}
-				}
+							'/bower_components': './bower_components',
+						},
+					},
+				},
 			},
 			test: {
 				options: {
@@ -72,17 +72,17 @@ module.exports = function (grunt) {
 					server: {
 						baseDir: ['.tmp', './test', 'app'],
 						routes: {
-							'/bower_components': './bower_components'
-						}
-					}
-				}
+							'/bower_components': './bower_components',
+						},
+					},
+				},
 			},
 			dist: {
 				options: {
 					background: false,
 					server: 'dist',
-				}
-			}
+				},
+			},
 		},
 
 		// clean the temporary and distribution folder before builds
@@ -115,12 +115,9 @@ module.exports = function (grunt) {
 		},
 
 		// testing
-		mocha: {
+		karma: {
 			all: {
-				options: {
-					run: true,
-					urls: ['http://<%= browserSync.test.options.host %>:<%= browserSync.test.options.port %>/index.html'],
-				},
+				configFile: 'test/karma.conf.js',
 			},
 		},
 
@@ -147,7 +144,9 @@ module.exports = function (grunt) {
 		postcss: {
 			options: {
 				processors: [
-					require('autoprefixer-core')({browsers: ['last 1 version', '> 1% in DE']}),
+					require('autoprefixer-core')({
+						browsers: ['last 1 version', '> 1% in DE']
+					}),
 				],
 				map: {
 					prev: '.tmp/styles/',
@@ -166,6 +165,7 @@ module.exports = function (grunt) {
 		// transpiles ES6 and JSX code to plain ES5
 		browserify: {
 			options: {
+				watch: true,
 				transform: [
 					[{
 						sourceMap: true,
@@ -180,14 +180,12 @@ module.exports = function (grunt) {
 				},
 			},
 			server: {
-				options: {
-					watch: true,
-				},
 				src: 'app/scripts/main.jsx',
 				dest: '.tmp/scripts/main.js',
 			},
 			dist: {
 				options: {
+					watch: false,
 					browserifyOptions: {
 						extensions: ['.jsx'],
 						fullPaths: false,
@@ -356,14 +354,16 @@ module.exports = function (grunt) {
 
 		// run some tasks in parallel to speed up build process
 		concurrent: {
-			test: [
-				'browserify',
+			server: [
+				'browserify:server',
+				'less:server',
 				'copy:styles',
 			],
 			dist: [
-				'less',
-				'browserify',
+				'browserify:dist',
+				'less:dist',
 				'copy:styles',
+
 				'imagemin',
 				'svgmin',
 			],
@@ -379,27 +379,19 @@ module.exports = function (grunt) {
 		grunt.task.run([
 			'clean:server',
 			'wiredep',
-			'less:server',
-			'copy:styles',
-			'browserify:server',
-			'postcss',
+			'concurrent:server',
+			'postcss',                // depends on the results of less:server
 			'browserSync:livereload',
 			'watch',
 		]);
 	});
 
 	grunt.registerTask('test', function (target) {
-		if (target !== 'watch') {
-			grunt.task.run([
-				'clean:server',
-				'concurrent:test',
-				'postcss',
-			]);
-		}
-
 		grunt.task.run([
-			'browserSync:test',
-			'mocha',
+			'clean:server',
+			'wiredep',
+			'browserify:test',
+			'karma',
 		]);
 	});
 

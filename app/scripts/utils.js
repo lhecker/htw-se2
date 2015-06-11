@@ -1,3 +1,5 @@
+'use strict';
+
 export function pad(number, minLength, pad = '0') {
 	const numberString = String(number);
 	const numberStringLength = numberString.length;

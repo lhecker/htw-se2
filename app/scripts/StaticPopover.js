@@ -1,3 +1,5 @@
+'use strict';
+
 const TooltipConstructor = $.fn.tooltip.Constructor;
 
 function StaticPopover(element, options) {
