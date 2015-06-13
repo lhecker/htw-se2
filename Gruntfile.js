@@ -197,7 +197,7 @@ module.exports = function (grunt) {
 				dest: '.tmp/scripts/main.js',
 			},
 			test: {
-				src: 'test/spec/test.js',
+				src: 'test/spec/main.js',
 				dest: '.tmp/spec/main.js',
 			},
 		},
