@@ -4,17 +4,13 @@ import {Elevator, ElevatorProperties} from '../../app/scripts/elevator';
 
 
 describe("Elevator Test Suite", function() {
-
-	const level_min = 1;
-	const level_max = 5;
-	var elevator;	
-
-	beforeAll(function() {
-		elevator = new Elevator(level_min,level_max);
-	});
+	const levelMin = 1;
+	const levelMax = 5;
+	const elevator = new Elevator(levelMin, levelMax);
 
 	it("self description consistent and correct", function() {
-		expect(elevator.minLevel()).toEqual(level_min);
-		expect(elevator.maxLevel()).toEqual(level_max);
+		expect(elevator.minLevel).toBe(levelMin);
+		expect(elevator.maxLevel).toBe(levelMax);
+		expect(elevator.levelCount).toBe(levelMax - levelMin + 1);
 	});
 });
