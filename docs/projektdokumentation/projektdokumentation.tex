@@ -49,14 +49,19 @@ Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben s
 \todo{Wir müssen aufpassen, dass wir eine klare Trennung zwischen Entwurfs-spezifischen Inhalten im Entwicklerhandbuch und hier vornehmen.}
 \subsection*{State Design Pattern}
 Vorteile, Nachteile, warum haben wir uns dageben entschieden?
+\todo{Nachteile: großer Overhead, da hier nur 3 Zustände vorkommen, jedoch die Zustandsübergänge komplex sind}
 \subsection*{Zustandstabelle}
-\subsection*{Event Methode}
-ist das eine korrekte Bezeichnung? Falls nein, wie heißt das bei uns?
+\todo{nicht sinnvoll zwecks erweiterbarkeit/wartbarkeit)
 
+Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, sondern in den Zustandsübergängen, da der Fahrstuhl bis auf wenige Ausnahmen wie von \textbf{Idle} nach \textbf{Stop} in jeden beliebigen Zustand springen kann.
+\subsection*{Event Emitter}
+\subsection{Observer Pattern}
 
 \chapter{Qualitätssicherung}
 \section{Umsetzung}
 Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf saubere und eindeutige Formulierungen geachtet, da Probleme zu diesem Zeitpunkt die größten Auswirkungen auf die Qualität des Endprodukts besitzen.
+\todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
+\todo{Code Konventionen, statische Codeanalyse}
 \section{Testfälle}
 
 
