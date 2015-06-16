@@ -4,12 +4,12 @@
 \chapter{Anforderungs- und Problemanalyse}
 \section{Methoden}
 Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden
-welches Problem der Kunde, in unserem konkreten Fall unsere Professorin Frau 
-Hauptmann mit der zu entwickelnden Software lösen möchte. Dafür wurden 
-Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe 
-von Audioaufzeichnung, Mitschrift und Fotografien protokolliert. Zur 
-detaillierten Beschreibung einzelner Abläufe des Systems wurden 
-Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard 
+welches Problem der Kunde, in unserem konkreten Fall unsere Professorin Frau
+Hauptmann mit der zu entwickelnden Software lösen möchte. Dafür wurden
+Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe
+von Audioaufzeichnung, Mitschrift und Fotografien protokolliert. Zur
+detaillierten Beschreibung einzelner Abläufe des Systems wurden
+Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard
 sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
 \begin{figure}[hbt]
 \centering
@@ -26,20 +26,20 @@ Grundlegende Fragen die im Laufe der Analyse geklärt werden mussten waren
 	\item Welcher Algorithmus soll verwendet werden?
 	\item Gibt es Schnittstellen zu anderen Systemen?
 \end{itemize}
-Weiterhin musste festgelegt werden ob die Priorität des Systems auf der 
+Weiterhin musste festgelegt werden ob die Priorität des Systems auf der
 Simulation oder auf einer möglichst realitätsnahen Umsetzung eines Liftes liegt.
-Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle 
-wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der 
-\textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt, 
+Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle
+wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der
+\textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt,
 deren Anforderungen getrennt voneinander beschrieben werden mussten.\\
-Eine Besonderheit des Systems ist die Umgebung in der es eingesetzt werden 
-soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle 
-Anforderungen wie das Anzeigen der Zustandsübergänge die gesondert betrachtet 
+Eine Besonderheit des Systems ist die Umgebung in der es eingesetzt werden
+soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle
+Anforderungen wie das Anzeigen der Zustandsübergänge die gesondert betrachtet
 werden mussten.
 \section{Diagramme}
 \subsubsection{Zustandsdiagramm}
-Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in 
-dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben 
+Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
+dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben
 wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
 \missingfigure[figwidth=\textwidth]{Zustandsdiagramm ggf. mehrere Versionen}
 
@@ -60,8 +60,12 @@ Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, son
 \chapter{Qualitätssicherung}
 \section{Umsetzung}
 Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf saubere und eindeutige Formulierungen geachtet, da Probleme zu diesem Zeitpunkt die größten Auswirkungen auf die Qualität des Endprodukts besitzen.
+
 \todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
 \todo{Code Konventionen, statische Codeanalyse}
+
+Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
+
 \section{Testfälle}
 
 

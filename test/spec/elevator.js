@@ -12,5 +12,7 @@ describe("Elevator Test Suite", function() {
 		expect(elevator.minLevel).toBe(levelMin);
 		expect(elevator.maxLevel).toBe(levelMax);
 		expect(elevator.levelCount).toBe(levelMax - levelMin + 1);
+		expect(elevator.getLevel).toBeGreaterThan(levelMin-1);
+		expect(elevator.getLevel).toBeLessThan(levelMax+1);
 	});
 });
