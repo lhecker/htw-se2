@@ -2,13 +2,7 @@
 Während der Durchführung des Projektes gab es verschiedenste Herausforderungen zu bewältigen und Entscheidungen zu treffen. Von der Organisation und Strukturierung der Gruppenarbeit, bis zur Wahl der Technologien, welche zur Realisierung des Projektes verwendet wurden. Dieses Kapitel beschreibt die Herangehensweisen des Teams und versucht reflektierend Schlüsse für zukünftige Projekte zu ziehen. 
 \chapter{Anforderungs- und Problemanalyse}
 \section{Methoden}
-Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden
-welches Problem die Kundin mit der zu entwickelnden Software lösen möchte. Dafür wurden
-Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe
-von Audioaufzeichnung, Mitschriften und Fotografien protokolliert. Zur
-detaillierten Beschreibung einzelner Abläufe des Systems wurden
-Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard
-sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
+Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden welches Problem die Kundin mit der zu entwickelnden Software lösen möchte. Dafür wurden Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe von Audioaufzeichnung, Mitschriften und Fotografien protokolliert. Zur detaillierten Beschreibung einzelner Abläufe des Systems wurden Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
 \begin{figure}[hbt]
 \centering
 \subcaptionbox{Skizze der Fahrstuhlsimulation am Whiteboard}[0.49\linewidth]
@@ -24,18 +18,13 @@ Die folgenden grundlegende Fragen waren im Laufe der Analyse zu klären:
 	\item Welcher Algorithmus soll verwendet werden?
 	\item Gibt es Schnittstellen zu anderen Systemen?
 \end{itemize}
-Weiterhin musste festgelegt werden ob die Priorität des Systems auf der
-Simulation oder auf einer möglichst realitätsnahen Umsetzung eines Liftes liegt.
-Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle
-wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der
-\textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt,
-deren Anforderungen getrennt voneinander beschrieben werden mussten.\\
-Eine Besonderheit des Systems ist dabei die Umgebung in der es eingesetzt werden
-soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle
-Anforderungen wie das Anzeigen der Zustandsübergänge die gesondert betrachtet
-werden mussten.
+Weiterhin musste festgelegt werden ob die Priorität des Systems auf der Simulation oder auf einer möglichst realitätsnahen Umsetzung eines Liftes liegt. Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der \textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt, deren Anforderungen getrennt voneinander beschrieben werden mussten.\\
+Eine Besonderheit des Systems ist dabei die Umgebung in der es eingesetzt werden soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle Anforderungen wie das Anzeigen der Zustandsübergänge die gesondert betrachtet werden mussten.
 
-\paragraph*{}Die Resultate der Analysephase, alle Anwendungsfälle und Vereinbarungen mit der Kundin wurden am Ende im Pflichtenheft festgehalten, welches als eigenständiges Dokument am Ende der Phase an die Kundin überreicht wurde. 
+\paragraph{}Vor allem aus den letztgenannten Anforderungen formte sich während der Analyse relativ früh unsere Vision einer Anwendung, welche in einer zweigeteilten Sicht Fahrstuhl und Zustandsdiagramm nebeneinander darstellt. Zusätzlich sollten Zustandsübergänge und aktive Zustände durch Animationen kenntlich gemacht werden.
+
+\paragraph*{}Die Resultate der Analysephase, alle Anwendungsfälle und Vereinbarungen mit der Kundin wurden am Ende im Pflichtenheft festgehalten, welches als eigenständiges Dokument am Ende der Phase an die Kundin überreicht wurde. Diese Dokument war im weiteren Verlauf des Projektes ein zentrales Maß bei regelmäßigen Treffen und Evaluationen.
+
 \section{Diagramme}
 \subsubsection{Zustandsdiagramm}
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
@@ -45,6 +34,13 @@ wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen d
 
 
 \chapter{Software-Entwurf}
+Nach der Festlegung von Anforderungen und der Beschreibung der Funktionalitäten der Fahrstuhlsimulation war der nächste Schritt der Entwurf der internen Struktur. Wir näherten uns dieser Problemstellung von außen und erhöhten bei steigender Tiefe die Granularität. Dies bedeutete zunächst, die geeignetste Rahmen-Technologie festzulegen, welche die Anforderungen unseren Kundin um besten erfüllen konnte.
+
+\section{Technologie}
+Die Wahl der verwendeten Technologie fußte prinzipiell auf zwei Hauptpunkten, erstens unserer Vision einer optisch ansprechenden Anwendung, welche das Zusammenspiel von System und dessen Zuständen visualisiert und zweitens der verfügbaren Zeit zur Realisierung aller Anforderungen. In Anbetracht der kurzen Projektzeit entschieden wir uns zunächst dazu eine Vorauswahl zu treffen. Diese sollte ausschließlich Technologien enthalten, auf deren Gebieten bereits Erfahrungen im Team vorhanden waren. Nach kurzer Diskussion ergaben sich als Möglichkeiten die Nutzung von \textsc{C++}, \textsc{Java} oder \textsc{Web-Technologien} wie \textsc{Javascript}.
+
+\paragraph{}Diese Vorauswahl bestand 
+
 Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben sich folgende Entwurfsmuster:
 \todo{Wir müssen aufpassen, dass wir eine klare Trennung zwischen Entwurfs-spezifischen Inhalten im Entwicklerhandbuch und hier vornehmen.}
 \subsection*{State Design Pattern}
