@@ -1,13 +1,11 @@
 \part{Projektdokumentation}
-\todo{kleine Einleitung}
-\todo{Seitennummerierung zurücksetzen!}
+Während der Durchführung des Projektes gab es verschiedenste Herausforderungen zu bewältigen und Entscheidungen zu treffen. Von der Organisation und Strukturierung der Gruppenarbeit, bis zur Wahl der Technologien, welche zur Realisierung des Projektes verwendet wurden. Dieses Kapitel beschreibt die Herangehensweisen des Teams und versucht reflektierend Schlüsse für zukünftige Projekte zu ziehen. 
 \chapter{Anforderungs- und Problemanalyse}
 \section{Methoden}
 Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden
-welches Problem der Kunde, in unserem konkreten Fall unsere Professorin Frau
-Hauptmann mit der zu entwickelnden Software lösen möchte. Dafür wurden
+welches Problem die Kundin mit der zu entwickelnden Software lösen möchte. Dafür wurden
 Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe
-von Audioaufzeichnung, Mitschrift und Fotografien protokolliert. Zur
+von Audioaufzeichnung, Mitschriften und Fotografien protokolliert. Zur
 detaillierten Beschreibung einzelner Abläufe des Systems wurden
 Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard
 sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
@@ -19,7 +17,7 @@ sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Mo
 {\includegraphics[height=8cm]{images/pappfahrstuhl.jpg}}
 \caption{Kreativtechniken zur Anforderungsanalyse}
 \end{figure}
-Grundlegende Fragen die im Laufe der Analyse geklärt werden mussten waren
+Die folgenden grundlegende Fragen waren im Laufe der Analyse zu klären:
 \begin{itemize}
 	\item Wie viele Fahrstühle sollen verwendet werden können?
 	\item Wie soll das Gebäude beschaffen sein?
@@ -32,10 +30,12 @@ Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle
 wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der
 \textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt,
 deren Anforderungen getrennt voneinander beschrieben werden mussten.\\
-Eine Besonderheit des Systems ist die Umgebung in der es eingesetzt werden
+Eine Besonderheit des Systems ist dabei die Umgebung in der es eingesetzt werden
 soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle
 Anforderungen wie das Anzeigen der Zustandsübergänge die gesondert betrachtet
 werden mussten.
+
+\paragraph*{}Die Resultate der Analysephase, alle Anwendungsfälle und Vereinbarungen mit der Kundin wurden am Ende im Pflichtenheft festgehalten, welches als eigenständiges Dokument am Ende der Phase an die Kundin überreicht wurde. 
 \section{Diagramme}
 \subsubsection{Zustandsdiagramm}
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
@@ -51,7 +51,7 @@ Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben s
 Vorteile, Nachteile, warum haben wir uns dageben entschieden?
 \todo{Nachteile: großer Overhead, da hier nur 3 Zustände vorkommen, jedoch die Zustandsübergänge komplex sind}
 \subsection*{Zustandstabelle}
-\todo{nicht sinnvoll zwecks erweiterbarkeit/wartbarkeit)
+\todo{nicht sinnvoll zwecks erweiterbarkeit/wartbarkeit}
 
 Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, sondern in den Zustandsübergängen, da der Fahrstuhl bis auf wenige Ausnahmen wie von \textbf{Idle} nach \textbf{Stop} in jeden beliebigen Zustand springen kann.
 \subsection*{Event Emitter}
@@ -73,6 +73,6 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 \section{Gruppenarbeit}
 Um das Zusammenarbeiten in der Gruppe einfacher zu gestalten wurden verschiedene Technologien eingesetzt.
 Zu finden von Terminen für Meetings wurde Doodle\footnote{\url{www.doodle.com}}  verwendet. Für die Kommunikation in der Gruppe Slack\footnote{\url{https://slack.com/}}.
-\todo{Hier muss hin warum wir uns für JS und Co entschieden haben...}
+\todo{Hier muss hin warum wir uns für JS und Co entschieden haben.}
 \section{Verwendete Werkzeuge}
 \section{Resümee}
