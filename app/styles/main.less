@@ -41,6 +41,7 @@
 	.door-right {
 		width: (@car-width / 2);
 		background-color: rgba(0, 0, 0, 0.5);
+		background-size: 100% 100%;
 		transition-property: left, right;
 		transition-duration: 250ms;
 		transition-timing-function: ease-in-out;
@@ -48,14 +49,12 @@
 
 	.door-left {
 		left: (50% - @car-width / 2);
-		background: url(../images/door_left.svg);
-		background-size: 100% 100%;
+		background-image: url(../images/door_left.svg);
 	}
 
 	.door-right {
 		right: (50% - @car-width / 2);
-	    background: url(../images/door_right.svg);
-		background-size: 100% 100%;
+	    background-image: url(../images/door_right.svg);
 	}
 
 	.level.open {
