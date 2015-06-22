@@ -58,5 +58,6 @@ dist/
 *.vrb
 *.xdy
 docs/projektdokumentation/projektdoku.pdf
+docs/projektdokumentation/*.backup
 
 *.syg2
