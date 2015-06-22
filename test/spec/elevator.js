@@ -22,4 +22,40 @@ describe('Elevator Test Suite', function () {
 		expect(elevator.isDoorOpen).toBe(false);
 		expect(elevator.isOverweight).toBe(false);
 	});
+
+	it('DoorSensor tests', function () {
+	});
+
+	it('LevelSensor tests', function () {
+	});
+
+	it('WeightSensor tests', function () {
+		function assert(overweight, weight) {
+			expect(elevator.isOverweight).toBe(overweight);
+			expect(elevator._weightSensor.weight()).toBe(weight);
+		}
+
+		const personCount = ElevatorProperties.maxWeight / ElevatorProperties.personWeight;
+		expect(personCount).not.toBeNaN();
+
+		let weight = 0;
+
+		while (weight <= ElevatorProperties.maxWeight) {
+			assert(false, weight);
+
+			elevator.addPerson();
+			weight += ElevatorProperties.personWeight;
+		}
+
+		// at this point the elevator should contain exactly one person more than maximally allowed
+		assert(true, weight);
+
+		// due to the ">=" this loop will try to remove one more person after the elevator is already empty
+		while (weight >= 0) {
+			elevator.removePerson();
+			weight -= ElevatorProperties.personWeight;
+
+			assert(false, Math.max(0, weight));
+		}
+	});
 });

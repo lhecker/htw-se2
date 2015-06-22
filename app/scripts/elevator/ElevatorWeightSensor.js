@@ -16,7 +16,7 @@ class ElevatorWeightSensor {
 	}
 
 	_onPersonsRemove() {
-		this._weight -= ElevatorProperties.personWeight;
+		this._weight = Math.max(0, this._weight - ElevatorProperties.personWeight);
 	}
 
 	weight() {
