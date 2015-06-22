@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="70.03627mm"
+   height="126.48072mm"
+   viewBox="0 0 248.16001 448.16003"
+   id="svg4195"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="door_left.svg">
+  <defs
+     id="defs4197">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4138"
+       id="linearGradient4144"
+       x1="193.10225"
+       y1="679.43329"
+       x2="190.24118"
+       y2="241.91772"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0.71430494,0)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4138">
+      <stop
+         style="stop-color:#999da7;stop-opacity:1"
+         offset="0"
+         id="stop4140" />
+      <stop
+         id="stop4156"
+         offset="0.03411319"
+         style="stop-color:#5b5e64;stop-opacity:0.97254902;" />
+      <stop
+         style="stop-color:#787c85;stop-opacity:0.9372549;"
+         offset="0.2793937"
+         id="stop4815" />
+      <stop
+         id="stop4154"
+         offset="0.37520143"
+         style="stop-color:#868a94;stop-opacity:0.9254902;" />
+      <stop
+         style="stop-color:#cccccc;stop-opacity:1"
+         offset="0.80014789"
+         id="stop4817" />
+      <stop
+         id="stop4152"
+         offset="0.86219323"
+         style="stop-color:#ffffff;stop-opacity:1" />
+      <stop
+         style="stop-color:#e6e6e6;stop-opacity:1"
+         offset="0.95378673"
+         id="stop4819" />
+      <stop
+         id="stop4148"
+         offset="1"
+         style="stop-color:#efefef;stop-opacity:1" />
+    </linearGradient>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4821"
+       x="-0.017"
+       width="1.034"
+       y="-0.0092727272"
+       height="1.0185455">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.7"
+         id="feGaussianBlur4823" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="121.3217"
+     inkscape:cy="229.79429"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4169"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata4200">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-135.91996,-256.85362)">
+    <g
+       transform="translate(77.142814,25.714273)"
+       id="g4169">
+      <rect
+         y="235.21935"
+         x="63.57143"
+         height="440"
+         width="240"
+         id="rect4136"
+         style="opacity:0.5;fill:url(#linearGradient4144);fill-opacity:1;stroke:#000000;stroke-width:1.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.97254908" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="rect4162"
+         d="m 62.857156,675.21935 239.999994,0 0,-440 -239.999994,0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.97254908;filter:url(#filter4821)"
+         transform="matrix(-1,0,0,1,365.71431,0)" />
+    </g>
+  </g>
+</svg>

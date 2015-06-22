@@ -31,6 +31,9 @@
 		&:last-child {
 			border-bottom: none;
 		}
+    .label {
+    color: #000;
+    }
 	}
 
 	.door-left,
@@ -44,10 +47,14 @@
 
 	.door-left {
 		left: (50% - @car-width / 2);
+    background: url("door_left.svg");
+    background-size: 100% 100%;
 	}
 
 	.door-right {
 		right: (50% - @car-width / 2);
+    background: url("door_right.svg");
+    background-size: 100% 100%;
 	}
 
 	.level.open {
@@ -97,7 +104,8 @@
 	top: 0;
 	left: (50% - @car-width / 2);
 	width: @car-width;
-	background-color: darkred;
+	background: url(elevator_car.svg);
+  background-size: 100% 100%;
 	transition: top 0s linear;
 }
 
