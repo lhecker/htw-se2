@@ -1,0 +1,22 @@
+#!/bin/bash
+
+pdftex=( pflichtenheft/pflichtenheft projektdokumentation/projektdoku)
+
+function build_pdf {
+	echo "build " + $1
+	basedir=$(dirname $1)
+	file=$(basename $1)
+	cd $basedir
+	pdflatex $file
+	bibtex $file
+	pdflatex $file
+	pdflatex $file
+	echo "done with " + $file
+	cd ..
+}
+
+for i in "${pdftex[@]}"
+do
+	build_pdf $i
+done
+
