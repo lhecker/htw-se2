@@ -58,15 +58,7 @@ class Elevator extends EventEmitter {
 
 
 		const doorSensor = new ElevatorDoorSensor(self);
-
-		doorSensor.on('opening', () => {
-			self._isDoorOpen = true;
-		});
-
-		doorSensor.on('shut', () => {
-			self._isDoorOpen = false;
-			self._tryMove();
-		});
+		doorSensor.on('shut', self._tryMove.bind(self));
 
 		// Forward door events:
 		for (let name of ['opening', 'open', 'shutting', 'shut']) {
@@ -121,7 +113,6 @@ class Elevator extends EventEmitter {
 		 * The following properties will help tracking the state of the lift.
 		 */
 		self._isMoving = false;
-		self._isDoorOpen = false;
 
 		/*
 		 * The following properties contain references
@@ -156,7 +147,7 @@ class Elevator extends EventEmitter {
 	}
 
 	get isDoorOpen() {
-		return this._isDoorOpen;
+		return this._doorSensor.state() === 'open';
 	}
 
 	get isOverweight() {
@@ -219,7 +210,7 @@ class Elevator extends EventEmitter {
 	_tryMove() {
 		const self = this;
 
-		if (!self._isMoving && !self._isDoorOpen) {
+		if (!self.isMoving && !self.isDoorOpen) {
 			let direction = self._direction;
 
 			if (!direction) {

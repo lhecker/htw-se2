@@ -1,26 +1,29 @@
 'use strict';
 
 import ElevatorProperties from './ElevatorProperties';
+import EventEmitter from 'events';
 
 
-class ElevatorWeightSensor {
+class ElevatorWeightSensor extends EventEmitter {
 	constructor(elevator) {
-		elevator.on('persons:add', this._onPersonsAdd.bind(this));
-		elevator.on('persons:remove', this._onPersonsRemove.bind(this));
+		super();
+
+		elevator.on('persons:add',    this._update.bind(this, true));
+		elevator.on('persons:remove', this._update.bind(this, false));
 
 		this._weight = 0;
 	}
 
-	_onPersonsAdd() {
-		this._weight += ElevatorProperties.personWeight;
-	}
+	_update(add) {
+		const newWeight = Math.max(0, this._weight + (2 * add - 1) * ElevatorProperties.personWeight);
+		const wasOverweight = this._weight > ElevatorProperties.maxWeight;
+		const isOverweight = newWeight > ElevatorProperties.maxWeight;
 
-	_onPersonsRemove() {
-		this._weight = Math.max(0, this._weight - ElevatorProperties.personWeight);
-	}
+		this._weight = newWeight;
 
-	weight() {
-		return this._weight;
+		if (wasOverweight != isOverweight) {
+			this.emit('overweight:change', isOverweight);
+		}
 	}
 }
 

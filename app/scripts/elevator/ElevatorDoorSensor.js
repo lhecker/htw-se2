@@ -39,25 +39,30 @@ class ElevatorDoorSensor extends EventEmitter {
 	_nextState() {
 		this._state = (this._state + 1) % STATES.length;
 
-		this._setTimeout();
+		this._setTimeout(); // schedule the next state
 		this.emit(STATES[this._state][0]);
 	}
 
 	_onStop() {
+		clearTimeout(this._timer);
+		this._timer = null;
+
 		switch (this._state) {
 			case 0:
 				this._nextState();
 				break;
 			case 2:
-				clearTimeout(this._timer);
 				this._setTimeout();
 				break;
 			case 3:
-				clearTimeout(this._timer);
 				this._state = 0;
 				this._nextState();
 				break;
 		}
+	}
+
+	state() {
+		return STATES[this._state][0];
 	}
 }
 
