@@ -4,7 +4,7 @@
 
 
 @level-height: 100px;
-@car-width: 25%;
+@car-width: 33.3333333333%;
 
 
 #content {
@@ -59,32 +59,42 @@
 
 	.level.open {
 		& > .door-left {
-			left: 25%;
+			left: (50% - @car-width);
 		}
 
 		& > .door-right {
-			right: 25%;
+			right: (50% - @car-width);
 		}
 	}
 
 	.request-up,
 	.request-down {
-		position: absolute;
-		top: 50%;
-		left: (50% + @car-width / 2 + 5%);
+		bottom: 0;
 		cursor: pointer;
+		font-size: 200%;
+		line-height: @level-height;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: (50% - @car-width / 2);
+		color: @gray-light;
+
+		&:hover {
+			background-color: @gray-lighter;
+			color: @gray-darker;
+		}
 
 		&.active {
-			color: chartreuse;
+			color: #5cb85c;
 		}
 	}
 
 	.request-up {
-		margin-top: -20px;
+		right: 0;
 	}
 
 	.request-down {
-		margin-bottom: -20px;
+		left: 0;
 	}
 }
 
@@ -105,8 +115,11 @@
 	top: 0;
 	left: (50% - @car-width / 2);
 	width: @car-width;
-	background: url(../images/elevator_car.svg);
-	background-size: 100% 100%;
+	line-height: @level-height;
+	background: rgba(0, 0, 0, 0.5) url(../images/elevator_car.svg) repeat scroll 0 0 / 100% 100%;
+	color: #fff;
+	font-size: 200%;
+	text-align: center;
 	transition: top 0s linear;
 }
 

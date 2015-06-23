@@ -2,7 +2,7 @@
 
 const timePerLevel         = 500.0;            // ms
 const doorOpenCloseTimeout = 500.0;            // ms
-const doorTimeout          = 1000.0;           // ms
+const doorTimeout          = 2000.0;           // ms
 const personWeight         = 80.0;             // kg
 const maxWeight            = 8 * personWeight; // kg
 

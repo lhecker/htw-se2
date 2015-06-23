@@ -8,11 +8,16 @@ class ElevatorCarView extends React.Component {
 		super(props);
 
 		this.state = {
+			offsetTop         : 0,
+			personCount       : 0,
 			transitionDuration: 0,
-			offsetTop: 0,
 		};
 
 		this._moveCallback = null;
+
+		const elevator = this.props.elevator;
+		elevator.on('persons:add',    this._onPersons.bind(this, true));
+		elevator.on('persons:remove', this._onPersons.bind(this, false));
 	}
 
 	componentDidMount() {
@@ -48,7 +53,7 @@ class ElevatorCarView extends React.Component {
 		};
 
 		return (
-			<div id="elevator-car" style={style}></div>
+			<div id="elevator-car" style={style}>{this.state.personCount} <span className="glyphicon glyphicon-user"></span></div>
 		);
 	}
 
@@ -59,6 +64,12 @@ class ElevatorCarView extends React.Component {
 		this.setState({
 			offsetTop: offsetTop,
 		}, cb);
+	}
+
+	_onPersons(add) {
+		this.setState({
+			personCount: this.state.personCount + (2 * add - 1),
+		});
 	}
 }
 

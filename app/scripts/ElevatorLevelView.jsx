@@ -45,9 +45,9 @@ class ElevatorLevelView extends React.Component {
 
 		return (
 			<div className="level">
-				<div className="request-up" onClick={this._request.bind(this, 1)}><span className="glyphicon glyphicon-triangle-top"></span></div>
-				<div className="request-down" onClick={this._request.bind(this, -1)}><span className="glyphicon glyphicon-triangle-bottom"></span></div>
-				<div className="door-left" style={doorStyle}><span className="label">{this.props.level}</span></div>
+				<div className="request-down glyphicon glyphicon-collapse-down" onClick={this._request.bind(this, -1)}></div>
+				<div className="request-up glyphicon glyphicon-collapse-up"      onClick={this._request.bind(this,  1)}></div>
+				<div className="door-left"  style={doorStyle}><span className="label">{this.props.level}</span></div>
 				<div className="door-right" style={doorStyle}></div>
 			</div>
 		);
@@ -79,6 +79,10 @@ class ElevatorLevelView extends React.Component {
 		}
 	}
 }
+
+ElevatorLevelView.propTypes = {
+	elevator: React.PropTypes.object.isRequired,
+};
 
 
 export default ElevatorLevelView;
