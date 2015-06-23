@@ -1,5 +1,5 @@
 \part{Projektdokumentation}
-Während der Durchführung des Projektes gab es verschiedenste Herausforderungen zu bewältigen und Entscheidungen zu treffen. Von der Organisation und Strukturierung der Gruppenarbeit, bis zur Wahl der Technologien, welche zur Realisierung des Projektes verwendet wurden. Dieses Kapitel beschreibt die Herangehensweisen des Teams und versucht reflektierend Schlüsse für zukünftige Projekte zu ziehen. 
+Während der Durchführung des Projektes gab es verschiedenste Herausforderungen zu bewältigen und Entscheidungen zu treffen. Von der Organisation und Strukturierung der Gruppenarbeit, bis zur Wahl der Technologien, welche zur Realisierung des Projektes verwendet wurden. Dieses Kapitel beschreibt die Herangehensweisen des Teams und versucht reflektierend Schlüsse für zukünftige Projekte zu ziehen.
 \chapter{Anforderungs- und Problemanalyse}
 Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden welches Problem die Kundin mit der zu entwickelnden Software lösen möchte. Dafür wurden Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe von Audioaufzeichnung, Mitschriften und Fotografien protokolliert. Zur detaillierten Beschreibung einzelner Abläufe des Systems wurden Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
 \begin{figure}[hbt]
@@ -32,14 +32,14 @@ Nach der Festlegung von Anforderungen und der Beschreibung der Funktionalitäten
 \section{Technologie}
 Die Wahl der verwendeten Technologie fußte prinzipiell auf zwei Hauptpunkten, erstens unserer Vision einer optisch ansprechenden Anwendung, welche das Zusammenspiel von System und dessen Zuständen visualisiert und zweitens der verfügbaren Zeit zur Realisierung aller Anforderungen. In Anbetracht der kurzen Projektzeit entschieden wir uns zunächst dazu eine Vorauswahl zu treffen. Diese sollte ausschließlich Technologien enthalten, auf deren Gebieten bereits Erfahrungen im Team vorhanden waren. Nach kurzer Diskussion ergaben sich als Möglichkeiten die Nutzung von \textsc{C++}, \textsc{Java} oder \textsc{Web-Technologien} wie \textsc{Javascript}.
 
+
 \section{Zustandsdiagramm}
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
 dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben
 wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
 \missingfigure[figwidth=\textwidth]{Zustandsdiagramm ggf. mehrere Versionen}
 
-\paragraph{}Diese Vorauswahl bestand 
-
+\paragraph{}Diese Vorauswahl bestand
 Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben sich folgende Entwurfsmuster:
 \todo{Wir müssen aufpassen, dass wir eine klare Trennung zwischen Entwurfs-spezifischen Inhalten im Entwicklerhandbuch und hier vornehmen.}
 \subsection*{State Design Pattern}
@@ -53,9 +53,32 @@ Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, son
 \subsection{Observer Pattern}
 
 \chapter{Qualitätssicherung}
-\section{Umsetzung}
-Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf saubere und eindeutige Formulierungen geachtet, da Probleme zu diesem Zeitpunkt die größten Auswirkungen auf die Qualität des Endprodukts besitzen.
-Um nachverfolgbar
+\section{Allgemein}
+Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntniss der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im test driven development idealerweise die Anforderungen direkt zur Softwareevulation benutzt.
+
+Aus der Definition
+\begin{quote}\label{PD_SQ}
+software quality
+capability of software product to satisfy stated and implied needs when used unter specified condidtions
+\end{quote}\cite[4 Terms and definitions]{ISO25000}
+lässt sich somit die umfassende Qualitätssicherung aufteilen auf
+\begin{enumerate}
+\item Einwirkung auf Anforderungsanalyse
+\item Evaluation während und nach der Umsetzung
+\end{enumerate}
+da sich Softwarequalität nach obiger Definition rein auf die bereits eruierten Anforderungen und Bedingungen stützt, wie Gesamtzufriedenheit des Nutzers allerdings nur dann erreichen lässt, wenn diese Vorbetrachtung bestmöglich durchgeführt wurde.
+\section{QS Anforderungsanalyse}
+Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf saubere und eindeutige Formulierungen geachtet, da Probleme in dieser Phase die größten Auswirkungen auf die Zufriedenheit des Nutzers besitzen.\\
+Desweiteren wurde durch erneuten Vergleich der Anforderungen mit Kundenprotokollen und Aufgabenstellung sowie Prüfen auf Inkonsistenzen assistiert.
+
+Als qualitätsunterstüzende Maßnahme wurden die Anforderungen möglichst auf sogenannte Issues, also Stichpunkte und Meilensteine in einem Projektmanager, abgebildet.
+\section{QS Umsetzung}
+\subsection{Allgemein}
+\begin{itemize}
+\item Konvetionen
+\item Testregime
+\end{itemize}
+\subsection{Konventionen}
 \todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
 \subsection{Codekonventionen}
 Um bei der Arbeit in der Gruppe an einer gemeinsamen Quellcode-Basis einen hohen Qualitätsstandard der Quelltexte zu bewahren, wurden Konventionen festgelegt die den Entwicklern vorgeschrieben haben wie z.B. Methoden und Variablen benannt werden sollen. So wurde festgelegt, dass
@@ -67,11 +90,11 @@ Um bei der Arbeit in der Gruppe an einer gemeinsamen Quellcode-Basis einen hohen
 \end{itemize}
 
 \todo{Code Konventionen, statische Codeanalyse}
-
+\subsection{Test}
 Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
 
-\section{Testfälle}
-
+\subsubsection{manuelle Testfälle}
+\subsubsection{automatisierte Testfälle}
 
 \chapter{Team-Organisation}
 \section{Gruppenarbeit}
@@ -80,3 +103,6 @@ Zu finden von Terminen für Meetings wurde Doodle\footnote{\url{www.doodle.com}}
 \todo{Hier muss hin warum wir uns für JS und Co entschieden haben.}
 \section{Verwendete Werkzeuge}
 \section{Resümee}
+
+\bibliographystyle{plaindin}
+\bibliography{projektdokumentation}
