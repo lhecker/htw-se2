@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 			},
 			less: {
 				files: ['app/styles/{,*/}*.less'],
-				tasks: ['less:server', 'postcss']
+				tasks: ['less:serve', 'postcss']
 			},
 			styles: {
 				files: ['app/styles/{,*/}*.css'],
@@ -97,7 +97,7 @@ module.exports = function (grunt) {
 					],
 				}],
 			},
-			server: '.tmp',
+			serve: '.tmp',
 		},
 
 		// jshint...
@@ -133,7 +133,7 @@ module.exports = function (grunt) {
 					'.tmp/styles/main.css': 'app/styles/main.less',
 				},
 			},
-			server: {
+			serve: {
 				files: {
 					'.tmp/styles/main.css': 'app/styles/main.less',
 				},
@@ -179,7 +179,7 @@ module.exports = function (grunt) {
 					debug: true,
 				},
 			},
-			server: {
+			serve: {
 				src: 'app/scripts/main.jsx',
 				dest: '.tmp/scripts/main.js',
 			},
@@ -354,9 +354,8 @@ module.exports = function (grunt) {
 
 		// run some tasks in parallel to speed up build process
 		concurrent: {
-			server: [
-				'browserify:server',
-				'less:server',
+			serve: [
+				'less:serve',
 				'copy:styles',
 			],
 			dist: [
@@ -377,10 +376,11 @@ module.exports = function (grunt) {
 		}
 
 		grunt.task.run([
-			'clean:server',
+			'clean:serve',
 			'wiredep',
-			'concurrent:server',
-			'postcss',                // depends on the results of less:server
+			'concurrent:serve',
+			'browserify:serve',
+			'postcss',                // depends on the results of less:serve
 			'browserSync:livereload',
 			'watch',
 		]);
@@ -388,14 +388,14 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('test', function (target) {
 		grunt.task.run([
-			'clean:server',
+			'clean:serve',
 			'wiredep',
 			'browserify:test',
 			'karma',
 		]);
 	});
 
-	grunt.registerTask('build', function (target) {
+	grunt.registerTask('dist', function (target) {
 		grunt.task.run([
 			'clean:dist',
 			'wiredep',
