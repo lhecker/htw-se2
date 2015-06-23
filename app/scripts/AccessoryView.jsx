@@ -45,8 +45,8 @@ class AccessoryView extends React.Component {
 
 	render() {
 		const glyphiconClassName = classNames({
-			'glyphicon': 1,
-			'glyphicon-triangle-top': this.state.direction > 0,
+			'glyphicon'                : 1,
+			'glyphicon-triangle-top'   : this.state.direction > 0,
 			'glyphicon-triangle-bottom': this.state.direction < 0,
 		});
 

@@ -67,23 +67,24 @@
 		}
 	}
 
-	.request {
+	.request-up,
+	.request-down {
 		position: absolute;
 		top: 50%;
 		left: (50% + @car-width / 2 + 5%);
 		cursor: pointer;
 
-		&.up {
-			margin-top: -20px;
-		}
-
-		&.down {
-			margin-bottom: -20px;
-		}
-
 		&.active {
 			color: chartreuse;
 		}
+	}
+
+	.request-up {
+		margin-top: -20px;
+	}
+
+	.request-down {
+		margin-bottom: -20px;
 	}
 }
 
