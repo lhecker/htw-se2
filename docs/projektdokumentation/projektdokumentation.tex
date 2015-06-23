@@ -32,7 +32,15 @@ Nach der Festlegung von Anforderungen und der Beschreibung der Funktionalitäten
 \section{Technologie}
 Die Wahl der verwendeten Technologie fußte prinzipiell auf drei Hauptpunkten, erstens unserer Vision einer optisch ansprechenden Anwendung, welche das Zusammenspiel von System und dessen Zuständen visualisiert. Zweitens einer möglichst umfassenden Kompatibilität zu verschiedenen Plattformen und drittens der verfügbaren Zeit zur Realisierung aller Anforderungen. In Anbetracht der kurzen Projektzeit entschlossen wir uns zunächst eine Vorauswahl zu treffen. Diese sollte ausschließlich Technologien enthalten, auf deren Gebieten bereits Erfahrungen im Team vorhanden waren. Nach kurzer Diskussion ergaben sich als Möglichkeiten die Nutzung von \textsc{C++}, \textsc{Java} oder \textsc{Web-Technologien} wie \textsc{Javascript}.
 
-\paragraph*{}Nach reichlicher Überlegung und wiederholter Rücksprache mit unserer Kundin erschienen uns \textsc{Web-Technologien} am geeignetsten um alle Anforderungen in der zur Verfügung stehenden Zeit umzusetzen. 
+\paragraph*{}Nach reiflicher Überlegung und wiederholter Rücksprache mit unserer Kundin erschienen uns \textsc{Web-Technologien} am geeignetsten um alle Anforderungen in der zur Verfügung stehenden Zeit umzusetzen. Die Vorteile dieser Technologien, welche unsere Entscheidung maßgeblich beeinflussten, waren folgende:
+
+\begin{enumerate}
+	\item Diese Technologien ermöglichten uns größtmögliche Plattform-Kompa\-tibilität, da unser Produkt einerseits als Cross-Plattfom-Anwendung und weiterhin als Web-Site veröffentlicht werden kann.
+	\item Mit den modernen Mitteln des Web-Designs war es uns möglich die hohen grafischen Anforderungen an das Software-System in derart kurzer zeit umzusetzen.
+\end{enumerate}
+
+hier\todo{Wollen wir hier weiter in die Tiefe gehen? node, bower, grunt etc...?}
+
 \section{Zustandsdiagramm}
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
 dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben
@@ -54,9 +62,9 @@ Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, son
 
 \chapter{Qualitätssicherung}
 \section{Allgemein}
-Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntniss der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im test driven development idealerweise die Anforderungen direkt zur Softwareevulation benutzt.
+Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntniss der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evulation benutzt.
 
-Aus der Definition
+\paragraph*{}Aus der Definition
 \begin{quote}\label{PD_SQ}
 software quality
 capability of software product to satisfy stated and implied needs when used unter specified condidtions
