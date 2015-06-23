@@ -13,18 +13,19 @@ class ElevatorCarView extends React.Component {
 			transitionDuration: 0,
 		};
 
-		this._moveCallback = null;
-
-		const elevator = this.props.elevator;
-		elevator.on('persons:add',    this._onPersons.bind(this, true));
-		elevator.on('persons:remove', this._onPersons.bind(this, false));
+		this._resetIVars();
 	}
 
 	componentDidMount() {
 		const elevator = this.props.elevator;
 
-		this._moveCallback = this._updateOffsetTop.bind(this);
-		this.props.elevator.on('move', this._moveCallback);
+		this._moveCallback         = this._updateOffsetTop.bind(this);
+		this._onPersonsAddCallback = this._onPersons.bind(this, true);
+		this._onPersonsRemoveCallback = this._onPersons.bind(this, false);
+
+		elevator.on('move',           this._moveCallback);
+		elevator.on('persons:add',    this._onPersonsAddCallback);
+		elevator.on('persons:remove', this._onPersonsRemoveCallback);
 
 		/*
 		 * The first render pass we will use the initial transitionDuration of 0 seconds
@@ -42,8 +43,11 @@ class ElevatorCarView extends React.Component {
 	}
 
 	componentWillUnmount() {
-		this.props.elevator.removeListener('move', this._moveCallback);
-		this._moveCallback = null;
+		this.props.elevator.removeListener('move',           this._moveCallback);
+		this.props.elevator.removeListener('persons:add',    this._onPersonsAddCallback);
+		this.props.elevator.removeListener('persons:remove', this._onPersonsRemoveCallback);
+
+		this._resetIVars();
 	}
 
 	render() {
@@ -55,6 +59,12 @@ class ElevatorCarView extends React.Component {
 		return (
 			<div id="elevator-car" style={style}>{this.state.personCount} <span className="glyphicon glyphicon-user"></span></div>
 		);
+	}
+
+	_resetIVars() {
+		this._moveCallback         = null;
+		this._onPersonsAddCallback = null;
+		this._onPersonsAddCallback = null;
 	}
 
 	_updateOffsetTop(level, direction, cb) {

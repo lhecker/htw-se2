@@ -39,14 +39,21 @@ class ElevatorLevelView extends React.Component {
 	}
 
 	render() {
+		const elevator = this.props.elevator;
+		const level = this.props.level;
+
 		const doorStyle = {
 			transitionDuration: ElevatorProperties.doorOpenCloseTimeout + 'ms',
 		};
 
+		const displayNone = { display: 'none' };
+		const requestUp   = level === elevator.maxLevel ? displayNone : {};
+		const requestDown = level === elevator.minLevel ? displayNone : {};
+
 		return (
 			<div className="level">
-				<div className="request-down glyphicon glyphicon-collapse-down" onClick={this._request.bind(this, -1)}></div>
-				<div className="request-up glyphicon glyphicon-collapse-up"      onClick={this._request.bind(this,  1)}></div>
+				<div className="request-down glyphicon glyphicon-collapse-down" style={requestDown} onClick={this._request.bind(this, -1)}></div>
+				<div className="request-up glyphicon glyphicon-collapse-up"     style={requestUp}   onClick={this._request.bind(this,  1)}></div>
 				<div className="door-left"  style={doorStyle}><span className="label">{this.props.level}</span></div>
 				<div className="door-right" style={doorStyle}></div>
 			</div>
@@ -82,6 +89,7 @@ class ElevatorLevelView extends React.Component {
 
 ElevatorLevelView.propTypes = {
 	elevator: React.PropTypes.object.isRequired,
+	level: React.PropTypes.number.isRequired,
 };
 
 
