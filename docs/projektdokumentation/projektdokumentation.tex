@@ -44,10 +44,14 @@ Gebündelt und verwendet wurden diese Möglichkeiten durch modere Werkzeuge der 
 \section{Algorithmus}
 Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin freie Hand. Im Kundengespräch wurde auch über die mögliche Erweiterung der Software um mehrere Algorithmen diskutiert. Dies hatte den Charme, dass Studierende damit zusätzlich die Möglichkeit gehabt hätten verschiedene Algorithmen zu vergleichen und zu erfahren wie stark oder weniger stark sich verschiedene Ansätze einer Problemlösung im Hinblick auf Algorithmus und Zustandsdiagramm unterscheiden. Letztlich wurde diese Erweiterung als \textit{mögliche Modifizierung} kategorisiert und ist nicht Teil dieses Projekts geworden.
 
-\paragraph{}Fahrstuhl-Algorithmus\footnote{\url{https://de.wikipedia.org/wiki/Aufzugsanlage#Sammelsteuerung} oder \url{https://en.wikipedia.org/wiki/Elevator#The_elevator_algorithm}}
-\todo{Unseren implementierten Algorithmus beschreiben}
+\paragraph{}Wir entschieden uns im folgenden dazu den am häufigsten verwendeten Algorithmus zu verwenden, welcher im Fahrstuhlsystem mit einem Schacht Anwendung findet, den \textit{Fahrstuhl-Algorithmus mit Sammelsteuerung}\cite{wiki_elev}. Hierbei fährt der Fahrstuhl zunächst in eine Richtung und bedient ausschließlich Fahrtwünsche oder -rufe die in dieser Fahrtrichtung existieren, andere werden gespeichert und nach Umkehr der Fahrtrichtung bedient.
 
-\paragraph{}Zustandsdiagramm 
+\paragraph{Beispiel:}Ein Passagier steigt im Erdgeschoss zu und möchte in den achten Stock fahren. Während sich der Fahrstuhl in Bewegung setzt rufen ihn zwei weitere Personen auf Etage vier und sechs. Die Person auf Etage vier ruft \textit{nach oben} und jene auf Etage sechs \textit{nach unten}.\\
+Während seiner Fahrt wird der Fahrstuhl nun den Ruf auf Etage vier bedienen, während er an Etage sechs vorbeifährt. Dieser Ruf wird im Anschluss nach Umkehr der Fahrtrichtung bedient.
+
+\paragraph{}Wie man erkennen konnte setzt diese Form der Steuerung zwei Tasten ja Etage zur Abgabe von Fahrtstuhlrufen voraus, weshalb diese in der vorliegenden Form implementiert wurden. Für weitere Informationen zu verschiedenen Fahrstuhl-Algorithmen verweisen wir auf folgenden Quellen \cite{wiki_elev} und \cite{wiki_elev_2}.
+
+\paragraph{Zustandsdiagramm}Zustandsdiagramm 
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
 dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben
 wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
