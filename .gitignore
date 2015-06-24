@@ -57,7 +57,7 @@ dist/
 *.toc
 *.vrb
 *.xdy
-docs/projektdokumentation/projektdoku.pdf
+*.pdf
 docs/projektdokumentation/*.backup
 *.syg
 *.syg2

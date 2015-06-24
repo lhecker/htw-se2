@@ -51,7 +51,7 @@ Während seiner Fahrt wird der Fahrstuhl nun den Ruf auf Etage vier bedienen, w�
 
 \paragraph{}Wie man erkennen konnte setzt diese Form der Steuerung zwei Tasten ja Etage zur Abgabe von Fahrtstuhlrufen voraus, weshalb diese in der vorliegenden Form implementiert wurden. Für weitere Informationen zu verschiedenen Fahrstuhl-Algorithmen verweisen wir auf folgenden Quellen \cite{wiki_elev} und \cite{wiki_elev_2}.
 
-\paragraph{Zustandsdiagramm}Zustandsdiagramm 
+\paragraph{Zustandsdiagramm}Zustandsdiagramm
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
 dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben
 wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
@@ -81,7 +81,7 @@ Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, son
 
 \chapter{Qualitätssicherung}
 \section{Allgemein}
-Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntniss der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evulation benutzt.
+Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evulation benutzt.
 
 \paragraph*{}Aus der Definition
 \begin{quote}\label{PD_SQ}
@@ -95,7 +95,7 @@ lässt sich somit die umfassende Qualitätssicherung aufteilen auf
 \end{enumerate}
 da sich Softwarequalität nach obiger Definition rein auf die bereits eruierten Anforderungen und Bedingungen stützt, wie Gesamtzufriedenheit des Nutzers allerdings nur dann erreichen lässt, wenn diese Vorbetrachtung bestmöglich durchgeführt wurde.
 \section{QS Anforderungsanalyse}
-Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf saubere und eindeutige Formulierungen geachtet, da Probleme in dieser Phase die größten Auswirkungen auf die Zufriedenheit des Nutzers besitzen.\\
+Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf vollständige und unmissverständliche Formulierungen geachtet, da Probleme in dieser Phase die größten Auswirkungen auf die Zufriedenheit des Nutzers besitzen.\\
 Desweiteren wurde durch erneuten Vergleich der Anforderungen mit Kundenprotokollen und Aufgabenstellung sowie Prüfen auf Inkonsistenzen assistiert.
 
 Als qualitätsunterstüzende Maßnahme wurden die Anforderungen möglichst auf sogenannte Issues, also Stichpunkte und Meilensteine in einem Projektmanager, abgebildet.
@@ -106,20 +106,37 @@ Als qualitätsunterstüzende Maßnahme wurden die Anforderungen möglichst auf s
 \item Testregime
 \end{itemize}
 \subsection{Konventionen}
-\todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
-\subsection{Codekonventionen}
-Um bei der Arbeit in der Gruppe an einer gemeinsamen Quellcode-Basis einen hohen Qualitätsstandard der Quelltexte zu bewahren, wurden Konventionen festgelegt die den Entwicklern vorgeschrieben haben wie z.B. Methoden und Variablen benannt werden sollen. So wurde festgelegt, dass
+Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unterschiedlichen Persönlichkeiten mit verschiedenen Heransgehensweisen und Vorerfahrung, schnell ein Zoo an Stilen und Gewohnheiten. Desweiteren besteht ein gewisser Konsensz, in der Branche, an bestimmen Herangehensweisen und Konvetionen ("`best practice"'). Daraus ergibt sich die Motivation feste Konventionen festzulegen, um entweder Bestehende zu vereinheitlichen oder sie für Jene, welche sie bis dato noch nicht kannten, einzuführen:
+%Die Motivation dazu lasse ich hier bewusst herraus, diese möchte ich lieber im Vortrag dazu bennen. Gez. Markus 2015-06-24
 \begin{itemize}
- \item Methodennamen in camelCase Notation zu bezeichnen sind
- \item im Quelltext keine nachgestellten Leerzeichen\footnote{engl. trailing whitespace} vorkommen dürfen
- \item keine Quelltextzeile länger als 80 Zeichen ist
- \item private Variablen mit einem Unterstrich gekennzeichnet werden
+\item Allgemeine Konventionen
+	\begin{itemize}
+	\item Datum- und Zeitangaben in ISO 8601, Ausnahme bei nationalen externen Dokumenten möglich
+	\item alle Daten sind zu Versionieren mit GIT, temporäre Datein jedoch nicht
+	\item alle gefundenen Fehler in Issues/Gitlab festhalten
+	\item Vektorgrafiken skaliert auf 100x100 px
+	\item Textdatein in UTF8
+	\end{itemize}
+\item Konventionen Quelltext
+	\begin{itemize}
+	\item camelCase für Bezeichner
+	\item keine nachgestellten Leerzeichen\footnote{engl. trailing whitespace}
+	\item wenn möglich keine Zeile länger als 80 Zeichen %außer wenn's semantisch Sinn macht
+	\item private Member mit einem Unterstrich
+	\item Datei endet mit newline (leere Zeile)
+	\item Javascript:
+		\begin{itemize}
+		\item ECMAScript 6
+		\item "`use strict"' als erste Zeile eines .js
+		\item Tabs statts Space
+		\end{itemize}
+	\end{itemize}
 \end{itemize}
 
-\todo{Code Konventionen, statische Codeanalyse}
+
 \subsection{Test}
 Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
-
+\todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
 \subsubsection{manuelle Testfälle}
 \subsubsection{automatisierte Testfälle}
 
