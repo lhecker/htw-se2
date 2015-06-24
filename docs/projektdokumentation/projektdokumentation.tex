@@ -42,10 +42,22 @@ Die Wahl der verwendeten Technologie fußte prinzipiell auf drei Hauptpunkten, e
 Gebündelt und verwendet wurden diese Möglichkeiten durch modere Werkzeuge der Web-Entwicklung wie \textsc{ReactJS}\footnote{\url{http://facebook.github.io/react/}}, \textsc{nodeJS}\footnote{\url{https://nodejs.org}}, \textsc{bower}\footnote{\url{http://bower.io}} oder \textsc{grunt}\footnote{\url{http://gruntjs.com}}. An dieser Stelle verweisen wir auf die entsprechenden Stellen der Entwicklerdokumentation.
 
 \section{Algorithmus}
+Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin freie Hand. Im Kundengespräch wurde auch über die mögliche Erweiterung der Software um mehrere Algorithmen diskutiert. Dies hatte den Charme, dass Studierende damit zusätzlich die Möglichkeit gehabt hätten verschiedene Algorithmen zu vergleichen und zu erfahren wie stark oder weniger stark sich verschiedene Ansätze einer Problemlösung im Hinblick auf Algorithmus und Zustandsdiagramm unterscheiden. Letztlich wurde diese Erweiterung als \textit{mögliche Modifizierung} kategorisiert und ist nicht Teil dieses Projekts geworden.
+
+\paragraph{}Fahrstuhl-Algorithmus\footnote{\url{https://de.wikipedia.org/wiki/Aufzugsanlage#Sammelsteuerung} oder \url{https://en.wikipedia.org/wiki/Elevator#The_elevator_algorithm}}
+\todo{Unseren implementierten Algorithmus beschreiben}
+
+\paragraph{}Zustandsdiagramm 
 Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
 dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben
 wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
 \missingfigure[figwidth=\textwidth]{Zustandsdiagramm ggf. mehrere Versionen}
+\todo{ZD und Weg dort hin beschreiben}
+
+\section{Benutzerschnittstelle}
+UI \todo{Wie haben wir uns das mit der UI gedacht und warum}
+
+\section{Komponenten und Design Pattern}
 
 \paragraph{}Diese Vorauswahl bestand
 Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben sich folgende Entwurfsmuster:
@@ -53,12 +65,15 @@ Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben s
 \subsection*{State Design Pattern}
 Vorteile, Nachteile, warum haben wir uns dageben entschieden?
 \todo{Nachteile: großer Overhead, da hier nur 3 Zustände vorkommen, jedoch die Zustandsübergänge komplex sind}
+
+\subsection*{Event Emitter}
+\subsection{Observer Pattern}
+
 \subsection*{Zustandstabelle}
 \todo{nicht sinnvoll zwecks erweiterbarkeit/wartbarkeit}
 
 Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, sondern in den Zustandsübergängen, da der Fahrstuhl bis auf wenige Ausnahmen wie von \textbf{Idle} nach \textbf{Stop} in jeden beliebigen Zustand springen kann.
-\subsection*{Event Emitter}
-\subsection{Observer Pattern}
+
 
 \chapter{Qualitätssicherung}
 \section{Allgemein}
