@@ -30,32 +30,33 @@ Eine Besonderheit des Systems ist dabei die Umgebung in der es eingesetzt werden
 Nach der Festlegung von Anforderungen und der Beschreibung der Funktionalitäten der Fahrstuhlsimulation war der nächste Schritt der Entwurf der internen Struktur. Wir näherten uns dieser Problemstellung von außen und erhöhten bei steigender Tiefe die Granularität. Dies bedeutete zunächst, die geeignetste Rahmen-Technologie festzulegen, welche die Anforderungen unseren Kundin am besten erfüllen konnte.
 
 \section{Technologie}
-Die Wahl der verwendeten Technologie fußte prinzipiell auf drei Hauptpunkten, erstens unserer Vision einer optisch ansprechenden Anwendung, welche das Zusammenspiel von System und dessen Zuständen visualisiert. Zweitens einer möglichst umfassenden Kompatibilität zu verschiedenen Plattformen und drittens der verfügbaren Zeit zur Realisierung aller Anforderungen. In Anbetracht der kurzen Projektzeit entschlossen wir uns zunächst eine Vorauswahl zu treffen. Diese sollte ausschließlich Technologien enthalten, auf deren Gebieten bereits Erfahrungen im Team vorhanden waren. Nach kurzer Diskussion ergaben sich als Möglichkeiten die Nutzung von \textsc{C++}, \textsc{Java} oder \textsc{Web-Technologien} wie \textsc{Javascript}.
+Die Wahl der verwendeten Technologie fußte prinzipiell auf drei Hauptpunkten, erstens unserer Vision einer optisch ansprechenden Anwendung, welche das Zusammenspiel von System und dessen Zuständen visualisiert. Zweitens einer möglichst umfassenden Kompatibilität zu verschiedenen Plattformen und drittens der verfügbaren Zeit zur Realisierung aller Anforderungen. Wir entschlossen uns zunächst eine Vorauswahl zu treffen. Diese sollte wenn möglich Technologien enthalten, auf deren Gebieten bereits Erfahrungen im Team vorhanden waren. Nach kurzer Diskussion ergaben sich als Möglichkeiten die Nutzung von \textsc{C++}, \textsc{Java} oder \textsc{Web-Technologien} wie \textsc{Javascript}.
 
 \paragraph*{}Nach reiflicher Überlegung und wiederholter Rücksprache mit unserer Kundin erschienen uns \textsc{Web-Technologien} am geeignetsten um alle Anforderungen in der zur Verfügung stehenden Zeit umzusetzen. Die Vorteile dieser Technologien, welche unsere Entscheidung maßgeblich beeinflussten, waren folgende:
 
 \begin{enumerate}
 	\item Sie ermöglichten uns größtmögliche Plattform-Kompa\-tibilität, da unser Produkt einerseits als Cross-Plattfom-Anwendung und andererseits als Web-Site veröffentlicht werden können.
-	\item Mit den modernen Mitteln des Web-Designs war es uns möglich die hohen grafischen Anforderungen an das Software-System in derart kurzer Zeit umzusetzen.
+	\item Mit den modernen Mitteln des Web-Designs war es uns möglich unsere Vision des Software-System umzusetzen.
 \end{enumerate}
 
-Gebündelt und verwendet wurden diese Möglichkeiten durch modere Werkzeuge der Web-Entwicklung wie \textsc{ReactJS}\footnote{\url{http://facebook.github.io/react/}}, \textsc{nodeJS}\footnote{\url{https://nodejs.org}}, \textsc{bower}\footnote{\url{http://bower.io}} oder \textsc{grunt}\footnote{\url{http://gruntjs.com}}. An dieser Stelle verweisen wir auf die entsprechenden Stellen der Entwicklerdokumentation.
+Gebündelt und verwendet wurden diese Möglichkeiten durch modere Werkzeuge der Web-Entwicklung wie beispielsweise \textsc{ReactJS}\footnote{\url{http://facebook.github.io/react/}}, \textsc{nodeJS}\footnote{\url{https://nodejs.org}}, \textsc{bower}\footnote{\url{http://bower.io}} oder \textsc{grunt}\footnote{\url{http://gruntjs.com}}. An dieser Stelle verweisen wir auf die entsprechenden Stellen der Entwicklerdokumentation.
 
 \section{Algorithmus}
 Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin freie Hand. Im Kundengespräch wurde auch über die mögliche Erweiterung der Software um mehrere Algorithmen diskutiert. Dies hatte den Charme, dass Studierende damit zusätzlich die Möglichkeit gehabt hätten verschiedene Algorithmen zu vergleichen und zu erfahren wie stark oder weniger stark sich verschiedene Ansätze einer Problemlösung im Hinblick auf Algorithmus und Zustandsdiagramm unterscheiden. Letztlich wurde diese Erweiterung als \textit{mögliche Modifizierung} kategorisiert und ist nicht Teil dieses Projekts geworden.
 
-\paragraph{}Wir entschieden uns im folgenden dazu den am häufigsten verwendeten Algorithmus zu verwenden, welcher im Fahrstuhlsystem mit einem Schacht Anwendung findet, den \textit{Fahrstuhl-Algorithmus mit Sammelsteuerung}\cite{wiki_elev}. Hierbei fährt der Fahrstuhl zunächst in eine Richtung und bedient ausschließlich Fahrtwünsche oder -rufe die in dieser Fahrtrichtung existieren, andere werden gespeichert und nach Umkehr der Fahrtrichtung bedient.
+\paragraph{}Wir entschieden uns im folgenden dazu den am häufigsten verwendeten Algorithmus zu verwenden, welcher in Fahrstuhlsystemen mit einem Schacht Anwendung findet, den \textit{Fahrstuhl-Algorithmus mit Sammelsteuerung}\cite{wiki_elev}. Hierbei fährt der Fahrstuhl zunächst in eine Richtung und bedient ausschließlich Fahrtwünsche oder -rufe die in dieser Fahrtrichtung existieren, andere werden gespeichert und nach Umkehr der Fahrtrichtung bedient.
 
 \paragraph{Beispiel:}Ein Passagier steigt im Erdgeschoss zu und möchte in den achten Stock fahren. Während sich der Fahrstuhl in Bewegung setzt rufen ihn zwei weitere Personen auf Etage vier und sechs. Die Person auf Etage vier ruft \textit{nach oben} und jene auf Etage sechs \textit{nach unten}.\\
 Während seiner Fahrt wird der Fahrstuhl nun den Ruf auf Etage vier bedienen, während er an Etage sechs vorbeifährt. Dieser Ruf wird im Anschluss nach Umkehr der Fahrtrichtung bedient.
 
-\paragraph{}Wie man erkennen konnte setzt diese Form der Steuerung zwei Tasten ja Etage zur Abgabe von Fahrtstuhlrufen voraus, weshalb diese in der vorliegenden Form implementiert wurden. Für weitere Informationen zu verschiedenen Fahrstuhl-Algorithmen verweisen wir auf folgenden Quellen \cite{wiki_elev} und \cite{wiki_elev_2}.
+\paragraph{}Wie man erkennen konnte setzt diese Form der Steuerung zwei Tasten je Etage zur Abgabe von Fahrtstuhlrufen voraus, weshalb diese in der vorliegenden Form implementiert wurden. Für weitere Informationen zu verschiedenen Fahrstuhl-Algorithmen verweisen wir auf folgenden Quellen \cite{wiki_elev} und \cite{wiki_elev_2}.
 
-\paragraph{Zustandsdiagramm}Zustandsdiagramm
-Die wesentliche Funktionalität sowie der Algorithmus des Systems lassen sich in
-dem Zustandsdiagramm abbilden. Um das bestmögliche Ergebnis zu erhalten haben
-wir verschiedene Versionen des Diagramms entworfen und diese in Gruppentreffen diskutiert und überarbeitet.
-\missingfigure[figwidth=\textwidth]{Zustandsdiagramm ggf. mehrere Versionen}
+\paragraph{Zustandsdiagramm}Nun galt es den Steuerungsalgorithmus näher zu analysieren, um ihn anschließend mittels \textsc{Javascript} zu implementieren. Dazu wurde über mehrere Gruppentreffen hinweg am Zustandsdiagramm des Systems gearbeitet. Abbildung XY zeigt das Resultat dieser Arbeit, in der Bildunterschrift sind alle zum Verständnis notwendigen Details beschrieben.
+
+%\includegraphics{images/ZDv6.svg}
+%\caption{...}
+%\label{ZD}
+
 \todo{ZD und Weg dort hin beschreiben}
 
 \section{Benutzerschnittstelle}
