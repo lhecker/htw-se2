@@ -3,7 +3,7 @@
 \chapter{Anforderungs- und Problemanalyse}
 Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden welches Problem die Kundin mit der zu entwickelnden Software lösen möchte. Dafür wurden Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe von Audioaufzeichnung, Mitschriften und Fotografien protokolliert. Zur detaillierten Beschreibung einzelner Abläufe des Systems wurden Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
 \begin{figure}[hbt]
-\centering
+\hspace*{-1.2cm}
 \subcaptionbox{Skizze der Fahrstuhlsimulation am Whiteboard}[0.49\linewidth]
 {\includegraphics[height=8cm]{images/kundengespraech1.jpg}}
 \subcaptionbox{Modell des Fahrstuhles}[0.49\linewidth]
@@ -74,11 +74,21 @@ Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin 
 \begin{figure}[h]
 	\hspace*{-2.0cm}
 	\includegraphics[width=1.3\textwidth]{images/ZDv6.eps}
-	\caption{Zustandsdiagram der Fahrstuhlsteuerung. Die im Diagramm verwendeten Abkürzungen erklären sich folgendermaßen: \textit{W}: Wunsch, \textit{R}: Ruf, \textit{ES}: Etagensensor, \textit{E}: Etage, \textit{WS}: WeightSensor oder Gewichtssensor, \textit{H}: History-Zustand}
+	\caption{Zustandsdiagramm der Fahrstuhlsteuerung. Die im Diagramm verwendeten Abkürzungen erklären sich folgendermaßen: \textit{W}: Wunsch, \textit{R}: Ruf, \textit{ES}: Etagensensor, \textit{E}: Etage, \textit{WS}: WeightSensor oder Gewichtssensor, \textit{H}: History-Zustand}
 	\label{ZD}
 \end{figure}
 
-Erläuterung zu ZD \todo{ZD in prosa beschreiben}
+\paragraph{Fahrt}
+Den \textit{Standby}-Zustand nimmt die Steuerung in unserem System sowohl nach dem Start in Etage 1 als auch auf einer beliebigen Etage ein, sofern keine weiteren Wünsche oder Rufe vorhanden sind. Werden nun Rufe abgegeben, entscheidet die Steuerung auf Basis der Summe über und unter ihrer aktuellen Position, in welcher Richtung sie mit der Bearbeitung beginnt.
+
+\paragraph{}Nehmen wir im Folgenden an, dass der Fahrstuhl nach oben fährt. In diesem Fall geht er zunächst in den Zustand \textit{Fahre hoch} über. Die Vorbeifahrt an einem Etagensensor \textit{ES} löst einen Übergang in den Zustand \textit{Fuhr hoch} aus, in welchem ein Mechanismus überprüft, ob die aktuelle Etage einem Wunsch/Ruf entspricht. Ist dies nicht der Fall, wird die Fahrt in der gleichen Richtung fortgesetzt, was dem erneuten Übergang in den Zustand \textit{Fahre hoch} entspricht.\\
+Handelt es sich jedoch um eine Zieletage, geht die Steuerung in den \textit{Tür-Subautomat} über. Dieser entspricht einem sogenannten \textit{History-Zustand}\cite{history_Z}, welcher es uns elegant ermöglicht nach dem Verlassen des Subautomaten in einen Zustand gleicher Fahrtrichtung zurückzukehren.
+
+\paragraph{Tür-Subautomat}
+Mit dem Eintritt in den Subautomat öffnen sich zunächst die Fahrstuhltür. Im Zustand \textit{Tür geöffnet} können durch Betätigung des entsprechenden Buttons Fahrgäste hinzugefügt oder entfernt werden. Bei einer Anzahl von mehr als 8 Personen löst der Gewichtssensor \textit{ES} einen Übergang ein den Zustand \textit{Überlast} aus, welcher den Fahrstuhl am fahren hindert und nur durch das Entfernen von Passagieren verlassen werden kann.\\
+Sollte die Weiterfahrt nicht durch Betätigung der Ruf- oder Wunschtaste der aktuellen Etage verhindert werden, geht der Fahrstuhl nach dem Schließen der Tür in den \textit{Fuhr hoch}-Zustand der letzten Fahrrichtung über.
+
+\paragraph{}Nach der Abarbeitung aller Wünsche und Rufe geht die Steuerung in der aktuellen Etage des Fahrstuhls erneut in den \textit{Standby}-Zustand über. 
 
 \section{Benutzerschnittstelle}
 UI \todo{Wie haben wir uns das mit der UI gedacht und warum? Wie war der Weg dorthin?}
