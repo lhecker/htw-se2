@@ -23,10 +23,6 @@ module.exports = function (grunt) {
 				files: ['bower.json'],
 				tasks: ['wiredep'],
 			},
-			jstest: {
-				files: ['test/spec/{,*/}*.js'],
-				tasks: ['test:watch'],
-			},
 			gruntfile: {
 				files: ['Gruntfile.js'],
 			},
