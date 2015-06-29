@@ -50,7 +50,7 @@ Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin 
 	\begin{minipage}{0.47\textwidth}
 		\includegraphics[width=\textwidth]{images/algo_example.eps}
 		%\caption{Eine Grafik}
-		%\label{Bild} 
+		%\label{Bild}
 	\end{minipage}
 	% Auffüllen des Zwischenraums
 	\hfill
@@ -88,7 +88,7 @@ Handelt es sich jedoch um eine Zieletage, geht die Steuerung in den \textit{Tür
 Mit dem Eintritt in den Subautomat öffnen sich zunächst die Fahrstuhltür. Im Zustand \textit{Tür geöffnet} können durch Betätigung des entsprechenden Buttons Fahrgäste hinzugefügt oder entfernt werden. Bei einer Anzahl von mehr als 8 Personen löst der Gewichtssensor \textit{ES} einen Übergang ein den Zustand \textit{Überlast} aus, welcher den Fahrstuhl am fahren hindert und nur durch das Entfernen von Passagieren verlassen werden kann.\\
 Sollte die Weiterfahrt nicht durch Betätigung der Ruf- oder Wunschtaste der aktuellen Etage verhindert werden, geht der Fahrstuhl nach dem Schließen der Tür in den \textit{Fuhr hoch}-Zustand der letzten Fahrrichtung über.
 
-\paragraph{}Nach der Abarbeitung aller Wünsche und Rufe geht die Steuerung in der aktuellen Etage des Fahrstuhls erneut in den \textit{Standby}-Zustand über. 
+\paragraph{}Nach der Abarbeitung aller Wünsche und Rufe geht die Steuerung in der aktuellen Etage des Fahrstuhls erneut in den \textit{Standby}-Zustand über.
 
 \section{Benutzerschnittstelle}
 Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittstelle führt, verlief ähnlich dem des Zustandsdiagramms. Über mehrere Treffen hinweg wurden Vorschläge gesammelt, diskutiert und letztlich auch der Kundin unterbreitet. Ein Zwischenstadium dieses Prozesses zeigt Abbildung \ref{Entwurf_UI}.
@@ -160,17 +160,17 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 \begin{itemize}
 \item Allgemeine Konventionen
 	\begin{itemize}
-	\item Datum- und Zeitangaben in ISO 8601, Ausnahme bei nationalen externen Dokumenten möglich
-	\item alle Daten sind zu Versionieren mit GIT, temporäre Datein jedoch nicht
-	\item alle gefundenen Fehler in Issues/Gitlab festhalten
-	\item Vektorgrafiken skaliert auf 100x100 px
-	\item Textdatein in UTF8
+	\item Datum- und Zeitangaben sind in ISO 8601 zu notieren, Ausnahmen sind bei nationalen externen Dokumenten möglich
+	\item alle Daten sind mit GIT zu Versionieren, temporäre Daten jedoch nicht
+	\item alle gefundenen Fehler sind in Issues/Gitlab festzuhalten
+	\item Vektorgrafiken sind zu skalieren auf 100x100 px
+	\item Textdatein sind in UTF8 zu codieren
 	\end{itemize}
 \item Konventionen Quelltext
 	\begin{itemize}
 	\item camelCase für Bezeichner
 	\item keine nachgestellten Leerzeichen\footnote{engl. trailing whitespace}
-	\item wenn möglich keine Zeile länger als 80 Zeichen %außer wenn's semantisch Sinn macht
+	\item wenn möglich keine Zeile länger als 80 Zeichen, außer wenn Lesbarkeit sonst herabgesetzt wird
 	\item private Member mit einem Unterstrich
 	\item Datei endet mit newline (leere Zeile)
 	\item Javascript:
@@ -178,6 +178,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 		\item ECMAScript 6
 		\item "`use strict"' als erste Zeile eines .js
 		\item Tabs statts Space
+		\item Einrückungstil Variante 1TBS\footnote{\url{https://en.wikipedia.org/wiki/Indent_style#Variant:_1TBS}}
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
