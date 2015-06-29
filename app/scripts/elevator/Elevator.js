@@ -57,6 +57,12 @@ class Elevator extends EventEmitter {
 		];
 
 
+		const weightSensor = new ElevatorWeightSensor(self);
+		weightSensor.on('overweight:change', (isOverweight) => {
+			self._isOverweight = isOverweight;
+		});
+
+
 		const doorSensor = new ElevatorDoorSensor(self);
 		doorSensor.on('shut', self._tryMove.bind(self));
 
@@ -113,13 +119,14 @@ class Elevator extends EventEmitter {
 		 * The following properties will help tracking the state of the lift.
 		 */
 		self._isMoving = false;
+		self._isOverweight = false;
 
 		/*
 		 * The following properties contain references
 		 * to (simulated) active sensors.
 		 */
 		self._doorSensor = doorSensor;
-		self._weightSensor = new ElevatorWeightSensor(self);
+		self._weightSensor = weightSensor;
 	}
 
 	get minLevel() {
@@ -151,7 +158,7 @@ class Elevator extends EventEmitter {
 	}
 
 	get isOverweight() {
-		return this._weightSensor.weight() > ElevatorProperties.maxWeight;
+		return this._isOverweight;
 	}
 
 	addPerson() {
@@ -160,6 +167,7 @@ class Elevator extends EventEmitter {
 
 	removePerson() {
 		this.emit('persons:remove');
+		this._tryMove();
 	}
 
 	hasRequestOnLevel(level) {
@@ -191,7 +199,7 @@ class Elevator extends EventEmitter {
 		const r = self._requestData(level);
 		const s = self._stops[tupleIdx(relativePosition)];
 
-		if (self._level === level && !self.isMoving && !self.isDoorUnlocked) {
+		if (self._level === level && !self.isMoving) {
 			self._emitStop();
 		} else if (relativePosition) {
 			direction = Math.sign(direction);
@@ -210,7 +218,7 @@ class Elevator extends EventEmitter {
 	_tryMove() {
 		const self = this;
 
-		if (!self.isMoving && !self.isDoorUnlocked) {
+		if (!self.isMoving && !self.isDoorUnlocked && !self.isOverweight) {
 			let direction = self._direction;
 
 			if (!direction) {
