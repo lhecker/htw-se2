@@ -30,8 +30,44 @@ describe('Elevator Test Suite', () => {
 		expect(elevator.isOverweight).toBe(false);
 	});
 
-	it('DoorSensor tests', () => {
-	});
+	it('DoorSensor tests', (done) => {
+		console.log('Testing DoorSensor. This takes about ' + (DOOR_STATES_duration / 1000).toFixed(1) + 's:');
+
+		expect(elevator._doorSensor.state()).toBe('shut');
+
+		const startTime = Date.now();
+		const promises = DOOR_STATES.map((state) => {
+			const eventName = state[0];
+			const event = 'door:' + eventName;
+
+			return new Promise((resolve, reject) => {
+				elevator.once(event, () => {
+					console.log(event);
+					const time = Date.now() - startTime;
+					resolve([eventName, time]);
+				});
+			});
+		});
+
+		Promise.all(promises)
+			.then((events) => {
+				let timingSum = 0;
+
+				DOOR_STATES.forEach((state, idx) => {
+					const [name, timing] = state;
+					const [eventName, eventTime] = events[idx];
+
+					timingSum += timing;
+
+					expect(eventName).toBe(name);
+					expect(Math.abs(eventTime - timingSum)).toBeLessThan(DOOR_STATES.length * 10);
+				});
+
+				done();
+			});
+
+		elevator.request(elevator.level, 0);
+	}, 2 * DOOR_STATES_duration);
 
 	it('LevelSensor tests', () => {
 	});
