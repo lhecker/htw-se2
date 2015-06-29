@@ -178,16 +178,28 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 		\item ECMAScript 6
 		\item "`use strict"' als erste Zeile eines .js
 		\item Tabs statts Space
-		\item Einrückungstil Variante 1TBS\footnote{\url{https://en.wikipedia.org/wiki/Indent_style#Variant:_1TBS}}
+		\item Einrückungsstil Variante 1TBS \footnote{\url{https://en.wikipedia.org/wiki/Indent_style\#Variant:_1TBS}}
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
-
 
 \subsection{Test}
 Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
 \todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
 \subsubsection{manuelle Testfälle}
+\begin{testcase}{Fatal}
+\tcSubject Fahrstuhl fährt nach oben
+
+\tcRemark Nimmt Bezug auf ELV-001: Die Fahrstuhlsimulation muss den Fahrstuhl nach oben fahren lassen.
+
+\tcConditions Simulation ist via grunt serve gebaut und geöffnet
+
+\tcProceeding Drücken des Fahrtwunschknopfes "`nach oben"' in einer Etage über dem Ausgangszustand des Fahrstuhls.
+
+\tcGoal Fahrstuhl fährt in gewählte Etage und öffnet Tür.
+
+\tcError Schreiben einen Bugreports via Issue in Gitlab.
+\end{testcase}
 \subsubsection{automatisierte Testfälle}
 
 \chapter{Team-Organisation}
