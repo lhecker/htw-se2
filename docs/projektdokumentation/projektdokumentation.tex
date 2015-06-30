@@ -123,8 +123,13 @@ Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittst
 \section{Komponenten und Design Pattern}
 Story? \todo{Wie leiten wir in unserem "from the outside to the inside" Approach am besten auf Architektur und Komponenten um?}
 
+\paragraph{}Diese Vorauswahl bestand
+Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben sich folgende Entwurfsmuster:
+\todo{Wir müssen aufpassen, dass wir eine klare Trennung zwischen Entwurfs-spezifischen Inhalten im Entwicklerhandbuch und hier vornehmen.}
 \subsection*{State Design Pattern}
 Vorteile, Nachteile, warum haben wir uns dageben entschieden?
+\todo{Nachteile: großer Overhead, da hier nur 3 Zustände vorkommen, jedoch die Zustandsübergänge komplex sind}
+
 \subsection*{Event Emitter}
 \subsection*{Observer Pattern}
 
@@ -183,6 +188,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
+
 
 \subsection{Test}
 Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
