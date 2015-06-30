@@ -196,34 +196,41 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 \subsubsection{manuelle Testfälle}
 \begin{testcase}[tc:build]{Manuell}
 \tcSubject Projekt-Setup
-\tcRemark Testfall um erfolgreichen Build-Prozess garantieren zu können.
+\tcRemark Testfall um erfolgreichen Clean-Build-Prozess garantieren zu können.
 \tcConditions
 	\begin{enumerate}
 	\item Repository mit git geklont
 	\item Akutellesten origin/master commit ausgecheckt
 	\item Aktuelles Verzeichnis \texttt{se2\_bga} (Projekt-Root)
-	\item Alle nicht getrackten Datein gelöscht mit \texttt{git clean -fx}
-	\item Alle nicht committeten Datein gelöscht mit \texttt{git reset --hard}
+	\item Alle nicht getrackten Datein gelöscht mit \texttt{rm -r *}
+	\item Neuerstellen der Inhalte des Working-Directories mit \texttt{git reset --hard}
 	\end{enumerate}
 \tcProceeding
 	\begin{enumerate}
-	\item Mit NPM verwaltete Abhängigkeiten erzeugen mit \texttt{npm build}
-	\item Mit Bower verwaltete Abhängigkeiten erzeugen mit \texttt{bower build}
-	\item Build-Jobs mit \texttt{grunt build} ausführen
+	\item Mit NPM verwaltete Abhängigkeiten erzeugen mit \texttt{npm install}
+	\item Mit Bower verwaltete Abhängigkeiten erzeugen mit \texttt{bower install}
+	\item Build-Jobs mit \texttt{grunt install} ausführen
 	\item Wechsel in Verzeichnis \texttt{docs}
 	\item Dokumentation setzen mit \texttt{./make\_doc}
 	\end{enumerate}
 \tcGoal
 	\begin{enumerate}
-	\item NPM build done without fatal errors
-	\item Bower build done without fatal errors
-	\item Grunt build done without fatal errors
+	\item NPM build done without fatal errors (Returncode 0 e.g. \texttt{echo \$?} = 0)
+	\item Bower build done without fatal errors (Returncode 0 e.g. \texttt{echo \$?} = 0)
+	\item Grunt build done without fatal errors (Returncode 0 e.g. \texttt{echo \$?} = 0)
 	\end{enumerate}
 \end{testcase}
 
 \begin{testcase}{Manuell}
-\tcSubject Fahrstuhlsimulation
-\tcRemark Nimmt Bezug auf ELV-001: Die Fahrstuhlsimulation muss den Fahrstuhl nach oben fahren lassen.
+\tcSubject Fahrstulfahrt
+\tcRemark Nimmt Bezug auf
+	\begin{itemize}
+	\item ELV-001 bis ELV-004
+	\item ELV-007
+	\item ELV-008
+	\item ELV-011
+	\item ELV-014
+	\end{itemize}
 \tcConditions
 	\begin{enumerate}
 	\item Projekt erfolgreich gebaut wie in Test \ref{tc:build} getestet
@@ -248,7 +255,13 @@ Um unser Team zu organisieren und eine reibungslose Zusammenarbeit zu gewährlei
 
 \paragraph{}Bei der Ausgestaltung der Arbeit verfolgten wir den Ansatz der \textit{simultanen Zusammenarbeit}. Unsere Mitglieder arbeiteten teilweise gemeinsam, zeitweise allein an verschiedenen Problemlösungen und die Koordination dieser Arbeit sowie die Diskussion der Teilergebnisse fand während den zahlreichen Meetings statt.
 
+<<<<<<< HEAD
 \paragraph{Meetings}Diese Besprechungen folgten immer einer festen Struktur. Vor dem Statt\-finden wurde gemeinsam über die Agenda beraten. Dabei hatte jedes Mitglied die Möglichkeit eigene Punkte aufnehmen zu lassen. Diese Agenda wurde während der Besprechung als Leitfaden betrachtet und alle Diskussionsergebnisse wurden entsprechend ihrer Agendapunkte in einem Protokoll festgehalten. War es bis zum Ende des Termins nicht möglich alle Punkte abzuarbeiten, wurden jene automatisch zur Agenda des nächsten Termins hinzugefügt. Die Protokolle aller Besprechungen wurden für die Team-Mitglieder zu jedem Zeitpunkt abrufbar veröffentlicht.  
+||||||| merged common ancestors
+\paragraph{Meetings}Diese Besprechungen folgten immer einer festen Struktur. Vor dem Stattfindet wurde gemeinsam über die Agenda beraten. Dabei hatte jedes Mitglied die Möglichkeit eigene Punkte aufnehmen zu lassen. Diese Agenda wurde während der Besprechung als Leitfaden betrachtet und alle Diskussionsergebnisse wurden entsprechend ihrer Agendapunkte in einem Protokoll festgehalten. War es bis zum Ende des Termins nicht möglich alle Punkte abzuarbeiten, wurden jene automatisch zur Agenda des nächsten Termins hinzugefügt. Die Protokolle aller Besprechungen wurden für die Team-Mitglieder zu jedem Zeitpunkt abrufbar veröffentlicht.  
+=======
+\paragraph{Meetings}Diese Besprechungen folgten immer einer festen Struktur. Vor dem Stattfindet wurde gemeinsam über die Agenda beraten. Dabei hatte jedes Mitglied die Möglichkeit eigene Punkte aufnehmen zu lassen. Diese Agenda wurde während der Besprechung als Leitfaden betrachtet und alle Diskussionsergebnisse wurden entsprechend ihrer Agendapunkte in einem Protokoll festgehalten. War es bis zum Ende des Termins nicht möglich alle Punkte abzuarbeiten, wurden jene automatisch zur Agenda des nächsten Termins hinzugefügt. Die Protokolle aller Besprechungen wurden für die Team-Mitglieder zu jedem Zeitpunkt abrufbar veröffentlicht.
+>>>>>>> Further work on testcases: Operation e.g. movement of lift
 
 \paragraph{}Neben dieser geplanten und statischen Form der Kommunikation wurden im Team ebenfalls verschiedene Werkzeuge benutzt, um in bestimmten Situation direkt miteinander in Kontakt zu treten und zeitkritische Probleme gemeinsam zu lösen.
 
