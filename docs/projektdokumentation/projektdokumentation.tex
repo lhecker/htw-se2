@@ -190,19 +190,45 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
 \todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
 \subsubsection{manuelle Testfälle}
+\begin{testcase}{Error}
+\tcSubject Projekt-Setup
+\tcRemark Testfall um erfolgreichen Build-Prozess garantieren zu können.
+\tcConditions
+	\begin{enumerate}
+	\item Repository mit git geklont
+	\item Akutellesten origin/master commit ausgecheckt
+	\item Aktuelles Verzeichnis \texttt{se2\_bga} (Projekt-Root)
+	\item Alle nicht getrackten Datein gelöscht mit \texttt{git clean -fx}
+	\item Alle nicht committeten Datein gelöscht mit \texttt{git reset --hard}
+	\end{enumerate}
+\tcProceeding
+	\begin{enumerate}
+	\item Mit NPM verwaltete Abhängigkeiten bauen mit \texttt{npm build}
+	\item Mit Bower verwaltete Abhängigkeiten bauen mit \texttt{bower build}
+	\item Build-Jobs mit \texttt{grunt build} ausführen
+	\item Wechsel in Verzeichnis \texttt{docs}
+	\item Dokumentation setzen mit \texttt{./make\_doc}
+	\end{enumerate}
+\tcGoal
+	\begin{enumerate}
+	\item NPM build ohne fatale errors
+	\item Bower build ohne fatale errors
+	\item Grunt build ohne fatale errors
+	\end{enumerate}
+\end{testcase}
+
 \begin{testcase}{Fatal}
 \tcSubject Fahrstuhl fährt nach oben
-
 \tcRemark Nimmt Bezug auf ELV-001: Die Fahrstuhlsimulation muss den Fahrstuhl nach oben fahren lassen.
-
 \tcConditions Simulation ist via grunt serve gebaut und geöffnet
 
 \tcProceeding Drücken des Fahrtwunschknopfes "`nach oben"' in einer Etage über dem Ausgangszustand des Fahrstuhls.
 
 \tcGoal Fahrstuhl fährt in gewählte Etage und öffnet Tür.
 
-\tcError Schreiben einen Bugreports via Issue in Gitlab.
+\tcError Schreiben eines Bugreports via Issue in Gitlab.
 \end{testcase}
+
 \subsubsection{automatisierte Testfälle}
 
 \chapter{Team-Organisation}
