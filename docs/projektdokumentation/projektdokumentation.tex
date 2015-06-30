@@ -91,41 +91,42 @@ Sollte die Weiterfahrt nicht durch Betätigung der Ruf- oder Wunschtaste der akt
 \paragraph{}Nach der Abarbeitung aller Wünsche und Rufe geht die Steuerung in der aktuellen Etage des Fahrstuhls erneut in den \textit{Standby}-Zustand über.
 
 \section{Benutzerschnittstelle}
-Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittstelle führt, verlief ähnlich dem des Zustandsdiagramms. Über mehrere Treffen hinweg wurden Vorschläge gesammelt, diskutiert und letztlich auch der Kundin unterbreitet. Ein Zwischenstadium dieses Prozesses zeigt Abbildung \ref{Entwurf_UI}.
+Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittstelle führte, verlief ähnlich dem des Zustandsdiagramms. Über mehrere Treffen hinweg wurden Vorschläge gesammelt, diskutiert und letztlich der Kundin unterbreitet. Ein Zwischenstadium dieses Prozesses zeigt Abbildung \ref{Entwurf_UI}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/Entwurf_UI}
-	\caption{Früher Entwurf der Benutzerschnittstelle. Zu erkennen sind im linken Bereich die Visualisierung des Fahrstuhlschachts sowie die des Zustandsdiagramms im rechten Bereich. die untere Leiste enthält in diesem Entwurf die Schaltflächen zur Steuerung.}
+	\caption{Früher Entwurf der Benutzerschnittstelle. Zu erkennen sind im linken Bereich die Visualisierung des Fahrstuhlschachts sowie die des Zustandsdiagramms im rechten Bereich. Die untere Leiste enthält in diesem Entwurf die Schaltflächen zur Steuerung.}
 	\label{Entwurf_UI}
 \end{figure}
 
-UI \todo{Wie haben wir uns das mit der UI gedacht und warum? Wie war der Weg dorthin?}
+\hspace*{2cm}
+\paragraph{}Im Laufe der Entwicklung wurde die Benutzerschnittstelle stets weiterentwickelt. Nachdem frühe Versionen zunächst nur die Visualisierung des Fahrstuhls enthielten (siehe Abb. \ref{UI_ealry}) zeigt Abbildung \ref{UI_final} die finale Version.
+
+\hspace*{2cm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/UI_frueh.png}
+	\caption{Ausschnitt aus einer frühen Version der Fahrstuhlvisualisierung. Zu erkennen ist der Schacht und die Etagen drei bis fünf. Die Kabine befindet sich gerade in Etage 4.}
+	\label{UI_ealry}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
 	\missingfigure{Finale UI}
 	\caption{Some caption}
-	\label{some_lable}
+	\label{UI_final}
 \end{figure}
+
+\paragraph{}Die Prämissen des Projektes, Studierenden und Lehrenden ein übersichtliches und einfach zu bedienendes Werkzeug an die Hand zu geben, standen auch beim Entwurf der Benutzerschnittstelle immer im Vordergrund.
 
 \section{Komponenten und Design Pattern}
 Story? \todo{Wie leiten wir in unserem "from the outside to the inside" Approach am besten auf Architektur und Komponenten um?}
 
-\paragraph{}Diese Vorauswahl bestand
-Für die technische Umsetzung der Zustände in ausführbaren Quellcode ergaben sich folgende Entwurfsmuster:
-\todo{Wir müssen aufpassen, dass wir eine klare Trennung zwischen Entwurfs-spezifischen Inhalten im Entwicklerhandbuch und hier vornehmen.}
 \subsection*{State Design Pattern}
 Vorteile, Nachteile, warum haben wir uns dageben entschieden?
-\todo{Nachteile: großer Overhead, da hier nur 3 Zustände vorkommen, jedoch die Zustandsübergänge komplex sind}
-
 \subsection*{Event Emitter}
-\subsection{Observer Pattern}
-
-\subsection*{Zustandstabelle}
-\todo{nicht sinnvoll zwecks erweiterbarkeit/wartbarkeit}
-
-Die eigentliche Herausforderung des Systems besteht nicht in den Zuständen, sondern in den Zustandsübergängen, da der Fahrstuhl bis auf wenige Ausnahmen wie von \textbf{Idle} nach \textbf{Stop} in jeden beliebigen Zustand springen kann.
+\subsection*{Observer Pattern}
 
 
 \chapter{Qualitätssicherung}
