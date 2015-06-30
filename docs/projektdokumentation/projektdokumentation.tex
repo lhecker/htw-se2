@@ -74,7 +74,7 @@ Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin 
 \begin{figure}[h]
 	\hspace*{-2.0cm}
 	\includegraphics[width=1.3\textwidth]{images/ZDv6.eps}
-	\caption{Zustandsdiagramm der Fahrstuhlsteuerung. Die im Diagramm verwendeten Abkürzungen erklären sich folgendermaßen: \textit{W}: Wunsch, \textit{R}: Ruf, \textit{ES}: Etagensensor, \textit{E}: Etage, \textit{WS}: WeightSensor oder Gewichtssensor, \textit{H}: History-Zustand}
+	\caption{Zustandsdiagramm der Fahrstuhlsteuerung. Die im Diagramm verwendeten Abkürzungen erklären sich folgendermaßen: \textit{W}: Wunsch, \textit{R}: Ruf, \textit{ES}: Etagensensor, \textit{E}: Etage, \textit{WS}: WeightSensor oder Gewichtssensor}
 	\label{ZD}
 \end{figure}
 
@@ -131,6 +131,7 @@ Vorteile, Nachteile, warum haben wir uns dageben entschieden?
 
 
 \chapter{Qualitätssicherung}
+\label{QS}
 \section{Allgemein}
 Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evulation benutzt.
 
@@ -233,11 +234,20 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 
 \chapter{Team-Organisation}
 \section{Gruppenarbeit}
-Um das Zusammenarbeiten in der Gruppe einfacher zu gestalten wurden verschiedene Technologien eingesetzt.
-Zu finden von Terminen für Meetings wurde Doodle\footnote{\url{www.doodle.com}}  verwendet. Für die Kommunikation in der Gruppe Slack\footnote{\url{https://slack.com/}}.
-\paragraph{Strategie}
-\paragraph{Herausforderungen}
+Im Rahmen der vorliegenden Belegarbeit fanden sich Kommilitonen mit verschiedensten Hintergründen in unserem Team zusammen. Unsere Mitglieder waren Diplomstudenten der allgemeinen Informatik aus den Semestern vier und sechs, ein Bachelorstudent im gleichen Studiengang und ein Student der Wirtschaftsinformatik. Unterschiedliche Stundenpläne und Lebenswirklichkeiten machten es zu einer organisatorischen Herausforderungen \glqq \textit{alle unter einen Hut zu bringen}\grqq.
+
+Um unser Team zu organisieren und eine reibungslose Zusammenarbeit zu gewährleisten verwendeten wir verschiedene Strategien und Werkzeuge und legten einige Regeln fest. Beispiele zu letztgenannten wurden im vorherigen Kapitel Qualitätssicherung ab Seite \pageref{QS} beschrieben.
+
+\paragraph{Strategien} Die Zusammenarbeit unseres Teams war von Beginn an \textit{Team-}\textit{betont} und \textit{demokratisch}. Es war uns wichtig Entscheidungen innerhalb der Gruppe zu treffen und jedem Mitglied die Möglichkeit zu geben sowohl an der Entscheidungsfindung teilzuhaben als auch getroffene Entscheidungen zu jedem Zeitpunkt nachvollziehen zu können. Dies setzte ein hohes Maß an Kommunikation voraus, was bis zum Ende einer der Eckpfeiler unseres Teams war.
+
+\paragraph{}Bei der Ausgestaltung der Arbeit verfolgten wir den Ansatz der \textit{simultanen Zusammenarbeit}. Unsere Mitglieder arbeiteten teilweise gemeinsam, zeitweise allein an verschiedenen Problemlösungen und die Koordination dieser Arbeit sowie die Diskussion der Teilergebnisse fand während den zahlreichen Meetings statt.
+
+\paragraph{Meetings}Diese Besprechungen folgten immer einer festen Struktur. Vor dem Stattfindet wurde gemeinsam über die Agenda beraten. Dabei hatte jedes Mitglied die Möglichkeit eigene Punkte aufnehmen zu lassen. Diese Agenda wurde während der Besprechung als Leitfaden betrachtet und alle Diskussionsergebnisse wurden entsprechend ihrer Agendapunkte in einem Protokoll festgehalten. War es bis zum Ende des Termins nicht möglich alle Punkte abzuarbeiten, wurden jene automatisch zur Agenda des nächsten Termins hinzugefügt. Die Protokolle aller Besprechungen wurden für die Team-Mitglieder zu jedem Zeitpunkt abrufbar veröffentlicht.  
+
+\paragraph{}Neben dieser geplanten und statischen Form der Kommunikation wurden im Team ebenfalls verschiedene Werkzeuge benutzt, um in bestimmten Situation direkt miteinander in Kontakt zu treten und zeitkritische Probleme gemeinsam zu lösen.
+
 \section{Kick-Off}
+
 \paragraph{Rollen}
 \paragraph{Themen- und Werkzeuge}
 \paragraph{Milestones}
