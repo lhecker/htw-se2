@@ -1,6 +1,6 @@
 'use strict';
 
-require('babelify/polyfill');
+import 'babelify/polyfill'; // provides ES6 polyfills
 
 import AccessoryView from './AccessoryView';
 import ElevatorView from './ElevatorView';

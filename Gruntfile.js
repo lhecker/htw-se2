@@ -19,10 +19,6 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		// automatically rebuild on changes
 		watch: {
-			bower: {
-				files: ['bower.json'],
-				tasks: ['wiredep'],
-			},
 			gruntfile: {
 				files: ['Gruntfile.js'],
 			},
@@ -52,31 +48,14 @@ module.exports = function (grunt) {
 					],
 					port: 9000,
 					server: {
-						baseDir: ['.tmp', 'app'],
+						baseDir: [
+							'app',
+							'.tmp',
+						],
 						routes: {
 							'/bower_components': './bower_components',
 						},
 					},
-				},
-			},
-			test: {
-				options: {
-					port: 9001,
-					open: false,
-					logLevel: 'silent',
-					host: 'localhost',
-					server: {
-						baseDir: ['.tmp', './test', 'app'],
-						routes: {
-							'/bower_components': './bower_components',
-						},
-					},
-				},
-			},
-			dist: {
-				options: {
-					background: false,
-					server: 'dist',
 				},
 			},
 		},
@@ -165,11 +144,14 @@ module.exports = function (grunt) {
 				transform: [
 					[{
 						sourceMap: true,
+						compact: false,
 						stage: 4,
 						optional: ['runtime'],
+						ignore: ['bower_components'],
 					}, 'babelify'],
 				],
 				browserifyOptions: {
+					paths: ['bower_components'],
 					extensions: ['.jsx'],
 					fullPaths: true,
 					debug: true,
@@ -183,6 +165,7 @@ module.exports = function (grunt) {
 				options: {
 					watch: false,
 					browserifyOptions: {
+						paths: ['bower_components'],
 						extensions: ['.jsx'],
 						fullPaths: false,
 						debug: false,
@@ -196,18 +179,6 @@ module.exports = function (grunt) {
 				src: 'test/spec/main.js',
 				dest: '.tmp/spec/main.js',
 			},
-		},
-
-		// automatically inject Bower components into the HTML file
-		wiredep: {
-			app: {
-				ignorePath: /^\/|\.\.\//,
-				src: ['app/index.html'],
-			},
-			less: {
-				src: ['app/styles/{,*/}*.less'],
-				ignorePath: /(\.\.\/){1,2}bower_components\//
-			}
 		},
 
 		// Reads HTML for usemin blocks to enable smart builds that automatically
@@ -373,7 +344,6 @@ module.exports = function (grunt) {
 
 		grunt.task.run([
 			'clean:serve',
-			'wiredep',
 			'concurrent:serve',
 			'browserify:serve',
 			'postcss',                // depends on the results of less:serve
@@ -385,7 +355,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', function (target) {
 		grunt.task.run([
 			'clean:serve',
-			'wiredep',
 			'browserify:test',
 			'karma',
 		]);
@@ -394,7 +363,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('dist', function (target) {
 		grunt.task.run([
 			'clean:dist',
-			'wiredep',
 			'useminPrepare',
 			'concurrent:dist',
 			'postcss',
