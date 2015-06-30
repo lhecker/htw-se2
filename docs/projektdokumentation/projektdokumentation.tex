@@ -153,10 +153,12 @@ Desweiteren wurde durch erneuten Vergleich der Anforderungen mit Kundenprotokoll
 Als qualitätsunterstüzende Maßnahme wurden die Anforderungen möglichst auf sogenannte Issues, also Stichpunkte und Meilensteine in einem Projektmanager, abgebildet.
 \section{QS Umsetzung}
 \subsection{Allgemein}
+Die Qualitätssicherung während der Umsetzung ließ sich gliedern in:
 \begin{itemize}
 \item Konvetionen
 \item Testregime
 \end{itemize}
+Desweiteren wurden qualitätssteigernde Maßnahmen durchgeführt, wie das leicht mögliche und oft durchgeführte Review neuer Commits. Siehe dazu \ref{TeamOrg:Werkzeuge}.
 \subsection{Konventionen}
 Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unterschiedlichen Persönlichkeiten mit verschiedenen Heransgehensweisen und Vorerfahrung, schnell ein Zoo an Stilen und Gewohnheiten. Desweiteren besteht ein gewisser Konsensz, in der Branche, an bestimmen Herangehensweisen und Konvetionen ("`best practice"'). Daraus ergibt sich die Motivation feste Konventionen festzulegen, um entweder Bestehende zu vereinheitlichen oder sie für Jene, welche sie bis dato noch nicht kannten, einzuführen:
 %Die Motivation dazu lasse ich hier bewusst herraus, diese möchte ich lieber im Vortrag dazu bennen. Gez. Markus 2015-06-24
@@ -168,6 +170,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 	\item alle gefundenen Fehler sind in Issues/Gitlab festzuhalten
 	\item Vektorgrafiken sind zu skalieren auf 100x100 px
 	\item Textdatein sind in UTF8 zu codieren
+	\item Commitmessages und Quelltextkommentare sind in Englisch zu halten
 	\end{itemize}
 \item Konventionen Quelltext
 	\begin{itemize}
@@ -191,7 +194,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
 \todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
 \subsubsection{manuelle Testfälle}
-\begin{testcase}{Error}
+\begin{testcase}[tc:build]{Manuell}
 \tcSubject Projekt-Setup
 \tcRemark Testfall um erfolgreichen Build-Prozess garantieren zu können.
 \tcConditions
@@ -204,25 +207,28 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 	\end{enumerate}
 \tcProceeding
 	\begin{enumerate}
-	\item Mit NPM verwaltete Abhängigkeiten bauen mit \texttt{npm build}
-	\item Mit Bower verwaltete Abhängigkeiten bauen mit \texttt{bower build}
+	\item Mit NPM verwaltete Abhängigkeiten erzeugen mit \texttt{npm build}
+	\item Mit Bower verwaltete Abhängigkeiten erzeugen mit \texttt{bower build}
 	\item Build-Jobs mit \texttt{grunt build} ausführen
 	\item Wechsel in Verzeichnis \texttt{docs}
 	\item Dokumentation setzen mit \texttt{./make\_doc}
 	\end{enumerate}
 \tcGoal
 	\begin{enumerate}
-	\item NPM build ohne fatale errors
-	\item Bower build ohne fatale errors
-	\item Grunt build ohne fatale errors
+	\item NPM build done without fatal errors
+	\item Bower build done without fatal errors
+	\item Grunt build done without fatal errors
 	\end{enumerate}
 \end{testcase}
 
-\begin{testcase}{Fatal}
-\tcSubject Fahrstuhl fährt nach oben
+\begin{testcase}{Manuell}
+\tcSubject Fahrstuhlsimulation
 \tcRemark Nimmt Bezug auf ELV-001: Die Fahrstuhlsimulation muss den Fahrstuhl nach oben fahren lassen.
-\tcConditions Simulation ist via grunt serve gebaut und geöffnet
-
+\tcConditions
+	\begin{enumerate}
+	\item Projekt erfolgreich gebaut wie in Test \ref{tc:build} getestet
+	\item Im Projekt-Wurzel-Verzeichnis
+	\end{enumerate}
 \tcProceeding Drücken des Fahrtwunschknopfes "`nach oben"' in einer Etage über dem Ausgangszustand des Fahrstuhls.
 
 \tcGoal Fahrstuhl fährt in gewählte Etage und öffnet Tür.
@@ -269,7 +275,7 @@ Zu den Aufgaben der genannten Rollen gehörte es vor allem die Team-Arbeit in de
 
 \paragraph{}Das darauffolgende Treffen und der tiefere Einstieg in das Projekt fand nach dem ersten Kundengespräch am 18. April statt. Protokolle zu den angesprochen Meetings, sowie zu den Kundengesprächen befinden sich im Anhang dieser Dokumentation.
 
-\section{Verwendete Werkzeuge}
+\section{Verwendete Werkzeuge}\label{TeamOrg:Werkzeuge}
 \paragraph{doodle}
 \paragraph{gitlab}
 \paragraph{slack}
