@@ -58,8 +58,9 @@ class Elevator extends EventEmitter {
 
 
 		const weightSensor = new ElevatorWeightSensor(self);
-		weightSensor.on('overweight:change', (isOverweight) => {
+		weightSensor.on('change', (isOverweight) => {
 			self._isOverweight = isOverweight;
+			self.emit('change:overweight', isOverweight);
 		});
 
 
@@ -317,7 +318,7 @@ class Elevator extends EventEmitter {
 
 	_emitLevel() {
 		const self = this;
-		self.emit('level', self._level);
+		self.emit('change:level', self._level);
 	}
 
 	_emitMove() {

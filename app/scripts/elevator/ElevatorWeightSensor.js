@@ -22,7 +22,7 @@ class ElevatorWeightSensor extends EventEmitter {
 		this._weight = newWeight;
 
 		if (wasOverweight != isOverweight) {
-			this.emit('overweight:change', isOverweight);
+			this.emit('change', isOverweight);
 		}
 	}
 }
