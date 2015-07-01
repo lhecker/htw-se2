@@ -103,7 +103,5 @@ describe('Elevator Test Suite', () => {
 
 			assert(false, Math.max(0, weight));
 		}
-
-		expect(elevator.isMoving).toBe(true);
 	});
 });
