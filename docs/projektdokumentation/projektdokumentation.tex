@@ -218,6 +218,7 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 	\item Bower build done without fatal errors (Returncode 0 e.g. \texttt{echo \$?} = 0)
 	\item Grunt build done without fatal errors (Returncode 0 e.g. \texttt{echo \$?} = 0)
 	\end{enumerate}
+\tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Implementierung"' und "`Bug"'
 \end{testcase}
 
 \begin{testcase}{Manuell}
@@ -235,11 +236,33 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 	\item Projekt erfolgreich gebaut wie in Test \ref{tc:build} getestet
 	\item Im Projekt-Wurzel-Verzeichnis
 	\end{enumerate}
-\tcProceeding Drücken des Fahrtwunschknopfes "`nach oben"' in einer Etage über dem Ausgangszustand des Fahrstuhls.
-
-\tcGoal Fahrstuhl fährt in gewählte Etage und öffnet Tür.
-
-\tcError Schreiben eines Bugreports via Issue in Gitlab.
+\tcProceeding
+	\begin{enumerate}
+	\item Drücken des Fahrtrufknopfes "`nach unten"' in der obersten Etage.
+	\item Drücken des Fahrtwunschknopfes für die gleiche Etage.
+	\item Drücken des Knopfes für den Fahrtwunsch in die unterste Etage.
+	\end{enumerate}
+\tcGoal
+	\begin{enumerate}
+		\item
+		\begin{enumerate}
+			\item Fahrstuhltüren sind geschlossen während der Fahrt.
+			\item Etagenanzeige zeigt während Fahrt aktuelle Etage an.
+			\item Fahrstuhl fährt in oberste Etage und öffnet Tür.
+			\item Tür schließt nach max. 5 Sekunden wieder automatisch
+			\item Etagenanzeige zeigt oberste Etagenzahl an.
+		\end{enumerate}
+		\item Fahrstuhltür öffnet
+		\item
+		\begin{enumerate}
+			\item Fahrstuhltüren sind geschlossen während der Fahrt.
+			\item Etagenanzeige zeigt während Fahrt aktuelle Etage an.
+			\item Fahrstuhl fährt in unterste Etage und öffnet Tür.
+			\item Tür schließt nach max. 5 Sekunden wieder
+			\item Etagenanzeige zeigt oberste Etagenzahl an.
+		\end{enumerate}
+	\end{enumerate}
+\tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Implementierung"' und "`Bug"'
 \end{testcase}
 
 \subsubsection{automatisierte Testfälle}
@@ -295,7 +318,7 @@ Das folgende Kapitel erläutert die bisher genannten Werkzeugen und beschreibt w
 
 \newpage
 \hspace*{2cm}
-\paragraph{slack}Um auf kurzem Weg Gedanken und Dateien auszutauschen nutzten wir das Kooperations-Tool \textit{slack}\footnote{\url{https://slack.com}}. Damit hatten wir die Möglichkeit kontextbezogene Kanäle zu erstellen, um uns nach Themen geordnet austauschen zu können. 
+\paragraph{slack}Um auf kurzem Weg Gedanken und Dateien auszutauschen nutzten wir das Kooperations-Tool \textit{slack}\footnote{\url{https://slack.com}}. Damit hatten wir die Möglichkeit kontextbezogene Kanäle zu erstellen, um uns nach Themen geordnet austauschen zu können.
 
 \paragraph{}Dies und die mächtigen Such- und Benachrichtigungsfunktionen waren die großen Vorteil von \textit{slack} gegenüber Email oder anderen Chat-Anwendungen. Abbildung \ref{slack} zeigt beispielhaft einen Nachrichtenverlauf zu einer Fehlfunktion des \textit{gitlab}-Servers.
 
