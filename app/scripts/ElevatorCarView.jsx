@@ -12,9 +12,9 @@ class ElevatorCarView extends Component {
 	componentWillMount() {
 		const elevator = this.props.elevator;
 
-		this._on(elevator, 'move',           this._updateOffsetTop);
-		this._on(elevator, 'persons:add',    this._onPersons, true);
-		this._on(elevator, 'persons:remove', this._onPersons, false);
+		this._bind(elevator, 'move',           this._updateOffsetTop);
+		this._bind(elevator, 'persons:add',    this._onPersons, true);
+		this._bind(elevator, 'persons:remove', this._onPersons, false);
 
 		this.setState({
 			offsetTop         : 0,

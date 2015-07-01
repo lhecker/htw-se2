@@ -13,8 +13,8 @@ class AccessoryView extends Component {
 	componentWillMount() {
 		const elevator = this.props.elevator;
 
-		this._on(elevator, 'move', this._onElevatorMove);
-		this._on(elevator, 'level', this._onElevatorLevel);
+		this._bind(elevator, 'move', this._onElevatorMove);
+		this._bind(elevator, 'level', this._onElevatorLevel);
 
 		this.setState({
 			level: elevator.level,

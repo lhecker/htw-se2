@@ -1,0 +1,63 @@
+#accessory-view {
+	display: table;
+	margin-bottom: @grid-gutter-width;
+
+	& > button {
+		float: left;
+		margin-right: @padding-base-horizontal;
+	}
+}
+
+#accessory-level {
+	opacity: 1;
+
+	& > .label {
+		font-size: inherit;
+		margin-left: (@padding-base-horizontal / 2);
+	}
+}
+
+#accessory-panel-button {
+	&:hover,
+	&:focus,
+	&.focus,
+	&:active,
+	&.active {
+		cursor: inherit;
+		outline: 0;
+		box-shadow: none;
+		color: @btn-primary-color;
+		background-color: @btn-primary-bg;
+		border-color: @btn-primary-border;
+	}
+}
+
+#accessory-panel {
+	max-width: none;
+
+	.row {
+		margin-bottom: @grid-gutter-width;
+
+		&:first-child {
+			margin-top: (@grid-gutter-width / 2);
+		}
+
+		&:last-child {
+			margin-bottom: (@grid-gutter-width / 2);
+		}
+	}
+}
+
+#accessory-view .panel {
+	.glyphicon {
+		font-size: 12px;
+	}
+
+	.glyphicon-triangle-top {
+		vertical-align: top;
+	}
+
+	.glyphicon-triangle-bottom {
+		vertical-align: baseline;
+	}
+}

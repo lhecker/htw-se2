@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" font-size="12px" xmlns="http://www.w3.org/2000/svg" stroke-opacity="0" font-family="Dialog" fill-opacity="0" style="color-interpolation:auto;image-rendering:auto;text-rendering:auto;color-rendering:auto;shape-rendering:auto" version="1.1" stroke-miterlimit="10" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 1462.9 849.63">
+ <defs>
+  <clipPath id="e" clipPathUnits="userSpaceOnUse">
+   <path d="m-7-7h38v38h-38v-38z"/>
+  </clipPath>
+  <clipPath id="c" clipPathUnits="userSpaceOnUse">
+   <path d="m-7-7h98v58h-98v-58z"/>
+  </clipPath>
+  <clipPath id="ag" clipPathUnits="userSpaceOnUse">
+   <path d="m-7-7h561v406h-561v-406z"/>
+  </clipPath>
+  <clipPath id="ac" clipPathUnits="userSpaceOnUse">
+   <path d="m-7-7h108v58h-108v-58z"/>
+  </clipPath>
+  <clipPath id="w" clipPathUnits="userSpaceOnUse">
+   <path d="m-7-7h118v58h-118v-58z"/>
+  </clipPath>
+  <clipPath id="d" clipPathUnits="userSpaceOnUse">
+   <path d="m-80-14h240v42h-240v-42z"/>
+  </clipPath>
+  <clipPath id="v" clipPathUnits="userSpaceOnUse">
+   <path d="m-90-14h270v42h-270v-42z"/>
+  </clipPath>
+  <clipPath id="u" clipPathUnits="userSpaceOnUse">
+   <path d="m-100-14h300v42h-300v-42z"/>
+  </clipPath>
+  <clipPath id="ai" clipPathUnits="userSpaceOnUse">
+   <path d="m-543-14h1629v42h-1629v-42z"/>
+  </clipPath>
+  <clipPath id="a" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h104v204h-104v-204z"/>
+  </clipPath>
+  <clipPath id="t" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h104v137h-104v-137z"/>
+  </clipPath>
+  <clipPath id="s" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h184v104h-184v-104z"/>
+  </clipPath>
+  <clipPath id="r" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h104v134h-104v-134z"/>
+  </clipPath>
+  <clipPath id="k" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h148v162h-148v-162z"/>
+  </clipPath>
+  <clipPath id="q" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h104v145h-104v-145z"/>
+  </clipPath>
+  <clipPath id="j" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h179v164h-179v-164z"/>
+  </clipPath>
+  <clipPath id="i" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h217v235h-217v-235z"/>
+  </clipPath>
+  <clipPath id="h" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h169v165h-169v-165z"/>
+  </clipPath>
+  <clipPath id="f" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h216v337h-216v-337z"/>
+  </clipPath>
+  <clipPath id="p" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h104v152h-104v-152z"/>
+  </clipPath>
+  <clipPath id="o" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h416v104h-416v-104z"/>
+  </clipPath>
+  <clipPath id="n" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h425v207h-425v-207z"/>
+  </clipPath>
+  <clipPath id="m" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h422v207h-422v-207z"/>
+  </clipPath>
+  <clipPath id="l" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h413v104h-413v-104z"/>
+  </clipPath>
+  <clipPath id="b" clipPathUnits="userSpaceOnUse">
+   <path d="m0 0h183v104h-183v-104z"/>
+  </clipPath>
+  <clipPath id="ah" clipPathUnits="userSpaceOnUse">
+   <path d="m-70-14h210v42h-210v-42z"/>
+  </clipPath>
+  <clipPath id="ab" clipPathUnits="userSpaceOnUse">
+   <path d="m-85-14h255v42h-255v-42z"/>
+  </clipPath>
+  <clipPath id="g" clipPathUnits="userSpaceOnUse">
+   <path d="m-94-28h282v84h-282v-84z"/>
+  </clipPath>
+  <clipPath id="aa" clipPathUnits="userSpaceOnUse">
+   <path d="m-73-14h219v42h-219v-42z"/>
+  </clipPath>
+  <clipPath id="z" clipPathUnits="userSpaceOnUse">
+   <path d="m-93-14h279v42h-279v-42z"/>
+  </clipPath>
+  <clipPath id="af" clipPathUnits="userSpaceOnUse">
+   <path d="m-126-14h378v42h-378v-42z"/>
+  </clipPath>
+  <clipPath id="y" clipPathUnits="userSpaceOnUse">
+   <path d="m-114-14h342v42h-342v-42z"/>
+  </clipPath>
+  <clipPath id="ae" clipPathUnits="userSpaceOnUse">
+   <path d="m-127-14h381v42h-381v-42z"/>
+  </clipPath>
+  <clipPath id="ad" clipPathUnits="userSpaceOnUse">
+   <path d="m-55-14h165v42h-165v-42z"/>
+  </clipPath>
+  <clipPath id="x" clipPathUnits="userSpaceOnUse">
+   <path d="m-80-28h240v84h-240v-84z"/>
+  </clipPath>
+ </defs>
+ <g id="uml-initial" stroke-opacity="1" fill-opacity="1" font-size="11" transform="matrix(1.4577 0 0 1.4577 709.37 1)" stroke="#000">
+  <circle clip-path="url(#e)" cx="9.5" cy="9.5" r="9.5"/>
+ </g>
+ <g stroke-opacity="1" fill-opacity="1" font-size="11" transform="matrix(1.4577 0 0 1.4577 97.153 76.799)" stroke="#fff" fill="#fff">
+  <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0"/>
+ </g>
+ <g stroke="#000" stroke-opacity="1" fill-opacity="1">
+  <g stroke-linejoin="round" style="text-rendering:geometricPrecision" font-size="11px" transform="matrix(1.4577 0 0 1.4577 516.96 799.8)" stroke-miterlimit="0" font-family="sans-serif">
+   <circle clip-path="url(#e)" cx="9.5" cy="9.5" r="9.5" fill="none"/>
+   <text clip-path="url(#e)" xml:space="preserve" y="13" x="6" fill="#000000">H</text>
+  </g>
+  <g id="uml-subautomata-final" font-size="11" transform="matrix(1.4577 0 0 1.4577 712.29 799.8)">
+   <circle clip-path="url(#e)" cx="10" cy="10" r="7"/>
+   <circle stroke-linejoin="round" clip-path="url(#e)" cy="10" cx="10" stroke-miterlimit="0" r="10" fill="none"/>
+  </g>
+  <g id="uml-subautomata-initial" font-size="11" transform="matrix(1.4577 0 0 1.4577 516.96 333.35)">
+   <circle clip-path="url(#e)" cx="9.5" cy="9.5" r="9.5"/>
+  </g>
+ </g>
+ <g id="uml-door-open" fill-opacity="1" stroke-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" stroke-opacity="1" fill-opacity="1" font-size="11" transform="matrix(1.4577 0 0 1.4577 686.56 433.11)" stroke-miterlimit="0">
+   <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 687.97 450.65)" font-family="sans-serif">
+   <text clip-path="url(#d)" xml:space="preserve" y="11" x="6" fill="#000000">Tür geöffnet</text>
+  </g>
+ </g>
+ <g id="uml-moved-up" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1256.5 278.6)" stroke-miterlimit="0">
+   <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1259 297.69)" font-family="sans-serif">
+   <text clip-path="url(#d)" xml:space="preserve" y="11" x="11" fill="#000000">Fuhr hoch</text>
+  </g>
+ </g>
+ <g id="uml-move-down" transform="translate(-18.003 3.7344)">
+  <rect stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 115.16 73.064)" stroke-opacity="1" clip-path="url(#c)" rx="10" ry="10" height="40" width="80" stroke="#000" stroke-miterlimit="0" y="0" x="0" fill="none"/>
+  <text style="text-rendering:geometricPrecision" clip-path="url(#d)" xml:space="preserve" fill-opacity="1" transform="matrix(1.4577 0 0 1.4577 116.02 92.161)" font-size="11px" y="11" x="5" font-family="sans-serif" fill="#000000">Fahre runter</text>
+ </g>
+ <g id="uml-move-up" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1256.5 73.064)" stroke-miterlimit="0">
+   <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1257.6 92.161)" font-family="sans-serif">
+   <text clip-path="url(#d)" xml:space="preserve" y="11" x="9" fill="#000000">Fahre hoch</text>
+  </g>
+ </g>
+ <g id="uml-overweight" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 588.9 551.18)" stroke-miterlimit="0">
+   <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 589.71 571.5)" font-family="sans-serif">
+   <text clip-path="url(#d)" xml:space="preserve" y="11" x="16" fill="#000000">Überlast</text>
+  </g>
+ </g>
+ <g id="uml-door-opening" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 679.27 329.61)" stroke-miterlimit="0">
+   <rect clip-path="url(#ac)" rx="10" ry="10" height="40" width="90" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 681.48 348.71)" font-family="sans-serif">
+   <text clip-path="url(#v)" xml:space="preserve" y="11" x="5" fill="#000000">Tür öffnet sich</text>
+  </g>
+ </g>
+ <g id="uml-door-shutting" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 854.19 551.18)" stroke-miterlimit="0">
+   <rect clip-path="url(#w)" rx="10" ry="10" height="40" width="100" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 856.02 570.28)" font-family="sans-serif">
+   <text clip-path="url(#u)" xml:space="preserve" y="11" x="5" fill="#000000">Tür schließt sich</text>
+  </g>
+ </g>
+ <g id="uml-door-shut" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 671.98 669.25)" stroke-miterlimit="0">
+   <rect clip-path="url(#w)" rx="10" ry="10" height="40" width="100" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 675.78 686.79)" font-family="sans-serif">
+   <text clip-path="url(#u)" xml:space="preserve" y="11" x="4" fill="#000000">Tür geschlossen</text>
+  </g>
+ </g>
+ <g id="uml-idle" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 683.65 73.064)" stroke-miterlimit="0">
+   <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 685.17 90.607)" font-family="sans-serif">
+   <text clip-path="url(#d)" xml:space="preserve" y="11" x="16" fill="#000000">Standby</text>
+  </g>
+ </g>
+ <g id="uml-subautomata" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 348.38 278.6)" stroke-miterlimit="0">
+   <rect clip-path="url(#ag)" rx="10" ry="10" height="388" width="543" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 348.38 280.6)" font-family="sans-serif">
+   <text clip-path="url(#ai)" xml:space="preserve" y="11" x="226" fill="#000000">Tür Subautomat</text>
+  </g>
+ </g>
+ <g stroke-linejoin="round" font-size="11" stroke-opacity="1" fill-opacity="1" stroke="#000" fill="none">
+  <g transform="matrix(1.4577 0 0 1.4577 623.37 62.222)">
+   <line y2="50" clip-path="url(#a)" x2="50" y1="150" x1="50"/>
+   <line y2="62" clip-path="url(#a)" x2="44" y1="50" x1="50"/>
+   <line y2="62" clip-path="url(#a)" x2="56" y1="50" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 651.07 -45.645)">
+   <line y2="83" clip-path="url(#t)" x2="50" y1="50" x1="50"/>
+   <line y2="71" clip-path="url(#t)" x2="56" y1="83" x1="50"/>
+   <line y2="71" clip-path="url(#t)" x2="44" y1="83" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 470.31 275.04)">
+   <line y2="50" clip-path="url(#s)" x2="130" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#s)" x2="118" y1="50" x1="130"/>
+   <line y2="56" clip-path="url(#s)" x2="118" y1="50" x1="130"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 649.61 318.77)">
+   <line y2="80" clip-path="url(#r)" x2="50" y1="50" x1="50"/>
+   <line y2="68" clip-path="url(#r)" x2="56" y1="80" x1="50"/>
+   <line y2="68" clip-path="url(#r)" x2="44" y1="80" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 530.08 396.03)">
+   <line y2="50" clip-path="url(#k)" x2="50" y1="50" x1="94"/>
+   <line y2="108" clip-path="url(#k)" x2="50" y1="50" x1="50"/>
+   <line y2="96" clip-path="url(#k)" x2="56" y1="108" x1="50"/>
+   <line y2="96" clip-path="url(#k)" x2="44" y1="108" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 604.42 422.27)">
+   <line y2="50" clip-path="url(#q)" x2="50" y1="91" x1="50"/>
+   <line y2="62" clip-path="url(#q)" x2="44" y1="50" x1="50"/>
+   <line y2="62" clip-path="url(#q)" x2="56" y1="50" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 712.29 393.11)">
+   <line y2="50" clip-path="url(#j)" x2="125" y1="50" x1="50"/>
+   <line y2="110" clip-path="url(#j)" x2="125" y1="50" x1="125"/>
+   <line y2="98" clip-path="url(#j)" x2="131" y1="110" x1="125"/>
+   <line y2="98" clip-path="url(#j)" x2="119" y1="110" x1="125"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 719.58 289.62)">
+   <line y2="50" clip-path="url(#i)" x2="163" y1="181" x1="163"/>
+   <line y2="50" clip-path="url(#i)" x2="50" y1="50" x1="163"/>
+   <line y2="56" clip-path="url(#i)" x2="62" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#i)" x2="62" y1="50" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 726.86 540.34)">
+   <line y2="111" clip-path="url(#h)" x2="115" y1="50" x1="115"/>
+   <line y2="111" clip-path="url(#h)" x2="50" y1="111" x1="115"/>
+   <line y2="117" clip-path="url(#h)" x2="62" y1="111" x1="50"/>
+   <line y2="105" clip-path="url(#h)" x2="62" y1="111" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 423.67 299.82)">
+   <line y2="283" clip-path="url(#f)" x2="50" y1="283" x1="157"/>
+   <line y2="50" clip-path="url(#f)" x2="50" y1="283" x1="50"/>
+   <line y2="50" clip-path="url(#f)" x2="162" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#f)" x2="150" y1="50" x1="162"/>
+   <line y2="56" clip-path="url(#f)" x2="150" y1="50" x1="162"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 653.98 658.41)">
+   <line y2="98" clip-path="url(#p)" x2="50" y1="50" x1="50"/>
+   <line y2="86" clip-path="url(#p)" x2="56" y1="98" x1="50"/>
+   <line y2="86" clip-path="url(#p)" x2="44" y1="98" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 709.37 33.069)">
+   <line y2="50" clip-path="url(#o)" x2="362" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#o)" x2="350" y1="50" x1="362"/>
+   <line y2="56" clip-path="url(#o)" x2="350" y1="50" x1="362"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 1193.3 62.222)">
+   <line y2="150" clip-path="url(#a)" x2="50" y1="50" x1="50"/>
+   <line y2="138" clip-path="url(#a)" x2="56" y1="150" x1="50"/>
+   <line y2="138" clip-path="url(#a)" x2="44" y1="150" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 1256 62.222)">
+   <line y2="50" clip-path="url(#a)" x2="50" y1="150" x1="50"/>
+   <line y2="62" clip-path="url(#a)" x2="44" y1="50" x1="50"/>
+   <line y2="62" clip-path="url(#a)" x2="56" y1="50" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 703.54 60.764)">
+   <line y2="50" clip-path="url(#n)" x2="50" y1="153" x1="371"/>
+   <line y2="58" clip-path="url(#n)" x2="59" y1="50" x1="50"/>
+   <line y2="47" clip-path="url(#n)" x2="62" y1="50" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 688.96 62.222)">
+   <line y2="150" clip-path="url(#a)" x2="50" y1="50" x1="50"/>
+   <line y2="138" clip-path="url(#a)" x2="56" y1="150" x1="50"/>
+   <line y2="138" clip-path="url(#a)" x2="44" y1="150" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 135.05 60.764)">
+   <line y2="50" clip-path="url(#m)" x2="368" y1="153" x1="50"/>
+   <line y2="47" clip-path="url(#m)" x2="355" y1="50" x1="368"/>
+   <line y2="58" clip-path="url(#m)" x2="358" y1="50" x1="368"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 140.88 33.069)">
+   <line y2="50" clip-path="url(#l)" x2="50" y1="50" x1="359"/>
+   <line y2="56" clip-path="url(#l)" x2="62" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#l)" x2="62" y1="50" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 57.796 62.222)">
+   <line y2="50" clip-path="url(#a)" x2="50" y1="150" x1="50"/>
+   <line y2="62" clip-path="url(#a)" x2="44" y1="50" x1="50"/>
+   <line y2="62" clip-path="url(#a)" x2="56" y1="50" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 107.36 62.222)">
+   <line y2="150" clip-path="url(#a)" x2="50" y1="50" x1="50"/>
+   <line y2="138" clip-path="url(#a)" x2="56" y1="150" x1="50"/>
+   <line y2="138" clip-path="url(#a)" x2="44" y1="150" x1="50"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 140.88 253.18)">
+   <line y2="50" clip-path="url(#b)" x2="129" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#b)" x2="117" y1="50" x1="129"/>
+   <line y2="56" clip-path="url(#b)" x2="117" y1="50" x1="129"/>
+  </g>
+  <g transform="matrix(1.4577 0 0 1.4577 140.88 226.94)">
+   <line y2="50" clip-path="url(#b)" x2="50" y1="50" x1="129"/>
+   <line y2="56" clip-path="url(#b)" x2="62" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#b)" x2="62" y1="50" x1="50"/>
+  </g>
+ </g>
+ <g id="uml-moved-down" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 115.16 278.6)" stroke-miterlimit="0">
+   <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
+  </g>
+  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 115.94 297.69)" font-family="sans-serif">
+   <text clip-path="url(#d)" xml:space="preserve" y="11" x="8" fill="#000000">Fuhr runter</text>
+  </g>
+ </g>
+ <g stroke="#000" stroke-opacity="1" fill-opacity="1">
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1049 226.94)" fill="none">
+   <line y2="50" clip-path="url(#b)" x2="129" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#b)" x2="117" y1="50" x1="129"/>
+   <line y2="56" clip-path="url(#b)" x2="117" y1="50" x1="129"/>
+  </g>
+  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1049 253.18)" fill="none">
+   <line y2="50" clip-path="url(#b)" x2="50" y1="50" x1="129"/>
+   <line y2="56" clip-path="url(#b)" x2="62" y1="50" x1="50"/>
+   <line y2="44" clip-path="url(#b)" x2="62" y1="50" x1="50"/>
+  </g>
+  <g font-size="11px" font-family="sans-serif">
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1135 336.26)">
+    <text clip-path="url(#ah)" xml:space="preserve" y="11" x="5" fill="#000000">ES == Ziel</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 210.85 339.18)">
+    <text clip-path="url(#d)" xml:space="preserve" y="11" x="10" fill="#000000">ES == Ziel</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 178.78 199.24)">
+    <text clip-path="url(#ab)" xml:space="preserve" y="11" x="10" fill="#000000">Trigger - ES</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 -15.088 190.5)" fill="#000000">
+    <text clip-path="url(#g)" xml:space="preserve" y="11" x="10">ES entspricht</text>
+    <text clip-path="url(#g)" xml:space="preserve" y="25" x="10">keinem Ziel</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 384.31 85.545)">
+    <text clip-path="url(#aa)" xml:space="preserve" y="11" x="10" fill="#000000">W/R &lt; ES</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 424.42 138.91)">
+    <text clip-path="url(#z)" xml:space="preserve" y="11" x="10" fill="#000000">kein W/R &lt; E</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 758.93 205.07)">
+    <text clip-path="url(#af)" xml:space="preserve" y="11" x="10" fill="#000000">R==aktuelle Etage</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 912.79 138.91)">
+    <text clip-path="url(#z)" xml:space="preserve" y="11" x="10" fill="#000000">kein W/R &gt; E</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1340.5 193.41)" fill="#000000">
+    <text clip-path="url(#g)" xml:space="preserve" y="11" x="10">ES entspricht</text>
+    <text clip-path="url(#g)" xml:space="preserve" y="25" x="10">keinem Ziel</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1142.3 202.16)">
+    <text clip-path="url(#ab)" xml:space="preserve" y="11" x="10" fill="#000000">Trigger - ES</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 955.72 79.714)">
+    <text clip-path="url(#aa)" xml:space="preserve" y="11" x="10" fill="#000000">W/R &gt; ES</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 330.38 448.5)">
+    <text clip-path="url(#y)" xml:space="preserve" y="11" x="10" fill="#000000">W/R in gleicher E</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 898.87 672.98)">
+    <text clip-path="url(#ae)" xml:space="preserve" y="11" x="10" fill="#000000">TS Tür geschlossen</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 963.01 448.5)">
+    <text clip-path="url(#y)" xml:space="preserve" y="11" x="10" fill="#000000">W/R in gleicher E</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 793.92 442.67)">
+    <text clip-path="url(#v)" xml:space="preserve" y="11" x="10" fill="#000000">zeitl. Trigger</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 684.59 519.93)">
+    <text clip-path="url(#ad)" xml:space="preserve" y="11" x="10" fill="#000000">WS ok</text>
+   </g>
+   <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 489.26 482.03)" fill="#000000">
+    <text clip-path="url(#x)" xml:space="preserve" y="11" x="10">WS meldet</text>
+    <text clip-path="url(#x)" xml:space="preserve" y="25" x="10">Überlast</text>
+   </g>
+  </g>
+ </g>
+ <path d="m330.26 306.42 791.74-0.69" stroke-opacity="1" stroke="#000" stroke-miterlimit="10" stroke-width="1.5" fill="none"/>
+</svg>

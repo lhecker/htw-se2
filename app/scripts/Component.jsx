@@ -10,10 +10,13 @@ class Component extends React.Component {
 		this._cbs = [];
 	}
 
-	_on(ee, name, cb, ...args) {
-		cb = cb.bind(this, ...args);
+	_on(ee, name, cb) {
 		ee.on(name, cb);
 		this._cbs.push([ee, name, cb]);
+	}
+
+	_bind(ee, name, cb, ...args) {
+		this._on(ee, name, cb.bind(this, ...args));
 	}
 
 	_off() {

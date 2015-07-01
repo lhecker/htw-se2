@@ -12,10 +12,10 @@ class ElevatorLevelView extends Component {
 	componentWillMount() {
 		const elevator = this.props.elevator;
 
-		this._on(elevator, 'requests:add',    this._onRequest, true);
-		this._on(elevator, 'requests:remove', this._onRequest, false);
-		this._on(elevator, 'door:opening',    this._onDoor,    true);
-		this._on(elevator, 'door:shutting',   this._onDoor,    false);
+		this._bind(elevator, 'requests:add',    this._onRequest, true);
+		this._bind(elevator, 'requests:remove', this._onRequest, false);
+		this._bind(elevator, 'door:opening',    this._onDoor,    true);
+		this._bind(elevator, 'door:shutting',   this._onDoor,    false);
 	}
 
 	render() {

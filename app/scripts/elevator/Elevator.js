@@ -65,7 +65,7 @@ class Elevator extends EventEmitter {
 
 
 		const doorSensor = new ElevatorDoorSensor(self);
-		doorSensor.on('shut', self._tryMove.bind(self));
+		doorSensor.on('shut', self._onDoorShut.bind(self));
 
 		// Forward door events:
 		for (let name of ['opening', 'open', 'shutting', 'shut']) {
@@ -211,48 +211,53 @@ class Elevator extends EventEmitter {
 			}
 
 			self.emit('requests:add', level, direction);
-			self._tryMove();
+
+			if (!self.direction && !self.isDoorUnlocked && !self.isOverweight) {
+				self._beginMoving();
+			}
 		}
 	}
 
-	_tryMove() {
+	_beginMoving() {
+		const self = this;
+		const stops = self._stops;
+		const stopsBelow = stops[0][0] + stops[0][1] + stops[0][2];
+		const stopsAbove = stops[1][0] + stops[1][1] + stops[1][2];
+
+		if (stopsBelow || stopsAbove) {
+			self._direction = 2 * (stopsBelow < stopsAbove) - 1;
+			self._emitMove();
+		}
+	}
+
+	_onDoorShut() {
 		const self = this;
 
-		if (!self.isMoving && !self.isDoorUnlocked && !self.isOverweight) {
-			let direction = self._direction;
-
-			if (!direction) {
-				const stops = self._stops;
-				const stopsBelow = stops[0][0] + stops[0][1] + stops[0][2];
-				const stopsAbove = stops[1][0] + stops[1][1] + stops[1][2];
-
-				if (!stopsBelow && !stopsAbove) {
-					// if !direction && !stops then this elevator was already and can remain being idle
-					return;
-				}
-
-				// set the direction to be the one with more stops
-				self._direction = direction = 2 * (stopsBelow < stopsAbove) - 1;
-			}
-
-			const idx = tupleIdx(direction);
-			const s = self._stops[idx];
-
-			if (s[0] || s[1] || s[2]) {
-				// there are stops in d.
-				self._emitMove();
+		if (!self.isOverweight) {
+			if (!self._direction) {
+				self._beginMoving();
 			} else {
-				const oidx = 1 - idx;
-				const os = self._stops[oidx];
+				const idx = tupleIdx(self._direction);
+				const s = self._stops[idx];
 
-				self._direction *= -1;
-
-				if (os[0] || os[1] || os[2]) {
+				if (s[0] || s[1] || s[2]) {
+					// there are stops in d.
 					self._emitMove();
 				} else {
-					self._emitIdle();
+					const oidx = 1 - idx;
+					const os = self._stops[oidx];
+
+					self._direction *= -1;
+
+					if (os[0] || os[1] || os[2]) {
+						self._emitMove();
+					}
 				}
 			}
+		}
+
+		if (!self.isMoving) {
+			setImmediate(self._emitIdle.bind(self));
 		}
 	}
 

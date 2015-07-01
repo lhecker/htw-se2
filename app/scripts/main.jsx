@@ -4,6 +4,7 @@ import 'babelify/polyfill'; // provides ES6 polyfills
 
 import AccessoryView from './AccessoryView';
 import ElevatorView from './ElevatorView';
+import UmlView from './UmlView';
 import {Elevator} from './elevator';
 
 const elevator = new Elevator(1, 9);
@@ -22,7 +23,11 @@ React.render(
 			</div>
 			<div className="row">
 				<div className="col-xs-12">
-					<div className="well well-sm">SVG</div>
+					<div className="panel panel-default">
+						<div className="panel-body" id="uml-panel-body">
+							<UmlView elevator={elevator}/>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -18,8 +18,8 @@ class AccessoryPanel extends Component {
 		const minLevel = elevator.minLevel;
 		const requests = new Array(levelCount);
 
-		this._on(elevator, 'requests:add', this._onRequest, true);
-		this._on(elevator, 'requests:remove', this._onRequest, false);
+		this._bind(elevator, 'requests:add', this._onRequest, true);
+		this._bind(elevator, 'requests:remove', this._onRequest, false);
 
 		for (let i = 0; i < levelCount; i++) {
 			requests[i] = elevator.hasRequestOnLevel(i + minLevel);
