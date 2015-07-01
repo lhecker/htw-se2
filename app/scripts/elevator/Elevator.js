@@ -168,7 +168,6 @@ class Elevator extends EventEmitter {
 
 	removePerson() {
 		this.emit('persons:remove');
-		this._tryMove();
 	}
 
 	hasRequestOnLevel(level) {
