@@ -1,10 +1,11 @@
 'use strict';
 
+import Component from './Component';
 import ElevatorCarView from './ElevatorCarView';
 import ElevatorLevelView from './ElevatorLevelView';
 
 
-class ElevatorView extends React.Component {
+class ElevatorView extends Component {
 	constructor(props) {
 		super(props);
 	}

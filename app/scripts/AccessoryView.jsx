@@ -1,46 +1,25 @@
 'use strict';
 
 import AccessoryPanel from './AccessoryPanel';
-import {pad, digits, nextPropsOrStateDifferent} from './utils';
+import Component from './Component';
+import {pad, digits} from './utils';
 
 
-class AccessoryView extends React.Component {
+class AccessoryView extends Component {
 	constructor(props) {
 		super(props);
+	}
 
+	componentWillMount() {
 		const elevator = this.props.elevator;
 
-		this.state = {
+		this._on(elevator, 'move', this._onElevatorMove);
+		this._on(elevator, 'level', this._onElevatorLevel);
+
+		this.setState({
 			level: elevator.level,
 			direction: elevator.direction,
-		};
-
-		this._resetIVars();
-	}
-
-	componentDidMount() {
-		this._levelCallback = this._onElevatorLevel.bind(this);
-		this._moveCallback = this._onElevatorMove.bind(this);
-
-		this.props.elevator.on('level', this._levelCallback);
-		this.props.elevator.on('move', this._moveCallback);
-	}
-
-	componentWillUnmount() {
-		this.props.elevator.removeListener('level', this._levelCallback);
-		this.props.elevator.removeListener('move', this._moveCallback);
-
-		const panel = this._panel;
-
-		if (panel) {
-			panel.destroy();
-		}
-
-		this._resetIVars();
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		return nextPropsOrStateDifferent(this, nextProps, nextState);
+		});
 	}
 
 	render() {
@@ -63,22 +42,17 @@ class AccessoryView extends React.Component {
 		this.refs.panel.show(this.refs.panelElement);
 	}
 
-	_onElevatorLevel(level) {
+	_onElevatorMove(level, direction) {
 		this.setState({
-			level: level,
-		});
-	}
-
-	_onElevatorMove(_, direction) {
-		this.setState({
+			level    : level,
 			direction: direction,
 		});
 	}
 
-	_resetIVars() {
-		this._levelCallback = null;
-		this._moveCallback = null;
-		this._panel = null;
+	_onElevatorLevel(level) {
+		this.setState({
+			level: level,
+		});
 	}
 }
 

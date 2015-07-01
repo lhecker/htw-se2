@@ -1,50 +1,41 @@
 'use strict';
 
+import Component from './Component';
 import initStaticPopover from './StaticPopover';
 import {pad, digits, nextPropsOrStateDifferent} from './utils';
 
 
-class AccessoryPanel extends React.Component {
+class AccessoryPanel extends Component {
 	constructor(props) {
 		super(props);
 
+		this._resetIVars();
+	}
+
+	componentWillMount() {
 		const elevator = this.props.elevator;
 		const levelCount = elevator.levelCount;
 		const minLevel = elevator.minLevel;
 		const requests = new Array(levelCount);
 
+		this._on(elevator, 'requests:add', this._onRequest, true);
+		this._on(elevator, 'requests:remove', this._onRequest, false);
+
 		for (let i = 0; i < levelCount; i++) {
 			requests[i] = elevator.hasRequestOnLevel(i + minLevel);
 		}
 
-		this.state = {
+		this.setState({
 			requests: requests,
-		};
-
-		this._resetIVars();
-	}
-
-	componentDidMount() {
-		const elevator = this.props.elevator;
-
-		this._requestAddCallback    = this._onRequest.bind(this, true);
-		this._requestRemoveCallback = this._onRequest.bind(this, false);
-
-		elevator.on('requests:add', this._requestAddCallback);
-		elevator.on('requests:remove', this._requestRemoveCallback);
+		});
 	}
 
 	componentWillUnmount() {
-		const elevator = this.props.elevator;
-		const panel = this._panel;
-
-		elevator.removeListener('requests:add', this._requestAddCallback);
-		elevator.removeListener('requests:remove', this._requestRemoveCallback);
-
 		if (panel) {
 			panel.destroy();
 		}
 
+		this._off();
 		this._resetIVars();
 	}
 
@@ -157,9 +148,6 @@ class AccessoryPanel extends React.Component {
 	}
 
 	_resetIVars() {
-		this._requestAddCallback    = null;
-		this._requestRemoveCallback = null;
-
 		this._panel = null;
 	}
 }
