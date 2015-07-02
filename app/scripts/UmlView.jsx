@@ -1,8 +1,7 @@
 'use strict';
 
 import Component from './Component';
-import ElevatorCarView from './ElevatorCarView';
-import ElevatorLevelView from './ElevatorLevelView';
+import {ElevatorProperties} from './elevator';
 
 /*
 uml-door-open
@@ -21,8 +20,67 @@ uml-subautomata-final
 uml-subautomata-initial
 */
 /*
-
 */
+const transitionTimerKey = Symbol('transition');
+
+
+const activeNodes = [];
+const activeNodesMax = 3;
+let popActiveTimer = null;
+
+function removeActiveClasses(node) {
+	node.className.baseVal = node.className.baseVal.replace(/(?:^|\s)active-\S+(?:$|\s)/g, '');
+}
+
+function pushActive(id) {
+	if (id) {
+		const node = document.getElementById(id);
+		const existingIdx = activeNodes.indexOf(node);
+
+		/*
+		 * If we currently have [a,b,c,d,e,f] and unshift() b again,
+		 * we would get an array containing [b,a,b,c,d,...].
+		 *
+		 * This would result in:
+		 *   #b.active-0.active-2
+		 *   #a.active-1
+		 *
+		 * Correct would be
+		 *   #b.active-0
+		 *   #a.active-1
+		 *   #c.active-2
+		 * instead.
+		 *
+		 * => splice() it out and unshift it again.
+		 */
+		if (existingIdx > -1 && existingIdx < (activeNodesMax - 1)) {
+			activeNodes.splice(1, 1)
+		}
+
+		activeNodes.unshift(node);
+	} else if (activeNodes.length > 1) {
+		removeActiveClasses(activeNodes.pop());
+	}
+
+	// iterates through the last ${activeNodesMax} nodes in activeNodes
+	const activeBeginIdx = Math.max(0, activeNodes.length - activeNodesMax);
+
+	for (let i = activeBeginIdx; i < activeNodes.length; i++) {
+		const node = activeNodes[i];
+		const activePos = i - activeBeginIdx;
+
+		removeActiveClasses(node);
+		node.classList.add('active-' + activePos);
+	}
+
+	if (activeNodes.length <= 1) {
+		clearInterval(popActiveTimer);
+		popActiveTimer = null;
+	} else if (!popActiveTimer) {
+		popActiveTimer = setInterval(pushActive, ElevatorProperties.shortestTimeout *  2/3);
+	}
+}
+
 
 class UmlView extends Component {
 	constructor(props) {
@@ -33,30 +91,18 @@ class UmlView extends Component {
 		const self = this;
 		const elevator = this.props.elevator;
 
-		function setActive(id) {
-			const nodes = React.findDOMNode(self).querySelectorAll('.active');
-
-			for (let node of nodes) {
-				node.classList.remove('transition-zero', 'active');
-			}
-
-			const node = document.getElementById(id);
-			const classList = document.getElementById(id).classList;
-			classList.add('transition', 'transition-zero', 'active');
-		}
-
 		function createCb(id) {
-			return setActive.bind(self, id);
+			return pushActive.bind(null, id);
 		}
 
 
 		const assoc = {
+			'change:overweight': 'uml-overweight',
 			'door:open'        : 'uml-door-open',
 			'door:opening'     : 'uml-door-opening',
 			'door:shut'        : 'uml-door-shut',
 			'door:shutting'    : 'uml-door-shutting',
 			'idle'             : 'uml-idle',
-			'change:overweight': 'uml-overweight',
 		};
 
 		for (let eventName in assoc) {
@@ -64,20 +110,27 @@ class UmlView extends Component {
 		}
 
 
-		self._on(elevator, 'level', () => {
-			setActive('uml-moved-' + (elevator.direction > 0 ? 'up' : 'down'));
+		self._on(elevator, 'change:level', () => {
+			pushActive('uml-moved-' + (elevator.direction > 0 ? 'up' : 'down'));
 		});
 
 		self._on(elevator, 'move', (level, direction) => {
-			setActive('uml-move-' + (direction > 0 ? 'up' : 'down'));
+			pushActive('uml-move-' + (direction > 0 ? 'up' : 'down'));
 		});
 
 		self._on(elevator, 'stop', () => {
+			pushActive('uml-subautomata');
+			pushActive('uml-subautomata-initial');
+		});
+
+		self._on(elevator, 'door:shut', () => {
+			pushActive('uml-subautomata-final');
 		});
 
 
 		$(React.findDOMNode(this)).load('../images/uml.svg', () => {
-			setActive('uml-initial');
+			pushActive('uml-initial');
+			pushActive('uml-idle');
 		});
 	}
 

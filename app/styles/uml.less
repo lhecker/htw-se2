@@ -1,3 +1,16 @@
+.uml-active-state(@stage, @color) {
+	.active-@{stage},
+	.active-@{stage} text,
+	.active-@{stage} rect {
+		stroke: @color;
+	}
+
+	.active-@{stage},
+	.active-@{stage} text {
+		fill: @color;
+	}
+}
+
 text {
 	stroke-width: 0;
 }
@@ -17,35 +30,17 @@ text {
 	& > svg {
 		display: block;
 		margin: 0 auto;
-		max-width: 100%;
+		width: 100%;
 		max-height: 100%;
+		backface-visibility: hidden;
+		transform: translate3D(0, 0, 0);
 	}
 
-	.transition,
-	.transition text,
-	.transition rect {
-		transition: stroke 1s ease-out;
-		transition: fill 1s ease-out;
-	}
+	.uml-active-state(2, @brand-danger);
+	.uml-active-state(1, @brand-warning);
+	.uml-active-state(0, @brand-success);
 
-	.transition-zero,
-	.transition-zero text,
-	.transition-zero rect {
-		transition-duration: 0;
-	}
-
-	.active,
-	.active text,
-	.active rect {
-		stroke: @brand-primary;
-	}
-
-	.active,
-	.active text {
-		fill: @brand-primary;
-	}
-
-	.active rect {
-		filter: drop-shadow(0 0 1px @brand-primary);
+	.active-0 rect {
+		filter: drop-shadow(0 0 1px @brand-success);
 	}
 }
