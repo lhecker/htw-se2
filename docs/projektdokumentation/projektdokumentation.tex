@@ -235,6 +235,8 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 	\begin{enumerate}
 	\item Projekt erfolgreich gebaut wie in Test \ref{tc:build} getestet
 	\item Im Projekt-Wurzel-Verzeichnis
+	\item Anwendung geöffnet mit \texttt{grunt serve}
+	\item Fahrstuhl nicht in der obersten Etage
 	\end{enumerate}
 \tcProceeding
 	\begin{enumerate}
@@ -263,6 +265,96 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 		\end{enumerate}
 	\end{enumerate}
 \tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Implementierung"' und "`Bug"'
+\end{testcase}
+
+\begin{testcase}{Manuell}
+\tcSubject Überlast
+\tcRemark Nimmt Bezug auf
+	\begin{itemize}
+	\item ELV-009
+	\item ELV-010
+	\item ELV-012
+	\item ELV-013
+	\end{itemize}
+\tcConditions
+	\begin{enumerate}
+	\item Projekt erfolgreich gebaut wie in Test \ref{tc:build} getestet
+	\item Im Projekt-Wurzel-Verzeichnis
+	\item Anwendung geöffnet mit \texttt{grunt serve}
+	\item Fahrstuhl leer
+	\end{enumerate}
+\tcProceeding
+	\begin{enumerate}
+	\item Drücken des Knopfes zum Einsteigen eines Passagiers: 9x
+	\item Drücken des Fahrtwunschknopfes für eine andere Etage
+	\item Drücken des Knopfes zum Aussteigen eines Passagiers: 1x
+	\end{enumerate}
+\tcGoal
+	\begin{enumerate}
+	\item Fahrstuhlsimulation zeigt Überlast an
+		\item
+		\begin{enumerate}
+		\item Fahrstuhl bewegt sich nicht
+		\item Tür bleibt offnen
+		\item Fahrstuhlsimulation zeigt Überlast an
+		\end{enumerate}
+	\item Fahrstuhlsimulation zeigt keine Überlast an
+	\end{enumerate}
+\tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Implementierung"' und "`Bug"'
+\end{testcase}
+
+\begin{testcase}{Manuell, Optional}
+\tcSubject Zustandsanzeige
+\tcRemark Nimmt Bezug auf
+	\begin{itemize}
+	\item ELV-005
+	\item ELV-010
+	\end{itemize}
+\tcConditions
+	\begin{enumerate}
+	\item Projekt erfolgreich gebaut wie in Test \ref{tc:build} getestet
+	\item Im Projekt-Wurzel-Verzeichnis
+	\item Anwendung geöffnet mit \texttt{grunt serve}
+	\item Fahrstuhl steht
+	\item Fahrstuhltüren geschlossenen
+	\end{enumerate}
+\tcProceeding
+	\begin{enumerate}
+	\item Drücken des Fahrtrufknopfes für eine andere Etage
+	\item Drücken des Knopfes zum Einsteigen eines Passagiers: 9x
+	\end{enumerate}
+\tcGoal
+	\begin{enumerate}
+		\item Fahrstuhlsimulation ändert Anzeige des aktuellen Zustands von "`Standby"' auf "`Fahre hoch"'
+		\item Fahrstuhlsimulation bleibt in Zustand "`Überlast"'
+	\end{enumerate}
+\tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Optional"', "`Implementierung"' und "`Bug"'
+\end{testcase}
+
+\begin{testcase}{Manuell, Optional}
+\tcSubject Zustandsübergangsanzeige
+\tcRemark Nimmt Bezug auf
+	\begin{itemize}
+	\item ELV-006
+	\item ELV-010
+	\end{itemize}
+\tcConditions
+	\begin{enumerate}
+	\item Projekt erfolgreich gebaut wie in Test \ref{tc:build} getestet
+	\item Im Projekt-Wurzel-Verzeichnis
+	\item Anwendung geöffnet mit \texttt{grunt serve}
+	\item Fahrstuhl steht
+	\item Fahrstuhltüren geschlossenen
+	\end{enumerate}
+\tcProceeding
+	\begin{enumerate}
+	\item Drücken des Fahrtrufknopfes für eine andere Etage
+	\end{enumerate}
+\tcGoal
+	\begin{enumerate}
+		\item Fahrstuhlsimulation zeigt Übergang "`W/R $>$ ES"'
+	\end{enumerate}
+\tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Optional"', "`Implementierung"' und "`Bug"'
 \end{testcase}
 
 \subsubsection{automatisierte Testfälle}
