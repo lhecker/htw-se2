@@ -14,6 +14,10 @@ class ElevatorWeightSensor extends EventEmitter {
 		this._weight = 0;
 	}
 
+	get weight() {
+		return this._weight;
+	}
+
 	_update(add) {
 		const newWeight = Math.max(0, this._weight + (2 * add - 1) * ElevatorProperties.personWeight);
 		const wasOverweight = this._weight > ElevatorProperties.maxWeight;

@@ -22,7 +22,7 @@ class AccessoryPanel extends Component {
 		this._bind(elevator, 'requests:remove', this._onRequest, false);
 
 		for (let i = 0; i < levelCount; i++) {
-			requests[i] = elevator.hasRequestOnLevel(i + minLevel);
+			requests[i] = elevator.hasRequest(i + minLevel);
 		}
 
 		this.setState({

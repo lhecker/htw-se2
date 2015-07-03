@@ -135,6 +135,10 @@ class UmlView extends Component {
 				pushActive('uml-subautomata-final');
 			});
 
+			this._on(elevator, 'change:overweight', (overweight) => {
+				pushActive(overweight ? 'uml-overweight' : 'uml-door-open');
+			});
+
 			pushActive('uml-initial');
 			pushActive('uml-idle');
 		});

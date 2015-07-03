@@ -24,28 +24,21 @@ class ElevatorDoorSensor extends EventEmitter {
 
 		this._state = 0
 		this._timer = null;
+		this._remainOpen = elevator.isOverweight;
 
-		elevator.on('stop', this._onStop.bind(this));
-	}
+		elevator.on('change:overweight', this._onOverweightChange.bind(this));
 
-	_setTimeout(shouldTestTimeout) {
-		const timeout = STATES[this._state][1];
-
-		if (!shouldTestTimeout || timeout) {
-			this._timer = setTimeout(this._nextState.bind(this), timeout);
+		for (let event of ['stop', 'persons:add', 'persons:remove']) {
+			elevator.on(event, this.open.bind(this));
 		}
 	}
 
-	_nextState() {
-		this._state = (this._state + 1) % STATES.length;
-
-		this._setTimeout(true); // schedule the next state
-		this.emit(STATES[this._state][0]);
+	get state() {
+		return STATES[this._state][0];
 	}
 
-	_onStop() {
-		clearTimeout(this._timer);
-		this._timer = null;
+	open() {
+		this._clearTimeout();
 
 		switch (this._state) {
 			// do not set timeout in case 1, since we're already opening them in that state
@@ -60,8 +53,36 @@ class ElevatorDoorSensor extends EventEmitter {
 		}
 	}
 
-	state() {
-		return STATES[this._state][0];
+	/*
+	 * If shouldTestTimeout is true and if the timeout value
+	 * of the next state is 0, then it won't schedule it.
+	 *
+	 * In our case it will stop if the current state is shutting,
+	 * since the next state is shut, which has a timeout of 0.
+	 */
+	_setTimeout(shouldTestTimeout) {
+		const timeout = STATES[this._state][1];
+
+		if (!this._remainOpen && (!shouldTestTimeout || timeout)) {
+			this._timer = setTimeout(this._nextState.bind(this), timeout);
+		}
+	}
+
+	_clearTimeout() {
+		clearTimeout(this._timer);
+		this._timer = null;
+	}
+
+	_nextState() {
+		this._state = (this._state + 1) % STATES.length;
+
+		this._setTimeout(true); // schedule the next state
+		this.emit(this.state);
+	}
+
+	_onOverweightChange(overweight) {
+		this._remainOpen = overweight;
+		this.open();
 	}
 }
 

@@ -93,7 +93,7 @@ StaticPopover.prototype.hide = function (callback) {
 	return this;
 };
 
-export default function initStaticPopover($this, option) {
+function initStaticPopover($this, option) {
 	$this = $($this);
 
 	const options = typeof option == 'object' && option;
@@ -114,3 +114,6 @@ export default function initStaticPopover($this, option) {
 
 	return data;
 }
+
+
+export default initStaticPopover;

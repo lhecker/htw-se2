@@ -13,8 +13,10 @@ class ElevatorCarView extends Component {
 		const elevator = this.props.elevator;
 
 		this._bind(elevator, 'move',           this._updateOffsetTop);
-		this._bind(elevator, 'persons:add',    this._onPersons, true);
-		this._bind(elevator, 'persons:remove', this._onPersons, false);
+		this._bind(elevator, 'persons:add',    this._onPersons,  true);
+		this._bind(elevator, 'persons:remove', this._onPersons,  false);
+		this._bind(elevator, 'door:open',      this._onDoorOpen, true);
+		this._bind(elevator, 'door:shutting',  this._onDoorOpen, false);
 
 		this.setState({
 			offsetTop         : 0,
@@ -40,13 +42,25 @@ class ElevatorCarView extends Component {
 	}
 
 	render() {
+		const elevator = this.props.elevator;
 		const style = {
 			transitionDuration: this.state.transitionDuration,
-			top: this.state.offsetTop + 'px',
+			top               : this.state.offsetTop + 'px',
+			zIndex            : +this.state.doorOpen,
 		};
 
 		return (
-			<div id="elevator-car" style={style}>{this.state.personCount} <span className="glyphicon glyphicon-user"></span></div>
+			<div id="elevator-car" style={style}>
+				<div>{this.state.personCount} <span className="glyphicon glyphicon-user"></span></div>
+				<div className="btn-group btn-group-sm">
+					<button type="button" className="btn btn-default" onClick={elevator.removePerson.bind(elevator)}>
+						<span className="glyphicon glyphicon-minus"></span>
+					</button>
+					<button type="button" className="btn btn-default" onClick={elevator.addPerson.bind(elevator)}>
+						<span className="glyphicon glyphicon-plus"></span>
+					</button>
+				</div>
+			</div>
 		);
 	}
 
@@ -55,13 +69,19 @@ class ElevatorCarView extends Component {
 		const offsetTop = $('#elevator-view .level:nth-of-type(' + idx + ')')[0].offsetTop;
 
 		this.setState({
-			offsetTop: offsetTop,
+			offsetTop,
 		}, cb);
 	}
 
 	_onPersons(add) {
 		this.setState({
 			personCount: this.state.personCount + (2 * add - 1),
+		});
+	}
+
+	_onDoorOpen(doorOpen) {
+		this.setState({
+			doorOpen,
 		});
 	}
 }

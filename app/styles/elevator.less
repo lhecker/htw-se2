@@ -118,10 +118,15 @@
 	top: 0;
 	left: (50% - @car-width / 2);
 	width: @car-width;
-	line-height: @level-height;
+	height: @level-height;
+	padding: (@grid-gutter-width / 2) 0;
 	background: rgba(0, 0, 0, 0.5) url(../images/elevator_car.svg) repeat scroll 0 0 / 100% 100%;
 	color: #fff;
 	font-size: 200%;
 	text-align: center;
 	transition: top 0s linear;
+
+	& > .btn-group {
+		vertical-align: top;
+	}
 }

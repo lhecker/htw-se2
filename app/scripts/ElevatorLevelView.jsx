@@ -10,30 +10,53 @@ class ElevatorLevelView extends Component {
 	}
 
 	componentWillMount() {
-		const elevator = this.props.elevator;
+		const {elevator, level} = this.props;
 
 		this._bind(elevator, 'requests:add',    this._onRequest, true);
 		this._bind(elevator, 'requests:remove', this._onRequest, false);
 		this._bind(elevator, 'door:opening',    this._onDoor,    true);
 		this._bind(elevator, 'door:shutting',   this._onDoor,    false);
+
+		this.setState({
+			hasDown: elevator.hasRequest(level, -1),
+			hasUp  : elevator.hasRequest(level,  1),
+			open   : level === elevator.level && ['opening', 'open'].indexOf(elevator.doorState) > -1,
+		});
 	}
 
 	render() {
 		const elevator = this.props.elevator;
 		const level = this.props.level;
 
+		const className = classNames({
+			'level': 1,
+			'open' : this.state.open,
+		});
+
+		const classNameDown = classNames({
+			'glyphicon'              : 1,
+			'glyphicon-collapse-down': 1,
+			'request-down'           : 1,
+			'hidden'                 : level === elevator.minLevel,
+			'active'                 : this.state.hasDown,
+		});
+
+		const classNameUp = classNames({
+			'glyphicon'              : 1,
+			'glyphicon-collapse-up'  : 1,
+			'request-up'             : 1,
+			'hidden'                 : level === elevator.maxLevel,
+			'active'                 : this.state.hasUp,
+		});
+
 		const doorStyle = {
 			transitionDuration: ElevatorProperties.doorOpenCloseTimeout + 'ms',
 		};
 
-		const displayNone = { display: 'none' };
-		const requestUp   = level === elevator.maxLevel ? displayNone : {};
-		const requestDown = level === elevator.minLevel ? displayNone : {};
-
 		return (
-			<div className="level">
-				<div className="request-down glyphicon glyphicon-collapse-down" style={requestDown} onClick={this._request.bind(this, -1)}></div>
-				<div className="request-up glyphicon glyphicon-collapse-up"     style={requestUp}   onClick={this._request.bind(this,  1)}></div>
+			<div className={className}>
+				<div className={classNameDown} onClick={this._request.bind(this, -1)}></div>
+				<div className={classNameUp}   onClick={this._request.bind(this,  1)}></div>
 				<div className="door-left"  style={doorStyle}><span className="label">{this.props.level}</span></div>
 				<div className="door-right" style={doorStyle}></div>
 			</div>
@@ -46,15 +69,17 @@ class ElevatorLevelView extends Component {
 
 	_onRequest(add, level, direction) {
 		if (direction && level === this.props.level) {
-			const node = React.findDOMNode(this);
-
-			$('.request-' + (direction > 0 ? 'up' : 'down'), node).toggleClass('active', add);
+			this.setState({
+				['has' + (direction > 0 ? 'Up' : 'Down')]: add,
+			});
 		}
 	}
 
 	_onDoor(open) {
 		if (this.props.elevator.level === this.props.level) {
-			$(React.findDOMNode(this)).toggleClass('open', open);
+			this.setState({
+				open,
+			});
 		}
 	}
 }
