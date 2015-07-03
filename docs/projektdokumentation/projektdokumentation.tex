@@ -125,10 +125,12 @@ Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittst
 \paragraph{}Grundgedanke bei dem Entwurf des Softwaresystems war eine möglichst realitätsnahe Aufteilung der Komponenten umzusetzen. Bei einem realen Fahrstuhl gibt es einen Microcontroller für die Steuerung, Sensoren für die Etagen sowie Gewichtssensoren um Überlastsitationen abzufangen sowie eine zu steuernde Fahrstuhlkabine und entsprechende Knöpfe um die Fahrstuhlrufe bzw. Fahrtwünsche zu ermöglichen. Diese Aufteilung spiegelt sich auch im Grobentwurf der Software wieder.
 \paragraph{} Kern der Anwendung und somit die Hauptkomponente ist die Fahrstuhlsteuerung in der die Zustände des Systems abgebildet werden. Die Visualisierung kommuniziert über in der \acrshort{API} festgelegte Schnittstellen um die für die korrekte Darstellung erforderlichen Informationen abzurufen. Sämtliche Funktionen der \acrshort{API} sind in der Entwicklerdokumentation aufgeführt.
 Umgesetzt wird die Trennung der Komponenten unter Nutzung des MVC-Paradigmas wobei die Fahrstuhlsteuerung die Rolle des Models einnimmt, die Visualisierung die Darstellung der Fahrstuhlkabine im Fahrstuhlschacht und einem Controller der die in der View abgegebenen simmulierten Fahrtwünsche an das Model weiterreicht.
+
+
 \chapter{Qualitätssicherung}
 \label{QS}
 \section{Allgemein}
-Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000:2014}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evulation benutzt.
+Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000:2014}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evaluation benutzt.
 
 \paragraph*{}Aus der Definition
 \begin{quote}\label{PD_SQ}
@@ -143,7 +145,7 @@ lässt sich somit die umfassende Qualitätssicherung aufteilen auf
 da sich Softwarequalität nach obiger Definition rein auf die bereits eruierten Anforderungen und Bedingungen stützt, wie Gesamtzufriedenheit des Nutzers allerdings nur dann erreichen lässt, wenn diese Vorbetrachtung bestmöglich durchgeführt wurde.
 \section{QS Anforderungsanalyse}
 Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf vollständige und unmissverständliche Formulierungen geachtet, da Probleme in dieser Phase die größten Auswirkungen auf die Zufriedenheit des Nutzers besitzen.\\
-Desweiteren wurde durch erneuten Vergleich der Anforderungen mit Kundenprotokollen und Aufgabenstellung sowie Prüfen auf Inkonsistenzen assistiert.
+Des Weiteren wurde durch erneuten Vergleich der Anforderungen mit Kundenprotokollen und Aufgabenstellung sowie Prüfen auf Inkonsistenzen assistiert.
 
 Als qualitätsunterstüzende Maßnahme wurden die Anforderungen möglichst auf sogenannte Issues, also Stichpunkte und Meilensteine in einem Projektmanager, abgebildet.
 \section{QS Umsetzung}
@@ -153,18 +155,18 @@ Die Qualitätssicherung während der Umsetzung ließ sich gliedern in:
 \item Konvetionen
 \item Testregime
 \end{itemize}
-Desweiteren wurden qualitätssteigernde Maßnahmen durchgeführt, wie das leicht mögliche und oft durchgeführte Review neuer Commits. Siehe dazu \ref{TeamOrg:Werkzeuge}.
+Desweiteren wurden qualitätsfördernde Maßnahmen durchgeführt, wie das leicht mögliche und oft durchgeführte Review neuer Commits. Siehe dazu \ref{TeamOrg:Werkzeuge}.
 \subsection{Konventionen}
-Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unterschiedlichen Persönlichkeiten mit verschiedenen Heransgehensweisen und Vorerfahrung, schnell ein Zoo an Stilen und Gewohnheiten. Desweiteren besteht ein gewisser Konsensz, in der Branche, an bestimmen Herangehensweisen und Konvetionen ("`best practice"'). Daraus ergibt sich die Motivation feste Konventionen festzulegen, um entweder Bestehende zu vereinheitlichen oder sie für Jene, welche sie bis dato noch nicht kannten, einzuführen:
-%Die Motivation dazu lasse ich hier bewusst herraus, diese möchte ich lieber im Vortrag dazu bennen. Gez. Markus 2015-06-24
+Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unterschiedlichen Persönlichkeiten mit verschiedenen Herangehensweisen und Vorerfahrung, schnell ein Zoo an Stilen und Gewohnheiten. Des Weiteren besteht ein gewisser Konsens, in der Branche, an bestimmen Herangehensweisen und Konventionen ("`best practice"'). Daraus ergibt sich die Motivation feste Konventionen festzulegen, um entweder Bestehende zu vereinheitlichen oder sie für Jene, welche sie bis dato noch nicht kannten, einzuführen:
+%Die Motivation dazu lasse ich hier bewusst heraus, diese möchte ich lieber im Vortrag dazu benennen. Gez. Markus 2015-06-24
 \begin{itemize}
 \item Allgemeine Konventionen
 	\begin{itemize}
 	\item Datum- und Zeitangaben sind in ISO 8601 zu notieren, Ausnahmen sind bei nationalen externen Dokumenten möglich
-	\item alle Daten sind mit GIT zu Versionieren, temporäre Daten jedoch nicht
+	\item alle Daten sind mit GIT zu versionieren, temporäre Daten jedoch nicht
 	\item alle gefundenen Fehler sind in Issues/Gitlab festzuhalten
 	\item Vektorgrafiken sind zu skalieren auf 100x100 px
-	\item Textdatein sind in UTF8 zu codieren
+	\item Textdateien sind in UTF8 zu codieren
 	\item Commitmessages und Quelltextkommentare sind in Englisch zu halten
 	\end{itemize}
 \item Konventionen Quelltext
@@ -178,7 +180,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 		\begin{itemize}
 		\item ECMAScript 6
 		\item "`use strict"' als erste Zeile eines .js
-		\item Tabs statts Space
+		\item Tabs statt Space
 		\item Einrückungsstil Variante 1TBS \footnote{\url{https://en.wikipedia.org/wiki/Indent_style\#Variant:_1TBS}}
 		\end{itemize}
 	\end{itemize}
@@ -241,7 +243,7 @@ Listing \ref{JS:Jasmine_Beispiel} zeigt die Prüfung der Überlastfunktion (ELV-
 \tcConditions
 	\begin{enumerate}
 	\item Repository mit git geklont
-	\item Akutellesten origin/master commit ausgecheckt
+	\item Aktuellster origin/master commit ausgecheckt
 	\item Aktuelles Verzeichnis \texttt{se2\_bga} (Projekt-Root)
 	\item Alle nicht getrackten Datein gelöscht mit \texttt{rm -r *}
 	\item Neuerstellen der Inhalte des Working-Directories mit \texttt{git reset --hard}
@@ -264,7 +266,7 @@ Listing \ref{JS:Jasmine_Beispiel} zeigt die Prüfung der Überlastfunktion (ELV-
 \end{testcase}
 
 \begin{testcase}{Manuell}
-\tcSubject Fahrstulfahrt
+\tcSubject Fahrstuhlfahrt
 \tcRemark Nimmt Bezug auf
 	\begin{itemize}
 	\item ELV-001 bis ELV-004
@@ -337,7 +339,7 @@ Listing \ref{JS:Jasmine_Beispiel} zeigt die Prüfung der Überlastfunktion (ELV-
 		\item
 		\begin{enumerate}
 		\item Fahrstuhl bewegt sich nicht
-		\item Tür bleibt offnen
+		\item Tür bleibt offen
 		\item Fahrstuhlsimulation zeigt Überlast an
 		\end{enumerate}
 	\item Fahrstuhlsimulation zeigt keine Überlast an
