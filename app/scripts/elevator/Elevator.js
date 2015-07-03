@@ -37,7 +37,7 @@ class Elevator extends EventEmitter {
 
 		/*
 		 * The following code will create the initial values of some properties of the class.
-		 * They will be described at their assignment to this._* farther below.
+		 * They will be described at their assignment to self._* farther below.
 		 */
 		const requests = new Array(maxLevel - minLevel + 1);
 
@@ -65,16 +65,18 @@ class Elevator extends EventEmitter {
 
 
 		const doorSensor = new ElevatorDoorSensor(self);
-		doorSensor.on('shut', self._onDoorShut.bind(self));
 
 		// Forward door events:
 		for (let name of ['opening', 'open', 'shutting', 'shut']) {
-			const eventName = 'door:' + name;
-
-			doorSensor.on(name, () => {
-				self.emit(eventName, self._level);
-			});
+			doorSensor.on(name, self.emit.bind(self, 'door:' + name));
 		}
+
+		/*
+		 * IMPORTANT:
+		 *  move/idle events are triggered in _onDoorShut().
+		 *    --> This .on() must be AFTER the above forward handlers
+		 */
+		doorSensor.on('shut', self._onDoorShut.bind(self));
 
 
 		/*
@@ -257,7 +259,7 @@ class Elevator extends EventEmitter {
 		}
 
 		if (!self.isMoving) {
-			setImmediate(self._emitIdle.bind(self));
+			self._emitIdle();
 		}
 	}
 
@@ -384,6 +386,10 @@ class Elevator extends EventEmitter {
 	_requestData(level) {
 		const self = this;
 		return self._requests[level - self._minLevel];
+	}
+
+	_createImmediateWrapper(cb, ...args) {
+		return setImmediate.bind(null, cb.bind(this, ...args));
 	}
 }
 

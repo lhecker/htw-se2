@@ -78,7 +78,7 @@ function pushActive(id) {
 		clearInterval(popActiveTimer);
 		popActiveTimer = null;
 	} else if (!popActiveTimer) {
-		popActiveTimer = setInterval(pushActive, ElevatorProperties.shortestTimeout *  2/3);
+		popActiveTimer = setInterval(pushActive, ElevatorProperties.shortestTimeout *  1/3);
 	}
 }
 

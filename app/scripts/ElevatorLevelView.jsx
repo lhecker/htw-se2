@@ -52,8 +52,8 @@ class ElevatorLevelView extends Component {
 		}
 	}
 
-	_onDoor(open, level) {
-		if (level === this.props.level) {
+	_onDoor(open) {
+		if (this.props.elevator.level === this.props.level) {
 			$(React.findDOMNode(this)).toggleClass('open', open);
 		}
 	}
