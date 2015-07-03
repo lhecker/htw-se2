@@ -1,5 +1,6 @@
 {
 	"name": "se2-bga",
+	"version": "0.0.1",
 	"private": true,
 	"devDependencies": {
 		"autoprefixer-core": "^5.2.1",
@@ -24,6 +25,7 @@
 		"grunt-filerev": "^2.3.1",
 		"grunt-karma": "^0.11.2",
 		"grunt-newer": "^1.1.1",
+		"grunt-node-webkit-builder": "^1.0.2",
 		"grunt-postcss": "^0.5.4",
 		"grunt-svgmin": "^2.0.1",
 		"grunt-usemin": "^3.0.0",

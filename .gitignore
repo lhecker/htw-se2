@@ -18,6 +18,8 @@ bower_components
 
 
 ### grunt ###
+builds/
+cache/
 dist/
 .tmp/
 

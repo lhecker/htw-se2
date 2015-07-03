@@ -13,6 +13,7 @@ module.exports = function (grunt) {
 	// load grunt tasks automatically
 	// (additionally we need to map irregular names to the matching module)
 	require('jit-grunt')(grunt, {
+		nodewebkit   : 'grunt-node-webkit-builder',
 		useminPrepare: 'grunt-usemin',
 	});
 
@@ -301,6 +302,7 @@ module.exports = function (grunt) {
 						'fonts/{,*/}*.*',
 						'{,*/}*.html',
 						'*.{ico,png,txt}',
+						'package.json',
 					],
 				}, {
 					expand: true,
@@ -317,6 +319,20 @@ module.exports = function (grunt) {
 				dest: '.tmp/styles/',
 				src: '{,*/}*.css',
 			},
+		},
+
+		nodewebkit: {
+			options: {
+				platforms: [
+					'win32',
+					'win64',
+					'linux32',
+					'linux64',
+					'osx64',
+				],
+				buildDir: 'builds',
+			},
+			src: ['dist/**/*'],
 		},
 
 		// run some tasks in parallel to speed up build process
@@ -373,6 +389,13 @@ module.exports = function (grunt) {
 			'filerev',
 			'usemin',
 			'htmlmin',
+		]);
+	});
+
+	grunt.registerTask('build', function (target) {
+		grunt.task.run([
+			'dist',
+			'nodewebkit',
 		]);
 	});
 
