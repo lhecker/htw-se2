@@ -11,26 +11,16 @@ const elevator = new Elevator(1, 9);
 window.elevator = elevator;
 
 React.render(
-	<div className="row">
-		<div className="col-sm-4 col-lg-3">
-			<ElevatorView elevator={elevator}/>
-		</div>
-		<div className="col-sm-8 col-lg-9">
-			<div className="row">
-				<div className="col-xs-12">
-					<AccessoryView elevator={elevator}/>
-				</div>
-			</div>
-			<div className="row">
-				<div className="col-xs-12">
-					<div className="panel panel-default">
-						<div className="panel-body" id="uml-panel-body">
-							<UmlView elevator={elevator}/>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>,
-	document.getElementById('content')
+	<ElevatorView elevator={elevator}/>,
+	document.getElementById('elevator-view-mount')
+);
+
+React.render(
+	<AccessoryView elevator={elevator}/>,
+	document.getElementById('accessory-view-mount')
+);
+
+React.render(
+	<UmlView elevator={elevator}/>,
+	document.getElementById('uml-view-mount')
 );

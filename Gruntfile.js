@@ -231,6 +231,12 @@ module.exports = function (grunt) {
 		},
 
 		svgmin: {
+			options: {
+				plugins: [
+					{ cleanupIDs: false },
+					{ removeViewBox: false },
+				]
+			},
 			dist: {
 				files: [{
 					expand: true,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" font-size="12px" xmlns="http://www.w3.org/2000/svg" stroke-opacity="0" font-family="Dialog" fill-opacity="0" style="color-interpolation:auto;image-rendering:auto;text-rendering:auto;color-rendering:auto;shape-rendering:auto" version="1.1" stroke-miterlimit="10" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 1462.9 849.63">
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" font-size="11px" stroke-opacity="0" font-family="Dialog" fill-opacity="0" style="color-interpolation:auto;image-rendering:auto;text-rendering:auto;color-rendering:auto;shape-rendering:auto" version="1.1" stroke-miterlimit="10" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 1462.9 849.63">
  <defs>
   <clipPath id="e" clipPathUnits="userSpaceOnUse">
    <path d="m-7-7h38v38h-38v-38z"/>
@@ -107,102 +107,102 @@
    <path d="m-80-28h240v84h-240v-84z"/>
   </clipPath>
  </defs>
- <g id="uml-initial" stroke-opacity="1" fill-opacity="1" font-size="11" transform="matrix(1.4577 0 0 1.4577 709.37 1)" stroke="#000">
+ <g id="uml-initial" stroke-opacity="1" fill-opacity="1" transform="matrix(1.4577 0 0 1.4577 709.37 1)" stroke="#000">
   <circle clip-path="url(#e)" cx="9.5" cy="9.5" r="9.5"/>
  </g>
- <g stroke-opacity="1" fill-opacity="1" font-size="11" transform="matrix(1.4577 0 0 1.4577 97.153 76.799)" stroke="#fff" fill="#fff">
+ <g stroke-opacity="1" fill-opacity="1" transform="matrix(1.4577 0 0 1.4577 97.153 76.799)" stroke="#fff" fill="#fff">
   <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0"/>
  </g>
  <g stroke="#000" stroke-opacity="1" fill-opacity="1">
-  <g stroke-linejoin="round" style="text-rendering:geometricPrecision" font-size="11px" transform="matrix(1.4577 0 0 1.4577 516.96 799.8)" stroke-miterlimit="0" font-family="sans-serif">
+  <g stroke-linejoin="round" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 516.96 799.8)" stroke-miterlimit="0" font-family="sans-serif">
    <circle clip-path="url(#e)" cx="9.5" cy="9.5" r="9.5" fill="none"/>
-   <text clip-path="url(#e)" xml:space="preserve" y="13" x="6" fill="#000000">H</text>
+   <text stroke-width="0" clip-path="url(#e)" xml:space="preserve" y="13" x="6" fill="#000000">H</text>
   </g>
-  <g id="uml-subautomata-final" font-size="11" transform="matrix(1.4577 0 0 1.4577 712.29 799.8)">
+  <g id="uml-subautomata-final" transform="matrix(1.4577 0 0 1.4577 712.29 799.8)">
    <circle clip-path="url(#e)" cx="10" cy="10" r="7"/>
    <circle stroke-linejoin="round" clip-path="url(#e)" cy="10" cx="10" stroke-miterlimit="0" r="10" fill="none"/>
   </g>
-  <g id="uml-subautomata-initial" font-size="11" transform="matrix(1.4577 0 0 1.4577 516.96 333.35)">
+  <g id="uml-subautomata-initial" transform="matrix(1.4577 0 0 1.4577 516.96 333.35)">
    <circle clip-path="url(#e)" cx="9.5" cy="9.5" r="9.5"/>
   </g>
  </g>
  <g id="uml-door-open" fill-opacity="1" stroke-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" stroke-opacity="1" fill-opacity="1" font-size="11" transform="matrix(1.4577 0 0 1.4577 686.56 433.11)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" stroke-opacity="1" fill-opacity="1" transform="matrix(1.4577 0 0 1.4577 686.56 433.11)" stroke-miterlimit="0">
    <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 687.97 450.65)" font-family="sans-serif">
-   <text clip-path="url(#d)" xml:space="preserve" y="11" x="6" fill="#000000">Tür geöffnet</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 687.97 450.65)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#d)" xml:space="preserve" y="11" x="6" fill="#000000">Tür geöffnet</text>
   </g>
  </g>
  <g id="uml-moved-up" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1256.5 278.6)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 1256.5 278.6)" stroke-miterlimit="0">
    <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1259 297.69)" font-family="sans-serif">
-   <text clip-path="url(#d)" xml:space="preserve" y="11" x="11" fill="#000000">Fuhr hoch</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1259 297.69)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#d)" xml:space="preserve" y="11" x="11" fill="#000000">Fuhr hoch</text>
   </g>
  </g>
  <g id="uml-move-down" transform="translate(-18.003 3.7344)">
   <rect stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 115.16 73.064)" stroke-opacity="1" clip-path="url(#c)" rx="10" ry="10" height="40" width="80" stroke="#000" stroke-miterlimit="0" y="0" x="0" fill="none"/>
-  <text style="text-rendering:geometricPrecision" clip-path="url(#d)" xml:space="preserve" fill-opacity="1" transform="matrix(1.4577 0 0 1.4577 116.02 92.161)" font-size="11px" y="11" x="5" font-family="sans-serif" fill="#000000">Fahre runter</text>
+  <text stroke-width="0" style="text-rendering:geometricPrecision" clip-path="url(#d)" xml:space="preserve" fill-opacity="1" transform="matrix(1.4577 0 0 1.4577 116.02 92.161)" y="11" x="5" font-family="sans-serif" fill="#000000">Fahre runter</text>
  </g>
  <g id="uml-move-up" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1256.5 73.064)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 1256.5 73.064)" stroke-miterlimit="0">
    <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1257.6 92.161)" font-family="sans-serif">
-   <text clip-path="url(#d)" xml:space="preserve" y="11" x="9" fill="#000000">Fahre hoch</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1257.6 92.161)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#d)" xml:space="preserve" y="11" x="9" fill="#000000">Fahre hoch</text>
   </g>
  </g>
  <g id="uml-overweight" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 588.9 551.18)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 588.9 551.18)" stroke-miterlimit="0">
    <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 589.71 571.5)" font-family="sans-serif">
-   <text clip-path="url(#d)" xml:space="preserve" y="11" x="16" fill="#000000">Überlast</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 589.71 571.5)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#d)" xml:space="preserve" y="11" x="16" fill="#000000">Überlast</text>
   </g>
  </g>
  <g id="uml-door-opening" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 679.27 329.61)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 679.27 329.61)" stroke-miterlimit="0">
    <rect clip-path="url(#ac)" rx="10" ry="10" height="40" width="90" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 681.48 348.71)" font-family="sans-serif">
-   <text clip-path="url(#v)" xml:space="preserve" y="11" x="5" fill="#000000">Tür öffnet sich</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 681.48 348.71)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#v)" xml:space="preserve" y="11" x="5" fill="#000000">Tür öffnet sich</text>
   </g>
  </g>
  <g id="uml-door-shutting" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 854.19 551.18)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 854.19 551.18)" stroke-miterlimit="0">
    <rect clip-path="url(#w)" rx="10" ry="10" height="40" width="100" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 856.02 570.28)" font-family="sans-serif">
-   <text clip-path="url(#u)" xml:space="preserve" y="11" x="5" fill="#000000">Tür schließt sich</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 856.02 570.28)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#u)" xml:space="preserve" y="11" x="5" fill="#000000">Tür schließt sich</text>
   </g>
  </g>
  <g id="uml-door-shut" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 671.98 669.25)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 671.98 669.25)" stroke-miterlimit="0">
    <rect clip-path="url(#w)" rx="10" ry="10" height="40" width="100" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 675.78 686.79)" font-family="sans-serif">
-   <text clip-path="url(#u)" xml:space="preserve" y="11" x="4" fill="#000000">Tür geschlossen</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 675.78 686.79)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#u)" xml:space="preserve" y="11" x="4" fill="#000000">Tür geschlossen</text>
   </g>
  </g>
  <g id="uml-idle" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 683.65 73.064)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 683.65 73.064)" stroke-miterlimit="0">
    <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 685.17 90.607)" font-family="sans-serif">
-   <text clip-path="url(#d)" xml:space="preserve" y="11" x="16" fill="#000000">Standby</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 685.17 90.607)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#d)" xml:space="preserve" y="11" x="16" fill="#000000">Standby</text>
   </g>
  </g>
  <g id="uml-subautomata" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 348.38 278.6)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 348.38 278.6)" stroke-miterlimit="0">
    <rect clip-path="url(#ag)" rx="10" ry="10" height="388" width="543" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 348.38 280.6)" font-family="sans-serif">
-   <text clip-path="url(#ai)" xml:space="preserve" y="11" x="226" fill="#000000">Tür Subautomat</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 348.38 280.6)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#ai)" xml:space="preserve" y="11" x="226" fill="#000000">Tür Subautomat</text>
   </g>
  </g>
- <g stroke-linejoin="round" font-size="11" stroke-opacity="1" fill-opacity="1" stroke="#000" fill="none">
+ <g stroke-linejoin="round" stroke-opacity="1" fill-opacity="1" stroke="#000" fill="none">
   <g transform="matrix(1.4577 0 0 1.4577 623.37 62.222)">
    <line y2="50" clip-path="url(#a)" x2="50" y1="150" x1="50"/>
    <line y2="62" clip-path="url(#a)" x2="44" y1="50" x1="50"/>
@@ -321,78 +321,78 @@
   </g>
  </g>
  <g id="uml-moved-down" stroke-opacity="1" fill-opacity="1" transform="translate(-18.003 3.7344)" stroke="#000">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 115.16 278.6)" stroke-miterlimit="0">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 115.16 278.6)" stroke-miterlimit="0">
    <rect clip-path="url(#c)" rx="10" ry="10" height="40" width="80" y="0" x="0" fill="none"/>
   </g>
-  <g font-size="11px" style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 115.94 297.69)" font-family="sans-serif">
-   <text clip-path="url(#d)" xml:space="preserve" y="11" x="8" fill="#000000">Fuhr runter</text>
+  <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 115.94 297.69)" font-family="sans-serif">
+   <text stroke-width="0" clip-path="url(#d)" xml:space="preserve" y="11" x="8" fill="#000000">Fuhr runter</text>
   </g>
  </g>
  <g stroke="#000" stroke-opacity="1" fill-opacity="1">
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1049 226.94)" fill="none">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 1049 226.94)" fill="none">
    <line y2="50" clip-path="url(#b)" x2="129" y1="50" x1="50"/>
    <line y2="44" clip-path="url(#b)" x2="117" y1="50" x1="129"/>
    <line y2="56" clip-path="url(#b)" x2="117" y1="50" x1="129"/>
   </g>
-  <g stroke-linejoin="round" font-size="11" transform="matrix(1.4577 0 0 1.4577 1049 253.18)" fill="none">
+  <g stroke-linejoin="round" transform="matrix(1.4577 0 0 1.4577 1049 253.18)" fill="none">
    <line y2="50" clip-path="url(#b)" x2="50" y1="50" x1="129"/>
    <line y2="56" clip-path="url(#b)" x2="62" y1="50" x1="50"/>
    <line y2="44" clip-path="url(#b)" x2="62" y1="50" x1="50"/>
   </g>
-  <g font-size="11px" font-family="sans-serif">
+  <g font-family="sans-serif">
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1135 336.26)">
-    <text clip-path="url(#ah)" xml:space="preserve" y="11" x="5" fill="#000000">ES == Ziel</text>
+    <text stroke-width="0" clip-path="url(#ah)" xml:space="preserve" y="11" x="5" fill="#000000">ES == Ziel</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 210.85 339.18)">
-    <text clip-path="url(#d)" xml:space="preserve" y="11" x="10" fill="#000000">ES == Ziel</text>
+    <text stroke-width="0" clip-path="url(#d)" xml:space="preserve" y="11" x="10" fill="#000000">ES == Ziel</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 178.78 199.24)">
-    <text clip-path="url(#ab)" xml:space="preserve" y="11" x="10" fill="#000000">Trigger - ES</text>
+    <text stroke-width="0" clip-path="url(#ab)" xml:space="preserve" y="11" x="10" fill="#000000">Trigger - ES</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 -15.088 190.5)" fill="#000000">
-    <text clip-path="url(#g)" xml:space="preserve" y="11" x="10">ES entspricht</text>
-    <text clip-path="url(#g)" xml:space="preserve" y="25" x="10">keinem Ziel</text>
+    <text stroke-width="0" clip-path="url(#g)" xml:space="preserve" y="11" x="10">ES entspricht</text>
+    <text stroke-width="0" clip-path="url(#g)" xml:space="preserve" y="25" x="10">keinem Ziel</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 384.31 85.545)">
-    <text clip-path="url(#aa)" xml:space="preserve" y="11" x="10" fill="#000000">W/R &lt; ES</text>
+    <text stroke-width="0" clip-path="url(#aa)" xml:space="preserve" y="11" x="10" fill="#000000">W/R &lt; ES</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 424.42 138.91)">
-    <text clip-path="url(#z)" xml:space="preserve" y="11" x="10" fill="#000000">kein W/R &lt; E</text>
+    <text stroke-width="0" clip-path="url(#z)" xml:space="preserve" y="11" x="10" fill="#000000">kein W/R &lt; E</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 758.93 205.07)">
-    <text clip-path="url(#af)" xml:space="preserve" y="11" x="10" fill="#000000">R==aktuelle Etage</text>
+    <text stroke-width="0" clip-path="url(#af)" xml:space="preserve" y="11" x="10" fill="#000000">R==aktuelle Etage</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 912.79 138.91)">
-    <text clip-path="url(#z)" xml:space="preserve" y="11" x="10" fill="#000000">kein W/R &gt; E</text>
+    <text stroke-width="0" clip-path="url(#z)" xml:space="preserve" y="11" x="10" fill="#000000">kein W/R &gt; E</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1340.5 193.41)" fill="#000000">
-    <text clip-path="url(#g)" xml:space="preserve" y="11" x="10">ES entspricht</text>
-    <text clip-path="url(#g)" xml:space="preserve" y="25" x="10">keinem Ziel</text>
+    <text stroke-width="0" clip-path="url(#g)" xml:space="preserve" y="11" x="10">ES entspricht</text>
+    <text stroke-width="0" clip-path="url(#g)" xml:space="preserve" y="25" x="10">keinem Ziel</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 1142.3 202.16)">
-    <text clip-path="url(#ab)" xml:space="preserve" y="11" x="10" fill="#000000">Trigger - ES</text>
+    <text stroke-width="0" clip-path="url(#ab)" xml:space="preserve" y="11" x="10" fill="#000000">Trigger - ES</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 955.72 79.714)">
-    <text clip-path="url(#aa)" xml:space="preserve" y="11" x="10" fill="#000000">W/R &gt; ES</text>
+    <text stroke-width="0" clip-path="url(#aa)" xml:space="preserve" y="11" x="10" fill="#000000">W/R &gt; ES</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 330.38 448.5)">
-    <text clip-path="url(#y)" xml:space="preserve" y="11" x="10" fill="#000000">W/R in gleicher E</text>
+    <text stroke-width="0" clip-path="url(#y)" xml:space="preserve" y="11" x="10" fill="#000000">W/R in gleicher E</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 898.87 672.98)">
-    <text clip-path="url(#ae)" xml:space="preserve" y="11" x="10" fill="#000000">TS Tür geschlossen</text>
+    <text stroke-width="0" clip-path="url(#ae)" xml:space="preserve" y="11" x="10" fill="#000000">TS Tür geschlossen</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 963.01 448.5)">
-    <text clip-path="url(#y)" xml:space="preserve" y="11" x="10" fill="#000000">W/R in gleicher E</text>
+    <text stroke-width="0" clip-path="url(#y)" xml:space="preserve" y="11" x="10" fill="#000000">W/R in gleicher E</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 793.92 442.67)">
-    <text clip-path="url(#v)" xml:space="preserve" y="11" x="10" fill="#000000">zeitl. Trigger</text>
+    <text stroke-width="0" clip-path="url(#v)" xml:space="preserve" y="11" x="10" fill="#000000">zeitl. Trigger</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 684.59 519.93)">
-    <text clip-path="url(#ad)" xml:space="preserve" y="11" x="10" fill="#000000">WS ok</text>
+    <text stroke-width="0" clip-path="url(#ad)" xml:space="preserve" y="11" x="10" fill="#000000">WS ok</text>
    </g>
    <g style="text-rendering:geometricPrecision" transform="matrix(1.4577 0 0 1.4577 489.26 482.03)" fill="#000000">
-    <text clip-path="url(#x)" xml:space="preserve" y="11" x="10">WS meldet</text>
-    <text clip-path="url(#x)" xml:space="preserve" y="25" x="10">Überlast</text>
+    <text stroke-width="0" clip-path="url(#x)" xml:space="preserve" y="11" x="10">WS meldet</text>
+    <text stroke-width="0" clip-path="url(#x)" xml:space="preserve" y="25" x="10">Überlast</text>
    </g>
   </g>
  </g>

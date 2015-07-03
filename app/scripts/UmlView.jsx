@@ -1,6 +1,7 @@
 'use strict';
 
 import Component from './Component';
+import url from 'url';
 import {ElevatorProperties} from './elevator';
 
 /*
@@ -54,7 +55,7 @@ function pushActive(id) {
 		 * => splice() it out and unshift it again.
 		 */
 		if (existingIdx > -1 && existingIdx < (activeNodesMax - 1)) {
-			activeNodes.splice(1, 1)
+			activeNodes.splice(existingIdx, 1)
 		}
 
 		activeNodes.unshift(node);
@@ -88,47 +89,52 @@ class UmlView extends Component {
 	}
 
 	componentDidMount() {
-		const self = this;
-		const elevator = this.props.elevator;
+		const thisNode = React.findDOMNode(this);
+		const mountNode = document.getElementById('uml-view-mount');
+		const svgUrl = url.resolve(document.location.href, mountNode.dataset.umlUrl);
 
-		function createCb(id) {
-			return pushActive.bind(null, id);
-		}
+		jQuery.ajax({
+			type: 'GET',
+			url: svgUrl,
+			dataType: "html",
+		}).done((responseText) => {
+			thisNode.innerHTML = responseText;
 
+			function createCb(id) {
+				return pushActive.bind(null, id);
+			}
 
-		const assoc = {
-			'change:overweight': 'uml-overweight',
-			'door:open'        : 'uml-door-open',
-			'door:opening'     : 'uml-door-opening',
-			'door:shut'        : 'uml-door-shut',
-			'door:shutting'    : 'uml-door-shutting',
-			'idle'             : 'uml-idle',
-		};
+			const elevator = this.props.elevator;
+			const assoc = {
+				'change:overweight': 'uml-overweight',
+				'door:open'        : 'uml-door-open',
+				'door:opening'     : 'uml-door-opening',
+				'door:shut'        : 'uml-door-shut',
+				'door:shutting'    : 'uml-door-shutting',
+				'idle'             : 'uml-idle',
+			};
 
-		for (let eventName in assoc) {
-			self._on(elevator, eventName, createCb(assoc[eventName]));
-		}
+			for (let eventName in assoc) {
+				this._on(elevator, eventName, createCb(assoc[eventName]));
+			}
 
+			this._on(elevator, 'change:level', () => {
+				pushActive('uml-moved-' + (elevator.direction > 0 ? 'up' : 'down'));
+			});
 
-		self._on(elevator, 'change:level', () => {
-			pushActive('uml-moved-' + (elevator.direction > 0 ? 'up' : 'down'));
-		});
+			this._on(elevator, 'move', (level, direction) => {
+				pushActive('uml-move-' + (direction > 0 ? 'up' : 'down'));
+			});
 
-		self._on(elevator, 'move', (level, direction) => {
-			pushActive('uml-move-' + (direction > 0 ? 'up' : 'down'));
-		});
+			this._on(elevator, 'stop', () => {
+				pushActive('uml-subautomata');
+				pushActive('uml-subautomata-initial');
+			});
 
-		self._on(elevator, 'stop', () => {
-			pushActive('uml-subautomata');
-			pushActive('uml-subautomata-initial');
-		});
+			this._on(elevator, 'door:shut', () => {
+				pushActive('uml-subautomata-final');
+			});
 
-		self._on(elevator, 'door:shut', () => {
-			pushActive('uml-subautomata-final');
-		});
-
-
-		$(React.findDOMNode(this)).load('../images/uml.svg', () => {
 			pushActive('uml-initial');
 			pushActive('uml-idle');
 		});
