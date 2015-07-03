@@ -50,6 +50,7 @@ grunt.registerTask('build', function (target) {
 
 Zeile 1 im Listing \ref{JS:grunt_build} zeigt die \glqq Anmeldung\grqq des Tasks im Framework. Dies hat zur Folge das der beschriebene Task im Wurzelverzeichnis der Anwendung durch Eingabe des folgenden Befehls in einer Kommandozeile \texttt{grunt serve} ausgeführt werden kann. Dieser Task bündelt nun die Ausführung von \texttt{dist} und \texttt{nodewebkit}.
 
+\newpage
 \begin{lstlisting}[language=JavaScript,label=JS:grunt_dist,caption=grunt dist-Task]
 grunt.registerTask('dist', function (target) {
 	grunt.task.run([
@@ -68,6 +69,26 @@ grunt.registerTask('dist', function (target) {
 });
 \end{lstlisting}
 
+\paragraph{}Listing \ref{JS:grunt_dist} zeigt den Inhalt des \textit{dist}-Tasks. Die einzelnen Punkte entsprechen wiederum verschiedenen Unteraufgaben, welche in Tabelle \ref{dist_table} näher beschrieben sind.
+
+\paragraph{}Diese Aufgaben dienen alle der Vorbereitung des Quellcodes um im Anschluss mittels \texttt{nodewebkit} die fertigen Anwendungen zu erstellen. Listing \ref{JS:grunt_webkit_config} zeigt die Konfiguration der entsprechenden Aufgaben. Neben Quell- und Zielordner sind hier die jeweiligen Zielarchitekturen eingetragen.
+
+\begin{tabularx}{0.92\textwidth}{lX}
+	\textit{clean:dist} & bereinigt temporäre und build-Ordner\\ \hline
+	\textit{useminPrepare} & TODO\\ \hline
+	\textit{concurrent:dist} & Konfiguriert verschiedene Unteraufgaben um Nebenläufigkeit im Build-Prozess zu erzeugen\\ \hline
+	\textit{postcss} & TODO\\ \hline
+	\textit{concat} & TODO\\ \hline
+	\textit{cssmin} & Verringert die Größe der CSS-Dateien\\ \hline
+	\textit{uglify} & Verringert die Größe der Javascript-Dateien\\ \hline
+	\textit{copy:dist} & Kopiert alle notwendigen Dateien in die jeweiligen Veröffentlichungs-Unterordner\\ \hline
+	\textit{filerev} & Ändert Dateinamen um Probleme mit dem Cache des Browser zu vermeiden\\ \hline
+	\textit{usemin} &  TODO\\ \hline
+	\textit{htmlmin} & Verringert die Größe der HTML-Dateien\\ \hline
+\end{tabularx}
+\label{dist_table}
+\vspace*{1cm}
+
 \begin{lstlisting}[language=JavaScript,label=JS:grunt_webkit_config,caption=grunt nodewebkit-Konfiguration]
 nodewebkit: {
 	options: {
@@ -83,6 +104,8 @@ nodewebkit: {
 	src: ['dist/**/*'],
 },
 \end{lstlisting}
+
+\paragraph{}Nach Abschluss dieses Tasks befinden sich die Versionen zur Veröffentlichung in Unterordnern \texttt{ win32, win64, linux32, linux64} und\texttt{ osx64 }des Ordners \texttt{ dist } im Wurzelverzeichnis der Anwendung.
 
 \chapter{Software-Entwurf}
 \section{Grobentwurf}
