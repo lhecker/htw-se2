@@ -35,7 +35,54 @@ Neben einem beliebigem Texteditor benötigt man zur Weiterentwicklung der Anwend
 Nach der Installation dieser Pakete sind alle Systemvoraussetzungen für Weiterentwicklung dieser Anwendung erfüllt. 
 
 \section{Build-Prozess}
-\todo{Beschreibung des grunt-Tasks, der letztendlich die Anwendung baut}
+Wie bereits mehrfach erwähnt war die große Kompatibilität zu verschiedenen Plattformen ein Grund für die Entscheidung, das Projekt mit Web-Tech”-no”-lo”-gien umzusetzen. Als \textit{Build-Prozess} wird in diesem Kontext die Routine bezeichnet, die aus dem Quellcode des Projektes die Pakete erzeugt, welche an Kunden und Benutzer ausgeliefert werden.
+
+\paragraph{}Der \textit{Build-Prozess} wurde im vorliegenden Projekt mit Hilfe des \textit{grunt}-Frame"-works automatisiert und soll im folgenden beschrieben werden. Diese Beschreibung eignet sich zusätzlich als Einführung in die Arbeitsweise des \glqq Task-Runners \grqq \textit{grunt}. Dargestellte Listings sind der \textit{grunt}-Kon"-fi"-gurations"-datei \\\texttt{Gruntfile.js} entnommen.
+
+\begin{lstlisting}[language=JavaScript,label=JS:grunt_build,caption=grunt build-Task]
+grunt.registerTask('build', function (target) {
+	grunt.task.run([
+		'dist',
+		'nodewebkit',
+	]);
+});
+\end{lstlisting}
+
+Zeile 1 im Listing \ref{JS:grunt_build} zeigt die \glqq Anmeldung\grqq des Tasks im Framework. Dies hat zur Folge das der beschriebene Task im Wurzelverzeichnis der Anwendung durch Eingabe des folgenden Befehls in einer Kommandozeile \texttt{grunt serve} ausgeführt werden kann. Dieser Task bündelt nun die Ausführung von \texttt{dist} und \texttt{nodewebkit}.
+
+\begin{lstlisting}[language=JavaScript,label=JS:grunt_dist,caption=grunt dist-Task]
+grunt.registerTask('dist', function (target) {
+	grunt.task.run([
+		'clean:dist',
+		'useminPrepare',
+		'concurrent:dist',
+		'postcss',
+		'concat',
+		'cssmin',
+		'uglify',
+		'copy:dist',
+		'filerev',
+		'usemin',
+		'htmlmin',
+	]);
+});
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript,label=JS:grunt_webkit_config,caption=grunt nodewebkit-Konfiguration]
+nodewebkit: {
+	options: {
+		platforms: [
+			'win32',
+			'win64',
+			'linux32',
+			'linux64',
+			'osx64',
+		],
+		buildDir: 'builds',
+	},
+	src: ['dist/**/*'],
+},
+\end{lstlisting}
 
 \chapter{Software-Entwurf}
 \section{Grobentwurf}
