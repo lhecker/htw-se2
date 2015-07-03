@@ -128,13 +128,13 @@ Umgesetzt wird die Trennung der Komponenten unter Nutzung des MVC-Paradigmas wob
 \chapter{Qualitätssicherung}
 \label{QS}
 \section{Allgemein}
-Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evulation benutzt.
+Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000:2014}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evulation benutzt.
 
 \paragraph*{}Aus der Definition
 \begin{quote}\label{PD_SQ}
 software quality
-capability of software product to satisfy stated and implied needs when used unter specified condidtions
-\end{quote}\cite[4 Terms and definitions]{ISO25000}
+capability of software product to satisfy stated and implied needs when used unter specified condidtions \cite[4 Terms and definitions]{ISO25000:2014}
+\end{quote}
 lässt sich somit die umfassende Qualitätssicherung aufteilen auf
 \begin{enumerate}
 \item Einwirkung auf Anforderungsanalyse
@@ -186,8 +186,14 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 
 
 \subsection{Test}
-Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
-\todo{Traceabillity hinzufügen -> jede Anforderung muss im Quellcode durch einen commit oder ähnlich nachverfolgbar sein}
+
+\subsubsection{Testplan}
+\begin{quote}\label{Quote:Testplan}
+3.1.49 test plan: (A) A document describing the scope, approach, resources, and schedule of intended test activities. It identifies test items, the features to be tested, the testing tasks, who will do each task, and any risks requiring contingency planning. \cite[3.1 Definitions, Seite 11]{IEEE829-2008}
+\end{quote}
+
+Um mit Tests die Entwicklung des Projekts bestmöglich zu unterstützen wurden folgende Festlegungen getroffen:
+
 \subsubsection{manuelle Testfälle}
 \begin{testcase}[tc:build]{Manuell}
 \tcSubject Projekt-Setup
@@ -354,6 +360,9 @@ Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jas
 \end{testcase}
 
 \subsubsection{automatisierte Testfälle}
+Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
+\todo{Motivation und Beispiel erklären}
+
 
 \chapter{Team-Organisation}
 \section{Gruppenarbeit}
