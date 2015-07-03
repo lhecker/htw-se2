@@ -187,12 +187,52 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 
 \subsection{Test}
 
-\subsubsection{Testplan}
+\subsubsection{Testplan (MTP)}
 \begin{quote}\label{Quote:Testplan}
 3.1.49 test plan: (A) A document describing the scope, approach, resources, and schedule of intended test activities. It identifies test items, the features to be tested, the testing tasks, who will do each task, and any risks requiring contingency planning. \cite[3.1 Definitions, Seite 11]{IEEE829-2008}
 \end{quote}
 
-Um mit Tests die Entwicklung des Projekts bestmöglich zu unterstützen wurden folgende Festlegungen getroffen:
+\paragraph{Geltungsbereich (scope)}
+Um mit Tests die Entwicklung des Projekts bestmöglich zu unterstützen wurde folgender Testplan für die Fahrstuhlsimulation und Fahrstuhlsteuerung festgelegt.
+
+\paragraph{Ansatz (approach)}
+Um Implementierung schon vor den ersten funktionsfähigen Prototypen zu unterstützen wurden automatisierte Tests mit dem Testframework Jasmine\footnote{http://jasmine.github.io} implementiert. Dies zielt darauf ab, die Einhaltung von API-Konventionen und Invarianten zu überprüfen, die Übersetzung und Ausführung von möglichst allen Programmzweigen zu garantieren, um damit Fehler in feingranular schon auf Unit bzw. Komponentenebene zu detektieren.
+\subparagraph{Beispiel} \begin{lstlisting}[language=JavaScript,label=JS:Jasmine_Beispiel,caption=Jasmine Test Beispiel]
+	it('WeightSensor tests', () => {
+		function assert(overweight, weight) {
+			expect(elevator.isOverweight).toBe(overweight);
+			expect(elevator._weightSensor._weight).toBe(weight);
+		}
+
+		const personCount = ElevatorProperties.maxWeight / ElevatorProperties.personWeight;
+		expect(personCount).not.toBeNaN();
+
+		let weight = 0;
+
+		while (weight <= ElevatorProperties.maxWeight) {
+			assert(false, weight);
+
+			elevator.addPerson();
+			weight += ElevatorProperties.personWeight;
+		}
+
+		// at this point the elevator should contain exactly one person more than maximally allowed
+		assert(true, weight);
+
+		elevator.request(elevator.maxLevel, 0);
+		expect(elevator.isMoving).toBe(false);
+
+		// due to the ">=" this loop will try to remove one more person after the elevator is already empty
+		while (weight >= 0) {
+			elevator.removePerson();
+			weight -= ElevatorProperties.personWeight;
+
+			assert(false, Math.max(0, weight));
+		}
+	});
+\end{lstlisting}
+Listing \ref{JS:Jasmine_Beispiel} zeigt die Prüfung der Überlastfunktion (ELV-010) der Fahrstuhlsimulation und Steuerung. Dies wird erreicht indem in der Testsuite ein Objekt der Fahrstuhlklasse angelegt wird, und dann über die API-Aufrufe das zu erwartende Verhalten geprüft wird.
+
 
 \subsubsection{manuelle Testfälle}
 \begin{testcase}[tc:build]{Manuell}
@@ -359,10 +399,7 @@ Um mit Tests die Entwicklung des Projekts bestmöglich zu unterstützen wurden f
 \tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Optional"', "`Implementierung"' und "`Bug"'
 \end{testcase}
 
-\subsubsection{automatisierte Testfälle}
-Für die automatischen Tests wurde das Testframework Jasmine\footnote{http://jasmine.github.io}
-\todo{Motivation und Beispiel erklären}
-
+%\subsubsection{automatisierte Testfälle} % Siehe Slack test_qs Diskussion gez. Markus 2015-06-03T14:18
 
 \chapter{Team-Organisation}
 \section{Gruppenarbeit}
