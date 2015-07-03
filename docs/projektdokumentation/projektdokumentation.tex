@@ -129,7 +129,7 @@ Umgesetzt wird die Trennung der Komponenten unter Nutzung des MVC-Paradigmas wob
 
 \chapter{Qualitätssicherung}
 \label{QS}
-\section{Allgemein}
+\section{Allgemein} \label{QS:Allgemein}
 Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000:2014}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evaluation benutzt.
 
 \paragraph*{}Aus der Definition
@@ -163,7 +163,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 \item Allgemeine Konventionen
 	\begin{itemize}
 	\item Datum- und Zeitangaben sind in ISO 8601 zu notieren, Ausnahmen sind bei nationalen externen Dokumenten möglich
-	\item alle Daten sind mit GIT zu versionieren, temporäre Daten jedoch nicht
+	\item alle Daten sind mit Git\footnote{https://git-scm.com} zu versionieren, temporäre Daten jedoch nicht
 	\item alle gefundenen Fehler sind in Issues/Gitlab festzuhalten
 	\item Vektorgrafiken sind zu skalieren auf 100x100 px
 	\item Textdateien sind in UTF8 zu codieren
@@ -180,7 +180,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 		\begin{itemize}
 		\item ECMAScript 6
 		\item "`use strict"' als erste Zeile eines .js
-		\item Tabs statt Space
+		\item Tabs statt Space als Einrückung
 		\item Einrückungsstil Variante 1TBS \footnote{\url{https://en.wikipedia.org/wiki/Indent_style\#Variant:_1TBS}}
 		\end{itemize}
 	\end{itemize}
@@ -198,7 +198,7 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 Um mit Tests die Entwicklung des Projekts bestmöglich zu unterstützen wurde folgender Testplan für die Fahrstuhlsimulation und Fahrstuhlsteuerung festgelegt.
 
 \paragraph{Ansatz (approach)}
-Um Implementierung schon vor den ersten funktionsfähigen Prototypen zu unterstützen wurden automatisierte Tests mit dem Testframework Jasmine\footnote{http://jasmine.github.io} implementiert. Dies zielt darauf ab, die Einhaltung von API-Konventionen und Invarianten zu überprüfen, die Übersetzung und Ausführung von möglichst allen Programmzweigen zu garantieren, um damit Fehler in feingranular schon auf Unit bzw. Komponentenebene zu detektieren.
+Um Implementierung schon vor den ersten funktionsfähigen Prototypen zu unterstützen wurden automatisierte Tests mit dem Testframework Jasmine\footnote{http://jasmine.github.io} implementiert. Dies zielt darauf ab, die Einhaltung von API-Konventionen und Invarianten zu überprüfen, die Übersetzung und Ausführung von möglichst allen Programmzweigen zu garantieren, um damit Fehler feingranular schon auf Unit bzw. Komponentenebene zu detektieren.
 \subparagraph{Beispiel} \begin{lstlisting}[language=JavaScript,label=JS:Jasmine_Beispiel,caption=Jasmine Test Beispiel]
 	it('WeightSensor tests', () => {
 		function assert(overweight, weight) {
@@ -235,6 +235,26 @@ Um Implementierung schon vor den ersten funktionsfähigen Prototypen zu unterst�
 \end{lstlisting}
 Listing \ref{JS:Jasmine_Beispiel} zeigt die Prüfung der Überlastfunktion (ELV-010) der Fahrstuhlsimulation und Steuerung. Dies wird erreicht indem in der Testsuite ein Objekt der Fahrstuhlklasse angelegt wird, und dann über die API-Aufrufe das zu erwartende Verhalten geprüft wird.
 
+Wichtigstes Ziel des Testens ist allerdings wie in \ref{QS:Allgemein} beschrieben, die Evaluation der Anforderungen. Da die Anforderungen in diesem Projekt hauptsächlich durch die Benutzung ein GUI abprüfbar sind, wurden hierfür manuelle Tests spezifiziert. Die Testfälle sollen dabei die Erfüllung der Anforderungen garantieren. Um eine Nachvollziehbarkeit bzw. traceability, welche Anforderungen durch welche Testfälle abgedeckt werden, wurde eine traceability matrix erstellt\cite[Seite 101, Figure 28]{Pernambuco:TestTechniques}\\
+\begin{tabular}{l|ccccc}
+Testfall 	& Test 1 	& Test 2 	& Test 3 	& Test 4 	& Test 5 \\
+Anforderung &&&&& \\ \hline
+ELV-001 	& 			& X			& 			&			&		\\
+ELV-002 	& 			& X			& 			&			&		\\
+ELV-003 	& 			& X			& 			&			&		\\
+ELV-004 	& 			& X			& 			&			&		\\
+ELV-005 	& 			& 			& 			&	X		&		\\
+ELV-006 	& 			& 			& 			&			&	X	\\
+ELV-007 	& 			& X			& 			&			&		\\
+ELV-008 	& 			& X			& 			&			&		\\
+ELV-009 	& 			& 			& X			&			&		\\
+ELV-010 	& 			& 			& X			&	X		&		\\
+ELV-011 	& 			& X			& 			&			&	X	\\
+ELV-012 	& 			& 			& X			&			&		\\
+ELV-013 	& 			& 			& X			&			&		\\
+ELV-014 	& 			& X			& 			&			&		\\
+
+\end{tabular}
 
 \subsubsection{manuelle Testfälle}
 \begin{testcase}[tc:build]{Manuell}
