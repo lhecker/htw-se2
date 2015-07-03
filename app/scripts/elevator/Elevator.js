@@ -173,32 +173,26 @@ class Elevator extends EventEmitter {
 	 * direction > 0 --> up request on "level"
 	 */
 	request(level, direction) {
-		function apply(idx) {
-			// only increment if the level has not already been accounted for
-			if (!r[idx]) {
-				r[idx] = 1;
-				s[idx]++;
-			}
-		}
-
 		/*
 		 * Contains the relative direction of "level" to the current level.
 		 * If the level is equal to level, it will check if the elevator is
 		 * currently moving and use it's current direction in that case.
 		 */
 		const relativePosition = (level - this._level) || (this._isMoving && -this._direction);
-		const r = this._requestData(level);
-		const s = this._stops[tupleIdx(relativePosition)];
 
 		if (this._level === level && !this.isMoving) {
 			this._emitStop();
 		} else if (relativePosition) {
 			direction = Math.sign(direction);
 
-			if (direction) {
-				apply(tupleIdx(direction));
-			} else {
-				apply(2);
+			const r = this._requestData(level);
+			const s = this._stops[tupleIdx(relativePosition)];
+			const idx = direction ? tupleIdx(direction) : 2;
+
+			// only increment if the level has not already been accounted for
+			if (!r[idx]) {
+				r[idx] = 1;
+				s[idx]++;
 			}
 
 			this.emit('requests:add', level, direction);
@@ -330,32 +324,20 @@ class Elevator extends EventEmitter {
 	}
 
 	_emitStop() {
-		function emit(direction) {
-			this.emit('requests:remove', level, direction);
-		}
-
-		function apply(idx) {
-			if (r[idx]) {
-				r[idx] = 0;
-				s[idx]--;
-
-				if (idx === 2) {
-					emit(0);
-				} else {
-					emit(2 * idx - 1);
-				}
-			}
-		}
-
 		const level = this._level;
 		const r = this._requestData(level);
 		const s = this._stops[tupleIdx(this._direction)];
 
 		this._isMoving = false;
 
-		apply(0);
-		apply(1);
-		apply(2);
+		for (let idx = 0; idx < r.length; idx++) {
+			if (r[idx]) {
+				r[idx] = 0;
+				s[idx]--;
+
+				this.emit('requests:remove', level, idx === 2 ? 0 : (2 * idx - 1));
+			}
+		}
 
 		this.emit('stop', level);
 	}
