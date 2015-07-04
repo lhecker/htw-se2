@@ -134,16 +134,16 @@ class Elevator extends EventEmitter {
 		return this._direction;
 	}
 
-	get isMoving() {
-		return this._isMoving;
-	}
-
 	get doorState() {
 		return this._doorSensor.state;
 	}
 
 	get isDoorUnlocked() {
 		return this.doorState !== 'shut';
+	}
+
+	get isMoving() {
+		return this._isMoving;
 	}
 
 	get isOverweight() {
@@ -181,7 +181,7 @@ class Elevator extends EventEmitter {
 		const relativePosition = (level - this._level) || (this._isMoving && -this._direction);
 
 		if (this._level === level && !this.isMoving) {
-			this._emitStop();
+			this._doorSensor.open();
 		} else if (relativePosition) {
 			direction = Math.sign(direction);
 
