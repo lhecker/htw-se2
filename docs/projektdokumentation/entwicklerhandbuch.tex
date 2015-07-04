@@ -161,7 +161,8 @@ Ein naiver Ansatz könnte folgendermaßen außen:\\ \\ Ein System besitzt $N$ Et
 Um zu entscheiden ob die Fahrt in der aktuellen Fahrtrichtung fortgesetzt wird durchsucht die Steuerung die Datenstruktur der Etagen linear im Bereich $(M,N]$ für $X>0$ (aufwärts) oder im Bereich $[0,M)$ für $X<0$ (abwärts).\\\\
 Dieser Algorithmus wäre jedoch abhängig von der Menge der Etagen und besäße damit die Komplexität $\mathcal{O}(n)$.
 
-\paragraph{}Beim Entwurf des Algorithmus der vorliegenden Anwendung war das Ziel diese Komplexität zu verringern.
+\paragraph{}
+Beim Entwurf des Algorithmus der vorliegenden Anwendung war das Ziel diese Komplexität zu verringern.
 Seine Funktion erklärt sich wie folgt:\\ \\ Grundlegendes Element des Algorithmus ist eine Datenstruktur, welche ausschließlich die \textbf{Summe} der Fahrtwünsche /-Rufe über- und unterhalb der aktuellen Position enthält.
 Um nun über die Fahrtrichtung entscheiden zu können muss die Fahrstuhlsteuerung ausschließlich an definierten Stellen in dieser Datenstruktur überprüfen, ob Elemente größer 0 sind.
 Die Komplexität dieser Abfrage über einer Datenstruktur fester Größe besitzt die Komplexität $\mathcal{O}(1)$, was einer Reduktion entspricht.
@@ -169,8 +170,25 @@ Zu beachten ist dabei jedoch, dass die genannte Datenstruktur zu jedem Zeitpunkt
 
 \section{Feinentwurf}
 
-\paragraph{MVC - React \& FLUX}
-\todo{hier muss erklärt werden wie ReactJS funktioniert und warum es die Performance verbessert}
+\paragraph{React}
+Wie bereits erwähnt wurde erleichtert das React Framework die Entwicklung performanter Webanwendungen.
+Bei der bisher im Web üblichen Herangehensweise wurde in der Regel das HTML der Website Serverseitig gerendert.
+Trat eine gewisse Änderung in dem Clientseitigen Model auf, z.B. weil dem Client vom Server neue Daten zugesendet wurden, so wurde \textit{explizit} der jeweilige Bereich der Seite, welcher diese Daten darstellte, erneuert.
+Die einzigen zwei Möglichkeiten um dies zu erreichen, sind hierbei natürlich nur die, die jeweiligen \textit{explizit} Attribute einer \textit{DOM-Node}, wie z.B. Farbe, oder den Text, der Bereiche zu ändern, oder aber den gesamten Bereich in neuem HTML zu rendern.
+Wie man sich leicht Denken kann, führt Ersteres eventuell zu der Frage, welcher Teil des Codes für was Verwantwortlich ist, oder aber erschwert die Entwicklung durch eine Überzahl an nötigen Controllern.
+Letzteres wiederum ist eine eventuell äußerst inperformante Lösung, da das rendern von ganzen Bereichen der Seite auch jene betrifft die sich möglicherweise gar nicht geändert haben. \\
+
+Als zur Zeit noch äußerst moderne Lösung bietet sich hierfür das aufstrebende React Framework, welches seit seiner Veröffentlichung mit Worten wie \glqq Bahnbrechend\grqq und \glqq Revolutionär\grqq betitelt.
+Hierbei schreibt der Entwickler sogenannte React-Komponenten.
+Statt nun bei einem Render-Vorgang dem React Framework fertigen HTML Code zu liefern, den die jeweilige Komponente darstellen will, muss sie stattdessen eine ebenso hierarische Objektstruktur zurückgeben, welche \textit{repräsentativ} für den HTML Code steht.
+Diese repräsentative Struktur ähnelt dem und simuliert den sogenannten \textit{Document Object Model} (DOM), weshalb man diese Struktur auch den \textit{Shadow DOM} nennt.
+Bei jeder Änderung des Zustands einer Komponente wird hierbei nun die \textit{render}-Methode neu aufgerufen.
+Ändert sich zwischen 2 Aufrufen der \textit{Shadow DOM}, so wird ein möglichst minimaler Satz an Modifikationen berechnet, welche nötig sind um den alten \textit{Shadow DOM} in den neuen zu transformieren.
+Dieser Satz an Änderungen wird nun auf den tatsächlichen \textit{DOM} des Browsers angewendet. \\
+
+Diese Vorgehensweise ist selbstverständlich nicht so performant wie eine optimale und explizite Verwaltung des HTML und des \textit{DOMs}, jedoch ist die Performanz für nahezu alle Einsatzgebiete bei weitem ausreichend.
+Da die Komplexität bei größeren Projekten jedoch stark zunimmt und somit eine optimale und explizite Verwaltung exponentiell schwieriger wird, übersteigt die Performance einer Website die React verwendet meistens die einer ohne.
+Zusätzlich eleminiert React die Frage gänzlich, wie und wo man Änderungen auf eine Website anwenden und verwalten kann und ermöglicht somit zusätzlich eine äußerst schnelle Entwicklung.
 
 \paragraph{Observer Pattern}
 
