@@ -235,7 +235,7 @@ Um Implementierung schon vor den ersten funktionsfähigen Prototypen zu unterst�
 \end{lstlisting}
 Listing \ref{JS:Jasmine_Beispiel} zeigt die Prüfung der Überlastfunktion (ELV-010) der Fahrstuhlsimulation und Steuerung. Dies wird erreicht indem in der Testsuite ein Objekt der Fahrstuhlklasse angelegt wird, und dann über die API-Aufrufe das zu erwartende Verhalten geprüft wird.
 
-Wichtigstes Ziel des Testens ist allerdings wie in \ref{QS:Allgemein} beschrieben, die Evaluation der Anforderungen. Da die Anforderungen in diesem Projekt hauptsächlich durch die Benutzung ein GUI abprüfbar sind, wurden hierfür manuelle Tests spezifiziert. Die Testfälle sollen dabei die Erfüllung der Anforderungen garantieren. Um eine Nachvollziehbarkeit bzw. traceability, welche Anforderungen durch welche Testfälle abgedeckt werden, wurde eine traceability matrix erstellt\cite[Seite 101, Figure 28]{Pernambuco:TestTechniques}\\
+Wichtigstes Ziel des Testens ist allerdings wie in \ref{QS:Allgemein} beschrieben, die Evaluation der Anforderungen. Da die Anforderungen in diesem Projekt hauptsächlich durch die Benutzung ein GUI abprüfbar sind, wurden hierfür manuelle Tests spezifiziert. Die Testfälle sollen dabei die Erfüllung der Anforderungen garantieren\cite[Based on property coverage, Seite 16]{Pernambuco:TestTechniques}. Um eine Nachvollziehbarkeit bzw. traceability, welche Anforderungen durch welche Testfälle abgedeckt werden, wurde eine traceability matrix erstellt\cite[Seite 101, Figure 28]{Pernambuco:TestTechniques}\\
 \begin{tabular}{l|ccccc}
 Testfall 	& Test 1 	& Test 2 	& Test 3 	& Test 4 	& Test 5 \\
 Anforderung &&&&& \\ \hline
@@ -253,10 +253,29 @@ ELV-011 	& 			& X			& 			&			&	X	\\
 ELV-012 	& 			& 			& X			&			&		\\
 ELV-013 	& 			& 			& X			&			&		\\
 ELV-014 	& 			& X			& 			&			&		\\
-
 \end{tabular}
+\paragraph{Ressourcen (resources)}
+Automatische Tests für Jasmine werden durch die Quellcodedateien im Projektverzeichnis \texttt{test/spec} spezifiziert.
 
-\subsubsection{manuelle Testfälle}
+Als manuelle Tester wurden Projektmitglieder ausgewählt, diesen stehen folgende Dokumente bereit:
+\begin{itemize}
+	\item Testanleitung
+	\item manuelle Testfall-Beschreibungen
+	\item Testprotokoll-Vorlage
+\end{itemize}
+
+\paragraph{Testdurchführung (schedule)}
+Die manuellen Testfälle werden vor jeder Vorführung des Produkts beim Kunden vollständig durchgeführt.
+
+\subsubsection{manuelle Testfälle}\label{QS:Test:Manuelle_Testfaelle}
+\paragraph{Anleitung}
+\begin{itemize}
+\item Für alle manuellen Tests ist die Testprotokoll-Vorlage zu benutzen.
+\item Das Testprotokoll ist vollständig auszufüllen.
+\item Die Testfälle sind stets vollständig auszufüllen.
+\item Die Schritte unter Testverfahren sind schrittweise von oben nach unten durchzuführen, unterbrochen durch das Prüfen der Testziele, welche ihre Beziehung durch die gleiche Nummerierung zum Schritt herstellen.
+\item Abweichungen zu den beschriebenen Testzielen sind auf dem Testprotkoll zu dokumentieren und, soweit nicht bereits eingetragen, ebenfalls als Issue anzulegen (Bugreport).
+\end{itemize}
 \begin{testcase}[tc:build]{Manuell}
 \tcSubject Projekt-Setup
 \tcRemark Testfall um erfolgreichen Clean-Build-Prozess garantieren zu können.
