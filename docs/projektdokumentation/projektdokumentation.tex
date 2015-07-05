@@ -1,7 +1,7 @@
 \part{Projektdokumentation}
 
 \chapter{Anforderungs- und Problemanalyse}
-Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden welches Problem die Kundin mit der zu entwickelnden Software lösen möchte. Dafür wurden Interviews mit dem Kunden durchgeführt und entsprechende Ergebnisse mit Hilfe von Audioaufzeichnung, Mitschriften und Fotografien protokolliert. Zur detaillierten Beschreibung einzelner Abläufe des Systems wurden Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modells durchgeführt.
+Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden welches Problem die Kundin mit der zu entwickelnden Software lösen möchte. Dafür wurden Interviews durchgeführt und entsprechende Ergebnisse mit Hilfe von Audioaufzeichnung, Mitschriften und Fotografien protokolliert. Zur detaillierten Beschreibung einzelner Abläufe des Systems wurden Kreativtechniken wie das Zeichnen verschiedener Szenarien an einem Whiteboard sowie die manuelle Simulation des Fahrstuhles mit einem aus Pappe gefertigten Modell durchgeführt (Abbildung \ref{creativ}).
 \begin{figure}[hbt]
 \hspace*{-1.2cm}
 \subcaptionbox{Skizze der Fahrstuhlsimulation am Whiteboard}[0.49\linewidth]
@@ -9,6 +9,7 @@ Aufgabe der Anforderungsanalyse in diesem Projekt war es herauszufinden welches 
 \subcaptionbox{Modell des Fahrstuhles}[0.49\linewidth]
 {\includegraphics[height=8cm]{images/pappfahrstuhl.jpg}}
 \caption{Kreativtechniken zur Anforderungsanalyse}
+\label{creativ}
 \end{figure}
 Die folgenden grundlegende Fragen waren im Laufe der Analyse zu klären:
 \begin{itemize}
@@ -20,34 +21,25 @@ Die folgenden grundlegende Fragen waren im Laufe der Analyse zu klären:
 Weiterhin musste festgelegt werden ob die Priorität des Systems auf der Simulation oder auf einer möglichst realitätsnahen Umsetzung eines Liftes liegt. Im Laufe der Analyse und Modellierung entsprechender Anwendungsfälle wurde ersichtlich, dass das System sich aus zwei Teilsystemen, der \textbf{Fahrstuhlsteuerung} und der \textbf{Fahrstuhlsimulation} zusammensetzt, deren Anforderungen getrennt voneinander beschrieben werden mussten.\\
 Eine Besonderheit des Systems ist dabei die Umgebung in der es eingesetzt werden soll, der Lehrbetrieb an einer Hochschule. Daraus ergaben sich spezielle Anforderungen, wie das Anzeigen der Zustandsübergänge, die gesondert betrachtet werden mussten.
 
-\paragraph{}Vor allem aus den letztgenannten Anforderungen formte sich während der Analyse relativ früh unsere Vision einer Anwendung, welche in einer zweigeteilten Sicht Fahrstuhl und Zustandsdiagramm nebeneinander darstellt. Zusätzlich sollten Zustandsübergänge und aktive Zustände durch Animationen kenntlich gemacht werden.
+\paragraph{}Vor allem aus den letztgenannten Anforderungen formte sich während der Analyse relativ früh unsere Vision einer Anwendung, welche in einer zweigeteilten Sicht Fahrstuhl und Zustandsdiagramm nebeneinander darstellt. Zu"-sätzlich sollten Zustandsübergänge und aktive Zustände durch Animationen kenntlich gemacht werden.
 
-\paragraph*{}Die Resultate der Analysephase, alle Anwendungsfälle und Vereinbarungen mit der Kundin wurden am Ende im Pflichtenheft festgehalten, welches als eigenständiges Dokument am Ende der Phase an die Kundin überreicht wurde. Diese Dokument war im weiteren Verlauf des Projektes ein zentrales Maß bei regelmäßigen Treffen und Evaluationen.
-
-
+\paragraph*{}Die Resultate der Analysephase, alle Anwendungsfälle und Vereinbarungen mit der Kundin wurden im Pflichtenheft festgehalten, welches als eigenständiges Dokument am Ende der Analysephase an die Kundin überreicht wurde. Diese Dokument war im weiteren Verlauf des Projektes ein zentrales Maß bei regelmäßigen Treffen und Evaluationen.
 
 \chapter{Software-Entwurf}
-Nach der Festlegung von Anforderungen und der Beschreibung der Funktionalitäten der Fahrstuhlsimulation war der nächste Schritt der Entwurf der internen Struktur. Wir näherten uns dieser Problemstellung von außen und erhöhten bei steigender Tiefe die Granularität. Dies bedeutete zunächst, die geeignetste Rahmen-Technologie festzulegen, welche die Anforderungen unseren Kundin am besten erfüllen konnte.
+Nach der Festlegung von Anforderungen und der Beschreibung der Funktionalitäten der Fahrstuhlsimulation war der nächste Schritt der Entwurf der internen Struktur. Wir näherten uns dieser Problemstellung von außen und erhöhten bei steigender Tiefe die Granularität. Dies bedeutete zunächst den Grobentwurf des Systems anzufertigen. Anschließend widmeten wir uns dem Algorithmus, der zu verwendenden Technologie und der Benutzerschnitt\-stelle.
 
-\section{Technologie}
-Die Wahl der verwendeten Technologie fußte prinzipiell auf drei Hauptpunkten, erstens unserer Vision einer optisch ansprechenden Anwendung, welche das Zusammenspiel von System und dessen Zuständen visualisiert. Zweitens einer möglichst umfassenden Kompatibilität zu verschiedenen Plattformen und drittens der verfügbaren Zeit zur Realisierung aller Anforderungen. Wir entschlossen uns zunächst eine Vorauswahl zu treffen. Diese sollte wenn möglich Technologien enthalten, auf deren Gebieten bereits Erfahrungen im Team vorhanden waren. Nach kurzer Diskussion ergaben sich als Möglichkeiten die Nutzung von \textsc{C++}, \textsc{Java} oder \textsc{Web-Technologien} wie \textsc{Javascript}.
+\section{Komponenten und Entwurf}
+Grundgedanke beim Entwurf des Softwaresystems war eine möglichst realitätsnahe Aufteilung der Komponenten umzusetzen. Ein realer Fahrstuhl ent"-hält so mindestens einen Microcontroller für die Steuerung, Sensoren zur Erkennung von Etagen, einen Gewichtssensor um Überlastsitationen abzufangen und Sensoren zur korrekten Steuerung der Fahrstuhltür, sowie entsprechende Knöpfe um Fahrstuhlrufe und Fahrtwünsche zu ermöglichen. Diese Aufteilung spiegelt sich auch im Grobentwurf der Software wieder.
 
-\paragraph*{}Nach reiflicher Überlegung und wiederholter Rücksprache mit unserer Kundin erschienen uns \textsc{Web-Technologien} am geeignetsten um alle Anforderungen in der zur Verfügung stehenden Zeit umzusetzen. Die Vorteile dieser Technologien, welche unsere Entscheidung maßgeblich beeinflussten, waren folgende:
+\paragraph{}Die Unterteilung \mbox{ in } Komponenten wurde auch unter Einbeziehung des MVC-Paradigmas vorgenommen. Hierbei übernahm die Fahrstuhlsteuerung die Rolle des Models. Einem Controller sollte die in der View abgegebenen Interaktionen über definierte Schnittstellen an das Model übermitteln. Kern der Anwendung war somit die Fahrstuhlsteuerung in der die Zustände des Systems abgebildet wurden. Zustandsänderungen sollten wiederum über den Controller zu einer Veränderung der View-Komponenten führen. 
 
-\begin{enumerate}
-	\item Sie ermöglichten uns größtmögliche Plattform-Kompa\-tibilität, da unser Produkt einerseits als Cross-Plattfom-Anwendung und andererseits als Web-Site veröffentlicht werden können.
-	\item Mit den modernen Mitteln des Web-Designs war es uns möglich unsere Vision des Software-System umzusetzen.
-\end{enumerate}
-
-Gebündelt und verwendet wurden diese Möglichkeiten durch modere Werkzeuge der Web-Entwicklung wie beispielsweise \textsc{ReactJS}\footnote{\url{http://facebook.github.io/react/}}, \textsc{nodeJS}\footnote{\url{https://nodejs.org}}, \textsc{bower}\footnote{\url{http://bower.io}} oder \textsc{grunt}\footnote{\url{http://gruntjs.com}}. An dieser Stelle verweisen wir auf die entsprechenden Stellen der Entwicklerdokumentation.
-
+\newpage
 \section{Algorithmus}
 \label{alg}
-Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin freie Hand. Im Kundengespräch wurde auch über die mögliche Erweiterung der Software um mehrere Algorithmen diskutiert. Dies hatte den Charme, dass Studierende damit zusätzlich die Möglichkeit gehabt hätten verschiedene Algorithmen zu vergleichen und zu erfahren wie stark oder weniger stark sich verschiedene Ansätze einer Problemlösung im Hinblick auf Algorithmus und Zustandsdiagramm unterscheiden. Letztlich wurde diese Erweiterung als \textit{mögliche Modifizierung} kategorisiert und ist nicht Teil dieses Projekts geworden.
+Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin freie Hand. Wir entschieden uns im folgenden dazu einen Algorithmus zu verwenden, welcher in Fahrstuhlsystemen mit einem Schacht Anwendung findet, den \textit{Fahrstuhl-Algorithmus mit Sammelsteuerung}\cite{wiki_elev}. Hierbei fährt der Fahrstuhl zunächst in eine Richtung und bedient ausschließlich Fahrt"-wünsche oder -rufe die in dieser Fahrtrichtung existieren, andere werden gespeichert und nach Umkehr der Fahrtrichtung bedient. Abbildung \ref{algo_exam} zeigt ein beispielhaftes Szenario.
 
-\paragraph{}Wir entschieden uns im folgenden dazu einen Algorithmus zu verwenden, welcher in Fahrstuhlsystemen mit einem Schacht Anwendung findet, den \textit{Fahrstuhl-Algorithmus mit Sammelsteuerung}\cite{wiki_elev}. Hierbei fährt der Fahrstuhl zunächst in eine Richtung und bedient ausschließlich Fahrtwünsche oder -rufe die in dieser Fahrtrichtung existieren, andere werden gespeichert und nach Umkehr der Fahrtrichtung bedient.
-
-\begin{figure}[h]
+\hspace*{1cm}
+\begin{figure}[h!]
 	\begin{minipage}{0.47\textwidth}
 		\includegraphics[width=\textwidth]{images/algo_example.eps}
 		%\caption{Eine Grafik}
@@ -67,10 +59,11 @@ Bei der Wahl des zu implementierenden Fahrstuhl-Algorithmus lies uns die Kundin 
 	\label{algo_exam}
 \end{figure}
 
-\paragraph{}Wie man erkennen konnte setzt diese Form der Steuerung zwei Tasten je Etage zur Abgabe von Fahrtstuhlrufen voraus, weshalb diese in der vorliegenden Form implementiert wurden. Für weitere Informationen zu verschiedenen Fahrstuhl-Algorithmen verweisen wir auf folgenden Quellen \cite{wiki_elev} und \cite{wiki_elev_2}.
+\paragraph{}Wie man erkennen kann setzt diese Form der Steuerung zwei Tasten je Etage zur Abgabe von Fahrtstuhlrufen voraus, weshalb diese in der vorliegenden Form implementiert wurden. Für weitere Informationen zu verschiedenen Fahrstuhl-Algorithmen verweisen wir auf folgenden Quellen \cite{wiki_elev} und \cite{wiki_elev_2}.
 
-\newpage
-\paragraph{Zustandsdiagramm}Nun galt es den Steuerungsalgorithmus näher zu analysieren, um ihn anschließend mittels \textsc{Javascript} zu implementieren. Dazu wurde über mehrere Gruppentreffen hinweg am Zustandsdiagramm des Systems gearbeitet. Abbildung \ref{ZD} zeigt das Resultat dieser Arbeit.
+\paragraph{}Im Kundengespräch wurde auch über die mögliche Erweiterung der Software um mehrere Algorithmen diskutiert. Dies hatte den Charme, dass Studierende damit zusätzlich die Möglichkeit gehabt hätten verschiedene Algorithmen zu vergleichen und zu erfahren wie stark oder weniger stark sich verschiedene Ansätze einer Problemlösung im Hinblick auf Algorithmus und Zustandsdiagramm unterscheiden. Letztlich wurde diese Erweiterung als \textit{mög"-liche Modifizierung} kategorisiert und ist nicht Teil dieses Projekts geworden.
+
+\paragraph{Zustandsdiagramm}Nun galt es den Steuerungsalgorithmus näher zu analysieren. Dazu wurde über mehrere Gruppentreffen hinweg am Zustandsdiagramm des Systems gearbeitet. Abbildung \ref{ZD} zeigt das Resultat dieser Arbeit.
 
 \begin{figure}[h]
 	\hspace*{-2.0cm}
@@ -86,13 +79,25 @@ Den \textit{Standby}-Zustand nimmt die Steuerung in unserem System sowohl nach d
 Handelt es sich jedoch um eine Zieletage, geht die Steuerung in den \textit{Tür-Subautomat} über. Dieser entspricht einem sogenannten \textit{History-Zustand}\cite{history_Z}, welcher es uns elegant ermöglicht nach dem Verlassen des Subautomaten in einen Zustand gleicher Fahrtrichtung zurückzukehren.
 
 \paragraph{Tür-Subautomat}
-Mit dem Eintritt in den Subautomat öffnen sich zunächst die Fahrstuhltür. Im Zustand \textit{Tür geöffnet} können durch Betätigung des entsprechenden Buttons Fahrgäste hinzugefügt oder entfernt werden. Bei einer Anzahl von mehr als 8 Personen löst der Gewichtssensor \textit{ES} einen Übergang ein den Zustand \textit{Überlast} aus, welcher den Fahrstuhl am fahren hindert und nur durch das Entfernen von Passagieren verlassen werden kann.\\
+Mit dem Eintritt in den Subautomat öffnen sich zunächst die Fahrstuhltür. Im Zustand \textit{Tür geöffnet} können durch Betätigung des entsprechenden Buttons Fahrgäste hinzugefügt oder entfernt werden. Bei einer Anzahl von mehr als 8 Personen löst der Gewichtssensor \textit{WS} einen Übergang ein den Zustand \textit{Überlast} aus, welcher den Fahrstuhl am fahren hindert und nur durch das Entfernen von Passagieren verlassen werden kann.\\
 Sollte die Weiterfahrt nicht durch Betätigung der Ruf- oder Wunschtaste der aktuellen Etage verhindert werden, geht der Fahrstuhl nach dem Schließen der Tür in den \textit{Fuhr hoch}-Zustand der letzten Fahrrichtung über.
 
 \paragraph{}Nach der Abarbeitung aller Wünsche und Rufe geht die Steuerung in der aktuellen Etage des Fahrstuhls erneut in den \textit{Standby}-Zustand über.
 
+\section{Technologie}
+Die Wahl der verwendeten Technologie fußte prinzipiell auf drei Hauptpunkten, erstens unserer Vision einer optisch ansprechenden Anwendung, welche das Zusammenspiel von System und dessen Zuständen visualisiert. Zweitens einer möglichst umfassenden Kompatibilität zu verschiedenen Plattformen und drittens der verfügbaren Zeit zur Realisierung aller Anforderungen. Wir entschlossen uns zunächst eine Vorauswahl zu treffen. Diese sollte wenn möglich Technologien enthalten, auf deren Gebieten bereits Erfahrungen im Team vorhanden waren. Nach kurzer Diskussion ergaben sich als Möglichkeiten die Nutzung von \textsc{C++}, \textsc{Java} oder \textsc{Web-Technologien} wie \textsc{Javascript}.
+
+\paragraph*{}Nach reiflicher Überlegung und wiederholter Rücksprache mit unserer Kundin erschienen uns \textsc{Web-Technologien} am geeignetsten um alle Anforderungen in der zur Verfügung stehenden Zeit umzusetzen. Die Vorteile dieser Technologien, welche unsere Entscheidung maßgeblich beeinflussten, waren folgende:
+
+\begin{enumerate}
+	\item Sie ermöglichten uns größtmögliche Plattform-Kompa\-tibilität, da unser Produkt einerseits als Cross-Plattfom-Anwendung und andererseits als Web-Site veröffentlicht werden kann.
+	\item Mit den modernen Mitteln des Web-Designs war es uns möglich unsere Vision des Software-System umzusetzen.
+\end{enumerate}
+
+Gebündelt und verwendet wurden diese Möglichkeiten durch modere Werkzeuge der Web-Entwicklung wie beispielsweise \textsc{ReactJS}\footnote{\url{http://facebook.github.io/react/}}, \textsc{nodeJS}\footnote{\url{https://nodejs.org}}, \textsc{bower}\footnote{\url{http://bower.io}} oder \textsc{grunt}\footnote{\url{http://gruntjs.com}}. An dieser Stelle verweisen wir auf die entsprechenden Stellen der Entwicklerdokumentation.
+
 \section{Benutzerschnittstelle}
-Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittstelle führte, verlief ähnlich dem des Zustandsdiagramms. Über mehrere Treffen hinweg wurden Vorschläge gesammelt, diskutiert und letztlich der Kundin unterbreitet. Ein Zwischenstadium dieses Prozesses zeigt Abbildung \ref{Entwurf_UI}.
+Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzer"-schnittstelle führte, verlief ähnlich dem des Zustandsdiagramms. Über mehrere Treffen hinweg wurden Vorschläge gesammelt, diskutiert und letztlich der Kundin unterbreitet. Ein Zwischenstadium dieses Prozesses zeigt Abbildung \ref{Entwurf_UI}.
 
 \begin{figure}[h!]
 	\centering
@@ -101,7 +106,7 @@ Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittst
 	\label{Entwurf_UI}
 \end{figure}
 
-\hspace*{2cm}
+\hspace*{1.5cm}
 \paragraph{}Im Laufe der Entwicklung wurde die Benutzerschnittstelle stets weiterentwickelt. Nachdem frühe Versionen zunächst nur die Visualisierung des Fahrstuhls enthielten (siehe Abb. \ref{UI_ealry}) zeigt Abbildung \ref{UI_final} die finale Version.
 
 \hspace*{2cm}
@@ -113,36 +118,20 @@ Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittst
 \end{figure}
 
 \begin{figure}[h]
-	\centering
-	\missingfigure{Finale UI}
-	\caption{Some caption}
+	\hspace*{-1.5cm}
+	\includegraphics[width=1.15\textwidth]{images/UI_colorless}
+	\caption{Finale Version der Benutzerschnittstelle}
 	\label{UI_final}
 \end{figure}
 
 \paragraph{}
-Die Prämissen des Projektes, Studierenden und Lehrenden ein übersichtliches und einfach zu bedienendes Werkzeug an die Hand zu geben, standen auch beim Entwurf der Benutzerschnittstelle immer im Vordergrund.
-
-
-\section{Komponenten und Entwurf}
-
-\paragraph{}
-Grundgedanke bei dem Entwurf des Softwaresystems war eine möglichst realitätsnahe Aufteilung der Komponenten umzusetzen.
-Ein realer Fahrstuhl enthält so mindestens einen Microcontroller für die Steuerung, Sensoren zur Erkennung von Etagen, einen Gewichtssensor um Überlastsitationen abzufangen und Sensoren zur korrekten Steuerung der Fahrstuhltür, sowie entsprechende Knöpfe um die Fahrstuhlrufe bzw. Fahrtwünsche zu ermöglichen.
-Diese Aufteilung spiegelt sich auch im Grobentwurf der Software wieder.
-
-\paragraph{}
-Eine erste Unterteilung in Komponenten wird durch die Nutzung des MVC-Paradigmas erreicht.
-Hierbei übernimmt die Fahrstuhlsteuerung die Rolle des Models,  und einem Controller der die in der View abgegebenen simmulierten Fahrtwünsche an das Model weiterreicht.
-Kern der Anwendung und somit die Hauptkomponente ist die Fahrstuhlsteuerung in der die Zustände des Systems abgebildet werden und somit gleichzeitig als Model bezeichnet werden kann.
-Des Weiteren kann die Darstellung der Fahrstuhlkabine im Fahrstuhlschacht als View angesehen werden.
-Diese steht in Verbindung mit dem Controller welcher als Mittelsmann Interaktionen in der View an das Model über in der \acrshort{API} festgelegte Schnittstellen weiterleitet und Ereignisse des Models in der View darstellen lässt.
-Sämtliche Funktionen der \acrshort{API} sind in der Entwicklerdokumentation aufgeführt.
+Die Prämissen des Projektes, Studierenden und Lehrenden ein über"-sicht"-liches und einfach zu bedienendes Werkzeug an die Hand zu geben, standen auch beim Entwurf der Benutzerschnittstelle immer im Vordergrund.
 
 
 \chapter{Qualitätssicherung}
 \label{QS}
 \section{Allgemein} \label{QS:Allgemein}
-Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000:2014}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evaluation benutzt.
+Der Standard ISO/IEC 25000:2014 welcher als Einleitung zu genormten Methoden der Qualitätssicherung in der Software zu verstehen ist, definiert diese als "`Systems and Software Quality Requirements and Evaluation (SQuaRE)"'\cite[Foreword]{ISO25000:2014}. Festzustellen ist: Der ISO25000 ist für einen Norm relativ jung ist und löst zwei Vorgänger, welche die Themen Softwarequalität bzw. Anforderungsanalyse (ISO/IEC 9126) und Software Evaluierung bzw. Test (ISO/IEC 14598) überwiegend getrennt behandeln, ab. Neben der Motivation der Vermeidung von Redundanzen und Inkonsistenzen zwischen den zwei Normen, ist es Meinung des Autors, dass sich hierbei die Erkenntnis der notwendigen Verzahnung der beiden Teilgebiete zeigt. So werden z.B. im \textit{test driven development} idealerweise die Anforderungen direkt zur Software-Evaluation benutzt.
 
 \paragraph*{}Aus der Definition
 \begin{quote}\label{PD_SQ}
@@ -154,12 +143,12 @@ lässt sich somit die umfassende Qualitätssicherung aufteilen auf
 \item Einwirkung auf Anforderungsanalyse
 \item Evaluation während und nach der Umsetzung
 \end{enumerate}
-da sich Softwarequalität nach obiger Definition rein auf die bereits eruierten Anforderungen und Bedingungen stützt, wie Gesamtzufriedenheit des Nutzers allerdings nur dann erreichen lässt, wenn diese Vorbetrachtung bestmöglich durchgeführt wurde.
+da sich Softwarequalität nach obiger Definition rein auf die bereits eruierten Anforderungen und Bedingungen stützt, wie Gesamtzufriedenheit des Nutzers allerdings nur dann erreichen lässt, wenn diese Vorbetrachtung bestmög"-lich durchgeführt wurde.
 \section{QS Anforderungsanalyse}
 Zu Beginn des Projekts wurde beim der Erstellung des Pflichtenheftes auf vollständige und unmissverständliche Formulierungen geachtet, da Probleme in dieser Phase die größten Auswirkungen auf die Zufriedenheit des Nutzers besitzen.\\
 Des Weiteren wurde durch erneuten Vergleich der Anforderungen mit Kundenprotokollen und Aufgabenstellung sowie Prüfen auf Inkonsistenzen assistiert.
 
-Als qualitätsunterstüzende Maßnahme wurden die Anforderungen möglichst auf sogenannte Issues, also Stichpunkte und Meilensteine in einem Projektmanager, abgebildet.
+Als qualitätsunterstüzende Maßnahme wurden die Anforderungen mög"-lichst auf sogenannte Issues, also Stichpunkte und Meilensteine in einem Projektmanager, abgebildet.
 \section{QS Umsetzung}
 \subsection{Allgemein}
 Die Qualitätssicherung während der Umsetzung ließ sich gliedern in:
@@ -167,9 +156,9 @@ Die Qualitätssicherung während der Umsetzung ließ sich gliedern in:
 \item Konvetionen
 \item Testregime
 \end{itemize}
-Desweiteren wurden qualitätsfördernde Maßnahmen durchgeführt, wie das leicht mögliche und oft durchgeführte Review neuer Commits. Siehe dazu \ref{TeamOrg:Werkzeuge}.
+Ebenfalls wurden im Laufe des Projekts regelmäßig Reviews von neuen Commits durchgeführt. Siehe dazu \ref{TeamOrg:Werkzeuge}.
 \subsection{Konventionen}
-Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unterschiedlichen Persönlichkeiten mit verschiedenen Herangehensweisen und Vorerfahrung, schnell ein Zoo an Stilen und Gewohnheiten. Des Weiteren besteht ein gewisser Konsens, in der Branche, an bestimmen Herangehensweisen und Konventionen ("`best practice"'). Daraus ergibt sich die Motivation feste Konventionen festzulegen, um entweder Bestehende zu vereinheitlichen oder sie für Jene, welche sie bis dato noch nicht kannten, einzuführen:
+Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich durch unterschiedlichen Persönlichkeiten mit verschiedenen Herangehensweisen und Vorerfahrung schnell ein Zoo an Stilen und Gewohnheiten. Weiterhin besteht  in der Branche ein gewisser Konsens an bestimmen Herangehensweisen und Konventionen ("`best practice"'). Daraus ergibt sich die Motivation feste Konventionen festzulegen, um entweder Bestehende zu vereinheitlichen oder sie für Jene, welche sie bis dato noch nicht kannten, einzuführen:
 %Die Motivation dazu lasse ich hier bewusst heraus, diese möchte ich lieber im Vortrag dazu benennen. Gez. Markus 2015-06-24
 \begin{itemize}
 \item Allgemeine Konventionen
@@ -207,10 +196,10 @@ Bei der Mitarbeit von mehreren Personen an einem Projekt ergibt sich, durch unte
 \end{quote}
 
 \paragraph{Geltungsbereich (scope)}
-Um mit Tests die Entwicklung des Projekts bestmöglich zu unterstützen wurde folgender Testplan für die Fahrstuhlsimulation und Fahrstuhlsteuerung festgelegt.
+Um mit Tests die Entwicklung des Projekts bestmög"-lich zu unterstützen wurde folgender Testplan für die Fahr"-stuhl"-si"-mu"-la"-tion und Fahrstuhlsteuerung festgelegt.
 
 \paragraph{Ansatz (approach)}
-Um Implementierung schon vor den ersten funktionsfähigen Prototypen zu unterstützen wurden automatisierte Tests mit dem Testframework Jasmine\footnote{http://jasmine.github.io} implementiert. Dies zielt darauf ab, die Einhaltung von API-Konventionen und Invarianten zu überprüfen, die Übersetzung und Ausführung von möglichst allen Programmzweigen zu garantieren, um damit Fehler feingranular schon auf Unit bzw. Komponentenebene zu detektieren.
+Um die Implementierung schon vor den ersten funktions"-fähigen Prototypen zu unterstützen wurden automatisierte Tests mit dem Testframework Jasmine\footnote{http://jasmine.github.io} implementiert. Dies zielt darauf ab, die Einhaltung von API-Konventionen und Invarianten zu überprüfen und die Übersetzung und Ausführung von möglichst allen Programmzweigen zu garantieren. Der Zweck liegt darin Fehler feingranular schon auf Unit bzw. Komponentenebene zu detektieren.
 \subparagraph{Beispiel} \begin{lstlisting}[language=JavaScript,label=JS:Jasmine_Beispiel,caption=Jasmine Test Beispiel]
 	it('WeightSensor tests', () => {
 		function assert(overweight, weight) {
@@ -247,7 +236,9 @@ Um Implementierung schon vor den ersten funktionsfähigen Prototypen zu unterst�
 \end{lstlisting}
 Listing \ref{JS:Jasmine_Beispiel} zeigt die Prüfung der Überlastfunktion (ELV-010) der Fahrstuhlsimulation und Steuerung. Dies wird erreicht indem in der Testsuite ein Objekt der Fahrstuhlklasse angelegt wird, und dann über die API-Aufrufe das zu erwartende Verhalten geprüft wird.
 
-Wichtigstes Ziel des Testens ist allerdings wie in \ref{QS:Allgemein} beschrieben, die Evaluation der Anforderungen. Da die Anforderungen in diesem Projekt hauptsächlich durch die Benutzung ein GUI abprüfbar sind, wurden hierfür manuelle Tests spezifiziert. Die Testfälle sollen dabei die Erfüllung der Anforderungen garantieren\cite[Based on property coverage, Seite 16]{Pernambuco:TestTechniques}. Um eine Nachvollziehbarkeit bzw. traceability, welche Anforderungen durch welche Testfälle abgedeckt werden, wurde eine traceability matrix erstellt\cite[Seite 101, Figure 28]{Pernambuco:TestTechniques}\\
+\paragraph{}
+Wichtigstes Ziel des Testens ist allerdings wie in \ref{QS:Allgemein} beschrieben, die Evaluation der Anforderungen. Da die Anforderungen in diesem Projekt haupt"-sächlich durch die Benutzung ein GUI abprüfbar sind, wurden hierfür manuelle Tests spezifiziert. Die Testfälle sollen dabei die Erfüllung der Anforderungen garantieren\cite[Based on property coverage, Seite 16]{Pernambuco:TestTechniques}. Um eine Nachvollziehbarkeit zu gewährleisten, welche Anforderungen durch welche Testfälle abgedeckt werden, wurde eine traceability matrix erstellt\cite[Seite 101]{Pernambuco:TestTechniques}
+
 \begin{tabular}{l|ccccc}
 Testfall 	& Test 1 	& Test 2 	& Test 3 	& Test 4 	& Test 5 \\
 Anforderung &&&&& \\ \hline
@@ -266,6 +257,8 @@ ELV-012 	& 			& 			& X			&			&		\\
 ELV-013 	& 			& 			& X			&			&		\\
 ELV-014 	& 			& X			& 			&			&		\\
 \end{tabular}
+
+
 \paragraph{Ressourcen (resources)}
 Automatische Tests für Jasmine werden durch die Quellcodedateien im Projektverzeichnis \texttt{test/spec} spezifiziert.
 
@@ -279,6 +272,7 @@ Als manuelle Tester wurden Projektmitglieder ausgewählt, diesen stehen folgende
 \paragraph{Testdurchführung (schedule)}
 Die manuellen Testfälle werden vor jeder Vorführung des Produkts beim Kunden vollständig durchgeführt.
 
+\newpage
 \subsubsection{manuelle Testfälle}\label{QS:Test:Manuelle_Testfaelle}
 \paragraph{Anleitung}
 \begin{itemize}
@@ -288,6 +282,7 @@ Die manuellen Testfälle werden vor jeder Vorführung des Produkts beim Kunden v
 \item Die Schritte unter Testverfahren sind schrittweise von oben nach unten durchzuführen, unterbrochen durch das Prüfen der Testziele, welche ihre Beziehung durch die gleiche Nummerierung zum Schritt herstellen.
 \item Abweichungen zu den beschriebenen Testzielen sind auf dem Testprotkoll zu dokumentieren und, soweit nicht bereits eingetragen, ebenfalls als Issue anzulegen (Bugreport).
 \end{itemize}
+\newpage
 \begin{testcase}[tc:build]{Manuell}
 \tcSubject Projekt-Setup
 \tcRemark Testfall um erfolgreichen Clean-Build-Prozess garantieren zu können.
@@ -542,10 +537,6 @@ Das folgende Kapitel erläutert die bisher genannten Werkzeugen und beschreibt w
 \end{figure}
 
 \paragraph{}Mit diesem Setup ermöglichte uns \textit{gitlab} eine effiziente und stets nachvollziehbare Form der Verwaltung, Strukturierung und Ablage aller projektbezogenen Dateien.
-
-\newpage
-\section{Resümee}
-Fazit\todo|{Ein tolles Fazit fällt mir gerade nicht ein.}
 
 \bibliographystyle{plaindin}
 \bibliography{projektdokumentation}
