@@ -12,13 +12,13 @@ Der aktuelle \textbf{ECMA-262}\footnote{\url{http://www.ecma-international.org/p
 Um die Ausführung von Javascript-Code außerhalb eines Browsers zu ermöglichen wird die Laufzeitumgebung \textit{node.js} verwendet.
 
 \paragraph{React.js}
-Durch die Nutzung des Javascript-Frameworks \textit{React.js} ist es möglich die Benutzerschnittstelle mit einem geringstmöglichen Aufwand zu implementieren und besonders effizient zu rendern.
+Durch die Nutzung des Javascript-Frameworks \textit{React.js} ist es mög"-lich die Benutzerschnittstelle mit einem geringstmöglichen Aufwand zu implementieren und besonders effizient zu rendern.
 Es wird hierbei der spezielle React-Syntax \textit{JSX} verwendet und mit sogenannten \textit{React-Komponenten} gearbeitet.
 Diese Komponenten stellen dem Framework einen minimalen Satz an UI-relevanten Informationen bereit, welches dieses aufbereitet und somit in der Lage ist bei Änderungen ausschließlich jene Bereich erneuern, deren Daten sich tatsächlich verändert haben.
 
 \paragraph{npm}
-Um die Erfüllung von Abhängigkeiten im Laufe der Implementierung elegant und automatisiert zu gewährleisten wird die Javascript-Paketverwaltung \textit{npm} genutzt.
-Diese wird über die Datei \texttt{package.json} im Root-Verzeichnis der Anwendung konfiguriert.
+Um die Erfüllung von Abhängigkeiten im Laufe der Implementierung elegant und automatisiert zu gewährleisten wird die Javascript-Paketver"-waltung \textit{npm} genutzt.
+Diese wird über die Datei \texttt{package.json} im Root-Verzeich"-nis der Anwendung konfiguriert.
 
 \paragraph{bower}
 Während \textit{npm} vorrangig Backend-relevante Pakete verwaltet, ist die Paketverwaltung \textit{bower} auf Frontend-spezifische spezialisiert.
@@ -37,7 +37,7 @@ Eine Kombination der Frameworks \textit{karma} und \textit{jasmine} bilden hierz
 
 
 \section{Systemvoraussetzungen}
-Neben einem beliebigem Texteditor benötigt man zur Weiterentwicklung der Anwendung zunächst eine \textit{node.js}-Kompatible Laufzeitumgebung. Dieses kann z.B. unter \url{https://iojs.org/} für verschiedene Plattformen bezogen werden.
+Neben einem beliebigem Texteditor benötigt man zur Weiterentwicklung der Anwendung zunächst eine \textit{node.js}-kompatible Laufzeitumgebung. Diese kann z.B. unter \url{https://iojs.org/} für verschiedene Plattformen bezogen werden.
 
 \paragraph{}
 Nach der Installation von \textit{node.js} können alle weiteren Pakete und Werkzeuge mit Hilfe der Paketverwaltung \textit{npm} nachgeladen werden.
@@ -148,7 +148,7 @@ Im Entwurf der \textbf{Fahrstuhlsteuerung} sind dementsprechend \textit{Steuerun
 
 \paragraph{}
 Zu den Sensoren der Fahrstuhlsimulation gehören \textit{Etagen-}, \textit{Tür-}, und \textit{Gewichtssensoren}.
-Deren Kommunikation mit der Steuerung erfolgt ebenfalls über definierte Schnittstellen, wobei zusätzlich zu unterscheiden ist, ob es sich um aktive oder Passive Sensoren handelt.\todo{Welche Sensoren sind aktiv, welche Passiv?}
+Deren Kommunikation mit der Steuerung erfolgt ebenfalls über definierte Schnittstellen, wobei zusätzlich zu unterscheiden ist, ob es sich um aktive oder Passive Sensoren handelt.
 
 \paragraph{MVC-Paradigma}
 Auf einer hohen Abstraktionsebene kann das System so auch unter dem MVC-Modell\footnote{Abk. für Model-View-Controler-Modell} betrachtet werden.
@@ -183,14 +183,14 @@ Zu beachten ist dabei jedoch, dass die genannte Datenstruktur zu jedem Zeitpunkt
 \section{Feinentwurf}
 
 \paragraph{React}
-Wie bereits erwähnt wurde erleichtert das React Framework die Entwicklung performanter Webanwendungen.
+Wie bereits erwähnt wurde erleichtert das \textit{React}-Framework die Entwicklung performanter Webanwendungen.
 Bei der bisher im Web üblichen Herangehensweise wurde in der Regel das HTML der Website Serverseitig gerendert.
 Trat eine gewisse Änderung in dem Clientseitigen Model auf, z.B. weil dem Client vom Server neue Daten zugesendet wurden, so wurde \textit{explizit} der jeweilige Bereich der Seite, welcher diese Daten darstellte, erneuert.
 Die einzigen zwei Möglichkeiten um dies zu erreichen, sind hierbei natürlich nur die, die jeweiligen \textit{explizit} Attribute einer \textit{DOM-Node}, wie z.B. Farbe, oder den Text, der Bereiche zu ändern, oder aber den gesamten Bereich in neuem HTML zu rendern.
 Wie man sich leicht Denken kann, führt Ersteres eventuell zu der Frage, welcher Teil des Codes für was Verwantwortlich ist, oder aber erschwert die Entwicklung durch eine Überzahl an nötigen Controllern.
-Letzteres wiederum ist eine eventuell äußerst inperformante Lösung, da das rendern von ganzen Bereichen der Seite auch jene betrifft die sich möglicherweise gar nicht geändert haben. \\
+Letzteres wiederum ist eine eventuell äußerst inperformante Lösung, da das rendern von ganzen Bereichen der Seite auch jene betrifft die sich möglicherweise gar nicht geändert haben.
 
-Als zur Zeit noch äußerst moderne Lösung bietet sich hierfür das aufstrebende React Framework, welches seit seiner Veröffentlichung mit Worten wie \glqq Bahnbrechend\grqq und \glqq Revolutionär\grqq betitelt.
+\paragraph{}Als zur Zeit noch äußerst moderne Lösung bietet sich hierfür das aufstrebende React Framework, welches seit seiner Veröffentlichung mit Worten wie \glqq Bahnbrechend\grqq und \glqq Revolutionär\grqq betitelt.
 Hierbei schreibt der Entwickler sogenannte React-Komponenten.
 Statt nun bei einem Render-Vorgang dem React Framework fertigen HTML Code zu liefern, den die jeweilige Komponente darstellen will, muss sie stattdessen eine ebenso hierarische Objektstruktur zurückgeben, welche \textit{repräsentativ} für den HTML Code steht.
 Diese repräsentative Struktur ähnelt dem und simuliert den sogenannten \textit{Document Object Model} (DOM), weshalb man diese Struktur auch den \textit{Shadow DOM} nennt.
@@ -200,7 +200,7 @@ Dieser Satz an Änderungen wird nun auf den tatsächlichen \textit{DOM} des Brow
 
 Diese Vorgehensweise ist selbstverständlich nicht so performant wie eine optimale und explizite Verwaltung des HTML und des \textit{DOMs}, jedoch ist die Performanz für nahezu alle Einsatzgebiete bei weitem ausreichend.
 Da die Komplexität bei größeren Projekten jedoch stark zunimmt und somit eine optimale und explizite Verwaltung exponentiell schwieriger wird, übersteigt die Performance einer Website die React verwendet meistens die einer ohne.
-Zusätzlich eleminiert React die Frage gänzlich, wie und wo man Änderungen auf eine Website anwenden und verwalten kann und ermöglicht somit zusätzlich eine äußerst schnelle Entwicklung.
+Zusätzlich eleminiert React die Frage gänzlich, wie und wo man Änderungen auf eine Website anwenden und verwalten kann und ermöglicht somit zu"-sätzlich eine äußerst schnelle Entwicklung.
 
 \paragraph{Publish/Subscribe Pattern}
 In der Web-Entwicklung ist zur Zeit eine Komponentenorientierte Entwicklung gebräuchlich, bei denen die Komponenten untereinander nur lose gekoppelt sind.
@@ -329,7 +329,7 @@ Dieses registriert sich ebenfalls für die \textit{requests:add}-, \textit{reque
 Um den Inhalt als schwebendes Panel darzustellen wird die Popover Bibliothek von \textit{Bootstrap} verwendet.
 Auch hier wird bei einem druck auf einen der Buttons die \texttt{request}-Methode des Elevator direkt aufgerufen.
 
-Zu gu­ter Letzt existiert die UmlView Komponente.
+Zu guter Letzt existiert die UmlView-Komponente.
 Diese Komponente verwendet jedoch als einzige keinerlei interaktive Features.
 Stattdessen lädt sie mittels einem XMLHttpRequest das UML Diagramm von \texttt{images/uml.svg}, fügt es als eigenen HTML-Content ein und registriert sich bei dem Elevator für alle für das Zustandsdiagramm relevanten Events.
 Als primäre Methode um einen Zustand im Diagramm zu markieren wird \texttt{pushActive} verwendet, welcher die IDs von den Zuständen im SVG-Code übergeben und deren DOM Node in einem Array hinterlegt.
@@ -394,5 +394,4 @@ Bei der Benennung der IDs wurden folgende Konventionen angwendet:
 	\end{tabularx}
 \caption{ElevatorWeightSensor}
 \end{table}
-
-\section{Erweiterungen}
+	 
