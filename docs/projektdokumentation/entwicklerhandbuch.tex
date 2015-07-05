@@ -190,7 +190,16 @@ Diese Vorgehensweise ist selbstverständlich nicht so performant wie eine optima
 Da die Komplexität bei größeren Projekten jedoch stark zunimmt und somit eine optimale und explizite Verwaltung exponentiell schwieriger wird, übersteigt die Performance einer Website die React verwendet meistens die einer ohne.
 Zusätzlich eleminiert React die Frage gänzlich, wie und wo man Änderungen auf eine Website anwenden und verwalten kann und ermöglicht somit zusätzlich eine äußerst schnelle Entwicklung.
 
-\paragraph{Observer Pattern}
+\paragraph{Publish/Subscribe Pattern}
+In der Web-Entwicklung ist zur Zeit eine Komponentenorientierte Entwicklung gebräuchlich, bei denen die Komponenten untereinander nur lose gekoppelt sind.
+Um dies zu erreichen wird in der Regel das \textit{Publish/Subscribe} (PubSub) Pattern verwendet, welches dem traditionellen \textit{Observer} Pattern sehr ähnlich ist.
+Statt sich als Objekt beim Subjekt explizit registrieren zu müssen, existiert hier ein Datenkanal welcher sogenannte \textit{Events} an alle \textit{Subscriber} verteilt.
+Jedem Objekt steht es frei sich als \textit{Subscriber} bei diesem Kanal für einen bestimmten \textit{Event}-Typen ein- und auszutragen.
+Des Weiteren existiert exakt ein Objekt welches als \textit{Publisher} fungiert und \textit{Events} eines bestimmten Typs mit einer beliebigen Anzahl an Parametern an alle Subscriber versenden kann.
+Die Idee ist es hierbei also die einzelnen Klassen und Komponenten noch loser zu koppeln und stärker voneinander zu trennen, indem man selbst die letzten Abhängigkeiten zwischen Objekt und Subjekt, wie sie im klassischen Observer Pattern existieren, eleminiert.
+Besonders mit Programmiersprachen wie ECMAScript lässt sich dies sehr leicht erzielen, da Funktionen hier nur eine spezielle Form von Objekten und sogenannte \textit{Lambda}-Funktionen sind.
+Sie können sowohl eine beliebige Anzahl an Parametern annehmen, als auch mit einer beliebigen Anzahl aufgerufen werden.
+Es ist somit möglich und üblich das PubSub Pattern mit \textit{Lambda}-Funktionen zu nutzen, um sowohl eine dynamische Menge an \textit{Event}-Typen und \textit{Event}-Parametern verarbeiten zu können, als auch eine vollständige Entkopplung zwischen \textit{Publisher} und \textit{Subscriber} zu erreichen.
 
 \paragraph{Klassendiagramm}
 \begin{figure}[h!]
