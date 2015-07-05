@@ -294,7 +294,7 @@ Dieses Events werden vom \texttt{ElevatorWeightSensor} aufgegriffen, welcher sic
 Wird das maximale Gewicht überschritten, oder aber wieder unterschritten nachdem das maximale Gewicht bereits erreicht wurde, so wird ein \textit{change}-Event ausgelöst, welches als einzigen Parameter übermittelt, ob der \texttt{ElevatorWeightSensor} aktuell Überlast, oder Normallast meldet. \\
 
 Dieses Event wird hierbei vom \texttt{Elevator} wiederum aufgriffen, welcher den Zustand zwischenspeichert und als Mediator das Ereignis als \textit{overweight:change}-Event weiterleitet.
-Der \texttt{ElevatorDoorSensor} registriert sich beim \texttt{Elevator} nun außerdem in seinem Konstruktur für eben jenes Event, setzt seinen \texttt{\_remainOpen}-Member entsprechend und ruft die \textt{open}-Methode auf.
+Der \texttt{ElevatorDoorSensor} registriert sich beim \texttt{Elevator} nun außerdem in seinem Konstruktur für eben jenes Event, setzt seinen \texttt{\_remainOpen}-Member entsprechend und ruft die \texttt{open}-Methode auf.
 Wie bereits erwähnt wurde sorgt nun ein Wahr-Wert im \texttt{\_remainOpen}-Member dafür, dass \texttt{ElevatorDoorSensor} im \textit{open}-Zustand verbleibt.
 
 \section{View/Controller}
