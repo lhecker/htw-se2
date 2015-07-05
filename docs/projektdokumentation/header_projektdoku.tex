@@ -190,3 +190,15 @@
    captionpos=b
 }
 
+\makeatletter
+\def\testclr#1#{\@testclr{#1}}
+\def\@testclr#1#2{{\fboxsep\z@\fbox{\colorbox#1{#2}{\phantom{XX}}}}}
+\newcommand*\Color[1]{\textsl{#1}}
+\makeatother
+% Define colors uses in application and images
+\definecolor{rot}{HTML}{F5B1B1} 
+\definecolor{blau}{HTML}{C5CEF3} 
+\definecolor{gelb}{HTML}{F6EFDE} 
+\definecolor{state-active}{HTML}{5CB85C} 
+\definecolor{state-last}{HTML}{F0AD4E} 
+\definecolor{state-lastlast}{HTML}{D9534F} 
