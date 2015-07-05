@@ -18,7 +18,7 @@ class AccessoryPanel extends Component {
 		const minLevel = elevator.minLevel;
 		const requests = new Array(levelCount);
 
-		this._bind(elevator, 'requests:add', this._onRequest, true);
+		this._bind(elevator, 'requests:add',    this._onRequest, true);
 		this._bind(elevator, 'requests:remove', this._onRequest, false);
 
 		for (let i = 0; i < levelCount; i++) {
@@ -77,7 +77,6 @@ class AccessoryPanel extends Component {
 		return (
 			<div id="accessory-panel" className="popover" ref="panel">
 				<div className="arrow"></div>
-				<h3 className="popover-title text-center">Elevator Control Panel</h3>
 				<div className="popover-content container-fluid">{rows}</div>
 			</div>
 		);

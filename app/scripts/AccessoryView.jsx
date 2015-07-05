@@ -33,7 +33,6 @@ class AccessoryView extends Component {
 			'glyphicon-triangle-bottom': this.state.direction < 0,
 		});
 
-		const state = isOverweight ? 'Overweight' : 'Normal Condition';
 		const stateClassName = classNames({
 			'btn'        : 1,
 			'btn-danger' : isOverweight,
@@ -42,10 +41,10 @@ class AccessoryView extends Component {
 
 		return (
 			<div id="accessory-view">
-				<button type="button" className="btn btn-default" id="accessory-level" disabled="disabled">Current Level<samp className="label label-primary">{pad(this.state.level, digits(this.props.elevator.levelCount))}</samp></button>
-				<button type="button" className="btn btn-primary" id="accessory-panel-button" ref="panelElement" onMouseEnter={this.showPanel.bind(this)}>Elevator Panel</button>
+				<button type="button" className="btn btn-default" id="accessory-level" disabled="disabled">Etage <samp className="label label-primary">{pad(this.state.level, digits(this.props.elevator.levelCount))}</samp></button>
+				<button type="button" className="btn btn-primary" id="accessory-panel-button" ref="panelElement" onMouseEnter={this.showPanel.bind(this)}>Innentableau</button>
 				<AccessoryPanel elevator={this.props.elevator} ref="panel"/>
-				<button type="button" className={stateClassName} id="accessory-state">{state}</button>
+				<button type="button" className={stateClassName} id="accessory-state">{isOverweight ? 'Überlast' : 'Normalzustand'}</button>
 			</div>
 		);
 	}
