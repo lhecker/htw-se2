@@ -299,6 +299,44 @@ Wie bereits erwähnt wurde sorgt nun ein Wahr-Wert im \texttt{\_remainOpen}-Memb
 
 \section{View/Controller}
 \label{imp_vc}
+Durch die Verwendung von React als Framework fallen View und Controller sehr schlank aus --- der Großteil des Codes ist hierfür nur zuständig sich für die entsprechenden Events zu registrieren und den HTML Code zu beschreiben.
+Als Einstiegspunkt des gesamten Codes dient hierbei die \texttt{main.jsx} Datei, welche alle Weiteren React Komponenten in den statischen HTML Code der \texttt{index.html} einhängt.
+Des Weiteren wird darin die Elevator-Instanz erstellt, welche den 3 folgenden Komponenten als statisches Property übergeben wird. \\
+
+Die ElevatorView Komponente ist hierbei nun eine dieser Komponenten und auf der linken Seite der Website zu sehen.
+Sie erstellt eine Instanz der ElevatorCarView Komponente und für jede Etage des Elevator eine Instanz der ElevatorLevelView Komponente.
+Jeden dieser Instanzen wird wiederum die Elevator-Instanz als Property übergeben, sowie letzteren die Etagennummer für die sie stehen. \\
+
+Die ElevatorCarView Komponente registriert sich hierbei für \textit{move}-, \textit{persons:add}-, \textit{persons:remove}-, \textit{door:open}- und \textit{door:shutting}-Events bei dem Elevator.
+Das \textit{move}-Event wird hierbei verwendet um eine vertikale Animation der ElevatorCarView innerhalb der ElevatorView zu der Höhe der entsprechenden ElevatorLevelView vorzunehmen.
+Die \textit{persons:}-Events werden des Weiteren dafür verwendet um die Personenanzahl aktuell zu halten, sowie die \textit{door:}-Events dafür verwendet werden um bei geöffneten Türen die Buttons zum ändern der Personenanzahl verfügbar zu machen.
+Wird einer dieser Buttons gedrückt so propagieren die entsprechend \textit{click}-Events durch den \textit{DOM} des Browsers zu den Handlern des React Frameworks welche die Komponente darüber informieren.
+Diese ruft daraufhin die entsprechende \texttt{addPerson}-, bzw. \texttt{removePerson}-Methode auf. \\
+
+die Türen der ElevatorCarView öffnend, bzw. schließend zu animieren
+
+Die ElevatorLevelView Komponente registriert sich ebenfalls für die \textit{door:opening}-, sowie \textit{door:shutting}-Events, aber auch für die \textit{requests:add}-, \textit{requests:remove}-Events.
+Erstere werden dafür verwendet um die Türen öffnend, bzw. schließend zu animieren.
+Letzere hingegen werden dafür verwendet um bei Änderungen des \texttt{\_requests}-Members des Elevator die entsprechenden Hoch- und Runter-Buttons mit einer grünen Farbe signalisieren zu lassen, dass sie aktiv sind und für sie ein Fahrtwunsch bereit liegt.
+Entsprechend der vorhergehenden Komponente werden bei einem druck auf die Buttons die \texttt{request}-Methode des Elevator aufgerufen. \\
+
+Neben der ElevatorView existiert jedoch außerdem die AccessoryView.
+Diese registriert sich für die \textit{change:level}- und \textit{change:overweight}-Events beim Elevator.
+Das Erstere wird dafür verwendet, um die Anzeige der aktuellen Etage auf den neuesten Stand zu halten.
+Letzeres hingegen dient zur Anzeige des Fahrstuhlzustands, sprich: Normalzustand, oder Überlast.
+Außerdem bindet die AccessoryView das AccessoryPanel ein, dessen \texttt{show}-Methode bei einem \textit{mouseenter}-Event des Browsers aufgerufen wird.
+
+Das AccessoryPanel ist eine Komponente die das Innentableau darstellen soll.
+Dieses registriert sich ebenfalls für die \textit{requests:add}-, \textit{requests:remove}-Events um bei Änderungen im Elevator die entsprechenden Buttons aktiviert darzustellen.
+Um den Inhalt als schwebendes Panel darzustellen wird die Popover Bibliothek von \textit{Bootstrap} verwendet.
+Auch hier wird bei einem druck auf einen der Buttons die \texttt{request}-Methode des Elevator direkt aufgerufen.
+
+Zu gu­ter Letzt existiert die UmlView Komponente.
+Diese Komponente verwendet jedoch als einzige keinerlei interaktive Features.
+Stattdessen lädt sie mittels einem XMLHttpRequest das UML Diagramm von \texttt{images/uml.svg}, fügt es als eigenen HTML-Content ein und registriert sich bei dem Elevator für alle für das Zustandsdiagramm relevanten Events.
+Als primäre Methode um einen Zustand im Diagramm zu markieren wird \texttt{pushActive} verwendet, welcher die IDs von den Zuständen im SVG-Code übergeben und deren DOM Node in einem Array hinterlegt.
+Diese implementiert einen einfachen FIFO Algorithmus bei dem die Elemente in den Positionen 0 bis 2 jeweils die CSS Klasse \texttt{.active-0} bis \texttt{.active-2} zugewiesen bekommen.
+Hierbei wird jedoch nur dann das erste Element entfernt höchstens alle 333ms das
 
 \section{Benutzerschnittstelle}
 Damit die aktiven Zustände hervorgehoben werden können, müssen sie eindeutig identifizierbar sein.
