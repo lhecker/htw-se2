@@ -31,7 +31,7 @@ Nach der Festlegung von Anforderungen und der Beschreibung der Funktionalitäten
 \section{Komponenten und Entwurf}
 Grundgedanke beim Entwurf des Softwaresystems war eine möglichst realitätsnahe Aufteilung der Komponenten umzusetzen. Ein realer Fahrstuhl ent"-hält so mindestens einen Microcontroller für die Steuerung, Sensoren zur Erkennung von Etagen, einen Gewichtssensor um Überlastsitationen abzufangen und Sensoren zur korrekten Steuerung der Fahrstuhltür, sowie entsprechende Knöpfe um Fahrstuhlrufe und Fahrtwünsche zu ermöglichen. Diese Aufteilung spiegelt sich auch im Grobentwurf der Software wieder.
 
-\paragraph{}Die Unterteilung \mbox{ in } Komponenten wurde auch unter Einbeziehung des MVC-Paradigmas vorgenommen. Hierbei übernahm die Fahrstuhlsteuerung die Rolle des Models. Einem Controller sollte die in der View abgegebenen Interaktionen über definierte Schnittstellen an das Model übermitteln. Kern der Anwendung war somit die Fahrstuhlsteuerung in der die Zustände des Systems abgebildet wurden. Zustandsänderungen sollten wiederum über den Controller zu einer Veränderung der View-Komponenten führen. 
+\paragraph{}Die Unterteilung \mbox{ in } Komponenten wurde auch unter Einbeziehung des MVC-Paradigmas vorgenommen. Hierbei übernahm die Fahrstuhlsteuerung die Rolle des Models. Einem Controller sollte die in der View abgegebenen Interaktionen über definierte Schnittstellen an das Model übermitteln. Kern der Anwendung war somit die Fahrstuhlsteuerung in der die Zustände des Systems abgebildet wurden. Zustandsänderungen sollten wiederum über den Controller zu einer Veränderung der View-Komponenten führen.
 
 \newpage
 \section{Algorithmus}
@@ -351,7 +351,7 @@ Die manuellen Testfälle werden vor jeder Vorführung des Produkts beim Kunden v
 			\item Etagenanzeige zeigt während Fahrt aktuelle Etage an.
 			\item Fahrstuhl fährt in unterste Etage und öffnet Tür.
 			\item Tür schließt nach max. 5 Sekunden wieder
-			\item Etagenanzeige zeigt oberste Etagenzahl an.
+			\item Etagenanzeige zeigt unterste Etagenzahl an.
 		\end{enumerate}
 	\end{enumerate}
 \tcError Schreiben eines Bugreports via Issue in Gitlab mit Labels "`Implementierung"' und "`Bug"'
