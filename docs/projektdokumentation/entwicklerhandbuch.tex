@@ -213,22 +213,22 @@ Besonders mit Programmiersprachen wie ECMAScript lässt sich dies sehr leicht er
 Sie können sowohl eine beliebige Anzahl an Parametern annehmen, als auch mit einer beliebigen Anzahl aufgerufen werden.
 Es ist somit möglich und üblich das PubSub Pattern mit \textit{Lambda}-Funktionen zu nutzen, um sowohl eine dynamische Menge an \textit{Event}-Typen und \textit{Event}-Parametern verarbeiten zu können, als auch eine vollständige Entkopplung zwischen \textit{Publisher} und \textit{Subscriber} zu erreichen.
 
+\chapter{Implementierung}
+\label{imp}
+
 \paragraph{Klassendiagramm}
 \begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.9\textwidth]{images/klassendiagramm.eps}
+	\hspace*{-2cm}
+	\includegraphics[width=1.3\textwidth]{images/klassendiagramm.eps}
 	\caption{Übersicht der verwendeten Klassen der Hauptkomponente Fahrstuhlsteuerung}
 	\label{klassdiagramm}
 \end{figure}
 
-\chapter{Implementierung}
-\label{imp}
-
 \section{Model}
 \label{imp_model}
 Als zentraler Kern des Model steht die Klasse \texttt{Elevator}.
-Dieser steht in Verbindung mit seinen 3 Sensor-Klassen \texttt{ElevatorDoorSensor}, \texttt{ElevatorLevelSensor} und \texttt{ElevatorWeightSensor}.
-Des Weiteren wird die \texttt{EventEmitter}-Klasse, welche das \textit{PubSub} Pattern implementiert und von \texttt{node.js}, bzw. von entsprechenden Shims für den Browser, zur Verfügung gestellt wird.
+Dieser steht in Verbindung mit seinen 3 Sensor-Klassen \texttt{ElevatorDoorSensor}, \texttt{Elevator""LevelSensor} und \texttt{ElevatorWeightSensor}.
+Des Weiteren wird die \texttt{Event""Emitter}-Klasse, welche das \textit{PubSub} Pattern implementiert und von \texttt{node.js}, bzw. von entsprechenden Shims für den Browser, zur Verfügung gestellt wird.
 Wie im Entwurf bereits geplant wurde, sollen alle 4 \texttt{Elevator*} Klassen als möglichst eigenständige Komponenten existieren und erben deshalb alle von der \texttt{EventEmitter}-Klasse.
 Während eine \texttt{Elevator}-Instanz also konstruiert wird, erstellt diese jeweils eine Instanz der 3 Sensor-Klassen und übergibt eine Referenz von sich selbst als Parameter.
 Dadurch haben die Sensor-Klassen in ihren Konstruktoren Zeit sich beim \texttt{Elevator} als Subscriber für Events zu registrieren, die für sie relevant sind.
@@ -248,7 +248,7 @@ Dies ist auch die zur Zeit einzige Verwendung eines direkten Methodenaufrufs im 
 Sollte dies alles jedoch nicht der Fall sein, so wird der Request dem \texttt{Elevator} hinzugefügt. \\
 
 Die Requests werden hierbei in einem Array aus Boolean-Tripeln im Member \texttt{\_requests} registriert.
-Jedes Tripel in diesem Array steht hierbei repräsentativ für die noch ausstehenden Requests auf einer Etage entsprechend der Array-Position.
+Jedes Tripel in diesem Array steht hierbei reprä"-sentativ für die noch ausstehenden Requests auf einer Etage entsprechend der Array-Position.
 Hierbei, sowie in allen Weiteren Verwendungen von Tripeln in der \texttt{Elevator}-Klasse, ist das erste Element wahr falls auf der jeweiligen Etage ein Runter-Request aktiv ist.
 Das zweite Element ist ebenfalls wahr falls ein Hoch-Request aktiv ist, sowie das dritte Element welches für einen Request aus dem Innentableau steht.
 Des Weiteren existiert zusätzlich ein Tupel aus zwei gleichermaßen aufgebauten Integer-Tripeln, welches im Member \texttt{\_stops} gespeichert wird.
@@ -258,11 +258,11 @@ Sollte sich der Fahrstuhl nun aktuell noch im Idle-Zustand befinden, so kann mit
 Ist dies nicht der Fall und sind die Türen nicht verschlossen, so kommt der \texttt{Elevator}DoorSensor ins Spiel. \\
 
 Der \texttt{Elevator}DoorSensor öffnet selbstverständlich die Türen sobald eine gewünschtes Ziel, bzw. ein Request, erreicht wird.
-Dieses Ereignis wird vom \texttt{Elevator} mit dem \glqq stop\grqq-Event signalisiert und vom \texttt{ElevatorDoorSensor} aufgegriffen.
+Dieses Ereignis wird vom \texttt{Elevator} mit dem \glqq stop\grqq-Event signalisiert und vom \texttt{ElevatorDoor""Sensor} aufgegriffen.
 Dieser ruft nun seine \texttt{open}-Methode auf, welche eine interne State-Machine ins Rollen bringt, die die Zustände \textit{opening}, \textit{open}, \textit{shutting} und \textit{shut} abarbeitet.
-Wie man bereits erkennen kann erfüllt der \texttt{ElevatorDoorSensor} trotz seines Namens nicht nur eine reine passive Sensor-, sondern auch eine Simulationsfunktion.
-Bei einem Aufruf der \texttt{open}-Methode, sowie wenn ein State erreicht wurde, wird dessen Zustandsname als gleichnamiges Event verteilt und der nächste State mittels simplen Timern angesetzt, sofern nicht bereits der \textit{shut}-Zustand erreicht wurde, oder aber der \texttt{\_remainOpen}-Member wahr ist.
-Aufgrund der Implementierung des \texttt{ElevatorDoorSensor} als State-Machine, ist es in der Lage bei einem weiteren Aufruf der \texttt{open}-Methode die Timer zurückzusetzen, bzw. die Tür erneut zu öffnen, während sie aktuell offen ist, bzw. respektive während sie aktuell schließt. \\
+Wie man bereits erkennen kann erfüllt der \texttt{Elevator""Door""Sensor} trotz seines Namens nicht nur eine reine passive Sensor-, sondern auch eine Simulationsfunktion.
+Bei einem Aufruf der \texttt{open}-Methode, sowie wenn ein State erreicht wurde, wird dessen Zustandsname als gleichnamiges Event verteilt und der nächste State mittels simplen Timern angesetzt, sofern nicht bereits der \textit{shut}-Zustand erreicht wurde, oder aber der \texttt{\_remain""Open}-Member wahr ist.
+Aufgrund der Implementierung des \texttt{ElevatorDoor""Sensor} als State-Machine, ist es in der Lage bei einem weiteren Aufruf der \texttt{open}-Methode die Timer zurückzusetzen, bzw. die Tür erneut zu öffnen, wäh"-rend sie aktuell offen ist, bzw. respektive während sie aktuell schließt. \\
 
 Der \texttt{Elevator} greift hierbei nun das \textit{shut}-Event mit seiner \texttt{\_onDoorShut}-Methode als Callback auf und versucht daraufhin gleichermaßen wie in der \texttt{request}-Methode loszufahren.
 Da nun jedoch die Türen geschlossen sind so kann im Gegensatz zu vorher losgefahren werden. \\
@@ -275,7 +275,7 @@ Jeder dieser Instanzen registriert sich selbst bei dem \texttt{Elevator} für \t
 Wird eines ausgelöst so erhält nun jeder Sensor in der Simulation eine Nachricht und jeder prüft ob es der Sensor wäre der der nächstgelegenen Etage in der Fahrtrichtung entspricht.
 Dieser Sensor setzt nun einen Timer auf, welcher nach einer festen Zeit ein \textit{contact}-Event auslöst. \\
 
-Der \texttt{Elevator} wiederum registriert sich bei der Konstruierung mit seiner \texttt{\_onLevelContact}-Methode für die \textit{contact}-Events bei jedem \texttt{ElevatorLevelSensor}.
+Der \texttt{Elevator} wiederum registriert sich bei der Konstruierung mit seiner \texttt{\_onLevelContact}-Methode für die \textit{contact}-Events bei jedem \texttt{Elevator""Level""Sensor}.
 Wird eines ausgelöst signalisiert dies dem \texttt{Elevator} den Kontakt, bzw. die Ankunft, bei einer Etage.
 Diese Ankunft macht der \texttt{Elevator} nun publik indem er zunächst ein \textit{change:level}-Event auslöst.
 Sollte des Weiteren auf der nun angekommenen Etage ein Request vorliegen so wird außerdem ein \textit{stop}-Event ausgelöst, der Request aus \texttt{\_requests} entfernt, sowie der entsprechende Eintrag in \texttt{\_stops} dekrementiert.
@@ -286,16 +286,16 @@ Ist dies der Fall so wird die Gegenrichtung geprüft und entsprechend die Richtu
 Sollte auch in der Gegenrichtung keine Requests vorliegen so wird ein \textit{idle}-Event ausgelöst.
 \texttt{\_stops} hilft hierbei enorm, da auf Iterationen durch das Requests-Array verzichtet werden kann.
 Sollte der Fahrstuhl jedoch weiterfahren, so muss nun das nächste \textit{move}-Event ausgelöst werden.
-Bevor dies geschiet wird jedoch sichergestellt, dass wenn der Fahrstuhl einen Request in die entgegengesetzte Richtung überspringt, die entsprechenden Summen in \texttt{\_stops} angepasst werden, indem dessen gedachter Eintrag von der einen Seite des Fahrstuhls auf die anderen Seite übertragen wird. \\
+Bevor dies geschiet wird jedoch sichergestellt, dass wenn der Fahrstuhl einen Request in die entgegengesetzte Richtung überspringt, die entsprechenden Summen in \texttt{\_stops} angepasst werden, indem dessen gedachter Eintrag von der einen Seite des Fahrstuhls auf die anderen Seite über"-tragen wird. \\
 
 Zuletzt existieren öffentliche APIs im \texttt{Elevator} um Personen hinzuzufügen, bzw. um sie zu entfernen.
 Aufrufe dieser Methoden führen jeweils dazu, dass ein \textit{persons:add}-, bzw. respektive ein \textit{persons:remove}-Event ausgelöst wird.
 Dieses Events werden vom \texttt{ElevatorWeightSensor} aufgegriffen, welcher sich bei seiner Konstruierung beim \texttt{Elevator} hierfür registriert, welche jeweils dazu führen, dass der \texttt{ElevatorWeightSensor} seinen Member \texttt{\_weight} um den fixen Wert des Gewichts einer Person vergrößert, bzw. verringert.
-Wird das maximale Gewicht überschritten, oder aber wieder unterschritten nachdem das maximale Gewicht bereits erreicht wurde, so wird ein \textit{change}-Event ausgelöst, welches als einzigen Parameter übermittelt, ob der \texttt{ElevatorWeightSensor} aktuell Überlast, oder Normallast meldet. \\
+Wird das maximale Gewicht überschritten, oder aber wieder unterschritten nachdem das maximale Gewicht bereits erreicht wurde, so wird ein \textit{change}-Event ausgelöst, welches als einzigen Parameter übermittelt, ob der \texttt{Elevator""WeightSensor} aktuell Überlast, oder Normallast meldet. \\
 
-Dieses Event wird hierbei vom \texttt{Elevator} wiederum aufgriffen, welcher den Zustand zwischenspeichert und als Mediator das Ereignis als \textit{overweight:change}-Event weiterleitet.
+Dieses Event wird hierbei vom \texttt{Elevator} wiederum aufgriffen, welcher den Zustand zwischenspeichert und als Mediator das Ereignis als \textit{overweight:""change}-Event weiterleitet.
 Der \texttt{ElevatorDoorSensor} registriert sich beim \texttt{Elevator} nun außerdem in seinem Konstruktur für eben jenes Event, setzt seinen \texttt{\_remainOpen}-Member entsprechend und ruft die \texttt{open}-Methode auf.
-Wie bereits erwähnt wurde sorgt nun ein Wahr-Wert im \texttt{\_remainOpen}-Member dafür, dass \texttt{ElevatorDoorSensor} im \textit{open}-Zustand verbleibt.
+Wie bereits erwähnt wurde sorgt nun ein Wahr-Wert im \texttt{\_remainOpen}-Mem"-ber dafür, dass \texttt{ElevatorDoorSensor} im \textit{open}-Zustand verbleibt.
 
 \section{View/Controller}
 \label{imp_vc}
@@ -313,7 +313,8 @@ Die \textit{persons:}-Events werden des Weiteren dafür verwendet um die Persone
 Wird einer dieser Buttons gedrückt so propagieren die entsprechend \textit{click}-Events durch den \textit{DOM} des Browsers zu den Handlern des React Frameworks welche die Komponente darüber informieren.
 Diese ruft daraufhin die entsprechende \texttt{addPerson}-, bzw. \texttt{removePerson}-Methode auf. \\
 
-Die ElevatorLevelView Komponente registriert sich ebenfalls für die \textit{door:opening}-, sowie \textit{door:shutting}-Events, aber auch für die \textit{requests:add}-, \textit{requests:remove}-Events.
+\newpage
+Die ElevatorLevelView Komponente registriert sich ebenfalls für die \textit{door:""opening}-, sowie \textit{door:shutting}-Events, aber auch für die \textit{requests:add}-, \textit{requests:""remove}-Events.
 Erstere werden dafür verwendet um die Türen öffnend, bzw. schließend zu animieren.
 Letzere hingegen werden dafür verwendet um bei Änderungen des \texttt{\_requests}-Members des Elevator die entsprechenden Hoch- und Runter-Buttons mit einer grünen Farbe signalisieren zu lassen, dass sie aktiv sind und für sie ein Fahrtwunsch bereit liegt.
 Entsprechend der vorhergehenden Komponente werden bei einem druck auf die Buttons die \texttt{request}-Methode des Elevator aufgerufen. \\
@@ -324,11 +325,13 @@ Das Erstere wird dafür verwendet, um die Anzeige der aktuellen Etage auf den ne
 Letzeres hingegen dient zur Anzeige des Fahrstuhlzustands, sprich: Normalzustand, oder Überlast.
 Außerdem bindet die AccessoryView das AccessoryPanel ein, dessen \texttt{show}-Methode bei einem \textit{mouseenter}-Event des Browsers aufgerufen wird.
 
+\paragraph{}
 Das AccessoryPanel ist eine Komponente die das Innentableau darstellen soll.
 Dieses registriert sich ebenfalls für die \textit{requests:add}-, \textit{requests:remove}-Events um bei Änderungen im Elevator die entsprechenden Buttons aktiviert darzustellen.
 Um den Inhalt als schwebendes Panel darzustellen wird die Popover Bibliothek von \textit{Bootstrap} verwendet.
 Auch hier wird bei einem druck auf einen der Buttons die \texttt{request}-Methode des Elevator direkt aufgerufen.
 
+\paragraph{}
 Zu guter Letzt existiert die UmlView-Komponente.
 Diese Komponente verwendet jedoch als einzige keinerlei interaktive Features.
 Stattdessen lädt sie mittels einem XMLHttpRequest das UML Diagramm von \texttt{images/uml.svg}, fügt es als eigenen HTML-Content ein und registriert sich bei dem Elevator für alle für das Zustandsdiagramm relevanten Events.
@@ -338,6 +341,7 @@ Hierbei wird jedoch nur dann das erste Element entfernt wenn auch mindestens ein
 Des Weiteren wird auch nur mindestens alle 333ms das erste Element entfernt.
 Dies stellt sicher, dass auch Zustände welche keine Verweildauer haben, wie z.B. der Übergang von \glqq Fahre hoch\grqq in \glqq Fuhr hoch\grqq, welches instant direkt in z.B. \glqq Tür öffnet sich\grqq übergeht, für den Anwender wahrnehmbar sind.
 
+\newpage
 \section{Benutzerschnittstelle}
 Damit die aktiven Zustände hervorgehoben werden können, müssen sie eindeutig identifizierbar sein.
 Dafür wurden die Elemente der Grafik gruppiert und mit IDs versehen, auf die mittels Javascript und dem \acrshort{DOM} zugegriffen werden kann.
@@ -349,17 +353,17 @@ Bei der Benennung der IDs wurden folgende Konventionen angwendet:
 \end{itemize}
 
 \begin{figure}[hbt]
-	\centering
-	\includegraphics[width=\textwidth]{images/ZDv6_id_view.eps}
+	\hspace*{-2cm}
+	\includegraphics[width=1.3\textwidth]{images/ZDv6_id_view.eps}
 	\caption{IDs des Zustandsdiagrammes}
 	\label{fig:ZD_id_view}
 \end{figure}
 
+\newpage
 \section{API}
 \label{imp_api}
-
-\begin{table}[htb]
-	\begin{tabularx}{0.92\textwidth}{lX}
+\begin{table}[h!]
+	\begin{tabularx}{0.92\textwidth}{XX}
 		\texttt{constructor(minLevel : Number, maxLevel : Number) : Elevator} & Konstruiert einen Elevator mit dem minimalen, bzw. maximalen Level \texttt{minLevel}, bzw. respektive \texttt{maxLevel}. \\ \hline
 		\texttt{get minLevel() : Number}
 		\texttt{get maxLevel() : Number}
@@ -378,8 +382,8 @@ Bei der Benennung der IDs wurden folgende Konventionen angwendet:
 \caption{Elevator}
 \end{table}
 
-\begin{table}[htb]
-	\begin{tabularx}{0.92\textwidth}{lX}
+\begin{table}[h!]
+	\begin{tabularx}{0.92\textwidth}{XX}
 		\texttt{constructor(elevator : Elevator) : ElevatorDoorSensor} & Konstruiert einen ElevatorDoorSensor und verbindet diesen mit einer Elevator Instanz. \\ \hline
 		\texttt{get state() : String} & Gibt den aktuellen Zustand als String zurück: \textit{opening}, \textit{open}, \textit{shutting} oder \textit{shut}. \\ \hline
 		\texttt{open() : void}        & Veranlasst eine Türöffnung, sofern der aktuelle Zustand den Übergang erlaubt. \\ \hline
@@ -387,8 +391,8 @@ Bei der Benennung der IDs wurden folgende Konventionen angwendet:
 \caption{ElevatorDoorSensor}
 \end{table}
 
-\begin{table}[htb]
-	\begin{tabularx}{0.92\textwidth}{lX}
+\begin{table}[h!]
+	\begin{tabularx}{0.92\textwidth}{XX}
 		\texttt{constructor(elevator : Elevator) : ElevatorWeightSensor} & Konstruiert einen ElevatorWeightSensor und verbindet diesen mit einer Elevator Instanz. \\ \hline
 		\texttt{get weight() : Number} & Gibt das kummulierte Gesamtgewicht zurück welches der Sensor mittels \texttt{persons:add} und \texttt{persons:remove} ermittelt hat. \\ \hline
 	\end{tabularx}
