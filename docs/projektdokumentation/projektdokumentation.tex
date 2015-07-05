@@ -119,12 +119,24 @@ Der Prozess, welcher letztlich zur vorliegenden Gestaltung der Benutzerschnittst
 	\label{UI_final}
 \end{figure}
 
-\paragraph{}Die Prämissen des Projektes, Studierenden und Lehrenden ein übersichtliches und einfach zu bedienendes Werkzeug an die Hand zu geben, standen auch beim Entwurf der Benutzerschnittstelle immer im Vordergrund.
+\paragraph{}
+Die Prämissen des Projektes, Studierenden und Lehrenden ein übersichtliches und einfach zu bedienendes Werkzeug an die Hand zu geben, standen auch beim Entwurf der Benutzerschnittstelle immer im Vordergrund.
+
 
 \section{Komponenten und Entwurf}
-\paragraph{}Grundgedanke bei dem Entwurf des Softwaresystems war eine möglichst realitätsnahe Aufteilung der Komponenten umzusetzen. Bei einem realen Fahrstuhl gibt es einen Microcontroller für die Steuerung, Sensoren für die Etagen sowie Gewichtssensoren um Überlastsitationen abzufangen sowie eine zu steuernde Fahrstuhlkabine und entsprechende Knöpfe um die Fahrstuhlrufe bzw. Fahrtwünsche zu ermöglichen. Diese Aufteilung spiegelt sich auch im Grobentwurf der Software wieder.
-\paragraph{} Kern der Anwendung und somit die Hauptkomponente ist die Fahrstuhlsteuerung in der die Zustände des Systems abgebildet werden. Die Visualisierung kommuniziert über in der \acrshort{API} festgelegte Schnittstellen um die für die korrekte Darstellung erforderlichen Informationen abzurufen. Sämtliche Funktionen der \acrshort{API} sind in der Entwicklerdokumentation aufgeführt.
-Umgesetzt wird die Trennung der Komponenten unter Nutzung des MVC-Paradigmas wobei die Fahrstuhlsteuerung die Rolle des Models einnimmt, die Visualisierung die Darstellung der Fahrstuhlkabine im Fahrstuhlschacht und einem Controller der die in der View abgegebenen simmulierten Fahrtwünsche an das Model weiterreicht.
+
+\paragraph{}
+Grundgedanke bei dem Entwurf des Softwaresystems war eine möglichst realitätsnahe Aufteilung der Komponenten umzusetzen.
+Ein realer Fahrstuhl enthält so mindestens einen Microcontroller für die Steuerung, Sensoren zur Erkennung von Etagen, einen Gewichtssensor um Überlastsitationen abzufangen und Sensoren zur korrekten Steuerung der Fahrstuhltür, sowie entsprechende Knöpfe um die Fahrstuhlrufe bzw. Fahrtwünsche zu ermöglichen.
+Diese Aufteilung spiegelt sich auch im Grobentwurf der Software wieder.
+
+\paragraph{}
+Eine erste Unterteilung in Komponenten wird durch die Nutzung des MVC-Paradigmas erreicht.
+Hierbei übernimmt die Fahrstuhlsteuerung die Rolle des Models,  und einem Controller der die in der View abgegebenen simmulierten Fahrtwünsche an das Model weiterreicht.
+Kern der Anwendung und somit die Hauptkomponente ist die Fahrstuhlsteuerung in der die Zustände des Systems abgebildet werden und somit gleichzeitig als Model bezeichnet werden kann.
+Des Weiteren kann die Darstellung der Fahrstuhlkabine im Fahrstuhlschacht als View angesehen werden.
+Diese steht in Verbindung mit dem Controller welcher als Mittelsmann Interaktionen in der View an das Model über in der \acrshort{API} festgelegte Schnittstellen weiterleitet und Ereignisse des Models in der View darstellen lässt.
+Sämtliche Funktionen der \acrshort{API} sind in der Entwicklerdokumentation aufgeführt.
 
 
 \chapter{Qualitätssicherung}
