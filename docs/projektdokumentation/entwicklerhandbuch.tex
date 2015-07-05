@@ -351,11 +351,48 @@ Bei der Benennung der IDs wurden folgende Konventionen angwendet:
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=\textwidth]{images/ZDv6_id_view.eps}
-	\caption{IDs des Zustandsdiagrammes}%
-	\label{fig:ZD_id_view}%
+	\caption{IDs des Zustandsdiagrammes}
+	\label{fig:ZD_id_view}
 \end{figure}
 
 \section{API}
 \label{imp_api}
+
+\begin{table}[htb]
+	\begin{tabularx}{0.92\textwidth}{lX}
+		\texttt{constructor(minLevel : Number, maxLevel : Number) : Elevator} & Konstruiert einen Elevator mit dem minimalen, bzw. maximalen Level \texttt{minLevel}, bzw. respektive \texttt{maxLevel}. \\ \hline
+		\texttt{get minLevel() : Number}
+		\texttt{get maxLevel() : Number}
+		\texttt{get levelCount() : Number}
+		\texttt{get level() : Number}
+		\texttt{get direction() : Number}
+		\texttt{get doorState() : String}
+		\texttt{get isMoving() : Boolean}
+		\texttt{get isDoorUnlocked() : Boolean}
+		\texttt{get isOverweight() : Boolean}                             & Rudimentäre Getter um den Zustand des Elevator abzufragen. \\ \hline
+		\texttt{addPerson() : void}                                       & Fügt dem Elevator eine simulierte Person hinzu. Der Elevator verfolgt nicht die Anzahl der Personen in ihm. \\ \hline
+		\texttt{removePerson() : void}                                    & Entfernt vom Elevator eine simulierte Person. \\ \hline
+		\texttt{hasRequest(level : Number, direction : Number) : Boolean} & Prüft ob auf der Etage \texttt{level} mit der Richtung \texttt{direction} ein Request vorliegt. Der Besondere Parameter \texttt{direction} wird in \textit{\nameref{imp_model}} näher beleuchtet. \\ \hline
+		\texttt{request(level : Number, direction : Number) : void}       & Fügt dem Elevator ein Request für die Etage \texttt{level} mit der Richtung \texttt{direction} hinzu. Die möglichen Reaktionen des Elevator bei einem Aufruf werden in \textit{\nameref{imp_model}} näher beleuchtet. \\ \hline
+	\end{tabularx}
+\caption{Elevator}
+\end{table}
+
+\begin{table}[htb]
+	\begin{tabularx}{0.92\textwidth}{lX}
+		\texttt{constructor(elevator : Elevator) : ElevatorDoorSensor} & Konstruiert einen ElevatorDoorSensor und verbindet diesen mit einer Elevator Instanz. \\ \hline
+		\texttt{get state() : String} & Gibt den aktuellen Zustand als String zurück: \textit{opening}, \textit{open}, \textit{shutting} oder \textit{shut}. \\ \hline
+		\texttt{open() : void}        & Veranlasst eine Türöffnung, sofern der aktuelle Zustand den Übergang erlaubt. \\ \hline
+	\end{tabularx}
+\caption{ElevatorDoorSensor}
+\end{table}
+
+\begin{table}[htb]
+	\begin{tabularx}{0.92\textwidth}{lX}
+		\texttt{constructor(elevator : Elevator) : ElevatorWeightSensor} & Konstruiert einen ElevatorWeightSensor und verbindet diesen mit einer Elevator Instanz. \\ \hline
+		\texttt{get weight() : Number} & Gibt das kummulierte Gesamtgewicht zurück welches der Sensor mittels \texttt{persons:add} und \texttt{persons:remove} ermittelt hat. \\ \hline
+	\end{tabularx}
+\caption{ElevatorWeightSensor}
+\end{table}
 
 \section{Erweiterungen}
