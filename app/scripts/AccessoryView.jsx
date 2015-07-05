@@ -13,12 +13,10 @@ class AccessoryView extends Component {
 	componentWillMount() {
 		const elevator = this.props.elevator;
 
-		this._bind(elevator, 'move', this._onElevatorMove);
-		this._bind(elevator, 'change:level', this._onElevatorLevel);
+		this._bind(elevator, 'change:level',      this._onElevatorLevel);
 		this._bind(elevator, 'change:overweight', this._onOverweightChange);
 
 		this.setState({
-			direction   : elevator.direction,
 			isOverweight: elevator.isOverweight,
 			level       : elevator.level,
 		});
@@ -26,12 +24,6 @@ class AccessoryView extends Component {
 
 	render() {
 		const isOverweight = this.state.isOverweight;
-
-		const glyphiconClassName = classNames({
-			'glyphicon'                : 1,
-			'glyphicon-triangle-top'   : this.state.direction > 0,
-			'glyphicon-triangle-bottom': this.state.direction < 0,
-		});
 
 		const stateClassName = classNames({
 			'btn'        : 1,
@@ -53,16 +45,9 @@ class AccessoryView extends Component {
 		this.refs.panel.show(this.refs.panelElement);
 	}
 
-	_onElevatorMove(level, direction) {
-		this.setState({
-			level    : level,
-			direction: direction,
-		});
-	}
-
 	_onElevatorLevel(level) {
 		this.setState({
-			level: level,
+			level,
 		});
 	}
 

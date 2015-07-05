@@ -4,26 +4,6 @@ import Component from './Component';
 import url from 'url';
 import {ElevatorProperties} from './elevator';
 
-/*
-uml-door-open
-uml-door-opening
-uml-door-shut
-uml-door-shutting
-uml-initial
-uml-move-down
-uml-move-up
-uml-moved-down
-uml-moved-up
-uml-overload
-uml-standby
-uml-subautomata
-uml-subautomata-final
-uml-subautomata-initial
-*/
-/*
-*/
-const transitionTimerKey = Symbol('transition');
-
 
 const activeNodes = [];
 const activeNodesMax = 3;
