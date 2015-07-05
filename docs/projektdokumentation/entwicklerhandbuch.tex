@@ -101,17 +101,17 @@ Listing \ref{JS:grunt_webkit_config} zeigt die Konfiguration der entsprechenden 
 Neben Quell- und Zielordner sind hier die jeweiligen Zielarchitekturen eingetragen.
 
 \begin{tabularx}{0.92\textwidth}{lX}
-	\textit{clean:dist} & bereinigt temporäre und build-Ordner\\ \hline
-	\textit{useminPrepare} & TODO\\ \hline
-	\textit{concurrent:dist} & Konfiguriert verschiedene Unteraufgaben um Nebenläufigkeit im Build-Prozess zu erzeugen\\ \hline
-	\textit{postcss} & TODO\\ \hline
-	\textit{concat} & TODO\\ \hline
-	\textit{cssmin} & Verringert die Größe der CSS-Dateien\\ \hline
-	\textit{uglify} & Verringert die Größe der Javascript-Dateien\\ \hline
-	\textit{copy:dist} & Kopiert alle notwendigen Dateien in die jeweiligen Veröffentlichungs-Unterordner\\ \hline
-	\textit{filerev} & Ändert Dateinamen um Probleme mit dem Cache des Browser zu vermeiden\\ \hline
-	\textit{usemin} &  TODO\\ \hline
-	\textit{htmlmin} & Verringert die Größe der HTML-Dateien\\ \hline
+	\textit{clean:dist} & löscht temporäre, sowie den dist-Ordner\\ \hline
+	\textit{useminPrepare} & analysiert index.html auf Anweisungen welche Dateien mit usemin optimiert werden sollen\\ \hline
+	\textit{concurrent:dist} & führt Unteraufgaben parallel aus um den Build-Prozess zu beschleunigen\\ \hline
+	\textit{postcss} & analysiert CSS Code und fügt automatisch Anweisungen ein um die Kompatibilität mit älteren Browsern zu gewährleisten\\ \hline
+	\textit{concat} & verknüpft mehrere Dateien zu Einer\\ \hline
+	\textit{cssmin} & optimiert CSS-Dateien\\ \hline
+	\textit{uglify} & optimiert Javascript-Dateien\\ \hline
+	\textit{copy:dist} & Kopiert alle übrigen Dateien in den dist-Ordner\\ \hline
+	\textit{filerev} & randomisiert Dateinamen um Probleme mit dem Cache des Browser zu vermeiden\\ \hline
+	\textit{usemin} & führt die obigen Optimierungen automatisch basierend auf Anweisungen in index.html aus\\ \hline
+	\textit{htmlmin} & verringert die Größe von HTML-Dateien\\ \hline
 \end{tabularx}
 \label{dist_table}
 \vspace*{1cm}
@@ -313,8 +313,6 @@ Die \textit{persons:}-Events werden des Weiteren dafür verwendet um die Persone
 Wird einer dieser Buttons gedrückt so propagieren die entsprechend \textit{click}-Events durch den \textit{DOM} des Browsers zu den Handlern des React Frameworks welche die Komponente darüber informieren.
 Diese ruft daraufhin die entsprechende \texttt{addPerson}-, bzw. \texttt{removePerson}-Methode auf. \\
 
-die Türen der ElevatorCarView öffnend, bzw. schließend zu animieren
-
 Die ElevatorLevelView Komponente registriert sich ebenfalls für die \textit{door:opening}-, sowie \textit{door:shutting}-Events, aber auch für die \textit{requests:add}-, \textit{requests:remove}-Events.
 Erstere werden dafür verwendet um die Türen öffnend, bzw. schließend zu animieren.
 Letzere hingegen werden dafür verwendet um bei Änderungen des \texttt{\_requests}-Members des Elevator die entsprechenden Hoch- und Runter-Buttons mit einer grünen Farbe signalisieren zu lassen, dass sie aktiv sind und für sie ein Fahrtwunsch bereit liegt.
@@ -336,7 +334,9 @@ Diese Komponente verwendet jedoch als einzige keinerlei interaktive Features.
 Stattdessen lädt sie mittels einem XMLHttpRequest das UML Diagramm von \texttt{images/uml.svg}, fügt es als eigenen HTML-Content ein und registriert sich bei dem Elevator für alle für das Zustandsdiagramm relevanten Events.
 Als primäre Methode um einen Zustand im Diagramm zu markieren wird \texttt{pushActive} verwendet, welcher die IDs von den Zuständen im SVG-Code übergeben und deren DOM Node in einem Array hinterlegt.
 Diese implementiert einen einfachen FIFO Algorithmus bei dem die Elemente in den Positionen 0 bis 2 jeweils die CSS Klasse \texttt{.active-0} bis \texttt{.active-2} zugewiesen bekommen.
-Hierbei wird jedoch nur dann das erste Element entfernt höchstens alle 333ms das
+Hierbei wird jedoch nur dann das erste Element entfernt wenn auch mindestens ein Zweites existiert.
+Des Weiteren wird auch nur mindestens alle 333ms das erste Element entfernt.
+Dies stellt sicher, dass auch Zustände welche keine Verweildauer haben, wie z.B. der Übergang von \glqq Fahre hoch\grqq in \glqq Fuhr hoch\grqq, welches instant direkt in z.B. \glqq Tür öffnet sich\grqq übergeht, für den Anwender wahrnehmbar sind.
 
 \section{Benutzerschnittstelle}
 Damit die aktiven Zustände hervorgehoben werden können, müssen sie eindeutig identifizierbar sein.
