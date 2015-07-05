@@ -216,16 +216,16 @@ Es ist somit möglich und üblich das PubSub Pattern mit \textit{Lambda}-Funktio
 \chapter{Implementierung}
 \label{imp}
 
-\paragraph{Klassendiagramm}
-\begin{figure}[h!]
-	\hspace*{-2cm}
-	\includegraphics[width=1.3\textwidth]{images/klassendiagramm.eps}
-	\caption{Übersicht der verwendeten Klassen der Hauptkomponente Fahrstuhlsteuerung}
-	\label{klassdiagramm}
-\end{figure}
-
 \section{Model}
 \label{imp_model}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/klassendiagramm.eps}
+	\caption{Übersicht der verwendeten Klassen des Models}
+	\label{klassendiagramm}
+\end{figure}
+
 Als zentraler Kern des Model steht die Klasse \texttt{Elevator}.
 Dieser steht in Verbindung mit seinen 3 Sensor-Klassen \texttt{ElevatorDoorSensor}, \texttt{Elevator""LevelSensor} und \texttt{ElevatorWeightSensor}.
 Des Weiteren wird die \texttt{Event""Emitter}-Klasse, welche das \textit{PubSub} Pattern implementiert und von \texttt{node.js}, bzw. von entsprechenden Shims für den Browser, zur Verfügung gestellt wird.
@@ -398,4 +398,4 @@ Bei der Benennung der IDs wurden folgende Konventionen angwendet:
 	\end{tabularx}
 \caption{ElevatorWeightSensor}
 \end{table}
-	 
+
