@@ -215,7 +215,6 @@ class Elevator extends EventEmitter {
 	}
 
 	_onDoorShut() {
-
 		if (!this.isOverweight) {
 			if (!this._direction) {
 				this._beginMoving();
