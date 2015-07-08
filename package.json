@@ -2,6 +2,7 @@
 	"name": "se2-bga",
 	"version": "0.0.1",
 	"private": true,
+	"license": "MIT",
 	"devDependencies": {
 		"autoprefixer-core": "^5.2.1",
 		"babel-runtime": "^5.6.15",
