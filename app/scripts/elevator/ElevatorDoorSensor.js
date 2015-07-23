@@ -38,8 +38,6 @@ class ElevatorDoorSensor extends EventEmitter {
 	}
 
 	open() {
-		this._clearTimeout();
-
 		switch (this._state) {
 			// do not set timeout in case 1, since we're already opening them in that state
 			case 0:
@@ -62,6 +60,8 @@ class ElevatorDoorSensor extends EventEmitter {
 	 */
 	_setTimeout(shouldTestTimeout) {
 		const timeout = STATES[this._state][1];
+
+		this._clearTimeout();
 
 		if (!this._remainOpen && (!shouldTestTimeout || timeout)) {
 			this._timer = setTimeout(this._nextState.bind(this), timeout);
