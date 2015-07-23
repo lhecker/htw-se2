@@ -9,14 +9,13 @@ import EventEmitter from 'events';
 
 /*
  * Helper method for access to the stops and levels tuples.
- *
- * The first value of those tuples contains a value meant
- * for the down and the second value for the up direction.
- * This method will generate the index (0 or 1)
- * for the direction (lt. 0 or gt. 0).
  */
-function tupleIdx(direction) {
-	return +(direction > 0);
+function directionToTupleIdx(direction) {
+	return direction < 0 ? 0 : direction > 0 ? 1 : 2;
+}
+
+function tupleIdxToDirection(idx) {
+	return [-1, 1, 0][idx];
 }
 
 
@@ -159,7 +158,7 @@ class Elevator extends EventEmitter {
 
 	hasRequest(level, direction) {
 		const r = this._requestData(level);
-		return !!(direction ? r[tupleIdx(direction)] : (r[0] || r[1]));
+		return !!(direction ? r[directionToTupleIdx(direction)] : (r[0] || r[1]));
 	}
 
 	/*
@@ -181,8 +180,8 @@ class Elevator extends EventEmitter {
 			direction = Math.sign(direction);
 
 			const r = this._requestData(level);
-			const s = this._stops[tupleIdx(relativePosition)];
-			const idx = direction ? tupleIdx(direction) : 2;
+			const s = this._stops[directionToTupleIdx(relativePosition)];
+			const idx = direction ? directionToTupleIdx(direction) : 2;
 
 			// only increment if the level has not already been accounted for
 			if (!r[idx]) {
@@ -214,7 +213,7 @@ class Elevator extends EventEmitter {
 			if (!this._direction) {
 				this._beginMoving();
 			} else {
-				const idx = tupleIdx(this._direction);
+				const idx = directionToTupleIdx(this._direction);
 				const s = this._stops[idx];
 
 				if (s[0] || s[1] || s[2]) {
@@ -239,7 +238,7 @@ class Elevator extends EventEmitter {
 	}
 
 	_onLevelContact(level, isOppositeCheck) {
-		const idx = tupleIdx(this._direction);
+		const idx = directionToTupleIdx(this._direction);
 		const oidx = 1 - idx;
 		const r = this._requestData(level);
 		const s = this._stops[idx];
@@ -301,7 +300,7 @@ class Elevator extends EventEmitter {
 	}
 
 	_emitMove() {
-		const idx = tupleIdx(this._direction);
+		const idx = directionToTupleIdx(this._direction);
 		const oidx = 1 - idx;
 
 		if (this._requestData(this._level)[oidx]) {
@@ -320,7 +319,7 @@ class Elevator extends EventEmitter {
 	_emitStop() {
 		const level = this._level;
 		const r = this._requestData(level);
-		const s = this._stops[tupleIdx(this._direction)];
+		const s = this._stops[directionToTupleIdx(this._direction)];
 
 		this._isMoving = false;
 
