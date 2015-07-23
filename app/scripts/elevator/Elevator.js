@@ -158,7 +158,7 @@ class Elevator extends EventEmitter {
 
 	hasRequest(level, direction) {
 		const r = this._requestData(level);
-		return !!(direction ? r[directionToTupleIdx(direction)] : (r[0] || r[1]));
+		return !!(isNaN(direction) ? r[0] || r[1] : r[directionToTupleIdx(direction)]);
 	}
 
 	/*

@@ -22,7 +22,7 @@ class AccessoryPanel extends Component {
 		this._bind(elevator, 'requests:remove', this._onRequest, false);
 
 		for (let i = 0; i < levelCount; i++) {
-			requests[i] = elevator.hasRequest(i + minLevel);
+			requests[i] = elevator.hasRequest(i + minLevel, 0);
 		}
 
 		this.setState({
@@ -136,14 +136,16 @@ class AccessoryPanel extends Component {
 	}
 
 	_onRequest(add, level, direction) {
-		const elevator = this.props.elevator;
-		const requests = Array.from(this.state.requests);
+		if (direction === 0) {
+			const elevator = this.props.elevator;
+			const requests = Array.from(this.state.requests);
 
-		requests[level - elevator.minLevel] = add;
+			requests[level - elevator.minLevel] = add;
 
-		this.setState({
-			requests: requests,
-		});
+			this.setState({
+				requests: requests,
+			});
+		}
 	}
 
 	_resetIVars() {
