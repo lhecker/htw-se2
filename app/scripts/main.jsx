@@ -7,7 +7,7 @@ import ElevatorView from './ElevatorView';
 import UmlView from './UmlView';
 import {Elevator} from './elevator';
 
-const elevator = new Elevator(1, 9);
+const elevator = new Elevator(0, 5);
 window.elevator = elevator;
 
 React.render(

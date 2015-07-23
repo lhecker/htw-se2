@@ -7,6 +7,9 @@ import ElevatorWeightSensor from './ElevatorWeightSensor';
 import EventEmitter from 'events';
 
 
+import {pad, digits} from '../utils';
+
+
 /*
  * Helper method for access to the stops and levels tuples.
  */
@@ -106,6 +109,9 @@ class Elevator extends EventEmitter {
 		 *  --> This .on() must be bound AFTER the above handlers forwarding events
 		 */
 		this._doorSensor.on('shut', this._onDoorShut.bind(this));
+
+
+		this._debug();
 	}
 
 	get minLevel() {
@@ -187,6 +193,8 @@ class Elevator extends EventEmitter {
 			if (!r[idx]) {
 				r[idx] = 1;
 				s[idx]++;
+
+				this._debug();
 			}
 
 			this.emit('requests:add', level, direction);
@@ -310,6 +318,8 @@ class Elevator extends EventEmitter {
 			 */
 			this._stops[idx][oidx]--;
 			this._stops[oidx][oidx]++;
+
+			this._debug();
 		}
 
 		this._isMoving = true;
@@ -328,6 +338,8 @@ class Elevator extends EventEmitter {
 				r[idx] = 0;
 				s[idx]--;
 
+				this._debug();
+
 				this.emit('requests:remove', level, tupleIdxToDirection(idx));
 			}
 		}
@@ -342,6 +354,65 @@ class Elevator extends EventEmitter {
 
 	_requestData(level) {
 		return this._requests[level - this._minLevel];
+	}
+
+	// elevator.request(1, +1); elevator.request(2, -1); elevator.request(3, +1); elevator.request(4, -1); elevator.request(5, 0);
+	_debug() {
+		console.clear();
+
+		const symbols = ['↓', '↑', '↕'];
+		const additionalProps = [ 'level', 'direction', 'isMoving', 'isOverweight' ];
+		const propsWidth = additionalProps.reduce((max, str) => Math.max(max, str.length), 0);
+		const requestWidth = digits(this._requests.length);
+		const stopsWidth = digits(this._stops.reduce((max, s) => Math.max(max, s.reduce((max, v) => Math.max(max, v), 0)), 0));
+
+		const data =
+			[
+				pad('  ', requestWidth) + symbols.join(' '),
+			]
+			.concat(
+				this._requests
+					.map((r, i) => pad(i, requestWidth) + ' ' + r.map((v, idx) => v ? '■' : '□').join(' '))
+					.reverse()
+			);
+
+		const stopsData = (idx) => {
+			return this._stops[idx].map((v) => pad(v, stopsWidth)).join(' ');
+		};
+
+		const appendData = (idx, str) => {
+			data[idx] += '    ' + str;
+		};
+
+		appendData(0, symbols.map(v => pad(v, stopsWidth)).join(' '));
+		appendData(1, stopsData(1));
+		appendData(2, stopsData(0));
+
+		data.push('');
+
+		for (let prop of additionalProps) {
+			data.push(pad(prop, propsWidth, ' ') + ' = ' + this['_' + prop]);
+		}
+
+		console.log(data.join('\n'));
+	}
+
+	_printSample() {
+		console.clear();
+		console.log([
+			'  ↓ ↑ ↕    ↓ ↑ ↕',
+			'5 □ □ ■    1 1 1',
+			'4 ■ □ □    1 0 0',
+			'3 □ ■ □',
+			'2 ■ □ □',
+			'1 □ □ □',
+			'0 □ □ □',
+			'',
+			'       level = 2',
+			'   direction = 1',
+			'    isMoving = true',
+			'isOverweight = false',
+		].join('\n'));
 	}
 }
 
