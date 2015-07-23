@@ -1,11 +1,11 @@
 'use strict';
 
-export function pad(number, minLength, pad = '0') {
-	const numberString = String(number);
-	const numberStringLength = numberString.length;
-	const padLength = minLength > numberStringLength ? minLength - numberStringLength : 0;
+export function pad(val, minLength, pad = '0') {
+	const valString = String(val);
+	const valStringLength = valString.length;
+	const padLength = minLength > valStringLength ? minLength - valStringLength : 0;
 
-	return new Array(padLength).fill(pad).join('') + numberString;
+	return new Array(padLength).fill(pad).join('') + valString;
 }
 
 export function digits(number) {

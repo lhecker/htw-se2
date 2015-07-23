@@ -181,7 +181,7 @@ class Elevator extends EventEmitter {
 
 			const r = this._requestData(level);
 			const s = this._stops[directionToTupleIdx(relativePosition)];
-			const idx = direction ? directionToTupleIdx(direction) : 2;
+			const idx = directionToTupleIdx(direction);
 
 			// only increment if the level has not already been accounted for
 			if (!r[idx]) {
@@ -328,7 +328,7 @@ class Elevator extends EventEmitter {
 				r[idx] = 0;
 				s[idx]--;
 
-				this.emit('requests:remove', level, idx === 2 ? 0 : (2 * idx - 1));
+				this.emit('requests:remove', level, tupleIdxToDirection(idx));
 			}
 		}
 
