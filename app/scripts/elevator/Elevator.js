@@ -109,7 +109,7 @@ class Elevator extends EventEmitter {
 		/*
 		 * IMPORTANT:
 		 *  move/idle events are triggered in _onDoorShut().
-		 *    --> This .on() must be AFTER the above forward handlers
+		 *  --> This .on() must be bound AFTER the above handlers forwarding events
 		 */
 		this._doorSensor.on('shut', this._onDoorShut.bind(this));
 	}
