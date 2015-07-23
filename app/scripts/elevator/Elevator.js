@@ -7,11 +7,6 @@ import ElevatorWeightSensor from './ElevatorWeightSensor';
 import EventEmitter from 'events';
 
 
-const ENUM_REQUEST_NONE     = 0;
-const ENUM_REQUEST_INTERNAL = 1;
-const ENUM_REQUEST_EXTERNAL = 2;
-
-
 /*
  * Helper method for access to the stops and levels tuples.
  *
