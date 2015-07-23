@@ -18,6 +18,10 @@ function tupleIdxToDirection(idx) {
 	return [-1, 1, 0][idx];
 }
 
+function clone(obj) {
+	return JSON.parse(JSON.stringify(obj));
+}
+
 
 class Elevator extends EventEmitter {
 	constructor(minLevel, maxLevel) {
@@ -46,40 +50,17 @@ class Elevator extends EventEmitter {
 		 */
 		this._direction = 0;
 
-		/*
-		 * An array of integral 3-tuples (i.e. an array of size 3).
-		 * Each tuple represents a level of the evelator,
-		 * while the first/second/third tuple value is greater zero
-		 * if that particular level has a down/up/internal request (respectively):
-		 *
-		 * _requests[x][0] == 1 --> external down request
-		 * _requests[x][1] == 1 --> external up request
-		 * _requests[x][2] == 1 --> internal request
-		 */
-		this._requests = new Array(this._maxLevel - this._minLevel + 1);
-
-		/*
-		 * Contains the amount of levels to stop at in sum,
-		 * above/below the level for the down/up direction.
-		 *
-		 * Keeping track of the amount of stops helps us making
-		 * this an O(1) instead of an O(n) algorithm.
-		 */
-		this._stops = [
-			[0, 0, 0],
-			[0, 0, 0],
-		];
+		this._resetRequestData();
 
 		/*
 		 * The following properties will help tracking the state of the lift.
 		 */
 		this._isMoving = false;
 		this._isOverweight = false;
+		this._maintenanceMode = false;
 
 
 		for (let i = 0; i < this._requests.length; i++) {
-			this._requests[i] = [0, 0, 0];
-
 			const l = i + this._minLevel;
 			const sensor = new ElevatorLevelSensor(this, l);
 			sensor.on('contact', this._onLevelContact.bind(this, l));
@@ -106,6 +87,36 @@ class Elevator extends EventEmitter {
 		 *  --> This .on() must be bound AFTER the above handlers forwarding events
 		 */
 		this._doorSensor.on('shut', this._onDoorShut.bind(this));
+	}
+
+	_resetRequestData() {
+		/*
+		 * An array of integral 3-tuples (i.e. an array of size 3).
+		 * Each tuple represents a level of the evelator,
+		 * while the first/second/third tuple value is greater zero
+		 * if that particular level has a down/up/internal request (respectively):
+		 *
+		 * _requests[x][0] == 1 --> external down request
+		 * _requests[x][1] == 1 --> external up request
+		 * _requests[x][2] == 1 --> internal request
+		 */
+		this._requests = new Array(this._maxLevel - this._minLevel + 1);
+
+		for (let i = 0; i < this._requests.length; i++) {
+			this._requests[i] = [0, 0, 0];
+		}
+
+		/*
+		 * Contains the amount of levels to stop at in sum,
+		 * above/below the level for the down/up direction.
+		 *
+		 * Keeping track of the amount of stops helps us making
+		 * this an O(1) instead of an O(n) algorithm.
+		 */
+		this._stops = [
+			[0, 0, 0],
+			[0, 0, 0],
+		];
 	}
 
 	get minLevel() {
@@ -144,6 +155,10 @@ class Elevator extends EventEmitter {
 		return this._isOverweight;
 	}
 
+	get maintenanceMode() {
+		return this._maintenanceMode;
+	}
+
 	addPerson() {
 		if (this.isDoorUnlocked) {
 			this.emit('persons:add');
@@ -153,6 +168,28 @@ class Elevator extends EventEmitter {
 	removePerson() {
 		if (this._weightSensor.weight > 0) {
 			this.emit('persons:remove');
+		}
+	}
+
+	setMaintenanceMode(maintenance) {
+		maintenance = !!maintenance;
+
+		if (this._maintenanceMode !== maintenance) {
+			this._maintenanceMode = maintenance;
+			this.emit('maintenance:change', maintenance);
+
+			if (maintenance) {
+				const requests = clone(this._requests);
+				const stops    = clone(this._stops);
+
+				this._resetRequestData();
+
+				this.once('maintenance:change', (maintenance) => {
+					this._requests = requests;
+					this._stops = stops;
+					this._beginMoving();
+				});
+			}
 		}
 	}
 
@@ -176,7 +213,7 @@ class Elevator extends EventEmitter {
 
 		if (this._level === level && !this.isMoving) {
 			this._doorSensor.open();
-		} else if (relativePosition) {
+		} else if (relativePosition && (!this._maintenanceMode || direction === 0)) {
 			direction = Math.sign(direction);
 
 			const r = this._requestData(level);
